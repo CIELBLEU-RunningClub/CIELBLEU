@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le Ciel Est Bleu — Running Club Paris</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#122b44;--navy-deep:#0b1d30;--blue-steel:#6d879a;--blue-sky:#b6cde0;--blue-pale:#d5e0e4;--cream:#F6F9FC;--white:#FFFFFF;--mid:#5B738A;--gold:#E8B06B;}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{font-family:'Open Sans',sans-serif;background:var(--cream);color:var(--navy);overflow-x:hidden;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 60px;height:112px;background:rgba(11,29,48,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(182,205,224,0.1);}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:3px;color:white;text-decoration:none;display:flex;align-items:center;gap:10px;}
+.nav-logo-dot{width:8px;height:8px;border-radius:50%;background:var(--blue-sky);display:inline-block;}
+.nav-links{display:flex;gap:32px;list-style:none;}
+.nav-links a{font-size:13px;letter-spacing:2px;font-weight:600;color:rgba(255,255,255,0.65);text-decoration:none;text-transform:uppercase;transition:color .2s;}
+.nav-links a:hover,.nav-links a.active{color:white;}
+.nav-cta{background:var(--blue-sky);color:var(--navy);font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:2px;padding:10px 22px;border-radius:4px;text-decoration:none;transition:background .2s;}
+.nav-cta:hover{background:white;}
+
+.hero{min-height:100vh;background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy) 60%,#1a3d5c 100%);display:flex;flex-direction:column;justify-content:center;padding:112px 60px 0;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:-20%;right:-5%;width:700px;height:700px;background:radial-gradient(circle,rgba(182,205,224,0.12) 0%,transparent 65%);border-radius:50%;}
+.hero::after{content:'';position:absolute;bottom:-30%;left:40%;width:500px;height:500px;background:radial-gradient(circle,rgba(232,176,107,0.06) 0%,transparent 65%);border-radius:50%;}
+.hero-bg-img{position:absolute;top:60px;right:0;width:55%;height:calc(100% - 60px);object-fit:cover;object-position:center top;opacity:0.13;pointer-events:none;-webkit-mask-image:linear-gradient(to right,transparent 0%,black 40%),linear-gradient(to bottom,black 60%,transparent 100%);mask-image:linear-gradient(to right,transparent 0%,black 40%),linear-gradient(to bottom,black 60%,transparent 100%);-webkit-mask-composite:source-in;mask-composite:intersect;}
+.hero-eyebrow{font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:5px;color:var(--blue-sky);opacity:.8;margin-bottom:12px;animation:fadeUp .8s ease both;}
+.hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(72px,10vw,130px);line-height:.92;letter-spacing:2px;color:white;margin-bottom:10px;position:relative;z-index:1;animation:fadeUp .8s .1s ease both;}
+.hero h1 em{color:var(--blue-sky);font-style:normal;}
+.hero-tagline{font-family:'Playfair Display',serif;font-style:italic;font-size:28px;color:var(--gold);margin-bottom:16px;animation:fadeUp .8s .2s ease both;}
+.hero-desc{font-size:15px;color:rgba(255,255,255,.6);font-weight:300;max-width:560px;line-height:1.65;margin-bottom:20px;animation:fadeUp .8s .3s ease both;}
+.hero-cta-group{display:flex;flex-direction:column;gap:16px;margin-bottom:64px;align-self:flex-start;animation:fadeUp .8s .4s ease both;}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap;}
+.btn-primary{background:var(--blue-sky);color:var(--navy);font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:2px;padding:16px 36px;border-radius:4px;text-decoration:none;transition:all .2s;}
+.btn-primary:hover{background:white;transform:translateY(-2px);}
+.btn-secondary{border:1.5px solid rgba(182,205,224,.4);color:rgba(255,255,255,.8);font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:2px;padding:16px 36px;border-radius:4px;text-decoration:none;transition:all .2s;}
+.btn-secondary:hover{border-color:rgba(182,205,224,.9);color:white;}
+.hero-strava{display:flex;align-items:center;gap:20px;background:rgba(255,255,255,0.06);border:1px solid rgba(182,205,224,0.12);border-radius:12px;padding:18px 24px;width:100%;}
+.hero-strava-dot{width:10px;height:10px;border-radius:50%;background:var(--gold);flex-shrink:0;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(232,176,107,0.5);}50%{box-shadow:0 0 0 7px rgba(232,176,107,0);}}
+.hero-strava-text{flex:1;}
+.hero-strava-label{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:3px;color:var(--gold);}
+.hero-strava-desc{font-size:13px;color:rgba(255,255,255,.55);line-height:1.5;}
+.hero-strava-cta{background:var(--gold);color:var(--navy-deep);font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;padding:10px 20px;border-radius:4px;text-decoration:none;white-space:nowrap;transition:all .2s;flex-shrink:0;}
+.hero-strava-cta:hover{background:white;}
+.hero-bottom{position:absolute;bottom:0;left:0;right:0;border-top:1px solid rgba(182,205,224,0.1);display:flex;animation:fadeUp .8s .5s ease both;}
+.hero-stat{flex:1;padding:28px 40px;border-right:1px solid rgba(182,205,224,0.1);}
+.hero-stat:last-child{border-right:none;}
+.hero-stat .num{font-family:'Bebas Neue',sans-serif;font-size:40px;color:var(--blue-sky);line-height:1;letter-spacing:1px;}
+.hero-stat .lbl{font-size:11px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:2px;margin-top:4px;}
+
+section{padding:56px 60px;border-bottom:1px solid rgba(18,43,68,0.07);scroll-margin-top:112px;}
+section:nth-child(even){background:var(--white);}
+.s-label{font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:5px;color:var(--blue-steel);margin-bottom:12px;}
+.s-title{font-family:'Playfair Display',serif;font-size:44px;font-weight:700;color:var(--navy);line-height:1.15;margin-bottom:48px;}
+
+.dna-block{background:linear-gradient(135deg,var(--navy-deep),var(--navy));border-radius:20px;padding:56px;color:white;position:relative;overflow:hidden;margin-bottom:40px;}
+.dna-block::before{content:'"';position:absolute;top:-20px;left:36px;font-family:'Playfair Display',serif;font-size:220px;color:rgba(182,205,224,0.05);line-height:1;}
+.dna-quote{font-family:'Playfair Display',serif;font-size:28px;font-style:italic;font-weight:700;color:var(--blue-sky);line-height:1.45;margin-bottom:20px;position:relative;z-index:1;}
+.dna-text{font-size:16px;color:rgba(255,255,255,.68);line-height:1.75;max-width:680px;position:relative;z-index:1;}
+.link-arrow{font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:2px;color:var(--navy);text-decoration:none;border-bottom:2px solid var(--blue-sky);padding-bottom:2px;}
+
+.sessions-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:32px;}
+.session-card{background:var(--navy);border-radius:16px;padding:40px 36px;color:white;position:relative;overflow:hidden;transition:transform .25s;}
+.session-card:hover{transform:translateY(-4px);}
+.s-day{font-family:'Bebas Neue',sans-serif;font-size:44px;letter-spacing:2px;color:var(--blue-sky);margin-bottom:10px;}
+.s-badge{display:inline-block;font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:2px;padding:6px 16px;border-radius:20px;margin-bottom:20px;}
+.s-badge.adherents{background:rgba(182,205,224,.25);color:var(--blue-sky);}
+.s-badge.open{background:rgba(232,176,107,.28);color:var(--gold);}
+.s-badge.variable{background:rgba(109,135,154,.2);color:var(--blue-steel);}
+.s-info{display:flex;flex-direction:column;gap:12px;}
+.s-info-row{display:flex;flex-direction:column;gap:3px;}
+.s-info-label{font-size:10px;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:2px;}
+.s-info-val{font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:1px;color:rgba(255,255,255,1);}
+.s-allures{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;}
+.allure{background:rgba(182,205,224,.2);color:var(--blue-sky);border:1px solid rgba(182,205,224,.45);border-radius:10px;padding:6px 14px;font-size:16px;font-weight:700;font-family:'Bebas Neue',sans-serif;letter-spacing:1px;}
+
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:8px;grid-auto-flow:dense;}
+.gallery-item{position:relative;overflow:hidden;border-radius:12px;cursor:pointer;}
+.gallery-item.tall{grid-row:span 2;}
+.gallery-item.wide{grid-column:span 2;grid-row:span 2;}
+.gallery-item img{width:100%;height:100%;object-fit:cover;object-position:center center;transition:transform .5s ease;}
+.gallery-item.tall img{object-position:center 20%;}
+.gallery-item:hover img{transform:scale(1.07);}
+.gallery-caption{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(11,29,48,.88) 0%,transparent 100%);padding:40px 18px 18px;transform:translateY(100%);transition:transform .35s ease;}
+.gallery-item:hover .gallery-caption{transform:translateY(0);}
+.gallery-caption span{font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:2px;color:white;display:block;}
+.gallery-caption small{font-size:12px;color:rgba(255,255,255,.55);letter-spacing:1px;margin-top:2px;display:block;}
+
+.events-carousel-wrap{position:relative;padding:0 8px;}
+.events-carousel{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding-bottom:8px;-ms-overflow-style:none;scrollbar-width:none;}
+.events-carousel::-webkit-scrollbar{display:none;}
+.event-item{background:var(--white);border:1.5px solid rgba(18,43,68,.08);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;min-width:240px;max-width:255px;flex-shrink:0;scroll-snap-align:start;transition:transform .2s,box-shadow .2s,background .2s,border-color .2s;}
+.event-item:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(18,43,68,.1);}
+.ev-month-juin:hover{background:rgba(232,176,107,.1);border-color:rgba(232,176,107,.45);}
+.ev-month-juillet:hover{background:rgba(182,205,224,.15);border-color:rgba(182,205,224,.6);}
+.ev-month-aout:hover{background:rgba(109,135,154,.1);border-color:rgba(109,135,154,.4);}
+.carousel-btn{position:absolute;top:50%;transform:translateY(-50%);background:var(--white);color:var(--navy);border:1.5px solid rgba(18,43,68,.15);border-radius:50%;width:44px;height:44px;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;transition:all .2s;z-index:2;box-shadow:0 2px 12px rgba(18,43,68,.12);}
+.carousel-btn:hover{background:var(--navy);color:white;border-color:var(--navy);}
+.carousel-btn.prev{left:-22px;}
+.carousel-btn.next{right:-22px;}
+.ev-accent{height:5px;width:100%;flex-shrink:0;}
+.ev-juin{background:var(--gold);}
+.ev-juillet{background:var(--blue-sky);}
+.ev-aout{background:var(--blue-steel);}
+.ev-body{padding:20px 22px;display:flex;flex-direction:column;gap:8px;flex:1;}
+.ev-prochain{font-family:'Bebas Neue',sans-serif;font-size:10px;letter-spacing:3px;color:var(--gold);margin-bottom:2px;}
+.ev-date{display:flex;align-items:baseline;gap:7px;margin-bottom:4px;}
+.ev-day-num{font-family:'Bebas Neue',sans-serif;font-size:54px;line-height:1;color:var(--navy);}
+.ev-month-lbl{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;color:var(--mid);}
+.ev-title{font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:1px;color:var(--navy);line-height:1.25;}
+.ev-desc{font-size:12px;color:var(--mid);line-height:1.6;flex:1;}
+.ev-tag{font-family:'Bebas Neue',sans-serif;font-size:10px;letter-spacing:2px;padding:4px 12px;border-radius:20px;white-space:nowrap;align-self:flex-start;margin-top:4px;}
+.tag-adidas{background:rgba(232,176,107,.18);color:#9A6F2E;}
+.tag-club{background:rgba(18,43,68,.08);color:var(--navy);}
+.tag-trail{background:rgba(109,135,154,.15);color:var(--blue-steel);}
+.tag-partner{background:rgba(182,205,224,.22);color:var(--navy);}
+.month-sep{display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:32px;flex-shrink:0;gap:6px;}
+.month-sep-line{width:1px;flex:1;background:rgba(18,43,68,.1);}
+.month-sep-label{font-family:'Bebas Neue',sans-serif;font-size:10px;letter-spacing:3px;color:var(--mid);writing-mode:vertical-rl;}
+
+.manifesto{background:linear-gradient(135deg,var(--navy-deep),var(--navy) 60%,#1e4a6e);padding:100px 60px;text-align:center;}
+.manifesto h2{font-family:'Playfair Display',serif;font-size:clamp(36px,5vw,60px);color:white;line-height:1.3;max-width:760px;margin:0 auto 32px;}
+.manifesto h2 em{color:var(--blue-sky);font-style:italic;}
+.manifesto p{font-size:18px;color:rgba(255,255,255,.6);max-width:600px;margin:0 auto 12px;line-height:1.8;}
+.manifesto-cta{display:inline-block;margin-top:36px;background:var(--blue-sky);color:var(--navy);font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:2px;padding:16px 40px;border-radius:4px;text-decoration:none;transition:all .2s;}
+.manifesto-cta:hover{background:white;transform:translateY(-2px);}
+
+/* Adhésion */
+.adhesion-block{background:var(--navy);border-radius:20px;padding:36px 40px;display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start;}
+.ab-text h3{font-family:'Playfair Display',serif;font-size:26px;color:white;margin-bottom:12px;}
+.ab-text h3 em{color:var(--gold);font-style:italic;}
+.ab-perks-box{background:rgba(182,205,224,.07);border:1px solid rgba(182,205,224,.15);border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:16px;}
+.ab-perks-title{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:3px;color:var(--blue-sky);margin-bottom:12px;}
+.ab-perks{list-style:none;}
+.ab-perks li{font-size:13px;color:rgba(255,255,255,.65);padding:7px 0;border-bottom:1px solid rgba(182,205,224,.08);display:flex;align-items:center;gap:10px;}
+.ab-perks li:last-child{border:none;}
+.ab-perks li::before{content:"✓";color:var(--blue-sky);font-weight:700;font-size:14px;}
+/* Merch */
+.merch-block{background:linear-gradient(135deg,var(--navy-deep),var(--navy));border-radius:20px;padding:52px;display:flex;align-items:center;justify-content:space-between;gap:40px;}
+.mb-text h3{font-family:'Playfair Display',serif;font-size:32px;color:white;margin-bottom:12px;}
+.mb-text h3 em{color:var(--gold);font-style:italic;}
+.mb-text p{font-size:15px;color:rgba(255,255,255,.55);line-height:1.75;max-width:440px;}
+.mb-product{display:flex;gap:20px;align-items:center;background:rgba(255,255,255,.06);border:1px solid rgba(182,205,224,.15);border-radius:16px;padding:20px;min-width:280px;}
+.mb-product-img{width:140px;height:140px;object-fit:contain;flex-shrink:0;mix-blend-mode:multiply;filter:contrast(1.05);}
+.mb-product-info{display:flex;flex-direction:column;gap:8px;}
+.mb-product-name{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:1.5px;color:white;}
+.mb-product-collab{font-size:12px;color:rgba(255,255,255,.45);letter-spacing:1px;}
+.mb-product-cta{display:inline-block;margin-top:6px;background:var(--gold);color:var(--navy-deep);font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;padding:10px 20px;border-radius:4px;text-decoration:none;transition:background .2s;}
+.mb-product-cta:hover{background:white;}
+/* Équipe */
+.orga-intro{font-size:16px;color:var(--mid);line-height:1.8;max-width:640px;margin-bottom:48px;}
+.orga-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:24px;margin-bottom:24px;}
+.orga-card{perspective:900px;min-height:172px;cursor:default;}
+.card-inner{position:relative;width:100%;min-height:172px;transition:transform .55s cubic-bezier(.4,.2,.2,1);transform-style:preserve-3d;}
+.orga-card:hover .card-inner{transform:rotateY(180deg);}
+.card-front,.card-back{position:absolute;inset:0;border-radius:14px;padding:24px 16px;text-align:center;backface-visibility:hidden;-webkit-backface-visibility:hidden;}
+.card-front{background:var(--white);border:1.5px solid rgba(18,43,68,.1);}
+.card-back{background:var(--navy);border:1.5px solid rgba(182,205,224,.2);transform:rotateY(180deg);display:flex;align-items:center;justify-content:center;}
+.card-back-text{font-family:'Playfair Display',serif;font-style:italic;font-size:17px;color:var(--blue-sky);line-height:1.5;text-align:center;}
+.orga-photo{width:80px;height:80px;border-radius:50%;object-fit:cover;margin:0 auto 12px;display:block;}
+.orga-name{font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:1.5px;color:var(--navy);margin-bottom:4px;}
+.orga-role{font-size:11px;color:var(--blue-steel);text-transform:uppercase;letter-spacing:1.5px;font-weight:600;}
+/* FAQ */
+.faq{display:flex;flex-direction:column;}
+.faq-item{border-bottom:1px solid rgba(18,43,68,.1);}
+.faq-item:first-child{border-top:1px solid rgba(18,43,68,.1);}
+.faq-q{display:flex;align-items:center;justify-content:space-between;gap:24px;cursor:pointer;padding:18px 0;}
+.faq-q-text{font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:1.5px;color:var(--navy);}
+.faq-toggle{font-size:22px;color:var(--blue-steel);flex-shrink:0;transition:transform .25s;line-height:1;}
+.faq-item.open .faq-toggle{transform:rotate(45deg);color:var(--navy);}
+.faq-a{font-size:15px;color:var(--mid);line-height:1.75;max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease;}
+.faq-item.open .faq-a{max-height:300px;padding-bottom:24px;}
+/* Footer simplifié */
+footer{background:var(--navy-deep);padding:32px 60px;}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;}
+.footer-logo{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:3px;color:white;text-decoration:none;}
+.footer-socials{display:flex;gap:28px;align-items:center;flex-wrap:wrap;}
+.footer-socials a{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s;}
+.footer-socials a:hover{color:white;}
+.footer-copy{font-size:12px;color:rgba(255,255,255,.25);letter-spacing:1px;}
+.socials a:hover img{opacity:1;}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+</style>
+</head>
+<body>
+<nav>
+  <a href="lceb-index.html" class="nav-logo"><img src="images/CIELBLEU.png" alt="Le Ciel Est Bleu" height="100"></a>
+  <ul class="nav-links">
+    <li><a href="#sessions">Séances</a></li>
+    <li><a href="#evenements">Événements</a></li>
+    <li><a href="#galerie">Galerie</a></li>
+    <li><a href="#adhesion">Adhésion</a></li>
+    <li><a href="#merch">Merch</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <img src="images/hypernight.JPG" alt="" class="hero-bg-img">
+  <div class="hero-eyebrow">Running Club · Paris</div>
+  <h1>LE CIEL<br><em>EST BLEU</em></h1>
+  <p class="hero-desc">Fondé en août 2024 par deux frères passionnés, notre club réunit celles et ceux qui veulent courir à leur rythme et partager un bon moment. Sorties conviviales, soutien en courses officielles et after-run autour d'un verre : ici, on court ensemble, on vibre ensemble !</p>
+  <div class="hero-cta-group">
+    <div class="hero-strava">
+      <div class="hero-strava-dot"></div>
+      <div class="hero-strava-text">
+        <div class="hero-strava-label">Ce dimanche · Social Run · 10h20</div>
+      </div>
+      <a href="https://www.strava.com/clubs/lecielestbleu" target="_blank" class="hero-strava-cta">Voir sur Strava</a>
+    </div>
+    <div class="hero-actions">
+      <a href="#adhesion" class="btn-primary">Devenir adhérent</a>
+      <a href="#sessions" class="btn-secondary">Séances</a>
+    </div>
+  </div>
+  <div class="hero-bottom">
+    <div class="hero-stat"><div class="num">110+</div><div class="lbl">Adhérents actifs</div></div>
+    <div class="hero-stat"><div class="num">3</div><div class="lbl">Séances par semaine</div></div>
+    <div class="hero-stat"><div class="num">2024</div><div class="lbl">Année de création</div></div>
+    <div class="hero-stat"><div class="num">10</div><div class="lbl">Encadrants impliqués</div></div>
+  </div>
+</div>
+
+<section id="sessions">
+  <div class="s-label">01 — Séances</div>
+  <div class="s-title">Le programme<br>de la semaine.</div>
+  <div class="sessions-grid reveal">
+    <div class="session-card" style="background-image:linear-gradient(rgba(11,29,48,.85),rgba(11,29,48,.85)),url('images/souvenirs/séance-piste-portrait.JPG');background-size:cover;background-position:center;">
+      <div class="s-day">LUNDI</div>
+      <span class="s-badge adherents">Adhérents</span>
+      <div class="s-info">
+        <div class="s-info-row"><div class="s-info-label">Horaire</div><div class="s-info-val">19h30</div></div>
+        <div class="s-info-row"><div class="s-info-label">Fréquence</div><div class="s-info-val">1 lundi sur 2</div></div>
+        <div class="s-info-row"><div class="s-info-label">Format</div><div class="s-info-val">Fractionné piste</div></div>
+        <div class="s-info-row"><div class="s-info-label">Lieu</div><div class="s-info-val">Stade Ladoumègue · Paris 19e</div></div>
+      </div>
+    </div>
+    <div class="session-card" style="background-image:linear-gradient(rgba(11,29,48,.85),rgba(11,29,48,.85)),url('images/souvenirs/Run-quai-été-portrait.JPG');background-size:cover;background-position:center 75%;">
+      <div class="s-day">MERCREDI</div>
+      <span class="s-badge adherents">Adhérents</span>
+      <div class="s-info">
+        <div class="s-info-row"><div class="s-info-label">Horaire</div><div class="s-info-val">19h20</div></div>
+        <div class="s-info-row"><div class="s-info-label">Fréquence</div><div class="s-info-val">Hebdomadaire</div></div>
+        <div class="s-info-row"><div class="s-info-label">Format</div><div class="s-info-val">Footing collectif</div></div>
+        <div class="s-info-row"><div class="s-info-label">Lieu</div><div class="s-info-val">Quais de Seine · Paris</div></div>
+      </div>
+      <div class="s-allures"><span class="allure">5'30</span><span class="allure">6'00</span><span class="allure">6'30</span></div>
+    </div>
+    <div class="session-card" style="background-image:linear-gradient(rgba(11,29,48,.85),rgba(11,29,48,.85)),url('images/souvenirs/Dimanche.jpg');background-size:cover;background-position:center;">
+      <div class="s-day">DIMANCHE</div>
+      <span class="s-badge open">Ouvert à tous</span>
+      <div class="s-info">
+        <div class="s-info-row"><div class="s-info-label">Horaire</div><div class="s-info-val">10h20</div></div>
+        <div class="s-info-row"><div class="s-info-label">Fréquence</div><div class="s-info-val">Hebdomadaire</div></div>
+        <div class="s-info-row"><div class="s-info-label">Format</div><div class="s-info-val">Social Run</div></div>
+        <div class="s-info-row"><div class="s-info-label">Lieu</div><div class="s-info-val">Point publié sur Strava</div></div>
+      </div>
+      <div class="s-allures"><span class="allure">5'30</span><span class="allure">6'00</span><span class="allure">6'30</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="evenements">
+  <div class="s-label">02 — À venir</div>
+  <div class="s-title">Les événements<br>à venir.</div>
+  <div class="events-carousel-wrap">
+    <button class="carousel-btn prev" onclick="scrollCarousel(-1)">&#8592;</button>
+    <button class="carousel-btn next" onclick="scrollCarousel(1)">&#8594;</button>
+    <div class="events-carousel reveal">
+
+      <!-- ── JUIN ── -->
+      <div class="event-item ev-month-juin">
+        <div class="ev-accent ev-juin" data-month="juin"></div>
+        <div class="ev-body">
+          <div class="ev-prochain">Prochain</div>
+          <div class="ev-date"><div class="ev-day-num">05</div><div class="ev-month-lbl">Juin</div></div>
+          <div class="ev-title">Naturalia x We Love Green</div>
+          <p class="ev-desc">Run solidaire en partenariat avec Naturalia et le festival We Love Green.</p>
+          <span class="ev-tag tag-partner">Partenariat</span>
+        </div>
+      </div>
+      <div class="event-item ev-month-juin">
+        <div class="ev-accent ev-juin" data-month="juin"></div>
+        <div class="ev-body">
+          <div class="ev-date"><div class="ev-day-num">07</div><div class="ev-month-lbl">Juin</div></div>
+          <div class="ev-title">KM Bleu 10K Adidas + AG</div>
+          <p class="ev-desc">Course officielle en équipe + Assemblée Générale du club.</p>
+          <span class="ev-tag tag-adidas">Adidas</span>
+        </div>
+      </div>
+      <div class="event-item ev-month-juin">
+        <div class="ev-accent ev-juin" data-month="juin"></div>
+        <div class="ev-body">
+          <div class="ev-date"><div class="ev-day-num">12</div><div class="ev-month-lbl">Juin</div></div>
+          <div class="ev-title">Soirée Fin d'année</div>
+          <p class="ev-desc">La grande fête de fin de saison. Tous les adhérents.</p>
+          <span class="ev-tag tag-club">Club</span>
+        </div>
+      </div>
+      <div class="event-item ev-month-juin">
+        <div class="ev-accent ev-juin" data-month="juin"></div>
+        <div class="ev-body">
+          <div class="ev-date"><div class="ev-day-num">13</div><div class="ev-month-lbl">Juin</div></div>
+          <div class="ev-title">Salomon x Gravenlenza</div>
+          <p class="ev-desc">Événement running en partenariat avec Salomon.</p>
+          <span class="ev-tag tag-partner">Salomon</span>
+        </div>
+      </div>
+      <div class="event-item ev-month-juin">
+        <div class="ev-accent ev-juin" data-month="juin"></div>
+        <div class="ev-body">
+          <div class="ev-date"><div class="ev-day-num">21</div><div class="ev-month-lbl">Juin</div></div>
+          <div class="ev-title">Marathon en Relais LCEB</div>
+          <p class="ev-desc">Course de relais marathon en équipes. Collectif au maximum.</p>
+          <span class="ev-tag tag-club">Collectif</span>
+        </div>
+      </div>
+      <div class="event-item ev-month-juin">
+        <div class="ev-accent ev-juin" data-month="juin"></div>
+        <div class="ev-body">
+          <div class="ev-date"><div class="ev-day-num">24</div><div class="ev-month-lbl">Juin</div></div>
+          <div class="ev-title">Run Testing ACT</div>
+          <p class="ev-desc">Session de testing produits ACT avec 30 membres du club.</p>
+          <span class="ev-tag tag-partner">ACT</span>
+        </div>
+      </div>
+
+      <!-- séparateur -->
+      <div class="month-sep"><div class="month-sep-line"></div><div class="month-sep-label">Juillet</div><div class="month-sep-line"></div></div>
+
+      <!-- ── JUILLET ── -->
+      <div class="event-item ev-month-juillet">
+        <div class="ev-accent ev-juillet"></div>
+        <div class="ev-body">
+          <div class="ev-date"><div class="ev-day-num">18</div><div class="ev-month-lbl">Juil.</div></div>
+          <div class="ev-title">Trail 25 Bosses</div>
+          <p class="ev-desc">Sortie trail hors Paris. Dénivelé, aventure partagée.</p>
+          <span class="ev-tag tag-trail">Trail</span>
+        </div>
+      </div>
+      <div class="event-item ev-month-juillet">
+        <div class="ev-accent ev-juillet"></div>
+        <div class="ev-body">
+          <div class="ev-date"><div class="ev-day-num">26</div><div class="ev-month-lbl">Juil.</div></div>
+          <div class="ev-title">KM Bleu TDF</div>
+          <p class="ev-desc">Run spécial Tour de France dans l'ambiance de la grande boucle.</p>
+          <span class="ev-tag tag-club">Spécial</span>
+        </div>
+      </div>
+
+      <!-- séparateur -->
+      <div class="month-sep"><div class="month-sep-line"></div><div class="month-sep-label">Août</div><div class="month-sep-line"></div></div>
+
+      <!-- ── AOÛT ── -->
+      <div class="event-item ev-month-aout">
+        <div class="ev-accent ev-aout"></div>
+        <div class="ev-body">
+          <div class="ev-date"><div class="ev-day-num">30</div><div class="ev-month-lbl">Août</div></div>
+          <div class="ev-title">Run Collectif</div>
+          <p class="ev-desc">Reprise collective de rentrée. Ouvert à tous, toutes allures.</p>
+          <span class="ev-tag tag-club">Club</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="galerie">
+  <div class="s-label">03 — Galerie</div>
+  <div class="s-title">Une communauté<br>de folie.</div>
+  <div class="gallery-grid reveal">
+    <!-- Bloc 1 : paysage gauche + 2 portraits droite -->
+    <div class="gallery-item wide">
+      <img src="images/souvenirs/run-hoka-paysage.JPG" alt="" style="object-position:center 30%;">
+      <div class="gallery-caption"><span>10k Hoka</span><small>Nov 2025 · Paris</small></div>
+    </div>
+    <div class="gallery-item tall">
+      <img src="images/souvenirs/séance-piste-portrait.JPG" alt="">
+      <div class="gallery-caption"><span>Séance piste</span><small>Lundi · Adhérents</small></div>
+    </div>
+    <div class="gallery-item tall">
+      <img src="images/souvenirs/Run-hyperboost-portrait.JPG" alt="">
+      <div class="gallery-caption"><span>Run Hyper Boost</span><small>Avec Adidas · 2025</small></div>
+    </div>
+    <!-- Bloc 2 : paysage gauche + 2 portraits droite -->
+    <div class="gallery-item wide">
+      <img src="images/souvenirs/adidas-district-paysage.JPG" alt="">
+      <div class="gallery-caption"><span>Adidas District</span><small>Partenariat · Paris</small></div>
+    </div>
+    <div class="gallery-item tall">
+      <img src="images/souvenirs/run-nice-2-portrait.JPG" alt="">
+      <div class="gallery-caption"><span>Week-end à Nice</span><small>Hors Paris · 2025</small></div>
+    </div>
+    <div class="gallery-item tall">
+      <img src="images/souvenirs/photoshoot-adidas-portrait.JPG" alt="">
+      <div class="gallery-caption"><span>Shooting Adidas</span><small>Collaboration · 2025</small></div>
+    </div>
+    <!-- Bloc 3 : paysage gauche + 2 portraits droite -->
+    <div class="gallery-item wide">
+      <img src="images/souvenirs/LcebxFDRC-paysage.JPG" alt="">
+      <div class="gallery-caption"><span>LCEB × FDRC</span><small>Collaboration · Paris</small></div>
+    </div>
+    <div class="gallery-item tall">
+      <img src="images/souvenirs/Run-champs-elysées-portrait.jpg" alt="" style="object-position:center 25%;">
+      <div class="gallery-caption"><span>Champs-Élysées</span><small>Run collectif · Paris</small></div>
+    </div>
+    <div class="gallery-item tall">
+      <img src="images/souvenirs/25-bosses-rando-paysage.JPG" alt="">
+      <div class="gallery-caption"><span>Les 25 Bosses</span><small>Trail · 2025</small></div>
+    </div>
+    <!-- Bloc 4 : paysage gauche + 2 portraits droite -->
+    <div class="gallery-item wide">
+      <img src="images/souvenirs/Hyperboost-testing-paysage.jpg" alt="" style="object-position:center 90%;">
+      <div class="gallery-caption"><span>Testing Hyper Boost</span><small>Adidas Arena · 2025</small></div>
+    </div>
+    <div class="gallery-item tall">
+      <img src="images/souvenirs/run-hyperbook-photoshoot-portrait.JPG" alt="">
+      <div class="gallery-caption"><span>Shooting photo</span><small>Le club en images</small></div>
+    </div>
+    <div class="gallery-item tall">
+      <img src="images/souvenirs/Run-quai-été-portrait.JPG" alt="">
+      <div class="gallery-caption"><span>Quais de Seine</span><small>Run du mercredi</small></div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:32px;">
+    <a href="https://www.instagram.com/lecielestbleu_runningclub/" target="_blank" style="display:inline-flex;align-items:center;gap:10px;font-family:'Open Sans',sans-serif;font-size:13px;letter-spacing:1.5px;color:var(--navy);text-decoration:none;border:1.5px solid rgba(18,43,68,.3);border-radius:30px;padding:12px 24px;transition:color .2s,border-color .2s,background .2s;" onmouseover="this.style.background='rgba(18,43,68,.07)';this.style.borderColor='var(--navy)'" onmouseout="this.style.background='transparent';this.style.borderColor='rgba(18,43,68,.3)'">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+      Voir tous les souvenirs sur Instagram
+    </a>
+  </div>
+</section>
+
+
+<!-- ADHÉSION -->
+<section id="adhesion">
+  <div class="s-label">04 — Adhésion</div>
+  <div class="s-title">Devenir<br>adhérent.</div>
+  <div class="adhesion-block reveal">
+    <div class="ab-text">
+      <h3>8 raisons de<br><em>rejoindre LCEB.</em></h3>
+      <ul class="ab-perks" style="margin-top:8px;">
+        <li>Accès à tous les runs — mercredi soir, dimanche matin, séances piste 2 lundis/mois</li>
+        <li>Dossards &amp; goodies partenaires</li>
+        <li>Réduction sur le merchandising</li>
+        <li>Sorties extra (trail, etc.)</li>
+        <li>Accès prioritaire aux soirées LCEB</li>
+        <li>Assurance en cas de blessure ou accident</li>
+        <li>Aide à la planification d'entraînement</li>
+        <li>Continuer de profiter de la convivialité LCEB !</li>
+      </ul>
+    </div>
+    <div class="ab-perks-box">
+      <div>
+        <div class="ab-perks-title">Tarif annuel</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:44px;color:var(--gold);line-height:1;letter-spacing:2px;">35€</div>
+        <div style="font-size:12px;color:rgba(255,255,255,.45);margin-top:4px;letter-spacing:1px;">Par an · Saison 2025–2026</div>
+      </div>
+      <div style="border-top:1px solid rgba(182,205,224,.1);padding-top:16px;">
+        <div class="ab-perks-title" style="margin-bottom:8px;">Comment adhérer</div>
+        <p style="font-size:13px;color:rgba(255,255,255,.55);line-height:1.6;margin-bottom:14px;">Télécharge le dossier, fais ton virement, et envoie-nous le tout par mail.</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px;">
+          <a href="dossier-inscription-lceb.pdf" download style="display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:var(--navy-deep);font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;padding:11px 18px;border-radius:4px;text-decoration:none;transition:background .2s;" onmouseover="this.style.background='white'" onmouseout="this.style.background='var(--gold)'">↓ &nbsp;Télécharger le dossier</a>
+          <a href="rib-lceb.pdf" download style="display:inline-flex;align-items:center;gap:8px;background:rgba(182,205,224,.08);border:1px solid rgba(182,205,224,.2);color:rgba(255,255,255,.75);font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;padding:11px 18px;border-radius:4px;text-decoration:none;transition:background .2s,border-color .2s;" onmouseover="this.style.background='rgba(182,205,224,.15)';this.style.borderColor='rgba(182,205,224,.4)'" onmouseout="this.style.background='rgba(182,205,224,.08)';this.style.borderColor='rgba(182,205,224,.2)'">↓ &nbsp;Télécharger le RIB</a>
+        </div>
+        <a href="mailto:contact.lcebrunning@gmail.com" style="font-family:'Open Sans',sans-serif;font-size:12px;color:rgba(255,255,255,.45);text-decoration:none;border-bottom:1px solid rgba(182,205,224,.2);padding-bottom:2px;">contact.lcebrunning@gmail.com</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MERCH -->
+<section id="merch">
+  <div class="s-label">05 — Merchandising</div>
+  <div class="s-title">Porter<br>les couleurs.</div>
+  <div class="merch-block reveal">
+    <div class="mb-text">
+      <h3>Capsules<br><em>limitées.</em></h3>
+      <p>Des pièces aux couleurs du club en éditions limitées, plusieurs fois par an.</p>
+    </div>
+    <div class="mb-product">
+      <img src="images/chaussettes-lceb.png" alt="Chaussettes Le ciel est bleu" class="mb-product-img">
+      <div class="mb-product-info">
+        <div class="mb-product-name">Chaussettes LCEB</div>
+        <div class="mb-product-collab">× Les Frères Chaussettes</div>
+        <a href="https://lesfrereschaussettes.com/collections/le-ciel-est-bleu/products/le-ciel-est-bleu" target="_blank" class="mb-product-cta">Commander →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="s-label">06 — FAQ</div>
+  <div class="s-title">Pas de question<br>bête.</div>
+  <div class="faq reveal">
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+        <span class="faq-q-text">Je suis débutant, je peux venir ?</span>
+        <span class="faq-toggle">+</span>
+      </div>
+      <div class="faq-a">Oui, sans hésiter. Le Social Run du dimanche est ouvert à tous et on a trois groupes d'allure : 5'30, 6'00 et 6'30 au kilomètre. Il y a forcément un groupe pour toi. Personne ne court seul, personne n'est largué.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+        <span class="faq-q-text">Est-ce qu'il faut être adhérent pour venir ?</span>
+        <span class="faq-toggle">+</span>
+      </div>
+      <div class="faq-a">Non. Le Social Run du dimanche est ouvert à tous, sans inscription et sans adhésion. Tu viens, tu cours, tu restes pour le café. L'adhésion, c'est pour ceux qui veulent aller plus loin et accéder aux trois séances de la semaine.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+        <span class="faq-q-text">Je peux tester les séances du lundi et du mercredi ?</span>
+        <span class="faq-toggle">+</span>
+      </div>
+      <div class="faq-a">Oui, bien sûr, rien de tel pour être vraiment convaincu. Envoie-nous juste un petit message à l'avance pour nous prévenir, et on t'accueille comme il se doit.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+        <span class="faq-q-text">Comment je sais où on part le dimanche ?</span>
+        <span class="faq-toggle">+</span>
+      </div>
+      <div class="faq-a">C'est publié chaque semaine sur notre groupe Strava. Rejoins le groupe et le point de départ apparaît directement dans ton feed, généralement quelques jours avant.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ÉQUIPE -->
+<section id="equipe-orga">
+  <div class="s-label">07 — L'équipe</div>
+  <div class="s-title">Une équipe Orga<br>de choc.</div>
+  <div class="orga-grid reveal">
+    <div class="orga-card"><div class="card-inner">
+      <div class="card-front"><img src="images/Hugo.png" alt="Hugo" class="orga-photo"><div class="orga-name">Hugo</div><div class="orga-role">Président</div></div>
+      <div class="card-back"><div class="card-back-text">Le fondateur.</div></div>
+    </div></div>
+    <div class="orga-card"><div class="card-inner">
+      <div class="card-front"><img src="images/Thomas-vice-president.png" alt="Thomas" class="orga-photo"><div class="orga-name">Thomas</div><div class="orga-role">Vice-Président</div></div>
+      <div class="card-back"><div class="card-back-text">Le bras droit.</div></div>
+    </div></div>
+    <div class="orga-card"><div class="card-inner">
+      <div class="card-front"><img src="images/Julien-secretaire-général.png" alt="Julien" class="orga-photo"><div class="orga-name">Julien</div><div class="orga-role">Secrétaire général</div></div>
+      <div class="card-back"><div class="card-back-text">L'homme de l'ombre.</div></div>
+    </div></div>
+    <div class="orga-card"><div class="card-inner">
+      <div class="card-front"><img src="images/Candice.png" alt="Candice" class="orga-photo"><div class="orga-name">Candice</div><div class="orga-role">Trésorière</div></div>
+      <div class="card-back"><div class="card-back-text">Oooh Candice.</div></div>
+    </div></div>
+    <div class="orga-card"><div class="card-inner">
+      <div class="card-front"><img src="images/Florianne.png" alt="Florianne" class="orga-photo"><div class="orga-name">Florianne</div><div class="orga-role">CTO</div></div>
+      <div class="card-back"><div class="card-back-text">La geek du club.</div></div>
+    </div></div>
+  </div>
+  <div class="orga-grid reveal">
+    <div class="orga-card"><div class="card-inner">
+      <div class="card-front"><img src="images/Thomas-événementiel.png" alt="Thomas" class="orga-photo"><div class="orga-name">Thomas</div><div class="orga-role">Événementiel</div></div>
+      <div class="card-back"><div class="card-back-text">Monsieur événementiel.</div></div>
+    </div></div>
+    <div class="orga-card"><div class="card-inner">
+      <div class="card-front"><img src="images/Alban.png" alt="Alban" class="orga-photo"><div class="orga-name">Alban</div><div class="orga-role">Événementiel</div></div>
+      <div class="card-back"><div class="card-back-text">Toujours là.</div></div>
+    </div></div>
+    <div class="orga-card"><div class="card-inner">
+      <div class="card-front"><img src="images/Julia.png" alt="Julia" class="orga-photo"><div class="orga-name">Julia</div><div class="orga-role">Événementiel</div></div>
+      <div class="card-back"><div class="card-back-text">Bonne énergie garantie.</div></div>
+    </div></div>
+    <div class="orga-card"><div class="card-inner">
+      <div class="card-front"><img src="images/Julien-communication.png" alt="Julien" class="orga-photo"><div class="orga-name">Julien</div><div class="orga-role">Communication</div></div>
+      <div class="card-back"><div class="card-back-text">La voix du club.</div></div>
+    </div></div>
+    <div class="orga-card"><div class="card-inner">
+      <div class="card-front"><img src="images/Manon.png" alt="Manon" class="orga-photo"><div class="orga-name">Manon</div><div class="orga-role">Communication</div></div>
+      <div class="card-back"><div class="card-back-text">Derrière les belles photos.</div></div>
+    </div></div>
+  </div>
+  <div style="margin-top:32px;background:var(--cream);border:1.5px solid rgba(18,43,68,.1);border-radius:14px;padding:24px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px;">
+    <div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:3px;color:var(--blue-steel);margin-bottom:4px;">Une question ?</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:1px;color:var(--navy);">Nous écrire</div>
+    </div>
+    <a href="mailto:contact.lcebrunning@gmail.com" style="background:var(--navy);color:white;font-family:'Open Sans',sans-serif;font-size:13px;font-weight:600;padding:12px 24px;border-radius:4px;text-decoration:none;white-space:nowrap;" onmouseover="this.style.background='var(--blue-steel)'" onmouseout="this.style.background='var(--navy)'">contact.lcebrunning@gmail.com</a>
+  </div>
+</section>
+
+<!-- TU HÉSITES -->
+<div style="padding:0 60px 64px;">
+  <div style="background:linear-gradient(135deg,var(--navy-deep),var(--navy));border-radius:20px;padding:56px;text-align:center;">
+    <h2 style="font-family:'Playfair Display',serif;font-size:34px;font-weight:700;color:white;margin-bottom:8px;">Tu hésites encore ?</h2>
+    <p style="font-family:'Playfair Display',serif;font-size:28px;font-style:italic;color:var(--blue-sky);margin-bottom:24px;">Viens d'abord le dimanche.</p>
+    <p style="font-size:15px;color:rgba(255,255,255,.55);max-width:480px;margin:0 auto 36px;line-height:1.7;">Le dimanche matin, on se retrouve, on court, et on finit autour d'un café. Pas de pression, pas de chrono — juste une belle énergie collective.</p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+      <a href="https://www.strava.com/clubs/lecielestbleu" target="_blank" style="background:var(--gold);color:var(--navy-deep);font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:2px;padding:16px 32px;border-radius:4px;text-decoration:none;" onmouseover="this.style.background='white'" onmouseout="this.style.background='var(--gold)'">Voir le point de départ sur Strava</a>
+      <a href="#sessions" style="border:1.5px solid rgba(182,205,224,.35);color:rgba(255,255,255,.8);font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:2px;padding:16px 32px;border-radius:4px;text-decoration:none;" onmouseover="this.style.borderColor='rgba(182,205,224,.9)';this.style.color='white'" onmouseout="this.style.borderColor='rgba(182,205,224,.35)';this.style.color='rgba(255,255,255,.8)'">Voir les sessions</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-logo">LE CIEL EST BLEU</span>
+    <div class="footer-socials">
+      <a href="https://www.instagram.com/lecielestbleu_runningclub/" target="_blank">Instagram</a>
+      <a href="https://www.strava.com/clubs/lecielestbleu" target="_blank">Strava</a>
+      <a href="https://www.tiktok.com/@lecielestbleu_running" target="_blank">TikTok</a>
+      <a href="https://linktr.ee/lcebrunning" target="_blank">Linktree</a>
+      <a href="https://www.linkedin.com/company/le-ciel-est-bleu-running-club/" target="_blank">LinkedIn</a>
+      <a href="mailto:contact.lcebrunning@gmail.com">Contact</a>
+    </div>
+    <span class="footer-copy">© 2026 Le ciel est bleu · Paris</span>
+  </div>
+</footer>
+
+<script>
+const obs=new IntersectionObserver(e=>e.forEach(i=>{if(i.isIntersecting)i.target.classList.add('visible')}),{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+function scrollCarousel(dir){const c=document.querySelector('.events-carousel');c.scrollBy({left:dir*300,behavior:'smooth'});}
+</script>
+</body>
+</html>
