@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ciel Bleu — Running Club Paris</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
 <style>
@@ -281,11 +282,15 @@ footer{background:var(--navy-deep);padding:32px 60px;}
 .ev-past-toggle{display:inline-flex;align-items:center;gap:8px;background:rgba(18,43,68,.05);border:1.5px solid rgba(18,43,68,.1);border-radius:30px;padding:10px 22px;font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;color:var(--navy);cursor:pointer;transition:all .2s;margin-bottom:32px;}
 .ev-past-toggle:hover{background:rgba(18,43,68,.1);}
 /* Filtre de mois */
-.ev-filter{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:36px;}
-.ev-filter-btn{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;color:var(--mid);background:rgba(18,43,68,.05);border:1.5px solid rgba(18,43,68,.1);border-radius:30px;padding:9px 18px;cursor:pointer;transition:all .2s;white-space:nowrap;}
+.ev-filter{display:flex;flex-direction:column;gap:8px;margin-bottom:36px;}
+.ev-filter-all{display:flex;}
+.ev-filter-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;}
+.ev-filter-btn{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;color:var(--mid);background:rgba(18,43,68,.05);border:1.5px solid rgba(18,43,68,.1);border-radius:30px;padding:9px 18px;cursor:pointer;transition:all .2s;white-space:nowrap;text-align:center;}
 .ev-filter-btn:hover{border-color:var(--blue-sky);color:var(--navy);}
 .ev-filter-btn.active{background:var(--navy);color:white;border-color:var(--navy);}
 .ev-filter-btn .dotn{display:inline-block;margin-left:6px;font-size:11px;opacity:.6;}
+.ev-filter-btn.past{opacity:.4;}
+@media(max-width:600px){.ev-filter-grid{grid-template-columns:repeat(3,1fr);}}
 .ev-empty{text-align:center;color:var(--mid);padding:40px 20px;font-size:14px;}
 /* Filtre par type (séances / spéciaux) */
 .ev-typefilter{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px;}
@@ -557,7 +562,7 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
     <li><a href="#evenements">Calendrier</a></li>
     <li><a href="#km-bleu">KM Bleu</a></li>
     <li><a href="#galerie">Galerie</a></li>
-    <li><a href="#equipe-orga">L'équipe</a></li>
+    <li><a href="notre-equipe.html">L'équipe</a></li>
     <li><a href="nos-adherents.html">Nos adhérents</a></li>
     <li><a href="nos-partenaires.html">Nos partenaires</a></li>
     <li><a href="#faq">FAQ</a></li>
@@ -571,7 +576,7 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
   <li><a href="#evenements" onclick="toggleNav()">Calendrier</a></li>
   <li><a href="#km-bleu" onclick="toggleNav()">KM Bleu</a></li>
   <li><a href="#galerie" onclick="toggleNav()">Galerie</a></li>
-  <li><a href="#equipe-orga" onclick="toggleNav()">L'équipe</a></li>
+  <li><a href="notre-equipe.html" onclick="toggleNav()">L'équipe</a></li>
   <li><a href="nos-adherents.html" onclick="toggleNav()">Nos adhérents</a></li>
   <li><a href="nos-partenaires.html" onclick="toggleNav()">Nos partenaires</a></li>
   <li><a href="#faq" onclick="toggleNav()">FAQ</a></li>
@@ -835,83 +840,8 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
 </section>
 
 <!-- PARTENAIRES -->
-<section id="partenaires">
-  <div class="s-label">08 — Partenaires</div>
-  <div class="s-title">On a couru<br>avec eux.</div>
-  <div class="partners-teaser reveal">
-    <div>
-      <h3>Des marques qui nous <em>font confiance.</em></h3>
-      <p>Adidas, Naturalia, ACT, Arkose, 60%, L'OR Espresso… Découvrez nos collaborations, nos formats de partenariat et comment travailler avec nous.</p>
-      <div class="partners-logos-row">
-        <div class="partners-logo-sm"><img src="Logo-adidas.png" alt="Adidas"></div>
-        <div class="partners-logo-sm"><img src="Logo-naturalia.png" alt="Naturalia"></div>
-        <div class="partners-logo-sm"><img src="Logo-act.png" alt="ACT"></div>
-        <div class="partners-logo-sm"><img src="Logo-60pourcent.png" alt="60%"></div>
-        <div class="partners-logo-sm"><img src="logo-lor3.avif" alt="L'OR"></div>
-      </div>
-    </div>
-    <a href="nos-partenaires.html" style="background:var(--gold);color:var(--navy-deep);font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:2px;padding:14px 28px;border-radius:4px;text-decoration:none;white-space:nowrap;transition:background .2s;flex-shrink:0;" onmouseover="this.style.background='white'" onmouseout="this.style.background='var(--gold)'">Voir les partenaires →</a>
-  </div>
-</section>
 
 <!-- FAQ -->
-<!-- ÉQUIPE -->
-<section id="equipe-orga">
-  <div class="s-label">11 — L'équipe</div>
-  <div class="s-title">Une équipe Orga<br>de choc.</div>
-  <div class="orga-grid reveal-children">
-    <div class="orga-card"><div class="card-inner">
-      <div class="card-front"><img src="Hugo.png" alt="Hugo" class="orga-photo"><div class="orga-name">Hugo</div><div class="orga-role">Président</div></div>
-      <div class="card-back"><div class="card-back-text">Le fondateur.</div></div>
-    </div></div>
-    <div class="orga-card"><div class="card-inner">
-      <div class="card-front"><img src="Thomas-vice-president.png" alt="Thomas" class="orga-photo"><div class="orga-name">Thomas</div><div class="orga-role">Vice-Président</div></div>
-      <div class="card-back"><div class="card-back-text">Les relations humaines, vous savez...</div></div>
-    </div></div>
-    <div class="orga-card"><div class="card-inner">
-      <div class="card-front"><img src="Julien-secretaire-général.png" alt="Julien" class="orga-photo"><div class="orga-name">Julien</div><div class="orga-role">Secrétaire général</div></div>
-      <div class="card-back"><div class="card-back-text">Je suis coach.</div></div>
-    </div></div>
-    <div class="orga-card"><div class="card-inner">
-      <div class="card-front"><img src="Candice.png" alt="Candice" class="orga-photo"><div class="orga-name">Candice</div><div class="orga-role">Trésorière</div></div>
-      <div class="card-back"><div class="card-back-text">Oooh Candice.</div></div>
-    </div></div>
-    <div class="orga-card"><div class="card-inner">
-      <div class="card-front"><img src="Floriane.png" alt="Floriane" class="orga-photo"><div class="orga-name">Floriane</div><div class="orga-role">CTO</div></div>
-      <div class="card-back"><div class="card-back-text">La geek du club.</div></div>
-    </div></div>
-  </div>
-  <div class="orga-grid reveal-children">
-    <div class="orga-card"><div class="card-inner">
-      <div class="card-front"><img src="Thomas-événementiel.png" alt="Thomas" class="orga-photo"><div class="orga-name">Thomas</div><div class="orga-role">Événementiel</div></div>
-      <div class="card-back"><div class="card-back-text">Monsieur événementiel.</div></div>
-    </div></div>
-    <div class="orga-card"><div class="card-inner">
-      <div class="card-front"><img src="Alban.png" alt="Alban" class="orga-photo"><div class="orga-name">Alban</div><div class="orga-role">Événementiel</div></div>
-      <div class="card-back"><div class="card-back-text">Toujours là.</div></div>
-    </div></div>
-    <div class="orga-card"><div class="card-inner">
-      <div class="card-front"><img src="Julia.png" alt="Julia" class="orga-photo"><div class="orga-name">Julia</div><div class="orga-role">Événementiel</div></div>
-      <div class="card-back"><div class="card-back-text">Fait partie des murs.</div></div>
-    </div></div>
-    <div class="orga-card"><div class="card-inner">
-      <div class="card-front"><img src="Julien-communication.png" alt="Julien" class="orga-photo"><div class="orga-name">Julien</div><div class="orga-role">Communication</div></div>
-      <div class="card-back"><div class="card-back-text">J'ai fait le Marathon de New York.</div></div>
-    </div></div>
-    <div class="orga-card"><div class="card-inner">
-      <div class="card-front"><img src="Manon.png" alt="Manon" class="orga-photo"><div class="orga-name">Manon</div><div class="orga-role">Communication</div></div>
-      <div class="card-back"><div class="card-back-text">Derrière les belles photos.</div></div>
-    </div></div>
-  </div>
-  <div class="equipe-contact" style="margin-top:32px;background:var(--cream);border:1.5px solid rgba(18,43,68,.1);border-radius:14px;padding:24px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px;">
-    <div>
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:3px;color:var(--blue-steel);margin-bottom:4px;">Une question ?</div>
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:1px;color:var(--navy);">Nous écrire</div>
-    </div>
-    <a href="mailto:contact.lcebrunning@gmail.com" style="background:var(--navy);color:white;font-family:'Open Sans',sans-serif;font-size:13px;font-weight:600;padding:12px 24px;border-radius:4px;text-decoration:none;white-space:nowrap;" onmouseover="this.style.background='var(--blue-steel)'" onmouseout="this.style.background='var(--navy)'">contact.lcebrunning@gmail.com</a>
-  </div>
-</section>
-
 <section id="faq">
   <div class="s-label">11 — FAQ</div>
   <div class="s-title">Pas de question<br>bête.</div>
@@ -1143,9 +1073,10 @@ function isPast(ev){const end=new Date(ev.y,ev.m,ev.d,23,59);return end<TODAY;}
 function evCardHTML(ev){
   const past=isPast(ev);
   const tags=ev.tags.map(t=>`<span class="ev-card-tag ${t.c}">${t.l}</span>`).join('');
+  const wd=new Date(ev.y,ev.m,ev.d).getDay();
   const kind=ev.session
     ? `<span class="ev-kind ev-kind-seance"><span class="ev-kind-ico">↻</span>${WD_NAMES[ev.wd]}</span>`
-    : `<span class="ev-kind ev-kind-special"><span class="ev-kind-ico">★</span>Spécial</span>`;
+    : `<span class="ev-kind ev-kind-seance"><span class="ev-kind-ico">↻</span>${WD_NAMES[wd]}</span><span class="ev-kind ev-kind-special"><span class="ev-kind-ico">★</span>Spécial</span>`;
   const pastLbl=past?'<span class="ev-card-past-lbl">Passé</span>':'';
   return `<div class="ev-card${ev.session?' seance':' special'}${past?' past':''}" onclick="openModal('${ev.id}')">
     <div class="ev-card-top" style="background:${ev.color}"></div>
@@ -1202,12 +1133,13 @@ function renderTypeFilter(){
 function renderFilter(){
   const f=document.getElementById('evFilter');
   const total=allEvents.filter(matchType).length;
-  let html=`<button class="ev-filter-btn${activeMonth==='all'?' active':''}" onclick="setFilter('all')">Toute l'année <span class="dotn">${total}</span></button>`;
-  monthsWith.forEach(m=>{
+  let grid='';
+  for(let m=0;m<12;m++){
     const n=allEvents.filter(e=>e.m===m&&matchType(e)).length;
-    html+=`<button class="ev-filter-btn${activeMonth===m?' active':''}" onclick="setFilter(${m})">${MONTHS[m]} <span class="dotn">${n}</span></button>`;
-  });
-  f.innerHTML=html;
+    const isPastMonth=TODAY.getFullYear()===YEAR?m<TODAY.getMonth():false;
+    grid+=`<button class="ev-filter-btn${activeMonth===m?' active':''}${isPastMonth?' past':''}" onclick="setFilter(${m})">${MONTHS_SHORT[m]} <span class="dotn">${n}</span></button>`;
+  }
+  f.innerHTML=`<div class="ev-filter-all"><button class="ev-filter-btn${activeMonth==='all'?' active':''}" onclick="setFilter('all')">Toute l'année <span class="dotn">${total}</span></button></div><div class="ev-filter-grid">${grid}</div>`;
 }
 function setFilter(f){activeMonth=f;renderFilter();renderEvents();}
 function setType(t){typeFilter=t;renderTypeFilter();renderFilter();renderEvents();}
