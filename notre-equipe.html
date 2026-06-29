@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L'équipe — Ciel Bleu</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#122b44;--navy-deep:#0b1d30;--blue-steel:#6d879a;--blue-sky:#b6cde0;--blue-pale:#d5e0e4;--cream:#F6F9FC;--white:#FFFFFF;--mid:#5B738A;--gold:#E8B06B;}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{font-family:'Open Sans',sans-serif;background:var(--cream);color:var(--navy);overflow-x:hidden;}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 60px;height:112px;background:rgba(11,29,48,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(182,205,224,0.1);}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-logo img{height:20px;width:auto;}
+.nav-links{display:flex;gap:20px;list-style:none;}
+.nav-links a{font-size:11px;letter-spacing:1.5px;font-weight:600;color:rgba(255,255,255,0.65);text-decoration:none;text-transform:uppercase;transition:color .2s;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1.5px;background:var(--blue-sky);transition:width .25s ease;}
+.nav-links a:hover,.nav-links a.active{color:white;}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%;}
+.nav-cta{background:var(--blue-sky);color:var(--navy);font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:2px;padding:10px 22px;border-radius:4px;text-decoration:none;transition:background .2s;}
+.nav-cta:hover{background:white;}
+.nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:8px;color:white;font-size:24px;line-height:1;}
+.nav-mobile{display:none;position:fixed;top:70px;left:0;right:0;background:rgba(11,29,48,0.98);z-index:99;padding:8px 20px 20px;list-style:none;border-bottom:1px solid rgba(182,205,224,0.1);backdrop-filter:blur(12px);}
+.nav-mobile.open{display:flex;flex-direction:column;}
+.nav-mobile li a{display:block;font-size:13px;letter-spacing:2px;font-weight:600;color:rgba(255,255,255,0.7);text-decoration:none;text-transform:uppercase;padding:15px 0;border-bottom:1px solid rgba(182,205,224,0.08);}
+.nav-mobile li:last-child a{border:none;}
+
+/* ── HERO ── */
+.page-hero{min-height:62vh;background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy) 60%,#1a3d5c 100%);display:flex;flex-direction:column;justify-content:center;padding:150px 60px 70px;position:relative;overflow:hidden;}
+.page-hero::before{content:'';position:absolute;top:-20%;right:-5%;width:600px;height:600px;background:radial-gradient(circle,rgba(182,205,224,0.12) 0%,transparent 65%);border-radius:50%;}
+.page-hero-eyebrow{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:5px;color:var(--blue-sky);opacity:.8;margin-bottom:14px;position:relative;z-index:1;}
+.page-hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(54px,9vw,110px);line-height:.95;letter-spacing:2px;color:white;position:relative;z-index:1;}
+.page-hero h1 em{color:var(--blue-sky);font-style:normal;}
+.page-hero p{font-size:16px;color:rgba(255,255,255,.65);font-weight:300;max-width:560px;line-height:1.7;margin-top:18px;position:relative;z-index:1;}
+.page-hero-stats{display:flex;gap:40px;margin-top:38px;flex-wrap:wrap;position:relative;z-index:1;}
+.phs{display:flex;flex-direction:column;}
+.phs .n{font-family:'Bebas Neue',sans-serif;font-size:42px;color:var(--blue-sky);line-height:1;}
+.phs .l{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.45);margin-top:6px;}
+
+/* ── SECTIONS ── */
+section{padding:72px 60px;border-bottom:1px solid rgba(18,43,68,0.07);scroll-margin-top:112px;}
+section:nth-child(even){background:var(--white);}
+.s-label{font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:5px;color:var(--blue-steel);margin-bottom:12px;}
+.s-title{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,40px);font-weight:700;color:var(--navy);line-height:1.15;margin-bottom:8px;}
+.s-intro{font-size:15px;color:var(--mid);max-width:620px;line-height:1.7;margin-bottom:40px;}
+
+/* ── CARTES ÉQUIPE ── */
+.orga-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:24px;margin-bottom:24px;}
+.orga-card{perspective:900px;min-height:210px;cursor:default;}
+.card-inner{position:relative;width:100%;height:100%;transition:transform .55s cubic-bezier(.3,.8,.3,1);transform-style:preserve-3d;}
+.orga-card:hover .card-inner,.card-inner.flipped{transform:rotateY(180deg);}
+.card-front,.card-back{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:14px;padding:24px 16px 20px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;text-align:center;}
+.card-front{background:var(--white);border:1.5px solid rgba(18,43,68,.08);}
+.card-back{background:linear-gradient(150deg,var(--navy),var(--navy-deep));border:1.5px solid rgba(182,205,224,.15);transform:rotateY(180deg);justify-content:center;}
+.card-back-text{font-family:'Playfair Display',serif;font-style:italic;font-size:14px;color:var(--blue-sky);line-height:1.5;}
+.orga-photo{width:80px;height:80px;border-radius:50%;object-fit:cover;margin:0 auto 14px;display:block;}
+.orga-name{font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:1.5px;color:var(--navy);margin-bottom:4px;}
+.orga-role{font-size:11px;color:var(--blue-steel);text-transform:uppercase;letter-spacing:1.5px;font-weight:600;}
+.orga-section-label{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:4px;color:var(--blue-steel);margin-bottom:18px;display:flex;align-items:center;gap:14px;}
+.orga-section-label::after{content:'';flex:1;height:1px;background:rgba(18,43,68,.1);}
+
+/* ── CONTACT ── */
+.equipe-contact{background:var(--cream);border:1.5px solid rgba(18,43,68,.1);border-radius:14px;padding:28px 36px;display:flex;align-items:center;justify-content:space-between;gap:24px;margin-top:48px;}
+
+/* ── FOOTER ── */
+footer{background:var(--navy-deep);padding:40px 60px;}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;}
+.footer-inner img{height:9px;width:auto;filter:brightness(0) invert(1);}
+.footer-socials{display:flex;gap:28px;align-items:center;flex-wrap:wrap;}
+.footer-socials a{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s;}
+.footer-socials a:hover{color:white;}
+.footer-copy{font-size:12px;color:rgba(255,255,255,.25);letter-spacing:1px;}
+
+/* ── BACK TO TOP ── */
+#back-to-top{position:fixed;bottom:32px;right:28px;width:48px;height:48px;background:var(--navy);border:1.5px solid rgba(182,205,224,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;cursor:pointer;z-index:999;opacity:0;transform:translateY(20px);transition:opacity .3s,transform .3s,box-shadow .2s;box-shadow:0 4px 16px rgba(0,0,0,.3);text-decoration:none;color:white;}
+#back-to-top.show{opacity:1;transform:translateY(0);}
+#back-to-top:hover{box-shadow:0 6px 24px rgba(0,0,0,.45);transform:translateY(-3px);}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .7s cubic-bezier(.16,.7,.3,1),transform .7s cubic-bezier(.16,.7,.3,1);}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.reveal-children>*{opacity:0;transform:translateY(24px);transition:opacity .6s cubic-bezier(.16,.7,.3,1),transform .6s cubic-bezier(.16,.7,.3,1);}
+.reveal-children.visible>*{opacity:1;transform:translateY(0);}
+.reveal-children.visible>*:nth-child(2){transition-delay:.08s;}
+.reveal-children.visible>*:nth-child(3){transition-delay:.16s;}
+.reveal-children.visible>*:nth-child(4){transition-delay:.24s;}
+.reveal-children.visible>*:nth-child(5){transition-delay:.32s;}
+@media(prefers-reduced-motion:reduce){.reveal,.reveal-children>*{transition:none!important;opacity:1!important;transform:none!important;}}
+
+/* ── TABLETTE ── */
+@media(min-width:769px) and (max-width:1024px){
+  nav{padding:0 36px;}.nav-links{gap:16px;}
+  .page-hero{padding:140px 36px 60px;}
+  section{padding:60px 36px;}
+  footer{padding:36px;}
+  .orga-grid{grid-template-columns:repeat(3,1fr);}
+}
+
+/* ── MOBILE ── */
+@media(max-width:768px){
+  nav{padding:0 20px;height:70px;}
+  .nav-links,.nav-cta{display:none;}
+  .nav-hamburger{display:flex;align-items:center;}
+  .page-hero{padding:100px 20px 50px;min-height:auto;}
+  section{padding:48px 20px;scroll-margin-top:70px;}
+  .orga-grid{display:flex!important;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding-bottom:12px;scrollbar-width:none;-ms-overflow-style:none;}
+  .orga-grid::-webkit-scrollbar{display:none;}
+  .orga-card{flex:0 0 44%;scroll-snap-align:center;min-height:180px;}
+  .orga-photo{width:60px;height:60px;}
+  .orga-name{font-size:14px;}
+  .equipe-contact{flex-direction:column;text-align:center;}
+  footer{padding:28px 20px;}
+  .footer-inner{flex-direction:column;align-items:center;text-align:center;gap:16px;}
+  .footer-socials{justify-content:center;gap:14px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo"><img src="CIELBLEU.png" alt="Ciel Bleu" height="20"></a>
+  <ul class="nav-links">
+    <li><a href="index.html#pourquoi">Le club</a></li>
+    <li><a href="index.html#premiere-fois">Par où commencer</a></li>
+    <li><a href="index.html#evenements">Calendrier</a></li>
+    <li><a href="index.html#km-bleu">KM Bleu</a></li>
+    <li><a href="index.html#galerie">Galerie</a></li>
+    <li><a href="notre-equipe.html" class="active">L'équipe</a></li>
+    <li><a href="nos-adherents.html">Nos adhérents</a></li>
+    <li><a href="nos-partenaires.html">Nos partenaires</a></li>
+    <li><a href="index.html#faq">FAQ</a></li>
+  </ul>
+  <a href="index.html#adhesion" class="nav-cta">Devenir adhérent →</a>
+  <button class="nav-hamburger" onclick="toggleNav()" aria-label="Menu">&#9776;</button>
+</nav>
+<ul class="nav-mobile" id="navMobile">
+  <li><a href="index.html#pourquoi" onclick="toggleNav()">Le club</a></li>
+  <li><a href="index.html#premiere-fois" onclick="toggleNav()">Par où commencer</a></li>
+  <li><a href="index.html#evenements" onclick="toggleNav()">Calendrier</a></li>
+  <li><a href="index.html#km-bleu" onclick="toggleNav()">KM Bleu</a></li>
+  <li><a href="index.html#galerie" onclick="toggleNav()">Galerie</a></li>
+  <li><a href="notre-equipe.html" onclick="toggleNav()">L'équipe</a></li>
+  <li><a href="nos-adherents.html" onclick="toggleNav()">Nos adhérents</a></li>
+  <li><a href="nos-partenaires.html" onclick="toggleNav()">Nos partenaires</a></li>
+  <li><a href="index.html#faq" onclick="toggleNav()">FAQ</a></li>
+  <li><a href="index.html#adhesion" onclick="toggleNav()" style="color:var(--gold)!important;">→ Devenir adhérent</a></li>
+</ul>
+
+<!-- HERO -->
+<header class="page-hero">
+  <div class="page-hero-eyebrow">L'organisation</div>
+  <h1>UNE ÉQUIPE <em>ORGA</em><br>DE CHOC.</h1>
+  <p>10 personnes bénévoles qui donnent de leur temps pour faire vivre le club. Du président à la comm', ils sont derrière chaque run, chaque événement, chaque café.</p>
+  <div class="page-hero-stats">
+    <div class="phs"><span class="n">10</span><span class="l">Membres du bureau</span></div>
+    <div class="phs"><span class="n">110+</span><span class="l">Adhérents</span></div>
+    <div class="phs"><span class="n">3</span><span class="l">Séances par semaine</span></div>
+  </div>
+</header>
+
+<!-- ÉQUIPE -->
+<section id="equipe">
+  <div class="s-label">01 — L'équipe</div>
+  <div class="s-title">Une équipe Orga<br>de choc.</div>
+  <div class="orga-grid reveal-children">
+    <div class="orga-card"><div class="card-inner">
+      <div class="card-front"><img src="Hugo.png" alt="Hugo" class="orga-photo"><div class="orga-name">Hugo</div><div class="orga-role">Président</div></div>
+      <div class="card-back"><div class="card-back-text">Le fondateur.</div></div>
+    </div></div>
+    <div class="orga-card"><div class="card-inner">
+      <div class="card-front"><img src="Thomas-vice-president.png" alt="Thomas" class="orga-photo"><div class="orga-name">Thomas</div><div class="orga-role">Vice-Président</div></div>
+      <div class="card-back"><div class="card-back-text">Les relations humaines, vous savez...</div></div>
+    </div></div>
+    <div class="orga-card"><div class="card-inner">
+      <div class="card-front"><img src="Julien-secretaire-général.png" alt="Julien" class="orga-photo"><div class="orga-name">Julien</div><div class="orga-role">Secrétaire général</div></div>
+      <div class="card-back"><div class="card-back-text">Je suis coach.</div></div>
+    </div></div>
+    <div class="orga-card"><div class="card-inner">
+      <div class="card-front"><img src="Candice.png" alt="Candice" class="orga-photo"><div class="orga-name">Candice</div><div class="orga-role">Trésorière</div></div>
+      <div class="card-back"><div class="card-back-text">Oooh Candice.</div></div>
+    </div></div>
+    <div class="orga-card"><div class="card-inner">
+      <div class="card-front"><img src="Floriane.png" alt="Floriane" class="orga-photo"><div class="orga-name">Floriane</div><div class="orga-role">CTO</div></div>
+      <div class="card-back"><div class="card-back-text">La geek du club.</div></div>
+    </div></div>
+    <div class="orga-card"><div class="card-inner">
+      <div class="card-front"><img src="Thomas-événementiel.png" alt="Thomas" class="orga-photo"><div class="orga-name">Thomas</div><div class="orga-role">Événementiel</div></div>
+      <div class="card-back"><div class="card-back-text">Monsieur événementiel.</div></div>
+    </div></div>
+    <div class="orga-card"><div class="card-inner">
+      <div class="card-front"><img src="Alban.png" alt="Alban" class="orga-photo"><div class="orga-name">Alban</div><div class="orga-role">Événementiel</div></div>
+      <div class="card-back"><div class="card-back-text">Toujours là.</div></div>
+    </div></div>
+    <div class="orga-card"><div class="card-inner">
+      <div class="card-front"><img src="Julia.png" alt="Julia" class="orga-photo"><div class="orga-name">Julia</div><div class="orga-role">Événementiel</div></div>
+      <div class="card-back"><div class="card-back-text">Fait partie des murs.</div></div>
+    </div></div>
+    <div class="orga-card"><div class="card-inner">
+      <div class="card-front"><img src="Julien-communication.png" alt="Julien" class="orga-photo"><div class="orga-name">Julien</div><div class="orga-role">Communication</div></div>
+      <div class="card-back"><div class="card-back-text">J'ai fait le Marathon de New York.</div></div>
+    </div></div>
+    <div class="orga-card"><div class="card-inner">
+      <div class="card-front"><img src="Manon.png" alt="Manon" class="orga-photo"><div class="orga-name">Manon</div><div class="orga-role">Communication</div></div>
+      <div class="card-back"><div class="card-back-text">Derrière les belles photos.</div></div>
+    </div></div>
+  </div>
+
+  <div class="equipe-contact reveal">
+    <div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:3px;color:var(--blue-steel);margin-bottom:4px;">Une question ?</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:1px;color:var(--navy);">Nous écrire</div>
+    </div>
+    <a href="mailto:contact.lcebrunning@gmail.com" style="background:var(--navy);color:white;font-family:'Open Sans',sans-serif;font-size:13px;font-weight:600;padding:12px 24px;border-radius:4px;text-decoration:none;white-space:nowrap;transition:background .2s;" onmouseover="this.style.background='var(--blue-steel)'" onmouseout="this.style.background='var(--navy)'">contact.lcebrunning@gmail.com</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <a href="#" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'});" aria-label="Retour en haut" style="display:inline-flex;cursor:pointer;"><img src="CIELBLEU.png" alt="Ciel Bleu"></a>
+    <div class="footer-socials">
+      <a href="https://www.instagram.com/lecielestbleu_runningclub/" target="_blank">Instagram</a>
+      <a href="https://www.strava.com/clubs/lecielestbleu" target="_blank">Strava</a>
+      <a href="https://www.tiktok.com/@lecielestbleu_running" target="_blank">TikTok</a>
+      <a href="mailto:contact.lcebrunning@gmail.com">Contact</a>
+    </div>
+    <span class="footer-copy">© 2026 Ciel Bleu · Paris</span>
+  </div>
+</footer>
+
+<a id="back-to-top" href="#" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'});" aria-label="Retour en haut">↑</a>
+
+<script>
+function toggleNav(){document.getElementById('navMobile').classList.toggle('open');}
+
+const obs=new IntersectionObserver(e=>e.forEach(i=>{if(i.isIntersecting){i.target.classList.add('visible');obs.unobserve(i.target);}}),{threshold:0.08,rootMargin:'0px 0px -6% 0px'});
+document.querySelectorAll('.reveal,.reveal-children').forEach(el=>obs.observe(el));
+
+window.addEventListener('scroll',()=>{
+  document.getElementById('back-to-top').classList.toggle('show',window.scrollY>400);
+});
+</script>
+</body>
+</html>
