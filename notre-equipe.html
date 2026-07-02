@@ -74,6 +74,12 @@ section:nth-child(even){background:var(--white);}
 .orga-section-label{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:4px;color:var(--blue-steel);margin-bottom:18px;display:flex;align-items:center;gap:14px;}
 .orga-section-label::after{content:'';flex:1;height:1px;background:rgba(18,43,68,.1);}
 
+/* ── NOTRE HISTOIRE ── */
+.premiere-wrap{background:linear-gradient(135deg,var(--navy-deep),var(--navy));border-radius:20px;padding:56px;color:white;position:relative;overflow:hidden;}
+.premiere-wrap::before{content:'';position:absolute;top:-40%;right:-10%;width:500px;height:500px;background:radial-gradient(circle,rgba(182,205,224,0.08) 0%,transparent 65%);border-radius:50%;}
+.histoire-quote{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(20px,2.6vw,26px);color:var(--blue-sky);line-height:1.55;max-width:760px;margin-bottom:18px;position:relative;z-index:1;}
+.histoire-suite{font-size:15px;color:rgba(255,255,255,.6);line-height:1.7;max-width:640px;position:relative;z-index:1;}
+@media(max-width:768px){.premiere-wrap{padding:32px 24px;}}
 /* ── CONTACT ── */
 .equipe-contact{background:var(--cream);border:1.5px solid rgba(18,43,68,.1);border-radius:14px;padding:28px 36px;display:flex;align-items:center;justify-content:space-between;gap:24px;margin-top:48px;}
 
@@ -167,9 +173,19 @@ footer{background:var(--navy-deep);padding:40px 60px;}
   </div>
 </header>
 
+<!-- NOTRE HISTOIRE -->
+<section id="histoire">
+  <div class="s-label">01 — Notre histoire</div>
+  <h2 class="s-title">Nés sous le ciel<br>de 2024.</h2>
+  <div class="premiere-wrap reveal">
+    <p class="histoire-quote">« Été 2024. Paris vit ses Jeux Olympiques, la ville entière vibre. Deux frères décident que cette ambiance-là ne doit pas s'éteindre avec la flamme : ils créent Le Ciel Est Bleu. »</p>
+    <p class="histoire-suite">Deux ans plus tard, on est 110 et quelques à courir sous le même ciel — sur la piste, le long des quais, et au bord des courses, en marée bleue.</p>
+  </div>
+</section>
+
 <!-- ÉQUIPE -->
 <section id="equipe">
-  <div class="s-label">01 — L'équipe</div>
+  <div class="s-label">02 — L'équipe</div>
   <h2 class="s-title">Une équipe Orga<br>de choc.</h2>
   <div class="orga-grid reveal-children">
     <div class="orga-card"><div class="card-inner">
