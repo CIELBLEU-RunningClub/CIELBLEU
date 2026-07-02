@@ -3,7 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nos adhérents — Ciel Bleu</title>
+<title>Nos adhérents & le mur des records — Le Ciel Est Bleu Running Club Paris</title>
+<meta name="description" content="Les meilleurs chronos des adhérents du Ciel Bleu Running Club : 10 km, semi-marathon et marathon. Une communauté de 110+ coureurs à Paris.">
+<!-- Canonical : à remplacer par le nom de domaine définitif quand il sera acheté -->
+<link rel="canonical" href="https://cielbleu-runningclub.github.io/CIELBLEU/nos-adherents.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Nos adhérents & le mur des records — Le Ciel Est Bleu Running Club Paris">
+<meta property="og:description" content="Les meilleurs chronos des adhérents du Ciel Bleu Running Club : 10 km, semi-marathon et marathon. Une communauté de 110+ coureurs à Paris.">
+<meta property="og:image" content="https://cielbleu-runningclub.github.io/CIELBLEU/couverture-adherents.jpg">
+<meta property="og:url" content="https://cielbleu-runningclub.github.io/CIELBLEU/nos-adherents.html">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Le Ciel Est Bleu — Running Club">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
@@ -50,52 +61,6 @@ section:nth-child(even){background:var(--white);}
 .s-title{font-family:'Playfair Display',serif;font-size:clamp(30px,4.5vw,44px);font-weight:700;color:var(--navy);line-height:1.15;margin-bottom:14px;}
 .s-intro{font-size:15px;color:var(--mid);max-width:620px;line-height:1.7;margin-bottom:40px;}
 
-/* ── TROMBINOSCOPE ── */
-.trombi-tools{display:flex;align-items:center;gap:16px;margin-bottom:32px;flex-wrap:wrap;}
-.trombi-search{flex:1;min-width:220px;max-width:360px;position:relative;}
-.trombi-search input{width:100%;padding:13px 16px 13px 42px;border:1.5px solid rgba(18,43,68,.15);border-radius:30px;font-size:14px;font-family:'Open Sans',sans-serif;color:var(--navy);background:var(--cream);transition:border-color .2s;}
-.trombi-search input:focus{outline:none;border-color:var(--blue-sky);}
-.trombi-search svg{position:absolute;left:15px;top:50%;transform:translateY(-50%);color:var(--mid);}
-.trombi-count{font-size:13px;color:var(--mid);letter-spacing:1px;}
-.trombi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:16px;}
-.trombi-card{aspect-ratio:3/4;perspective:800px;cursor:pointer;}
-.trombi-inner{position:relative;width:100%;height:100%;transition:transform .55s cubic-bezier(.3,.8,.3,1);transform-style:preserve-3d;}
-.trombi-card:hover .trombi-inner,.trombi-inner.flipped{transform:rotateY(180deg);}
-.trombi-face{position:absolute;inset:0;border-radius:14px;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden;}
-.trombi-front{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:14px 10px;background:var(--white);border:1.5px solid rgba(18,43,68,.08);}
-.trombi-avatar{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:46px;color:rgba(255,255,255,.92);letter-spacing:1px;}
-.trombi-avatar::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(11,29,48,.78) 0%,transparent 55%);}
-.trombi-name{position:relative;z-index:1;font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:1.5px;color:white;}
-.trombi-fliphint{position:absolute;top:8px;right:10px;z-index:1;font-size:11px;color:rgba(255,255,255,.7);}
-.trombi-back{transform:rotateY(180deg);background:linear-gradient(150deg,var(--navy),var(--navy-deep));border:1.5px solid rgba(182,205,224,.2);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px 12px;}
-.trombi-quote{font-family:'Playfair Display',serif;font-style:italic;font-size:13px;color:var(--blue-sky);line-height:1.45;}
-.trombi-back .qn{margin-top:10px;font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:1.5px;color:rgba(255,255,255,.55);}
-.trombi-empty{grid-column:1/-1;text-align:center;color:var(--mid);padding:30px;font-size:14px;}
-
-/* ── CARTE MONDE ── */
-.map-layout{display:grid;grid-template-columns:1.6fr 1fr;gap:30px;align-items:start;}
-.map-panel{position:relative;background:linear-gradient(160deg,var(--navy-deep),var(--navy));border-radius:18px;overflow:hidden;border:1px solid rgba(182,205,224,.12);}
-.map-svg{display:block;width:100%;height:auto;}
-.map-graticule{stroke:rgba(182,205,224,.09);stroke-width:1;fill:none;}
-.map-land{fill:rgba(182,205,224,.13);}
-.map-label{fill:rgba(182,205,224,.3);font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;}
-.map-pin{cursor:pointer;}
-.map-pin .ring{fill:var(--gold);opacity:.25;transform-origin:center;animation:pinpulse 2.4s ease-out infinite;}
-.map-pin .dot{fill:var(--gold);stroke:white;stroke-width:1.5;}
-.map-pin.active .dot,.map-pin:hover .dot{fill:var(--blue-sky);}
-@keyframes pinpulse{0%{transform:scale(.6);opacity:.5;}80%,100%{transform:scale(2.6);opacity:0;}}
-.feat-list{display:flex;flex-direction:column;gap:12px;max-height:520px;overflow-y:auto;padding-right:4px;}
-.feat-card{display:flex;gap:14px;align-items:center;background:var(--white);border:1.5px solid rgba(18,43,68,.08);border-radius:14px;padding:14px 16px;cursor:pointer;transition:border-color .2s,transform .2s,box-shadow .2s;}
-.feat-card:hover,.feat-card.active{border-color:var(--blue-sky);transform:translateY(-2px);box-shadow:0 8px 22px rgba(18,43,68,.1);}
-.feat-face{width:46px;height:46px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:20px;color:white;}
-.feat-info .who{font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:1px;color:var(--navy);}
-.feat-info .what{font-size:13px;color:var(--mid);line-height:1.45;margin-top:2px;}
-.feat-info .where{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-top:5px;}
-.map-tooltip{position:absolute;pointer-events:none;background:var(--white);border-radius:12px;padding:12px 14px;box-shadow:0 10px 30px rgba(11,29,48,.3);min-width:170px;max-width:230px;opacity:0;transform:translate(-50%,-115%) scale(.9);transition:opacity .2s,transform .2s;z-index:5;}
-.map-tooltip.show{opacity:1;transform:translate(-50%,-120%) scale(1);}
-.map-tooltip .tt-who{font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:1px;color:var(--navy);}
-.map-tooltip .tt-what{font-size:12px;color:var(--mid);line-height:1.4;margin-top:3px;}
-
 /* ── WALL OF FAME (leaderboard par distance) ── */
 .rec-tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px;}
 .rec-tab{display:flex;align-items:baseline;gap:8px;font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:2px;color:var(--mid);background:var(--white);border:1.5px solid rgba(18,43,68,.12);border-radius:30px;padding:11px 22px;cursor:pointer;transition:all .2s;}
@@ -124,21 +89,6 @@ section:nth-child(even){background:var(--white);}
   .rec-time{font-size:27px;}
 }
 
-/* ── CARROUSEL ── */
-.media-carousel-wrap{position:relative;}
-.media-track{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding-bottom:6px;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
-.media-track::-webkit-scrollbar{display:none;}
-.media-item{position:relative;flex:0 0 300px;height:380px;border-radius:14px;overflow:hidden;scroll-snap-align:start;display:flex;align-items:center;justify-content:center;border:1.5px solid rgba(18,43,68,.08);}
-.media-item.video{flex:0 0 240px;}
-.media-ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:rgba(255,255,255,.85);}
-.media-ph .ic{width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;backdrop-filter:blur(3px);}
-.media-ph .tx{font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:2px;}
-.media-caption{position:absolute;bottom:0;left:0;right:0;padding:30px 16px 14px;background:linear-gradient(to top,rgba(11,29,48,.85),transparent);font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:1.5px;color:white;z-index:1;}
-.media-nav{position:absolute;top:50%;transform:translateY(-50%);background:var(--white);color:var(--navy);border:1.5px solid rgba(18,43,68,.15);border-radius:50%;width:46px;height:46px;cursor:pointer;font-size:20px;display:flex;align-items:center;justify-content:center;transition:all .2s;z-index:3;box-shadow:0 2px 14px rgba(18,43,68,.15);}
-.media-nav:hover{background:var(--navy);color:white;border-color:var(--navy);}
-.media-nav.prev{left:-20px;}.media-nav.next{right:-20px;}
-.media-hint{display:none;text-align:center;margin-top:14px;font-size:12px;letter-spacing:2px;color:var(--blue-steel);text-transform:uppercase;}
-
 /* ── FOOTER ── */
 footer{background:var(--navy-deep);padding:40px 60px;}
 .footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;}
@@ -164,7 +114,6 @@ footer{background:var(--navy-deep);padding:40px 60px;}
   .page-hero{padding:140px 36px 60px;}
   section{padding:60px 36px;}
   footer{padding:36px;}
-  .map-layout{grid-template-columns:1fr;}
 }
 
 /* ── MOBILE ── */
@@ -175,13 +124,6 @@ footer{background:var(--navy-deep);padding:40px 60px;}
   .page-hero{padding:100px 20px 50px;min-height:auto;}
   .page-hero-stats{gap:26px;}
   section{padding:48px 20px;scroll-margin-top:70px;}
-  .map-layout{grid-template-columns:1fr;gap:20px;}
-  .feat-list{max-height:none;}
-  .trombi-grid{grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:12px;}
-  .media-item{flex:0 0 78%;height:auto;aspect-ratio:3/4;}
-  .media-item.video{flex:0 0 70%;}
-  .media-nav{display:none;}
-  .media-hint{display:block;}
   footer{padding:28px 20px;}
   .footer-inner{flex-direction:column;align-items:center;text-align:center;gap:16px;}
   .footer-socials{justify-content:center;gap:14px;}
@@ -194,10 +136,7 @@ footer{background:var(--navy-deep);padding:40px 60px;}
   <a href="index.html" class="nav-logo"><img src="CIELBLEU.png" alt="Ciel Bleu"></a>
   <ul class="nav-links">
     <li><a href="index.html#pourquoi">Le club</a></li>
-    <li><a href="index.html#premiere-fois">Par où commencer</a></li>
     <li><a href="index.html#evenements">Calendrier</a></li>
-    <li><a href="index.html#km-bleu">KM Bleu</a></li>
-    <li><a href="index.html#galerie">Galerie</a></li>
     <li><a href="notre-equipe.html">L'équipe</a></li>
     <li><a href="nos-adherents.html" class="active">Nos adhérents</a></li>
     <li><a href="nos-partenaires.html">Nos partenaires</a></li>
@@ -208,10 +147,7 @@ footer{background:var(--navy-deep);padding:40px 60px;}
 </nav>
 <ul class="nav-mobile" id="navMobile">
   <li><a href="index.html#pourquoi" onclick="toggleNav()">Le club</a></li>
-  <li><a href="index.html#premiere-fois" onclick="toggleNav()">Par où commencer</a></li>
   <li><a href="index.html#evenements" onclick="toggleNav()">Calendrier</a></li>
-  <li><a href="index.html#km-bleu" onclick="toggleNav()">KM Bleu</a></li>
-  <li><a href="index.html#galerie" onclick="toggleNav()">Galerie</a></li>
   <li><a href="notre-equipe.html" onclick="toggleNav()">L'équipe</a></li>
   <li><a href="nos-adherents.html" onclick="toggleNav()">Nos adhérents</a></li>
   <li><a href="nos-partenaires.html" onclick="toggleNav()">Nos partenaires</a></li>
@@ -221,53 +157,22 @@ footer{background:var(--navy-deep);padding:40px 60px;}
 
 <!-- HERO -->
 <header class="page-hero">
-  <img src="couverture-adherents.jpg" alt="" class="page-hero-bg-img">
+  <img src="couverture-adherents.jpg" alt="" class="page-hero-bg-img" fetchpriority="high">
   <div class="page-hero-eyebrow">La communauté</div>
   <h1>NOS <em>ADHÉRENTS</em></h1>
-  <p>Derrière chaque dossard, une histoire. Voici celles et ceux qui font vibrer Ciel Bleu, leurs visages, leurs mots, et leurs plus belles prouesses aux quatre coins du monde.</p>
+  <p>Derrière chaque dossard, une histoire. Voici les plus belles prouesses de celles et ceux qui font vibrer Ciel Bleu, distance par distance.</p>
   <div class="page-hero-stats">
     <div class="phs"><span class="n" data-count="110">110+</span><span class="l">Adhérents</span></div>
   </div>
 </header>
 
-<!-- TROMBINOSCOPE -->
-<section id="trombi">
-  <div class="s-label">01 — Le trombinoscope</div>
-  <div class="s-title">Tous les visages<br>du club.</div>
-  <div class="trombi-tools">
-    <div class="trombi-search">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg>
-      <input type="text" id="trombiSearch" placeholder="Rechercher un prénom…">
-    </div>
-    <div class="trombi-count" id="trombiCount"></div>
-  </div>
-  <div class="trombi-grid" id="trombiGrid"></div>
-  <div style="text-align:center;margin-top:32px;">
-    <button id="trombiToggle" style="display:none;align-items:center;gap:8px;background:transparent;border:1.5px solid rgba(18,43,68,.2);color:var(--navy);font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:2px;padding:13px 28px;border-radius:30px;cursor:pointer;transition:all .2s;" onmouseover="this.style.borderColor='var(--blue-sky)';this.style.color='var(--blue-sky)'" onmouseout="this.style.borderColor='rgba(18,43,68,.2)';this.style.color='var(--navy)'"></button>
-  </div>
-</section>
-
-
 <!-- WALL OF FAME -->
 <section id="records">
-  <div class="s-label">02 — Wall of Fame</div>
-  <div class="s-title">Le mur des records.</div>
+  <div class="s-label">01 — Wall of Fame</div>
+  <h2 class="s-title">Le mur des records.</h2>
   <p class="s-intro">Les meilleurs chronos du club, distance par distance. Choisis une distance pour comparer les performances.</p>
   <div class="rec-tabs" id="recTabs"></div>
   <div class="rec-board" id="recordsGrid"></div>
-</section>
-
-<!-- CARROUSEL MEDIA -->
-<section id="media">
-  <div class="s-label">03 — En images</div>
-  <div class="s-title">Photos &amp; vidéos.</div>
-  <p class="s-intro">Un avant-goût de l'ambiance. Emplacements réservés — les vrais médias arriveront bientôt.</p>
-  <div class="media-carousel-wrap reveal">
-    <button class="media-nav prev" onclick="scrollMedia(-1)" aria-label="Précédent">‹</button>
-    <button class="media-nav next" onclick="scrollMedia(1)" aria-label="Suivant">›</button>
-    <div class="media-track" id="mediaTrack"></div>
-  </div>
-  <div class="media-hint">← Glissez pour découvrir →</div>
 </section>
 
 <footer>
@@ -277,6 +182,7 @@ footer{background:var(--navy-deep);padding:40px 60px;}
       <a href="https://www.instagram.com/lecielestbleu_runningclub/" target="_blank">Instagram</a>
       <a href="https://www.strava.com/clubs/lecielestbleu" target="_blank">Strava</a>
       <a href="https://www.tiktok.com/@lecielestbleu_running" target="_blank">TikTok</a>
+      <a href="https://www.linkedin.com/company/le-ciel-est-bleu-running-club/" target="_blank">LinkedIn</a>
       <a href="mailto:contact.lcebrunning@gmail.com">Contact</a>
     </div>
     <span class="footer-copy">© 2026 Ciel Bleu · Paris</span>
@@ -289,55 +195,8 @@ footer{background:var(--navy-deep);padding:40px 60px;}
 function toggleNav(){document.getElementById('navMobile').classList.toggle('open');}
 
 /* ===== DONNÉES ===== */
-const prenoms=["Hugo","Thomas","Julien","Candice","Manon","Alban","Floriane","Julia","Mélanie","Damien","Léa","Antoine","Camille","Maxime","Sarah","Lucas","Emma","Paul","Chloé","Nicolas","Inès","Romain","Marie","Théo","Laura","Quentin","Justine","Adrien","Pauline","Victor","Clara","Benjamin","Océane","Florian","Anaïs","Mathieu","Élise","Guillaume","Margaux","Raphaël","Solène","Baptiste","Lucie","Clément","Jade","Arthur","Manon","Simon","Charlotte","Pierre","Alice","Gabriel","Louise","Nathan","Zoé","Hugo","Eva","Tom","Léna","Axel","Mila","Enzo","Rose","Noah","Lina","Ethan","Nina","Sacha","Anna","Tristan","Maya","Yanis","Juliette","Kevin","Sofia","Dylan","Léonie","Mehdi","Agathe","Bastien","Salomé","Corentin","Maëlys","Loïc","Capucine","Jordan","Faustine","Rémi","Apolline","Valentin","Garance","Hadrien","Romane","Aurélien","Lou","Cyprien","Ambre","Côme","Iris","Marius"];
-const citations=["Le club a changé mon rapport à la course.","Je viens pour les jambes, je reste pour les copains.","Mon meilleur chrono, c'est ici que je l'ai battu.","Courir seul, c'est fini.","Les dimanches ont une autre saveur.","On souffre ensemble, on rit ensemble.","Le café d'après vaut tous les fractionnés.","J'ai trouvé ma deuxième famille.","Chaque sortie est une petite aventure.","Le bitume parisien n'a plus de secret pour moi.","Progresser sans pression, c'est possible.","Je ne pensais pas aimer la piste autant.","Des kilomètres, des fous rires, des souvenirs.","Ici, personne n'est laissé derrière.","Le ciel est bleu, et mes runs aussi.","Venez essayer, vous comprendrez."];
 function hue(i){return (i*47)%360;}
 function grad(i){const h=hue(i);return `linear-gradient(150deg,hsl(${h} 45% 55%),hsl(${(h+40)%360} 50% 38%))`;}
-
-/* ===== TROMBINOSCOPE ===== */
-const grid=document.getElementById('trombiGrid');
-const members=[];
-for(let i=0;i<100;i++){
-  members.push({nom:prenoms[i%prenoms.length],citation:citations[i%citations.length],i});
-}
-const PAGE=20;
-let expanded=false;
-function cardHTML(m){
-  return `<div class="trombi-card" onclick="this.querySelector('.trombi-inner').classList.toggle('flipped')">
-      <div class="trombi-inner">
-        <div class="trombi-face trombi-front">
-          <div class="trombi-avatar" style="background:${grad(m.i)}">${m.nom.charAt(0)}</div>
-          <span class="trombi-fliphint">"</span>
-          <span class="trombi-name">${m.nom}</span>
-        </div>
-        <div class="trombi-face trombi-back">
-          <div class="trombi-quote">« ${m.citation} »</div>
-          <div class="qn">${m.nom}</div>
-        </div>
-      </div>
-    </div>`;
-}
-function renderTrombi(filter=""){
-  const f=filter.trim().toLowerCase();
-  const shown=members.filter(m=>m.nom.toLowerCase().includes(f));
-  const isFiltered=f.length>0;
-  const visible=isFiltered||expanded?shown:shown.slice(0,PAGE);
-  grid.innerHTML = visible.length? visible.map(cardHTML).join("") : `<div class="trombi-empty">Aucun adhérent trouvé pour « ${filter} ».</div>`;
-  document.getElementById('trombiCount').textContent = `${shown.length} adhérent${shown.length>1?'s':''}`;
-  const btn=document.getElementById('trombiToggle');
-  if(!isFiltered && shown.length>PAGE){
-    btn.style.display='flex';
-    btn.textContent=expanded?`Réduire ↑`:`Voir les ${shown.length-PAGE} autres adhérents ↓`;
-  } else {
-    btn.style.display='none';
-  }
-}
-document.getElementById('trombiToggle').addEventListener('click',()=>{
-  expanded=!expanded;
-  renderTrombi(document.getElementById('trombiSearch').value);
-});
-renderTrombi();
-document.getElementById('trombiSearch').addEventListener('input',e=>renderTrombi(e.target.value));
 
 /* ===== WALL OF FAME (leaderboard par distance) ===== */
 /* photo: chemin d'un headshot (optionnel) — sinon avatar avec l'initiale */
@@ -383,23 +242,8 @@ function renderRecords(){
 function setRecord(i){recActive=i;renderRecords();}
 renderRecords();
 
-/* ===== CARROUSEL MEDIA (placeholders) ===== */
-const mediaItems=[];
-for(let i=0;i<10;i++){
-  const isVideo=i%2===1;
-  mediaItems.push({video:isVideo,i});
-}
-const playIcon=`<svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>`;
-const photoIcon=`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 17l-5-5L5 21"/></svg>`;
-document.getElementById('mediaTrack').innerHTML=mediaItems.map(m=>`
-  <div class="media-item${m.video?' video':''}" style="background:${grad(m.i+3)}">
-    <div class="media-ph"><div class="ic">${m.video?playIcon:photoIcon}</div><div class="tx">${m.video?'Vidéo':'Photo'}</div></div>
-    <div class="media-caption">${m.video?'Vidéo à venir':'Photo à venir'}</div>
-  </div>`).join("");
-function scrollMedia(dir){const t=document.getElementById('mediaTrack');t.scrollBy({left:dir*Math.round(t.clientWidth*0.8),behavior:'smooth'});}
-
 /* ===== REVEAL + BACK TO TOP ===== */
-const obs=new IntersectionObserver(e=>e.forEach(i=>{if(i.isIntersecting){i.target.classList.add('visible');obs.unobserve(i.target);}}),{threshold:0.08,rootMargin:'0px 0px -6% 0px'});
+const obs=new IntersectionObserver(e=>e.forEach(i=>{if(i.isIntersecting){i.target.classList.add('visible');obs.unobserve(i.target);}}),{threshold:0.12,rootMargin:'0px 0px -8% 0px'});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 const btt=document.getElementById('back-to-top');
 window.addEventListener('scroll',()=>{btt.classList.toggle('show',window.scrollY>500);},{passive:true});
