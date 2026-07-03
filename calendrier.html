@@ -281,7 +281,7 @@ footer{background:var(--navy-deep);padding:40px 60px;}
 
 <a id="back-to-top" href="#" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'});" aria-label="Retour en haut">↑</a>
 
-<script src="events.js?v=2"></script>
+<script src="events.js?v=3"></script>
 <script>
 function toggleNav(){document.getElementById('navMobile').classList.toggle('open');}
 document.addEventListener('click',e=>{const m=document.getElementById('navMobile');if(m.classList.contains('open')&&!m.contains(e.target)&&!e.target.closest('.nav-hamburger'))m.classList.remove('open');});

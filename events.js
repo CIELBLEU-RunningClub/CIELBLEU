@@ -22,8 +22,8 @@ const specials=[
   {y:2026,m:6,d:18,title:'Trail 25 Bosses',color:'#6d879a',tags:[{l:'Adhérent',c:'tag-adherent'},{l:'Trail',c:'tag-trail'}],time:'8h00',dur:480,desc:"Sortie trail hors Paris au cœur de la forêt. Dénivelé, aventure partagée, ambiance garantie. Une des sorties les plus attendues de l'année.",details:[['Lieu','Forêt de Fontainebleau'],['Distance','~25 km · D+ 600m'],['Accès','Réservé aux adhérents']],location:'Forêt de Fontainebleau'},
   {y:2026,m:6,d:26,title:'KM Bleu TDF',color:'#122b44',tags:[{l:'KM Bleu',c:'tag-km'},{l:'Adhérent',c:'tag-adherent'}],time:'9h00',dur:180,desc:"Run spécial Tour de France. On court dans Paris dans l'ambiance de la grande boucle, sur les routes encore fraîches du passage du peloton.",details:[['Lieu','Paris — parcours TDF'],['Horaire','À confirmer'],['Accès','Réservé aux adhérents']],location:'Paris'},
   {y:2026,m:5,d:28,title:"L'Or Espresso x CIEL BLEU - 2ème édition",color:'#c4956a',tags:[{l:'KM Bleu',c:'tag-km'},{l:'Ouvert à tous',c:'tag-open'}],time:'9h45',dur:90,desc:"Run de 8 km dans Saint-Germain-des-Prés, suivi d'une dégustation gratuite des créations de L'Or Espresso. Allure 6:15/km pour s'adapter aux conditions météo. Limité à 35 places sur inscription.",details:[['Lieu',"L'Or Espresso · 77 bd Saint-Germain, 75006"],['Horaire','9h45'],['Distance','8 km · allure 6:15/km'],['Accès','35 places — inscription obligatoire'],['Métro','Odéon M4 / M10']],location:'75006 Paris'},
-  {y:2026,m:8,d:11,title:'Soirée de Rentrée',color:'#8fb3a8',tags:[{l:'Ouvert à tous',c:'tag-open'}],time:'10h20',dur:100,desc:"Reprise collective de rentrée ! Toutes allures, tout le monde bienvenu. La saison 2026–2027 commence ici.",details:[['Lieu','Point publié sur Strava'],['Horaire','10h20'],['Accès','Ouvert à tous — sans inscription']],location:'Paris'},
-  {y:2026,m:8,d:27,title:'Marathon en Relais LCEB',color:'#8fb3a8',tags:[{l:'Adhérent',c:'tag-adherent'}],time:'9h00',dur:300,desc:"Course de relais marathon en équipes LCEB. On se partage les km, on arrive ensemble. Ambiance garantie.",details:[['Lieu','Paris — circuit à confirmer'],['Horaire','9h00'],['Accès','Réservé aux adhérents']],location:'Paris'}
+  {y:2026,m:6,d:22,title:'Run découverte CIEL BLEU × Fitzroy',color:'#b6cde0',tags:[{l:'Ouvert à tous',c:'tag-open'},{l:'Partenariat',c:'tag-partner'}],time:'19h20',dur:70,desc:"Run découverte en partenariat avec Fitzroy, ouvert à tous. Le dernier rendez-vous avant la pause estivale du club.",details:[['Lieu','Quais de Seine · Paris'],['Horaire','19h20'],['Accès','Ouvert à tous']],location:'Quais de Seine, Paris'},
+  {y:2026,m:7,d:30,title:'Run collectif de rentrée',color:'#8fb3a8',tags:[{l:'Ouvert à tous',c:'tag-open'}],time:'10h20',dur:100,desc:"Reprise collective après la pause estivale ! Toutes allures, tout le monde bienvenu. La saison 2026–2027 commence ici.",details:[['Lieu','Point publié sur Strava'],['Horaire','10h20'],['Accès','Ouvert à tous — sans inscription']],location:'Paris'}
 ];
 
 const WD_NAMES=['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'];
@@ -41,6 +41,7 @@ const specialDays=new Set(specials.map(s=>s.m+'-'+s.d));
 sessionTpl.forEach(tpl=>{
   let occ=0;
   for(let m=0;m<12;m++){
+    if(m===7)continue; // pause estivale : aucune séance hebdomadaire en août
     const days=new Date(YEAR,m+1,0).getDate();
     for(let d=1;d<=days;d++){
       const date=new Date(YEAR,m,d);
