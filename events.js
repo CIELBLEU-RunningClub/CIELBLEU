@@ -52,7 +52,7 @@ sessionTpl.forEach(tpl=>{
       const id='s'+(uid++);
       const ds=dtFmt(YEAR,m,d,timeToHMS(tpl.time));
       const de=dtFmt(YEAR,m,d,addMinutes(tpl.time,tpl.dur));
-      const ev={id,y:YEAR,m,d,date,title:tpl.title,color:'#9bb6cc',tags:[tpl.tag],desc:tpl.desc,details:[['Horaire',tpl.time],...tpl.details],dtStart:ds,dtEnd:de,location:tpl.location,session:true,wd:tpl.wd,dateStr:d+' '+MONTHS[m]+' '+YEAR};
+      const ev={id,y:YEAR,m,d,date,title:tpl.title,color:tpl.color,tags:[tpl.tag],desc:tpl.desc,details:[['Horaire',tpl.time],...tpl.details],dtStart:ds,dtEnd:de,location:tpl.location,session:true,wd:tpl.wd,dateStr:d+' '+MONTHS[m]+' '+YEAR};
       EVENTS_BY_ID[id]=ev;allEvents.push(ev);
     }
   }
