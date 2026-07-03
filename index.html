@@ -789,6 +789,7 @@ function toggleFaq(btn){const open=btn.parentElement.classList.toggle('open');bt
 // ===== TEASER PROCHAINS RENDEZ-VOUS =====
 (function(){
   const wrap=document.getElementById('evNext');if(!wrap)return;
+  if(typeof allEvents==='undefined')return; // si events.js ne charge pas, on n'entraîne pas le reste de la page
   function cardHTML(ev){
     const tags=ev.tags.map(t=>`<span class="ev-card-tag ${t.c}">${t.l}</span>`).join('');
     const wd=new Date(ev.y,ev.m,ev.d).getDay();
