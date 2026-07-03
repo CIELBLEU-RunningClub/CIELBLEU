@@ -10,7 +10,7 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="L'équipe — Le Ciel Est Bleu Running Club Paris">
 <meta property="og:description" content="10 bénévoles font vivre le club Le Ciel Est Bleu à Paris : président, coachs, événementiel, communication. Découvrez l'équipe orga derrière chaque run.">
-<meta property="og:image" content="https://cielbleu-runningclub.github.io/CIELBLEU/commu-photo-1.jpg">
+<meta property="og:image" content="https://cielbleu-runningclub.github.io/CIELBLEU/equipe1.jpg">
 <meta property="og:url" content="https://cielbleu-runningclub.github.io/CIELBLEU/notre-equipe.html">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:site_name" content="Le Ciel Est Bleu — Running Club">
@@ -43,6 +43,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 /* ── HERO ── */
 .page-hero{min-height:62vh;background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy) 60%,#1a3d5c 100%);display:flex;flex-direction:column;justify-content:center;padding:150px 60px 70px;position:relative;overflow:hidden;}
 .page-hero::before{content:'';position:absolute;top:-20%;right:-5%;width:600px;height:600px;background:radial-gradient(circle,rgba(182,205,224,0.12) 0%,transparent 65%);border-radius:50%;}
+.page-hero-bg-img{position:absolute;top:0;right:0;width:58%;height:100%;object-fit:cover;object-position:center 30%;opacity:0.15;pointer-events:none;z-index:0;-webkit-mask-image:linear-gradient(to right,transparent 0%,black 55%),linear-gradient(to bottom,black 85%,transparent 100%);mask-image:linear-gradient(to right,transparent 0%,black 55%),linear-gradient(to bottom,black 85%,transparent 100%);-webkit-mask-composite:source-in;mask-composite:intersect;}
+@media(max-width:768px){.page-hero-bg-img{width:100%;opacity:0.1;-webkit-mask-image:linear-gradient(to bottom,black 30%,transparent 92%);mask-image:linear-gradient(to bottom,black 30%,transparent 92%);}}
 .page-hero-eyebrow{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:5px;color:var(--blue-sky);opacity:.8;margin-bottom:14px;position:relative;z-index:1;}
 .page-hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(54px,9vw,110px);line-height:.95;letter-spacing:2px;color:white;position:relative;z-index:1;}
 .page-hero h1 em{color:var(--blue-sky);font-style:normal;}
@@ -80,6 +82,16 @@ section:nth-child(even){background:var(--white);}
 .histoire-quote{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(20px,2.6vw,26px);color:var(--blue-sky);line-height:1.55;max-width:760px;margin-bottom:18px;position:relative;z-index:1;}
 .histoire-suite{font-size:15px;color:rgba(255,255,255,.6);line-height:1.7;max-width:640px;position:relative;z-index:1;}
 @media(max-width:768px){.premiere-wrap{padding:32px 24px;}}
+/* ── EN IMAGES (carrousel équipe) ── */
+.amedia-track{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding-bottom:8px;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
+.amedia-track::-webkit-scrollbar{display:none;}
+.amedia-tile{flex:0 0 300px;height:380px;border-radius:16px;overflow:hidden;scroll-snap-align:start;position:relative;border:1.5px solid rgba(18,43,68,.08);}
+.amedia-tile-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.amedia-hint{display:none;text-align:center;margin-top:14px;font-size:12px;letter-spacing:2px;color:var(--blue-steel);text-transform:uppercase;}
+@media(max-width:768px){
+  .amedia-tile{flex:0 0 78%;height:auto;aspect-ratio:3/4;}
+  .amedia-hint{display:block;}
+}
 /* ── CONTACT ── */
 .equipe-contact{background:var(--cream);border:1.5px solid rgba(18,43,68,.1);border-radius:14px;padding:28px 36px;display:flex;align-items:center;justify-content:space-between;gap:24px;margin-top:48px;}
 
@@ -163,6 +175,7 @@ footer{background:var(--navy-deep);padding:40px 60px;}
 
 <!-- HERO -->
 <header class="page-hero">
+  <img src="equipe1.jpg" alt="" class="page-hero-bg-img" fetchpriority="high">
   <div class="page-hero-eyebrow">L'organisation</div>
   <h1>UNE ÉQUIPE <em>ORGA</em><br>DE CHOC.</h1>
   <p>10 personnes bénévoles qui donnent de leur temps pour faire vivre le club. Du président à la comm', ils sont derrière chaque run, chaque événement, chaque café.</p>
@@ -239,6 +252,14 @@ footer{background:var(--navy-deep);padding:40px 60px;}
   </div>
 </section>
 
+<!-- EN IMAGES -->
+<section id="en-images">
+  <div class="s-label">03 — En images</div>
+  <h2 class="s-title">L'équipe<br>sur le terrain.</h2>
+  <div class="amedia-track" id="amediaTrack"></div>
+  <div class="amedia-hint">← Glissez pour découvrir →</div>
+</section>
+
 <footer>
   <div class="footer-inner">
     <a href="#" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'});" aria-label="Retour en haut" style="display:inline-flex;cursor:pointer;"><img src="CIELBLEU.png" alt="Ciel Bleu"></a>
@@ -257,6 +278,13 @@ footer{background:var(--navy-deep);padding:40px 60px;}
 
 <script>
 function toggleNav(){document.getElementById('navMobile').classList.toggle('open');}
+
+/* ===== EN IMAGES (carrousel équipe) ===== */
+(function(){
+  const wrap=document.getElementById('amediaTrack');if(!wrap)return;
+  const photos=['commu-equipe-13.jpg','commu-equipe-14.jpg','commu-equipe-15.jpg','commu-equipe-16.jpg','commu-equipe-17.jpg'];
+  wrap.innerHTML=photos.map(src=>`<div class="amedia-tile"><img src="${src}" alt="L'équipe Ciel Bleu" class="amedia-tile-img" loading="lazy" decoding="async"></div>`).join('');
+})();
 
 const obs=new IntersectionObserver(e=>e.forEach(i=>{if(i.isIntersecting){i.target.classList.add('visible');obs.unobserve(i.target);}}),{threshold:0.12,rootMargin:'0px 0px -8% 0px'});
 document.querySelectorAll('.reveal,.reveal-children').forEach(el=>obs.observe(el));
