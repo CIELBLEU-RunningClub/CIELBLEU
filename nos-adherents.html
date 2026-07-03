@@ -83,7 +83,7 @@ section:nth-child(even){background:var(--white);}
 .trombi-back .qn{margin-top:10px;font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:1.5px;color:rgba(255,255,255,.55);}
 .trombi-empty{grid-column:1/-1;text-align:center;color:var(--mid);padding:30px;font-size:14px;}
 
-.trombi-avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.trombi-photo{position:relative;z-index:0;width:56%;aspect-ratio:1/1;border-radius:50%;object-fit:cover;border:3px solid rgba(255,255,255,.45);box-shadow:0 4px 14px rgba(11,29,48,.3);}
 
 /* ── WALL OF FAME (leaderboard par distance) ── */
 .rec-tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px;}
@@ -326,7 +326,7 @@ function grad(i){const h=hue(i);return `linear-gradient(150deg,hsl(${h} 45% 55%)
   let expanded=false;
   function cardHTML(m,i){
     const visu=m.photo
-      ? `<div class="trombi-avatar"><img src="${m.photo}" alt="${m.nom}" loading="lazy" decoding="async"></div>`
+      ? `<div class="trombi-avatar" style="background:${grad(i)}"><img class="trombi-photo" src="${m.photo}" alt="${m.nom}" loading="lazy" decoding="async"></div>`
       : `<div class="trombi-avatar" style="background:${grad(i)}">${m.nom.charAt(0)}</div>`;
     return `<div class="trombi-card" onclick="this.querySelector('.trombi-inner').classList.toggle('flipped')">
       <div class="trombi-inner">
