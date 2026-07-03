@@ -257,6 +257,8 @@ footer{background:var(--navy-deep);padding:40px 60px;}
     </div>
     <form id="recSubmitForm" class="rec-submit-form">
       <input type="text" id="rsPrenom" placeholder="Prénom" required>
+      <input type="text" id="rsNom" placeholder="Nom" required>
+      <input type="email" id="rsEmail" placeholder="Email" required>
       <input type="text" id="rsCourse" placeholder="Course (ex. 10K Hoka · 2026)" required>
       <select id="rsDistance" required>
         <option value="" disabled selected>Distance</option>
@@ -411,11 +413,13 @@ renderRecords();
 document.getElementById('recSubmitForm').addEventListener('submit',e=>{
   e.preventDefault();
   const prenom=document.getElementById('rsPrenom').value.trim();
+  const nom=document.getElementById('rsNom').value.trim();
+  const email=document.getElementById('rsEmail').value.trim();
   const course=document.getElementById('rsCourse').value.trim();
   const distance=document.getElementById('rsDistance').value;
   const temps=document.getElementById('rsTemps').value.trim();
-  const subject=`Record pour le mur des records — ${prenom}`;
-  const body=`Prénom : ${prenom}\nDistance : ${distance}\nCourse : ${course}\nTemps : ${temps}`;
+  const subject=`Record pour le mur des records — ${prenom} ${nom}`;
+  const body=`Prénom : ${prenom}\nNom : ${nom}\nEmail : ${email}\nDistance : ${distance}\nCourse : ${course}\nTemps : ${temps}`;
   window.location.href=`mailto:contact.lcebrunning@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 });
 
