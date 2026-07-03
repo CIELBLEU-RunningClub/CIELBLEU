@@ -114,6 +114,21 @@ section:nth-child(even){background:var(--white);}
   .rec-time{font-size:27px;}
 }
 
+/* ── SOUMETTRE UN RECORD ── */
+.rec-submit{margin-top:32px;background:var(--cream);border:1.5px solid rgba(18,43,68,.1);border-radius:16px;padding:28px 32px;display:flex;align-items:center;gap:32px;flex-wrap:wrap;}
+.rec-submit-text{flex:0 0 220px;}
+.rec-submit-title{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:1.5px;color:var(--navy);margin-bottom:4px;}
+.rec-submit-text p{font-size:13px;color:var(--mid);line-height:1.5;}
+.rec-submit-form{flex:1;min-width:280px;display:flex;flex-wrap:wrap;gap:10px;}
+.rec-submit-form input,.rec-submit-form select{flex:1;min-width:130px;padding:12px 14px;border:1.5px solid rgba(18,43,68,.15);border-radius:10px;font-size:13px;font-family:'Open Sans',sans-serif;color:var(--navy);background:var(--white);transition:border-color .2s;}
+.rec-submit-form input:focus,.rec-submit-form select:focus{outline:none;border-color:var(--blue-sky);}
+.rec-submit-btn{flex:0 0 100%;background:var(--navy);color:white;font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:2px;padding:13px 20px;border-radius:10px;border:none;cursor:pointer;transition:background .2s;}
+.rec-submit-btn:hover{background:var(--blue-steel);}
+@media(max-width:768px){
+  .rec-submit{flex-direction:column;align-items:stretch;padding:24px 20px;}
+  .rec-submit-text{flex:none;}
+}
+
 /* ── MERCH ── */
 .merch-block{background:linear-gradient(135deg,var(--navy-deep),var(--navy));border-radius:20px;padding:52px;display:flex;align-items:center;justify-content:space-between;gap:40px;}
 .mb-text h3{font-family:'Playfair Display',serif;font-size:32px;color:white;margin-bottom:12px;}
@@ -234,6 +249,26 @@ footer{background:var(--navy-deep);padding:40px 60px;}
   <p class="s-intro">Les meilleurs chronos du club, distance par distance. Choisis une distance pour comparer les performances.</p>
   <div class="rec-tabs" id="recTabs"></div>
   <div class="rec-board" id="recordsGrid"></div>
+
+  <div class="rec-submit reveal">
+    <div class="rec-submit-text">
+      <div class="rec-submit-title">Un chrono à faire figurer ici ?</div>
+      <p>Soumets ton record personnel et on l'ajoute au mur.</p>
+    </div>
+    <form id="recSubmitForm" class="rec-submit-form">
+      <input type="text" id="rsPrenom" placeholder="Prénom" required>
+      <input type="text" id="rsCourse" placeholder="Course (ex. 10K Hoka · 2026)" required>
+      <select id="rsDistance" required>
+        <option value="" disabled selected>Distance</option>
+        <option value="10 km">10 km</option>
+        <option value="Semi-marathon">Semi-marathon</option>
+        <option value="Marathon">Marathon</option>
+        <option value="Autre">Autre</option>
+      </select>
+      <input type="text" id="rsTemps" placeholder="Temps (ex. 38:45 ou 3h24)" required>
+      <button type="submit" class="rec-submit-btn">Envoyer mon record →</button>
+    </form>
+  </div>
 </section>
 
 <!-- MERCH -->
@@ -371,6 +406,18 @@ function renderRecords(){
 }
 function setRecord(i){recActive=i;renderRecords();}
 renderRecords();
+
+/* ===== SOUMETTRE UN RECORD ===== */
+document.getElementById('recSubmitForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  const prenom=document.getElementById('rsPrenom').value.trim();
+  const course=document.getElementById('rsCourse').value.trim();
+  const distance=document.getElementById('rsDistance').value;
+  const temps=document.getElementById('rsTemps').value.trim();
+  const subject=`Record pour le mur des records — ${prenom}`;
+  const body=`Prénom : ${prenom}\nDistance : ${distance}\nCourse : ${course}\nTemps : ${temps}`;
+  window.location.href=`mailto:contact.lcebrunning@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+});
 
 /* ===== REVEAL + BACK TO TOP ===== */
 const obs=new IntersectionObserver(e=>e.forEach(i=>{if(i.isIntersecting){i.target.classList.add('visible');obs.unobserve(i.target);}}),{threshold:0.12,rootMargin:'0px 0px -8% 0px'});
