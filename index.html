@@ -216,6 +216,12 @@ footer{background:var(--navy-deep);padding:32px 60px;}
 .ev-card.seance .ev-card-body{padding:16px 18px;}
 .ev-card.seance .ev-card-title{font-size:15px;color:var(--navy);}
 .ev-card.seance:hover{box-shadow:0 10px 26px rgba(109,135,154,.18);}
+.ev-card.seance.wd-3{background:rgba(143,179,168,.1);border-color:rgba(143,179,168,.5);}
+.ev-card.seance.wd-3 .ev-card-day{color:#5f8a76;}
+.ev-card.seance.wd-3:hover{box-shadow:0 10px 26px rgba(143,179,168,.22);}
+.ev-card.seance.wd-0{background:rgba(232,176,107,.08);border-color:rgba(232,176,107,.45);}
+.ev-card.seance.wd-0 .ev-card-day{color:#9A6F2E;}
+.ev-card.seance.wd-0:hover{box-shadow:0 10px 26px rgba(232,176,107,.25);}
 .tag-seance{background:rgba(109,135,154,.16);color:var(--blue-steel);}
 .tag-social{background:rgba(232,176,107,.18);color:#9A6F2E;}
 .tag-km{background:rgba(18,43,68,.85);color:#fff;}
@@ -686,7 +692,7 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
   </div>
 </footer>
 
-<script src="events.js?v=4"></script>
+<script src="events.js?v=5"></script>
 <script>
 // Compteurs animés
 function animateCounter(el){
@@ -760,7 +766,7 @@ function toggleFaq(btn){const open=btn.parentElement.classList.toggle('open');bt
     const kind=ev.session
       ? `<span class="ev-kind ev-kind-seance"><span class="ev-kind-ico">↻</span>${WD_NAMES[ev.wd]}</span>`
       : `<span class="ev-kind ev-kind-seance"><span class="ev-kind-ico">↻</span>${WD_NAMES[wd]}</span><span class="ev-kind ev-kind-special"><span class="ev-kind-ico">★</span>Spécial</span>`;
-    return `<div class="ev-card${ev.session?' seance':' special'}" onclick="location.href='calendrier.html'">
+    return `<div class="ev-card${ev.session?' seance wd-'+ev.wd:' special'}" onclick="location.href='calendrier.html'">
       <div class="ev-card-top" style="background:${ev.color}"></div>
       <div class="ev-card-body">
         <div class="ev-card-kind-row">${kind}</div>
