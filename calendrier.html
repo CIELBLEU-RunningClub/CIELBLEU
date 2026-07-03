@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calendrier de la saison — Le Ciel Est Bleu Running Club Paris</title>
+<meta name="description" content="Toutes les dates du Ciel Bleu Running Club à Paris : Social Run du dimanche, séances piste et quais, événements avec les marques. Ajoutez-les à votre agenda.">
+<!-- Canonical : à remplacer par le nom de domaine définitif quand il sera acheté -->
+<link rel="canonical" href="https://cielbleu-runningclub.github.io/CIELBLEU/calendrier.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Calendrier — Le Ciel Est Bleu Running Club Paris">
+<meta property="og:description" content="Toutes les dates de la saison : Social Run du dimanche, séances et événements spéciaux.">
+<meta property="og:image" content="https://cielbleu-runningclub.github.io/CIELBLEU/commu-photo-1.jpg">
+<meta property="og:url" content="https://cielbleu-runningclub.github.io/CIELBLEU/calendrier.html">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Le Ciel Est Bleu — Running Club">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#122b44;--navy-deep:#0b1d30;--blue-steel:#6d879a;--blue-sky:#b6cde0;--blue-pale:#d5e0e4;--cream:#F6F9FC;--white:#FFFFFF;--mid:#5B738A;--gold:#E8B06B;}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{font-family:'Open Sans',sans-serif;background:var(--cream);color:var(--navy);overflow-x:hidden;}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 60px;height:112px;background:rgba(11,29,48,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(182,205,224,0.1);}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-logo img{height:20px;width:auto;}
+.nav-links{display:flex;gap:20px;list-style:none;}
+.nav-links a{font-size:11px;letter-spacing:1.5px;font-weight:600;color:rgba(255,255,255,0.65);text-decoration:none;text-transform:uppercase;transition:color .2s;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1.5px;background:var(--blue-sky);transition:width .25s ease;}
+.nav-links a:hover,.nav-links a.active{color:white;}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%;}
+.nav-cta{background:var(--blue-sky);color:var(--navy);font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:2px;padding:10px 22px;border-radius:4px;text-decoration:none;transition:background .2s;}
+.nav-cta:hover{background:white;}
+.nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:8px;color:white;font-size:24px;line-height:1;}
+.nav-mobile{display:none;position:fixed;top:70px;left:0;right:0;background:rgba(11,29,48,0.98);z-index:99;padding:8px 20px 20px;list-style:none;border-bottom:1px solid rgba(182,205,224,0.1);backdrop-filter:blur(12px);}
+.nav-mobile.open{display:flex;flex-direction:column;}
+.nav-mobile li a{display:block;font-size:13px;letter-spacing:2px;font-weight:600;color:rgba(255,255,255,0.7);text-decoration:none;text-transform:uppercase;padding:15px 0;border-bottom:1px solid rgba(182,205,224,0.08);}
+.nav-mobile li:last-child a{border:none;}
+
+/* ── HERO ── */
+.page-hero{min-height:62vh;background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy) 60%,#1a3d5c 100%);display:flex;flex-direction:column;justify-content:center;padding:150px 60px 70px;position:relative;overflow:hidden;}
+.page-hero::before{content:'';position:absolute;top:-20%;right:-5%;width:600px;height:600px;background:radial-gradient(circle,rgba(182,205,224,0.12) 0%,transparent 65%);border-radius:50%;}
+.page-hero-eyebrow{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:5px;color:var(--blue-sky);opacity:.8;margin-bottom:14px;position:relative;z-index:1;}
+.page-hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(54px,9vw,110px);line-height:.95;letter-spacing:2px;color:white;position:relative;z-index:1;}
+.page-hero h1 em{color:var(--blue-sky);font-style:normal;}
+.page-hero p{font-size:16px;color:rgba(255,255,255,.65);font-weight:300;max-width:560px;line-height:1.7;margin-top:18px;position:relative;z-index:1;}
+.page-hero-stats{display:flex;gap:40px;margin-top:38px;flex-wrap:wrap;position:relative;z-index:1;}
+.phs{display:flex;flex-direction:column;}
+.phs .n{font-family:'Bebas Neue',sans-serif;font-size:42px;color:var(--blue-sky);line-height:1;}
+.phs .l{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.45);margin-top:6px;}
+
+/* ── SECTIONS ── */
+section{padding:72px 60px;border-bottom:1px solid rgba(18,43,68,0.07);scroll-margin-top:112px;}
+section:nth-child(even){background:var(--white);}
+.s-label{font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:5px;color:var(--blue-steel);margin-bottom:12px;}
+.s-title{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,40px);font-weight:700;color:var(--navy);line-height:1.15;margin-bottom:8px;}
+.s-intro{font-size:15px;color:var(--mid);max-width:620px;line-height:1.7;margin-bottom:40px;}
+
+/* ── EVENTS CALENDAR ── */
+.ev-month-section{margin-bottom:40px;}
+.ev-month-header{display:flex;align-items:center;gap:16px;margin-bottom:20px;}
+.ev-month-name{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:4px;color:var(--navy);}
+.ev-month-line{flex:1;height:1px;background:rgba(18,43,68,.1);}
+.ev-month-count{font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:3px;color:var(--blue-steel);}
+.ev-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;}
+.ev-card{background:var(--white);border:1.5px solid rgba(18,43,68,.08);border-radius:14px;overflow:hidden;cursor:pointer;transition:transform .2s,box-shadow .2s;}
+.ev-card:hover{transform:translateY(-5px);box-shadow:0 12px 32px rgba(18,43,68,.14);}
+.ev-card.past{opacity:.45;filter:grayscale(0.4);}
+.ev-card.past:hover{transform:none;box-shadow:none;}
+.ev-card-top{height:4px;width:100%;}
+.ev-card-top.juin{background:var(--gold);}
+.ev-card-top.juillet{background:var(--blue-sky);}
+.ev-card-top.aout{background:var(--blue-steel);}
+.ev-card-body{padding:20px 22px;}
+.ev-card-date{display:flex;align-items:baseline;gap:8px;margin-bottom:8px;}
+.ev-card-day{font-family:'Bebas Neue',sans-serif;font-size:48px;line-height:1;color:var(--navy);}
+.ev-card-month{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:2px;color:var(--mid);}
+.ev-card-past-lbl{font-family:'Bebas Neue',sans-serif;font-size:10px;letter-spacing:3px;color:var(--mid);background:rgba(18,43,68,.06);border-radius:20px;padding:3px 10px;margin-left:auto;align-self:center;}
+.ev-card-title{font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:1px;color:var(--navy);line-height:1.3;margin-bottom:6px;}
+.ev-card-desc{font-size:12px;color:var(--mid);line-height:1.6;margin-bottom:12px;}
+.ev-card-tags{display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.ev-card-tag{font-family:'Bebas Neue',sans-serif;font-size:10px;letter-spacing:2px;padding:4px 12px;border-radius:20px;}
+.tag-adherent{background:rgba(18,43,68,.08);color:var(--navy);}
+.tag-open{background:rgba(232,176,107,.18);color:#9A6F2E;}
+.tag-partner{background:rgba(182,205,224,.22);color:var(--navy);}
+.tag-trail{background:rgba(109,135,154,.15);color:var(--blue-steel);}
+.ev-card-more{font-size:11px;color:var(--blue-steel);letter-spacing:1px;margin-left:auto;}
+/* Filtre de mois */
+.ev-filter{display:flex;flex-direction:column;gap:8px;margin-bottom:36px;}
+.ev-filter-all{display:flex;}
+.ev-filter-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;}
+.ev-filter-btn{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;color:var(--mid);background:rgba(18,43,68,.05);border:1.5px solid rgba(18,43,68,.1);border-radius:30px;padding:9px 18px;cursor:pointer;transition:all .2s;white-space:nowrap;text-align:center;}
+.ev-filter-btn:hover{border-color:var(--blue-sky);color:var(--navy);}
+.ev-filter-btn.active{background:var(--navy);color:white;border-color:var(--navy);}
+.ev-filter-btn .dotn{display:inline-block;margin-left:6px;font-size:11px;opacity:.6;}
+.ev-filter-btn.past{opacity:.4;}
+@media(max-width:600px){.ev-filter-grid{grid-template-columns:repeat(3,1fr);}}
+.ev-empty{text-align:center;color:var(--mid);padding:40px 20px;font-size:14px;}
+/* Filtre par type (séances / spéciaux) */
+.ev-typefilter{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px;}
+.ev-type-btn{display:inline-flex;align-items:center;gap:9px;font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;color:var(--mid);background:var(--white);border:1.5px solid rgba(18,43,68,.12);border-radius:30px;padding:10px 20px;cursor:pointer;transition:all .2s;}
+.ev-type-btn:hover{border-color:var(--blue-sky);color:var(--navy);}
+.ev-type-dot{width:11px;height:11px;border-radius:50%;flex-shrink:0;}
+.ev-type-btn[data-t="all"] .ev-type-dot{background:linear-gradient(90deg,#6d879a 50%,#E8B06B 50%);}
+.ev-type-btn[data-t="seance"] .ev-type-dot{background:#6d879a;}
+.ev-type-btn[data-t="special"] .ev-type-dot{background:#E8B06B;}
+.ev-type-btn .ev-type-n{font-size:11px;opacity:.6;}
+.ev-type-btn.active{color:var(--navy);border-color:var(--navy);background:rgba(18,43,68,.05);}
+.ev-type-btn.active[data-t="seance"]{color:var(--blue-steel);border-color:var(--blue-steel);background:rgba(109,135,154,.1);}
+.ev-type-btn.active[data-t="special"]{color:#9A6F2E;border-color:var(--gold);background:rgba(232,176,107,.12);}
+/* Badge type d'événement sur la carte */
+.ev-card-kind-row{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+.ev-kind{display:inline-flex;align-items:center;gap:6px;font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:2px;padding:4px 11px 4px 8px;border-radius:20px;}
+.ev-kind-ico{font-size:12px;line-height:1;}
+.ev-kind-seance{background:rgba(109,135,154,.14);color:var(--blue-steel);}
+.ev-kind-special{background:rgba(232,176,107,.2);color:#9A6F2E;}
+/* Carte séance (compacte, teinte bleue, bord pointillé = récurrent) */
+.ev-card.seance{background:rgba(109,135,154,.06);border:1.5px dashed rgba(109,135,154,.35);}
+.ev-card.seance .ev-card-day{font-size:38px;color:var(--blue-steel);}
+.ev-card.seance .ev-card-body{padding:16px 18px;}
+.ev-card.seance .ev-card-title{font-size:15px;color:var(--navy);}
+.ev-card.seance:hover{box-shadow:0 10px 26px rgba(109,135,154,.18);}
+.tag-seance{background:rgba(109,135,154,.16);color:var(--blue-steel);}
+.tag-social{background:rgba(232,176,107,.18);color:#9A6F2E;}
+.tag-km{background:rgba(18,43,68,.85);color:#fff;}
+/* Carte événement spécial (mise en avant, doré) */
+.ev-card.special{border:1.5px solid rgba(232,176,107,.55);background:linear-gradient(165deg,rgba(232,176,107,.12),var(--white) 55%);}
+.ev-card.special .ev-card-top{height:7px;}
+.ev-card.special .ev-card-day{color:#9A6F2E;font-size:54px;}
+.ev-card.special:hover{box-shadow:0 14px 34px rgba(232,176,107,.28);}
+.ev-legend{display:flex;gap:22px;flex-wrap:wrap;margin-bottom:30px;font-size:12px;color:var(--mid);letter-spacing:1px;}
+.ev-legend span{display:inline-flex;align-items:center;gap:8px;}
+.ev-legend i{width:22px;height:5px;border-radius:3px;display:inline-block;}
+/* Modal */
+.ev-modal-overlay{position:fixed;inset:0;background:rgba(11,29,48,.6);backdrop-filter:blur(6px);z-index:200;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .25s;}
+.ev-modal-overlay.open{opacity:1;pointer-events:all;}
+.ev-modal{background:var(--white);border-radius:20px;max-width:480px;width:100%;overflow:hidden;transform:translateY(20px);transition:transform .25s;}
+.ev-modal-overlay.open .ev-modal{transform:translateY(0);}
+.ev-modal-top{height:6px;}
+.ev-modal-body{padding:32px 36px 36px;}
+.ev-modal-date{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:3px;color:var(--blue-steel);margin-bottom:8px;}
+.ev-modal-title{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:2px;color:var(--navy);line-height:1.2;margin-bottom:16px;}
+.ev-modal-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;}
+.ev-modal-desc{font-size:15px;color:var(--mid);line-height:1.75;margin-bottom:20px;}
+.ev-modal-details{display:flex;flex-direction:column;gap:10px;background:var(--cream);border-radius:12px;padding:18px 20px;margin-bottom:24px;}
+.ev-modal-detail{display:flex;gap:12px;font-size:13px;}
+.ev-modal-detail-label{color:var(--blue-steel);font-weight:600;min-width:72px;text-transform:uppercase;letter-spacing:1px;font-size:11px;}
+.ev-modal-detail-val{color:var(--navy);}
+.ev-modal-close{background:var(--navy);color:white;font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:2px;padding:12px 28px;border-radius:4px;border:none;cursor:pointer;transition:background .2s;}
+.ev-modal-close:hover{background:var(--blue-steel);}
+
+/* ── MODAL AGENDA BUTTON ── */
+.ev-modal-ics{background:rgba(18,43,68,.06);color:var(--navy);font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:2px;padding:12px 28px;border-radius:4px;border:1.5px solid rgba(18,43,68,.15);cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:8px;}
+.ev-modal-ics:hover{background:rgba(18,43,68,.12);}
+.ev-modal-actions{display:flex;gap:10px;margin-top:24px;}
+.ev-modal-actions .ev-modal-close,.ev-modal-actions .ev-modal-ics{flex:1;}
+
+/* ── FOOTER ── */
+footer{background:var(--navy-deep);padding:40px 60px;}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;}
+.footer-inner img{height:9px;width:auto;filter:brightness(0) invert(1);}
+.footer-socials{display:flex;gap:28px;align-items:center;flex-wrap:wrap;}
+.footer-socials a{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s;}
+.footer-socials a:hover{color:white;}
+.footer-copy{font-size:12px;color:rgba(255,255,255,.25);letter-spacing:1px;}
+
+/* ── BACK TO TOP ── */
+#back-to-top{position:fixed;bottom:32px;right:28px;width:48px;height:48px;background:var(--navy);border:1.5px solid rgba(182,205,224,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;cursor:pointer;z-index:999;opacity:0;transform:translateY(20px);transition:opacity .3s,transform .3s,box-shadow .2s;box-shadow:0 4px 16px rgba(0,0,0,.3);text-decoration:none;color:white;}
+#back-to-top.show{opacity:1;transform:translateY(0);}
+#back-to-top:hover{box-shadow:0 6px 24px rgba(0,0,0,.45);transform:translateY(-3px);}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .7s cubic-bezier(.16,.7,.3,1),transform .7s cubic-bezier(.16,.7,.3,1);}
+.reveal.visible{opacity:1;transform:translateY(0);}
+@media(prefers-reduced-motion:reduce){.reveal{transition:none!important;opacity:1!important;transform:none!important;}}
+
+/* ── TABLETTE ── */
+@media(min-width:769px) and (max-width:1024px){
+  nav{padding:0 36px;}.nav-links{gap:22px;}
+  .page-hero{padding:140px 36px 60px;}
+  section{padding:60px 36px;}
+  footer{padding:36px;}
+}
+
+/* ── MOBILE ── */
+@media(max-width:768px){
+  nav{padding:0 20px;height:70px;}
+  .nav-links,.nav-cta{display:none;}
+  .nav-hamburger{display:flex;align-items:center;}
+  .page-hero{padding:100px 20px 50px;min-height:auto;}
+  section{padding:48px 20px;scroll-margin-top:70px;}
+  .ev-modal-actions{display:flex;flex-direction:column;gap:10px;}
+  .ev-modal-close,.ev-modal-ics{width:100%;}
+  footer{padding:28px 20px;}
+  .footer-inner{flex-direction:column;align-items:center;text-align:center;gap:16px;}
+  .footer-socials{justify-content:center;gap:14px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo"><img src="CIELBLEU.png" alt="Ciel Bleu" height="20"></a>
+  <ul class="nav-links">
+    <li><a href="index.html#semaine">Le club</a></li>
+    <li><a href="calendrier.html" class="active">Calendrier</a></li>
+    <li><a href="notre-equipe.html">L'équipe</a></li>
+    <li><a href="nos-adherents.html">Nos adhérents</a></li>
+    <li><a href="nos-partenaires.html">Nos partenaires</a></li>
+    <li><a href="index.html#faq">FAQ</a></li>
+  </ul>
+  <a href="index.html#adhesion" class="nav-cta">Devenir adhérent →</a>
+  <button class="nav-hamburger" onclick="toggleNav()" aria-label="Menu">&#9776;</button>
+</nav>
+<ul class="nav-mobile" id="navMobile">
+  <li><a href="index.html#semaine" onclick="toggleNav()">Le club</a></li>
+  <li><a href="calendrier.html" onclick="toggleNav()">Calendrier</a></li>
+  <li><a href="notre-equipe.html" onclick="toggleNav()">L'équipe</a></li>
+  <li><a href="nos-adherents.html" onclick="toggleNav()">Nos adhérents</a></li>
+  <li><a href="nos-partenaires.html" onclick="toggleNav()">Nos partenaires</a></li>
+  <li><a href="index.html#faq" onclick="toggleNav()">FAQ</a></li>
+  <li><a href="index.html#adhesion" onclick="toggleNav()" style="color:var(--gold)!important;">→ Devenir adhérent</a></li>
+</ul>
+
+<!-- HERO -->
+<header class="page-hero">
+  <div class="page-hero-eyebrow">La saison</div>
+  <h1>LE <em>CALENDRIER</em></h1>
+  <p>Toutes les dates du club au même endroit : les trois séances de la semaine, les événements avec les marques et les grands rendez-vous. Clique sur une date pour l'ajouter à ton agenda.</p>
+  <div class="page-hero-stats">
+    <div class="phs"><span class="n" id="statTotal">—</span><span class="l">Rendez-vous cette année</span></div>
+    <div class="phs"><span class="n">3</span><span class="l">Séances par semaine</span></div>
+    <div class="phs"><span class="n" id="statSpecials">—</span><span class="l">Événements spéciaux</span></div>
+  </div>
+</header>
+
+<!-- CALENDRIER -->
+<section id="evenements">
+  <div class="s-label">01 — Calendrier</div>
+  <h2 class="s-title">Les événements.</h2>
+  <p class="s-intro">Filtre par type ou par mois. Les séances hebdomadaires sont en bleu, les événements spéciaux en doré.</p>
+  <div class="ev-typefilter" id="evTypeFilter"></div>
+  <div class="ev-filter" id="evFilter"></div>
+  <div id="evContainer"></div>
+</section>
+
+<!-- Modal événements -->
+<div class="ev-modal-overlay" id="evModal" onclick="closeModalOutside(event)">
+  <div class="ev-modal">
+    <div class="ev-modal-top" id="evModalTop"></div>
+    <div class="ev-modal-body">
+      <div class="ev-modal-date" id="evModalDate"></div>
+      <div class="ev-modal-title" id="evModalTitle"></div>
+      <div class="ev-modal-tags" id="evModalTags"></div>
+      <div class="ev-modal-desc" id="evModalDesc"></div>
+      <div class="ev-modal-details" id="evModalDetails"></div>
+      <div class="ev-modal-actions">
+        <button class="ev-modal-ics" id="evModalIcsBtn" onclick="downloadICS()">📅 &nbsp;Ajouter à mon agenda</button>
+        <button class="ev-modal-close" onclick="closeModal()">Fermer</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <a href="#" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'});" aria-label="Retour en haut" style="display:inline-flex;cursor:pointer;"><img src="CIELBLEU.png" alt="Ciel Bleu"></a>
+    <div class="footer-socials">
+      <a href="https://www.instagram.com/lecielestbleu_runningclub/" target="_blank">Instagram</a>
+      <a href="https://www.strava.com/clubs/lecielestbleu" target="_blank">Strava</a>
+      <a href="https://www.tiktok.com/@lecielestbleu_running" target="_blank">TikTok</a>
+      <a href="https://www.linkedin.com/company/le-ciel-est-bleu-running-club/" target="_blank">LinkedIn</a>
+      <a href="mailto:contact.lcebrunning@gmail.com">Contact</a>
+    </div>
+    <span class="footer-copy">© 2026 Ciel Bleu · Paris</span>
+  </div>
+</footer>
+
+<a id="back-to-top" href="#" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'});" aria-label="Retour en haut">↑</a>
+
+<script src="events.js"></script>
+<script>
+function toggleNav(){document.getElementById('navMobile').classList.toggle('open');}
+document.addEventListener('click',e=>{const m=document.getElementById('navMobile');if(m.classList.contains('open')&&!m.contains(e.target)&&!e.target.closest('.nav-hamburger'))m.classList.remove('open');});
+
+document.getElementById('statTotal').textContent=allEvents.length;
+document.getElementById('statSpecials').textContent=allEvents.filter(e=>!e.session).length;
+
+
+function evCardHTML(ev){
+  const past=isPast(ev);
+  const tags=ev.tags.map(t=>`<span class="ev-card-tag ${t.c}">${t.l}</span>`).join('');
+  const wd=new Date(ev.y,ev.m,ev.d).getDay();
+  const kind=ev.session
+    ? `<span class="ev-kind ev-kind-seance"><span class="ev-kind-ico">↻</span>${WD_NAMES[ev.wd]}</span>`
+    : `<span class="ev-kind ev-kind-seance"><span class="ev-kind-ico">↻</span>${WD_NAMES[wd]}</span><span class="ev-kind ev-kind-special"><span class="ev-kind-ico">★</span>Spécial</span>`;
+  const pastLbl=past?'<span class="ev-card-past-lbl">Passé</span>':'';
+  return `<div class="ev-card${ev.session?' seance':' special'}${past?' past':''}" onclick="openModal('${ev.id}')">
+    <div class="ev-card-top" style="background:${ev.color}"></div>
+    <div class="ev-card-body">
+      <div class="ev-card-kind-row">${kind}${pastLbl}</div>
+      <div class="ev-card-date">
+        <div class="ev-card-day">${pad(ev.d)}</div><div class="ev-card-month">${MONTHS_SHORT[ev.m]}</div>
+      </div>
+      <div class="ev-card-title">${ev.title}</div>
+      <div class="ev-card-tags">${tags}<span class="ev-card-more">+ détails →</span></div>
+    </div>
+  </div>`;
+}
+
+// État des filtres
+let activeMonth='all';
+let typeFilter='all'; // 'all' | 'seance' | 'special'
+
+function matchType(e){
+  if(typeFilter==='seance')return e.session;
+  if(typeFilter==='special')return !e.session;
+  return true;
+}
+
+function renderEvents(){
+  const cont=document.getElementById('evContainer');
+  const monthsToShow = activeMonth==='all' ? monthsWith : [activeMonth];
+  let html='';
+  monthsToShow.forEach(m=>{
+    const evs=allEvents.filter(e=>e.m===m&&matchType(e));
+    if(!evs.length)return;
+    html+=`<div class="ev-month-section">
+      <div class="ev-month-header">
+        <div class="ev-month-name">${MONTHS[m].toUpperCase()} ${YEAR}</div>
+        <div class="ev-month-line"></div>
+        <div class="ev-month-count">${evs.length} rendez-vous</div>
+      </div>
+      <div class="ev-grid">${evs.map(evCardHTML).join('')}</div>
+    </div>`;
+  });
+  cont.innerHTML=html||'<div class="ev-empty">Aucun événement pour ce filtre.</div>';
+}
+
+function renderTypeFilter(){
+  const nAll=allEvents.length;
+  const nSeance=allEvents.filter(e=>e.session).length;
+  const nSpecial=allEvents.filter(e=>!e.session).length;
+  document.getElementById('evTypeFilter').innerHTML=`
+    <button class="ev-type-btn${typeFilter==='all'?' active':''}" data-t="all" onclick="setType('all')"><span class="ev-type-dot"></span>Tout <span class="ev-type-n">${nAll}</span></button>
+    <button class="ev-type-btn${typeFilter==='special'?' active':''}" data-t="special" onclick="setType('special')"><span class="ev-type-dot"></span>★ Événements spéciaux <span class="ev-type-n">${nSpecial}</span></button>
+    <button class="ev-type-btn${typeFilter==='seance'?' active':''}" data-t="seance" onclick="setType('seance')"><span class="ev-type-dot"></span>↻ Séances hebdomadaires <span class="ev-type-n">${nSeance}</span></button>`;
+}
+
+function renderFilter(){
+  const f=document.getElementById('evFilter');
+  const total=allEvents.filter(matchType).length;
+  let grid='';
+  for(let m=0;m<12;m++){
+    const n=allEvents.filter(e=>e.m===m&&matchType(e)).length;
+    const isPastMonth=TODAY.getFullYear()===YEAR?m<TODAY.getMonth():false;
+    grid+=`<button class="ev-filter-btn${activeMonth===m?' active':''}${isPastMonth?' past':''}" onclick="setFilter(${m})">${MONTHS_SHORT[m]} <span class="dotn">${n}</span></button>`;
+  }
+  f.innerHTML=`<div class="ev-filter-all"><button class="ev-filter-btn${activeMonth==='all'?' active':''}" onclick="setFilter('all')">Toute l'année <span class="dotn">${total}</span></button></div><div class="ev-filter-grid">${grid}</div>`;
+}
+function setFilter(f){activeMonth=f;renderFilter();renderEvents();}
+function setType(t){typeFilter=t;renderTypeFilter();renderFilter();renderEvents();}
+
+// Filtre par défaut : mois courant s'il a des événements, sinon prochain mois avec événements
+(function(){
+  const cm=TODAY.getFullYear()===YEAR?TODAY.getMonth():monthsWith[0];
+  if(monthsWith.includes(cm))activeMonth=cm;
+  else{const up=monthsWith.find(m=>m>=cm);activeMonth=up!==undefined?up:monthsWith[0];}
+  renderTypeFilter();renderFilter();renderEvents();
+})();
+
+// ===== MODAL =====
+let currentEventId=null;
+function openModal(id){
+  currentEventId=id;const ev=EVENTS_BY_ID[id];if(!ev)return;
+  document.getElementById('evModalTop').style.background=ev.color;
+  document.getElementById('evModalDate').textContent=ev.dateStr;
+  document.getElementById('evModalTitle').textContent=ev.title;
+  document.getElementById('evModalTags').innerHTML=ev.tags.map(t=>`<span class="ev-card-tag ${t.c}">${t.l}</span>`).join('');
+  document.getElementById('evModalDesc').textContent=ev.desc;
+  document.getElementById('evModalDetails').innerHTML=ev.details.map(d=>`<div class="ev-modal-detail"><span class="ev-modal-detail-label">${d[0]}</span><span class="ev-modal-detail-val">${d[1]}</span></div>`).join('');
+  document.getElementById('evModal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal(){document.getElementById('evModal').classList.remove('open');document.body.style.overflow='';currentEventId=null;}
+function closeModalOutside(e){if(e.target===document.getElementById('evModal'))closeModal();}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+
+function downloadICS(){
+  if(!currentEventId)return;
+  const ev=EVENTS_BY_ID[currentEventId];
+  const desc=ev.desc.replace(/,/g,'\\,').replace(/\n/g,'\\n');
+  const loc=(ev.location||'').replace(/,/g,'\\,');
+  const ics=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Ciel Bleu Running//FR','CALSCALE:GREGORIAN','METHOD:PUBLISH','BEGIN:VEVENT','UID:'+ev.id+'@cielbleu.run','DTSTART:'+ev.dtStart,'DTEND:'+ev.dtEnd,'SUMMARY:'+ev.title+' — Ciel Bleu Running','DESCRIPTION:'+desc,'LOCATION:'+loc,'END:VEVENT','END:VCALENDAR'].join('\r\n');
+  const blob=new Blob([ics],{type:'text/calendar;charset=utf-8'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');a.href=url;a.download=ev.title.replace(/[^a-z0-9]/gi,'_').toLowerCase()+'.ics';
+  document.body.appendChild(a);a.click();
+  setTimeout(()=>{document.body.removeChild(a);URL.revokeObjectURL(url);},500);
+}
+
+const obs=new IntersectionObserver(e=>e.forEach(i=>{if(i.isIntersecting){i.target.classList.add('visible');obs.unobserve(i.target);}}),{threshold:0.12,rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+window.addEventListener('scroll',()=>{document.getElementById('back-to-top').classList.toggle('show',window.scrollY>400);},{passive:true});
+</script>
+</body>
+</html>
