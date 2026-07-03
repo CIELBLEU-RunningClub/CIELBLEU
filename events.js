@@ -4,7 +4,6 @@ const MONTHS=['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août'
 const MONTHS_SHORT=['Janv.','Févr.','Mars','Avr.','Mai','Juin','Juil.','Août','Sept.','Oct.','Nov.','Déc.'];
 const TODAY=new Date();
 const YEAR=TODAY.getFullYear(); // séances générées automatiquement pour l'année en cours
-const TODAY=new Date();
 
 // Modèles de séances hebdomadaires
 const sessionTpl=[
