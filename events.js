@@ -2,7 +2,8 @@
 // ===== CALENDRIER DYNAMIQUE =====
 const MONTHS=['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
 const MONTHS_SHORT=['Janv.','Févr.','Mars','Avr.','Mai','Juin','Juil.','Août','Sept.','Oct.','Nov.','Déc.'];
-const YEAR=2026;
+const TODAY=new Date();
+const YEAR=TODAY.getFullYear(); // séances générées automatiquement pour l'année en cours
 const TODAY=new Date();
 
 // Modèles de séances hebdomadaires
@@ -14,16 +15,16 @@ const sessionTpl=[
 
 // Événements spéciaux
 const specials=[
-  {m:5,d:5,title:'Naturalia × We Love Green',color:'#b6cde0',tags:[{l:'Ouvert à tous',c:'tag-open'},{l:'Partenariat',c:'tag-partner'}],time:'9h00',dur:120,desc:"Run solidaire en partenariat avec Naturalia et le festival We Love Green. Une course engagée, dans un cadre festif au Bois de Vincennes.",details:[['Lieu','Bois de Vincennes, Paris'],['Horaire','9h00'],['Accès','Ouvert à tous']],location:'Bois de Vincennes, Paris'},
-  {m:5,d:7,title:'KM Bleu 10K Adidas + AG',color:'#122b44',tags:[{l:'KM Bleu',c:'tag-km'},{l:'Adidas',c:'tag-partner'}],time:'10h00',dur:420,desc:"Course officielle 10K en équipe LCEB avec le partenariat Adidas, suivie de l'Assemblée Générale annuelle du club.",details:[['Lieu','Paris — départ Champs-Élysées'],['Horaire','10h00 (course) · 14h00 (AG)'],['Accès','Réservé aux adhérents']],location:'Champs-Élysées, Paris'},
-  {m:5,d:12,title:"Soirée Fin d'année",color:'#b6cde0',tags:[{l:'Adhérent',c:'tag-adherent'}],time:'20h00',dur:240,desc:"La grande fête de fin de saison 2025–2026 ! Un moment pour célébrer ensemble tout ce qu'on a vécu cette année.",details:[['Lieu','Lieu à confirmer · Paris'],['Horaire','20h00'],['Accès','Réservé aux adhérents']],location:'Paris'},
-  {m:5,d:13,title:'Salomon × Gravenlenza',color:'#b6cde0',tags:[{l:'Ouvert à tous',c:'tag-open'},{l:'Salomon',c:'tag-partner'}],time:'8h30',dur:270,desc:"Événement running trail en partenariat avec Salomon. Testing de chaussures trail et run collectif en forêt.",details:[['Lieu','Forêt de Fontainebleau'],['Horaire','8h30'],['Accès','Ouvert à tous']],location:'Forêt de Fontainebleau'},
-  {m:6,d:8,title:'Run Testing ACT',color:'#b6cde0',tags:[{l:'Adhérent',c:'tag-adherent'},{l:'ACT',c:'tag-partner'}],time:'19h00',dur:120,desc:"Session de testing de produits ACT avec 30 membres du club. Tester du matériel en avant-première et donner son retour.",details:[['Lieu','Paris — point de départ Strava'],['Horaire','19h00'],['Accès','Réservé aux adhérents — 30 places']],location:'Paris'},
-  {m:6,d:18,title:'Trail 25 Bosses',color:'#6d879a',tags:[{l:'Adhérent',c:'tag-adherent'},{l:'Trail',c:'tag-trail'}],time:'8h00',dur:480,desc:"Sortie trail hors Paris au cœur de la forêt. Dénivelé, aventure partagée, ambiance garantie. Une des sorties les plus attendues de l'année.",details:[['Lieu','Forêt de Fontainebleau'],['Distance','~25 km · D+ 600m'],['Accès','Réservé aux adhérents']],location:'Forêt de Fontainebleau'},
-  {m:6,d:26,title:'KM Bleu TDF',color:'#122b44',tags:[{l:'KM Bleu',c:'tag-km'},{l:'Adhérent',c:'tag-adherent'}],time:'9h00',dur:180,desc:"Run spécial Tour de France. On court dans Paris dans l'ambiance de la grande boucle, sur les routes encore fraîches du passage du peloton.",details:[['Lieu','Paris — parcours TDF'],['Horaire','À confirmer'],['Accès','Réservé aux adhérents']],location:'Paris'},
-  {m:5,d:28,title:"L'Or Espresso x CIEL BLEU - 2ème édition",color:'#c4956a',tags:[{l:'KM Bleu',c:'tag-km'},{l:'Ouvert à tous',c:'tag-open'}],time:'9h45',dur:90,desc:"Run de 8 km dans Saint-Germain-des-Prés, suivi d'une dégustation gratuite des créations de L'Or Espresso. Allure 6:15/km pour s'adapter aux conditions météo. Limité à 35 places sur inscription.",details:[['Lieu',"L'Or Espresso · 77 bd Saint-Germain, 75006"],['Horaire','9h45'],['Distance','8 km · allure 6:15/km'],['Accès','35 places — inscription obligatoire'],['Métro','Odéon M4 / M10']],location:'75006 Paris'},
-  {m:8,d:11,title:'Soirée de Rentrée',color:'#8fb3a8',tags:[{l:'Ouvert à tous',c:'tag-open'}],time:'10h20',dur:100,desc:"Reprise collective de rentrée ! Toutes allures, tout le monde bienvenu. La saison 2026–2027 commence ici.",details:[['Lieu','Point publié sur Strava'],['Horaire','10h20'],['Accès','Ouvert à tous — sans inscription']],location:'Paris'},
-  {m:8,d:27,title:'Marathon en Relais LCEB',color:'#8fb3a8',tags:[{l:'Adhérent',c:'tag-adherent'}],time:'9h00',dur:300,desc:"Course de relais marathon en équipes LCEB. On se partage les km, on arrive ensemble. Ambiance garantie.",details:[['Lieu','Paris — circuit à confirmer'],['Horaire','9h00'],['Accès','Réservé aux adhérents']],location:'Paris'}
+  {y:2026,m:5,d:5,title:'Naturalia × We Love Green',color:'#b6cde0',tags:[{l:'Ouvert à tous',c:'tag-open'},{l:'Partenariat',c:'tag-partner'}],time:'9h00',dur:120,desc:"Run solidaire en partenariat avec Naturalia et le festival We Love Green. Une course engagée, dans un cadre festif au Bois de Vincennes.",details:[['Lieu','Bois de Vincennes, Paris'],['Horaire','9h00'],['Accès','Ouvert à tous']],location:'Bois de Vincennes, Paris'},
+  {y:2026,m:5,d:7,title:'KM Bleu 10K Adidas + AG',color:'#122b44',tags:[{l:'KM Bleu',c:'tag-km'},{l:'Adidas',c:'tag-partner'}],time:'10h00',dur:420,desc:"Course officielle 10K en équipe LCEB avec le partenariat Adidas, suivie de l'Assemblée Générale annuelle du club.",details:[['Lieu','Paris — départ Champs-Élysées'],['Horaire','10h00 (course) · 14h00 (AG)'],['Accès','Réservé aux adhérents']],location:'Champs-Élysées, Paris'},
+  {y:2026,m:5,d:12,title:"Soirée Fin d'année",color:'#b6cde0',tags:[{l:'Adhérent',c:'tag-adherent'}],time:'20h00',dur:240,desc:"La grande fête de fin de saison 2025–2026 ! Un moment pour célébrer ensemble tout ce qu'on a vécu cette année.",details:[['Lieu','Lieu à confirmer · Paris'],['Horaire','20h00'],['Accès','Réservé aux adhérents']],location:'Paris'},
+  {y:2026,m:5,d:13,title:'Salomon × Gravenlenza',color:'#b6cde0',tags:[{l:'Ouvert à tous',c:'tag-open'},{l:'Salomon',c:'tag-partner'}],time:'8h30',dur:270,desc:"Événement running trail en partenariat avec Salomon. Testing de chaussures trail et run collectif en forêt.",details:[['Lieu','Forêt de Fontainebleau'],['Horaire','8h30'],['Accès','Ouvert à tous']],location:'Forêt de Fontainebleau'},
+  {y:2026,m:6,d:8,title:'Run Testing ACT',color:'#b6cde0',tags:[{l:'Adhérent',c:'tag-adherent'},{l:'ACT',c:'tag-partner'}],time:'19h00',dur:120,desc:"Session de testing de produits ACT avec 30 membres du club. Tester du matériel en avant-première et donner son retour.",details:[['Lieu','Paris — point de départ Strava'],['Horaire','19h00'],['Accès','Réservé aux adhérents — 30 places']],location:'Paris'},
+  {y:2026,m:6,d:18,title:'Trail 25 Bosses',color:'#6d879a',tags:[{l:'Adhérent',c:'tag-adherent'},{l:'Trail',c:'tag-trail'}],time:'8h00',dur:480,desc:"Sortie trail hors Paris au cœur de la forêt. Dénivelé, aventure partagée, ambiance garantie. Une des sorties les plus attendues de l'année.",details:[['Lieu','Forêt de Fontainebleau'],['Distance','~25 km · D+ 600m'],['Accès','Réservé aux adhérents']],location:'Forêt de Fontainebleau'},
+  {y:2026,m:6,d:26,title:'KM Bleu TDF',color:'#122b44',tags:[{l:'KM Bleu',c:'tag-km'},{l:'Adhérent',c:'tag-adherent'}],time:'9h00',dur:180,desc:"Run spécial Tour de France. On court dans Paris dans l'ambiance de la grande boucle, sur les routes encore fraîches du passage du peloton.",details:[['Lieu','Paris — parcours TDF'],['Horaire','À confirmer'],['Accès','Réservé aux adhérents']],location:'Paris'},
+  {y:2026,m:5,d:28,title:"L'Or Espresso x CIEL BLEU - 2ème édition",color:'#c4956a',tags:[{l:'KM Bleu',c:'tag-km'},{l:'Ouvert à tous',c:'tag-open'}],time:'9h45',dur:90,desc:"Run de 8 km dans Saint-Germain-des-Prés, suivi d'une dégustation gratuite des créations de L'Or Espresso. Allure 6:15/km pour s'adapter aux conditions météo. Limité à 35 places sur inscription.",details:[['Lieu',"L'Or Espresso · 77 bd Saint-Germain, 75006"],['Horaire','9h45'],['Distance','8 km · allure 6:15/km'],['Accès','35 places — inscription obligatoire'],['Métro','Odéon M4 / M10']],location:'75006 Paris'},
+  {y:2026,m:8,d:11,title:'Soirée de Rentrée',color:'#8fb3a8',tags:[{l:'Ouvert à tous',c:'tag-open'}],time:'10h20',dur:100,desc:"Reprise collective de rentrée ! Toutes allures, tout le monde bienvenu. La saison 2026–2027 commence ici.",details:[['Lieu','Point publié sur Strava'],['Horaire','10h20'],['Accès','Ouvert à tous — sans inscription']],location:'Paris'},
+  {y:2026,m:8,d:27,title:'Marathon en Relais LCEB',color:'#8fb3a8',tags:[{l:'Adhérent',c:'tag-adherent'}],time:'9h00',dur:300,desc:"Course de relais marathon en équipes LCEB. On se partage les km, on arrive ensemble. Ambiance garantie.",details:[['Lieu','Paris — circuit à confirmer'],['Horaire','9h00'],['Accès','Réservé aux adhérents']],location:'Paris'}
 ];
 
 const WD_NAMES=['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'];
@@ -57,10 +58,11 @@ sessionTpl.forEach(tpl=>{
 });
 // spéciaux
 specials.forEach(s=>{
+  if(s.y!==YEAR)return; // les événements d'une autre année ne s'affichent pas
   const id='e'+(uid++);
-  const ds=dtFmt(YEAR,s.m,s.d,timeToHMS(s.time));
-  const de=dtFmt(YEAR,s.m,s.d,addMinutes(s.time,s.dur));
-  const ev={id,y:YEAR,m:s.m,d:s.d,date:new Date(YEAR,s.m,s.d),title:s.title,color:'#E8B06B',tags:s.tags,desc:s.desc,details:s.details,dtStart:ds,dtEnd:de,location:s.location,session:false,dateStr:s.d+' '+MONTHS[s.m]+' '+YEAR};
+  const ds=dtFmt(s.y,s.m,s.d,timeToHMS(s.time));
+  const de=dtFmt(s.y,s.m,s.d,addMinutes(s.time,s.dur));
+  const ev={id,y:s.y,m:s.m,d:s.d,date:new Date(s.y,s.m,s.d),title:s.title,color:'#E8B06B',tags:s.tags,desc:s.desc,details:s.details,dtStart:ds,dtEnd:de,location:s.location,session:false,dateStr:s.d+' '+MONTHS[s.m]+' '+s.y};
   EVENTS_BY_ID[id]=ev;allEvents.push(ev);
 });
 allEvents.sort((a,b)=>a.date-b.date);
