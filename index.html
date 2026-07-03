@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b1d30">
 <title>Le Ciel Est Bleu — Running Club à Paris | Social runs, séances & événements</title>
 <meta name="description" content="Le Ciel Est Bleu (LCEB), running club parisien fondé pendant les JO de Paris 2024. Social Run gratuit chaque dimanche, séances encadrées, événements et une communauté de 110+ coureurs. Rejoins-nous !">
 <!-- Canonical : à remplacer par le nom de domaine définitif quand il sera acheté -->
@@ -44,6 +45,7 @@
 <style>
 :root{--navy:#122b44;--navy-deep:#0b1d30;--blue-steel:#6d879a;--blue-sky:#b6cde0;--blue-pale:#d5e0e4;--cream:#F6F9FC;--white:#FFFFFF;--mid:#5B738A;--gold:#E8B06B;}
 *{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+a,button,input,select{-webkit-tap-highlight-color:rgba(182,205,224,.25);touch-action:manipulation;}
 body{font-family:'Open Sans',sans-serif;background:var(--cream);color:var(--navy);overflow-x:hidden;}
 
 nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 60px;height:112px;background:rgba(11,29,48,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(182,205,224,0.1);}
@@ -157,7 +159,7 @@ footer{background:var(--navy-deep);padding:32px 60px;}
 .footer-logo{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:3px;color:white;text-decoration:none;}
 .footer-logo-img{height:9px;width:auto;filter:brightness(0) invert(1);}
 .footer-socials{display:flex;gap:28px;align-items:center;flex-wrap:wrap;}
-.footer-socials a{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s;}
+.footer-socials a{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s;display:inline-block;padding:10px 2px;}
 .footer-socials a:hover{color:white;}
 .footer-copy{font-size:12px;color:rgba(255,255,255,.25);letter-spacing:1px;}
 .socials a:hover img{opacity:1;}
@@ -178,6 +180,7 @@ footer{background:var(--navy-deep);padding:32px 60px;}
 .semaine-meta{display:flex;flex-direction:column;gap:5px;font-size:12px;color:rgba(255,255,255,.55);border-top:1px solid rgba(182,205,224,.12);padding-top:12px;}
 .semaine-link{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;color:var(--blue-sky);text-decoration:none;margin-top:4px;}
 .semaine-link:hover{color:white;}
+.swipe-hint-m{display:none;text-align:center;margin-top:14px;font-size:12px;letter-spacing:2px;color:var(--blue-steel);text-transform:uppercase;}
 
 
 /* ── EVENTS CALENDAR ── */
@@ -337,6 +340,8 @@ footer{background:var(--navy-deep);padding:32px 60px;}
   .ev-modal-actions{display:flex;flex-direction:column;gap:10px;}
   .ev-modal-close,.ev-modal-ics{width:100%;}
   /* Carrousels mobile : swipe horizontal pour limiter le scroll vertical */
+  .swipe-hint-m{display:block;}
+  .semaine-link{display:inline-block;padding:12px 0 4px;}
   .semaine-grid,.ev-grid{
     display:flex!important;grid-template-columns:none!important;
     overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;
@@ -389,6 +394,7 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
 /* Bouton son sur les vidéos */
 .vid-sound{position:absolute;bottom:10px;right:10px;z-index:5;width:36px;height:36px;border-radius:50%;border:none;background:rgba(11,29,48,.6);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);color:#fff;font-size:15px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,transform .2s;}
 .vid-sound:hover{background:rgba(11,29,48,.9);transform:scale(1.08);}
+@media(max-width:768px){.vid-sound{width:44px;height:44px;font-size:18px;}}
 </style>
 <noscript><style>.reveal,.reveal-left,.reveal-right,.reveal-zoom,.reveal-children>*,.s-label,.s-title,.gallery-item{opacity:1!important;transform:none!important;}</style></noscript>
 </head>
@@ -476,6 +482,7 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
       <a href="calendrier.html" class="semaine-link">Toutes les dates →</a>
     </div>
   </div>
+  <div class="swipe-hint-m">← Glissez pour découvrir →</div>
 </section>
 
 <!-- PROCHAINS RENDEZ-VOUS -->
@@ -483,6 +490,7 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
   <div class="s-label">02 — Prochains rendez-vous</div>
   <h2 class="s-title">Ça arrive<br>bientôt.</h2>
   <div class="ev-grid" id="evNext"></div>
+  <div class="swipe-hint-m">← Glissez pour découvrir →</div>
   <div style="text-align:center;margin-top:36px;">
     <a href="calendrier.html" class="equipe-strip-cta">Voir tout le calendrier →</a>
   </div>

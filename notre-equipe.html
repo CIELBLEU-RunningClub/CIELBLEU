@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b1d30">
 <title>L'équipe — Le Ciel Est Bleu Running Club Paris</title>
 <meta name="description" content="10 bénévoles font vivre le club Le Ciel Est Bleu à Paris : président, coachs, événementiel, communication. Découvrez l'équipe orga derrière chaque run.">
 <!-- Canonical : à remplacer par le nom de domaine définitif quand il sera acheté -->
@@ -21,6 +22,7 @@
 <style>
 :root{--navy:#122b44;--navy-deep:#0b1d30;--blue-steel:#6d879a;--blue-sky:#b6cde0;--blue-pale:#d5e0e4;--cream:#F6F9FC;--white:#FFFFFF;--mid:#5B738A;--gold:#E8B06B;}
 *{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+a,button,input,select{-webkit-tap-highlight-color:rgba(182,205,224,.25);touch-action:manipulation;}
 body{font-family:'Open Sans',sans-serif;background:var(--cream);color:var(--navy);overflow-x:hidden;}
 
 /* ── NAV ── */
@@ -100,7 +102,7 @@ footer{background:var(--navy-deep);padding:40px 60px;}
 .footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;}
 .footer-inner img{height:9px;width:auto;filter:brightness(0) invert(1);}
 .footer-socials{display:flex;gap:28px;align-items:center;flex-wrap:wrap;}
-.footer-socials a{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s;}
+.footer-socials a{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s;display:inline-block;padding:10px 2px;}
 .footer-socials a:hover{color:white;}
 .footer-copy{font-size:12px;color:rgba(255,255,255,.25);letter-spacing:1px;}
 
@@ -278,6 +280,7 @@ footer{background:var(--navy-deep);padding:40px 60px;}
 
 <script>
 function toggleNav(){document.getElementById('navMobile').classList.toggle('open');}
+document.addEventListener('click',e=>{const m=document.getElementById('navMobile');if(m.classList.contains('open')&&!m.contains(e.target)&&!e.target.closest('.nav-hamburger'))m.classList.remove('open');});
 
 /* ===== EN IMAGES (carrousel équipe) ===== */
 (function(){
