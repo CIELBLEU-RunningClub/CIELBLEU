@@ -43,7 +43,7 @@
 }
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,700;1,700&family=Unbounded:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,700;1,700&family=Unbounded:wght@600;700&family=Big+Shoulders+Display:wght@800&display=swap" rel="stylesheet">
 <style>
 :root{--navy:#122b44;--navy-deep:#0b1d30;--blue-steel:#6d879a;--blue-sky:#b6cde0;--blue-pale:#d5e0e4;--cream:#F6F9FC;--white:#FFFFFF;--mid:#5B738A;--gold:#E8B06B;}
 *{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
@@ -64,22 +64,19 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .hero{min-height:100vh;background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy) 60%,#1a3d5c 100%);display:flex;flex-direction:column;justify-content:center;padding:112px 60px 0;position:relative;overflow:hidden;}
 .hero::before{content:'';position:absolute;top:-20%;right:-5%;width:700px;height:700px;background:radial-gradient(circle,rgba(182,205,224,0.12) 0%,transparent 65%);border-radius:50%;}
 .hero::after{content:'';position:absolute;bottom:-30%;left:40%;width:500px;height:500px;background:radial-gradient(circle,rgba(232,176,107,0.06) 0%,transparent 65%);border-radius:50%;}
-.hero-bg-img{position:absolute;top:60px;right:0;width:55%;height:calc(100% - 60px);object-fit:cover;object-position:center top;opacity:0.13;pointer-events:none;-webkit-mask-image:linear-gradient(to right,transparent 0%,black 40%),linear-gradient(to bottom,black 60%,transparent 100%);mask-image:linear-gradient(to right,transparent 0%,black 40%),linear-gradient(to bottom,black 60%,transparent 100%);-webkit-mask-composite:source-in;mask-composite:intersect;}
-.hero-eyebrow{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:5px;color:var(--blue-sky);opacity:.8;margin-bottom:12px;animation:fadeUp .8s ease both;}
-.hero h1{margin:0;padding:0;position:relative;z-index:1;animation:fadeUp .8s .1s ease both;line-height:0;}
-.hero-logo-img{display:block;height:clamp(36px,6vw,64px);width:auto;max-width:70%;margin-bottom:4px;}
-.hero-tagline{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(17px,3vw,22px);color:var(--blue-sky);margin-bottom:16px;animation:fadeUp .8s .2s ease both;}
+.hero-bg-img,.hero-bg-video{position:absolute;top:60px;right:0;width:55%;height:calc(100% - 60px);object-fit:cover;object-position:center top;opacity:0.3;pointer-events:none;-webkit-mask-image:linear-gradient(to right,transparent 0%,black 40%),linear-gradient(to bottom,black 60%,transparent 100%);mask-image:linear-gradient(to right,transparent 0%,black 40%),linear-gradient(to bottom,black 60%,transparent 100%);-webkit-mask-composite:source-in;mask-composite:intersect;}
+.hero-bg-video{display:none;}
+.hero-bg-video.playing{display:block;}
+.hero-bg-video.playing + .hero-bg-img{display:none;}
+.hero-eyebrow{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:5px;color:var(--blue-sky);opacity:.8;margin-bottom:14px;animation:fadeUp .8s ease both;}
+.hero h1{margin:0 0 10px;padding:0;position:relative;z-index:1;animation:fadeUp .8s .1s ease both;font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:clamp(54px,8.5vw,110px);line-height:.95;letter-spacing:-.5px;color:white;text-transform:uppercase;}
+.hero h1 em{color:var(--blue-sky);font-style:normal;}
+.hero-tagline{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(17px,3vw,22px);color:var(--blue-sky);margin-bottom:20px;animation:fadeUp .8s .2s ease both;}
 .hero-desc{font-size:15px;color:rgba(255,255,255,.6);font-weight:300;max-width:560px;line-height:1.65;margin-bottom:20px;animation:fadeUp .8s .3s ease both;}
-.hero-cta-group{display:flex;flex-direction:column;gap:16px;margin-bottom:64px;align-self:flex-start;animation:fadeUp .8s .4s ease both;}
-.hero-actions{display:flex;gap:16px;flex-wrap:wrap;}
-.btn-primary{background:var(--blue-sky);color:var(--navy);font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:2px;padding:16px 36px;border-radius:4px;text-decoration:none;transition:all .2s;position:relative;overflow:hidden;}
-.btn-primary::after{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);transform:skewX(-20deg);transition:none;}
-.btn-primary:hover::after{left:160%;transition:left .5s ease;}
-.btn-primary:hover{background:white;transform:translateY(-2px);}
-.btn-secondary{border:1.5px solid rgba(182,205,224,.4);color:rgba(255,255,255,.8);font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:2px;padding:16px 36px;border-radius:4px;text-decoration:none;transition:all .2s;position:relative;overflow:hidden;}
-.btn-secondary::after{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent);transform:skewX(-20deg);transition:none;}
-.btn-secondary:hover::after{left:160%;transition:left .5s ease;}
-.btn-secondary:hover{border-color:rgba(182,205,224,.9);color:white;}
+.hero-cta-group{display:flex;flex-direction:column;gap:18px;margin-bottom:96px;align-self:flex-start;animation:fadeUp .8s .4s ease both;max-width:640px;width:100%;}
+.hero-links{display:flex;gap:32px;flex-wrap:wrap;align-items:center;}
+.hero-link{font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:2.5px;color:rgba(255,255,255,.75);text-decoration:none;border-bottom:1.5px solid rgba(182,205,224,.3);padding-bottom:3px;transition:color .2s,border-color .2s;}
+.hero-link:hover{color:white;border-color:var(--blue-sky);}
 .hero-strava{display:flex;align-items:center;gap:20px;background:rgba(255,255,255,0.06);border:1px solid rgba(182,205,224,0.12);border-radius:12px;padding:18px 24px;width:100%;}
 .hero-strava-dot{width:10px;height:10px;border-radius:50%;background:var(--gold);flex-shrink:0;animation:pulse 2s infinite;}
 @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(232,176,107,0.5);}50%{box-shadow:0 0 0 7px rgba(232,176,107,0);}}
@@ -96,7 +93,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .hero-strava-desc{font-size:13px;color:rgba(255,255,255,.55);line-height:1.5;}
 .hero-strava-cta{background:var(--gold);color:var(--navy-deep);font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;padding:10px 20px;border-radius:4px;text-decoration:none;white-space:nowrap;transition:all .2s;flex-shrink:0;}
 .hero-strava-cta:hover{background:white;}
-.hero-bottom{position:absolute;bottom:0;left:0;right:0;border-top:1px solid rgba(182,205,224,0.1);display:flex;animation:fadeUp .8s .5s ease both;}
+.hero-bottom{position:absolute;bottom:0;left:0;right:0;animation:fadeUp .8s .5s ease both;}
+.hero-marquee{overflow:hidden;border-top:1px solid rgba(182,205,224,0.1);padding:13px 0;white-space:nowrap;}
+.hero-marquee-track{display:inline-block;animation:marquee 36s linear infinite;}
+.hero-marquee-track span{font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:4px;color:rgba(182,205,224,.4);padding:0 18px;}
+@keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+@media(prefers-reduced-motion:reduce){.hero-marquee-track{animation:none;}}
+.hero-stats{display:flex;border-top:1px solid rgba(182,205,224,0.1);}
 .hero-stat{flex:1;padding:28px 40px;border-right:1px solid rgba(182,205,224,0.1);}
 .hero-stat:last-child{border-right:none;}
 .hero-stat .num{font-family:'Bebas Neue',sans-serif;font-size:40px;color:var(--blue-sky);line-height:1;letter-spacing:1px;}
@@ -307,16 +310,17 @@ footer{background:var(--navy-deep);padding:32px 60px;}
   .nav-hamburger{display:flex;align-items:center;}
 
   .hero{padding:80px 20px 0;min-height:auto;}
-  .hero-eyebrow{font-size:18px;letter-spacing:3px;}
-  .hero h1{font-size:clamp(56px,16vw,80px);}
+  .hero-eyebrow{font-size:16px;letter-spacing:3px;}
+  .hero h1{font-size:clamp(48px,14vw,72px);}
   .hero-desc{font-size:14px;max-width:100%;margin-bottom:24px;}
-  .hero-cta-group{width:100%;margin-bottom:0;}
+  .hero-cta-group{width:100%;margin-bottom:20px;}
   .hero-strava{flex-direction:column;align-items:flex-start;gap:12px;padding:16px 18px;}
   .hero-strava-label{font-size:15px;letter-spacing:2px;white-space:normal;line-height:1.4;}
   .hero-strava-cta{align-self:stretch;text-align:center;padding:12px 20px;}
-  .hero-actions{flex-direction:column;width:100%;}
-  .hero-actions .btn-primary,.hero-actions .btn-secondary{text-align:center;width:100%;padding:15px 20px;box-sizing:border-box;}
-  .hero-bottom{position:relative;display:grid;grid-template-columns:1fr 1fr;border-top:1px solid rgba(182,205,224,0.1);}
+  .hero-links{gap:22px;}
+  .hero-bottom{position:relative;}
+  .hero-marquee{margin:0 -20px;}
+  .hero-stats{display:grid;grid-template-columns:1fr 1fr;}
   .hero-stat{padding:18px 16px;border-right:1px solid rgba(182,205,224,0.1);}
   .hero-stat:nth-child(2n){border-right:none;}
   .hero-stat:nth-child(n+3){border-top:1px solid rgba(182,205,224,0.1);}
@@ -447,10 +451,11 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
 </ul>
 
 <div class="hero">
+  <video class="hero-bg-video" muted loop playsinline preload="none" poster="poster-video-ciel-bleu-2.jpg" aria-hidden="true"></video>
   <img src="couverture.jpg" alt="" class="hero-bg-img" fetchpriority="high">
-  <div class="hero-eyebrow">Running Club · Paris</div>
-  <h1><img src="CIELBLEU.png" alt="Le Ciel Est Bleu — Running Club à Paris" class="hero-logo-img" fetchpriority="high"></h1>
-  <p class="hero-tagline">« Ici, on court ensemble, on vibre ensemble. »</p>
+  <div class="hero-eyebrow">Le Ciel Est Bleu · Running Club · Paris</div>
+  <h1>Ici, on court<br><em>ensemble.</em></h1>
+  <p class="hero-tagline">Et on vibre ensemble, sous le ciel de Paris.</p>
   <div class="hero-cta-group">
     <div class="hero-strava">
       <div class="hero-strava-dot"></div>
@@ -460,16 +465,19 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
       </div>
       <a href="https://www.strava.com/clubs/lecielestbleu" target="_blank" class="hero-strava-cta">Rejoindre →</a>
     </div>
-    <div class="hero-actions">
-      <a href="calendrier.html" class="btn-primary">Voir le calendrier</a>
-      <a href="#adhesion" class="btn-secondary">Devenir adhérent</a>
+    <div class="hero-links">
+      <a href="calendrier.html" class="hero-link">Voir le calendrier →</a>
+      <a href="#adhesion" class="hero-link">Devenir adhérent →</a>
     </div>
   </div>
   <div class="hero-bottom">
-    <a class="hero-stat" href="nos-adherents.html"><div class="num" data-count="124" data-suffix="+">0</div><div class="lbl">Adhérents actifs <span class="stat-arrow">→</span></div></a>
-    <a class="hero-stat" href="calendrier.html"><div class="num">3</div><div class="lbl">Séances par semaine <span class="stat-arrow">→</span></div></a>
-    <div class="hero-stat"><div class="num">2024</div><div class="lbl">Année de création</div></div>
-    <a class="hero-stat" href="notre-equipe.html"><div class="num">10</div><div class="lbl">Encadrants impliqués <span class="stat-arrow">→</span></div></a>
+    <div class="hero-marquee" aria-hidden="true"><div class="hero-marquee-track" id="heroMarquee"></div></div>
+    <div class="hero-stats">
+      <a class="hero-stat" href="nos-adherents.html"><div class="num" data-count="124" data-suffix="+">0</div><div class="lbl">Adhérents actifs <span class="stat-arrow">→</span></div></a>
+      <a class="hero-stat" href="calendrier.html"><div class="num">3</div><div class="lbl">Séances par semaine <span class="stat-arrow">→</span></div></a>
+      <div class="hero-stat"><div class="num">2024</div><div class="lbl">Année de création</div></div>
+      <a class="hero-stat" href="notre-equipe.html"><div class="num">10</div><div class="lbl">Encadrants impliqués <span class="stat-arrow">→</span></div></a>
+    </div>
   </div>
 </div>
 
@@ -878,6 +886,25 @@ function scrollGallery(dir){
   track.scrollBy({left:dir*Math.round(track.clientWidth*0.8),behavior:'smooth'});
 }
 
+// Marquee du hero : contenu dupliqué pour une boucle sans couture
+(function(){
+  const track=document.getElementById('heroMarquee');if(!track)return;
+  const items=['Social Run','La Piste','Les Quais','KM Bleu','Marathon en relais','Testings produits','Soirées du club'];
+  const half=items.map(i=>`<span>${i}</span><span>·</span>`).join('');
+  track.innerHTML=half+half;
+})();
+
+// Vidéo de fond du hero : uniquement desktop et sans préférence de mouvement réduit
+(function(){
+  const v=document.querySelector('.hero-bg-video');if(!v)return;
+  if(window.innerWidth<=768||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  v.muted=true;
+  v.src='video-ciel-bleu-2.mp4';
+  const tryPlay=()=>v.play().then(()=>v.classList.add('playing')).catch(()=>{});
+  v.addEventListener('canplay',tryPlay,{once:true});
+  tryPlay();
+})();
+
 // Barre d'action mobile : apparaît une fois le hero dépassé, disparaît devant le footer
 const mobileCta=document.getElementById('mobileCta');
 if(mobileCta){
@@ -938,7 +965,7 @@ window.addEventListener('scroll',()=>{
     });
     wrap.appendChild(btn);
   }
-  function scan(){document.querySelectorAll('video').forEach(addToggle);}
+  function scan(){document.querySelectorAll('video:not(.hero-bg-video)').forEach(addToggle);}
   scan();
   new MutationObserver(scan).observe(document.body,{childList:true,subtree:true});
 })();
