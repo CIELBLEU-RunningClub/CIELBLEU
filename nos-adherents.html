@@ -394,11 +394,10 @@ const EXPLOIT_CATS={
   fun:{label:'Exploit collectif',icon:'🎉',color:'#5f8a76'},
 };
 const EXPLOITS=[
-  {who:'Julia',cat:'premier',event:'Marathon de Paris · 2026',time:'4h32',hue:7,photo:'',story:"Son premier marathon. Pas le plus rapide, mais un rêve accompli du premier au dernier kilomètre."},
-  {who:'Julien',cat:'majors',event:'Marathon de New York · 2025',time:'4h30',hue:6,photo:'',story:"Direction Central Park, pour l'un des marathons les plus mythiques au monde."},
 ];
 function renderExploits(){
   const wrap=document.getElementById('exploitsGrid');if(!wrap)return;
+  if(!EXPLOITS.length){wrap.innerHTML=`<div class="rec-empty">Les premières fiertés seront bientôt affichées ici — envoyez-nous vos histoires !</div>`;return;}
   wrap.innerHTML=EXPLOITS.map(e=>{
     const c=EXPLOIT_CATS[e.cat]||{label:'Exploit',icon:'⭐',color:'#6d879a'};
     const avatar=e.photo?`<img src="${e.photo}" alt="${e.who}">`:e.who.charAt(0);
@@ -425,7 +424,10 @@ const recordCats=[
   {key:'5k',label:'5 KM',records:[]},
   {key:'10k',label:'10 KM',records:[]},
   {key:'semi',label:'Semi-marathon',records:[]},
-  {key:'marathon',label:'Marathon',records:[]},
+  {key:'marathon',label:'Marathon',records:[
+    {who:'Julia',time:'4h32',event:'Marathon de Paris · 2026',hue:7,photo:''},
+    {who:'Julien',time:'4h30',event:'Marathon de New York · 2025',hue:6,photo:''},
+  ]},
   {key:'trail',label:'Trail / Ultra-trail',records:[]},
 ];
 const recBoard=document.getElementById('recordsGrid');
