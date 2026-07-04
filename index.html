@@ -20,6 +20,8 @@
 <meta name="twitter:description" content="Social Run gratuit chaque dimanche, séances encadrées et une communauté de 110+ coureurs à Paris.">
 <meta name="twitter:image" content="https://cielbleu-runningclub.github.io/CIELBLEU/og-image.jpg">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-180.png">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -181,6 +183,15 @@ footer{background:var(--navy-deep);padding:32px 60px;}
 .semaine-link{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;color:var(--blue-sky);text-decoration:none;margin-top:4px;}
 .semaine-link:hover{color:white;}
 .swipe-hint-m{display:none;text-align:center;margin-top:14px;font-size:12px;letter-spacing:2px;color:var(--blue-steel);text-transform:uppercase;}
+/* ── BARRE D'ACTION MOBILE ── */
+.mobile-cta{display:none;}
+@media(max-width:768px){
+  .mobile-cta{position:fixed;left:0;right:0;bottom:0;z-index:998;display:flex;align-items:center;justify-content:space-between;gap:14px;background:rgba(11,29,48,.97);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-top:1px solid rgba(182,205,224,.15);padding:12px 18px calc(12px + env(safe-area-inset-bottom));transform:translateY(110%);transition:transform .3s ease;}
+  .mobile-cta.visible{transform:translateY(0);}
+  .mobile-cta-title{display:block;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:1.5px;color:white;line-height:1.2;}
+  .mobile-cta-sub{display:block;font-size:11px;color:rgba(255,255,255,.55);margin-top:2px;}
+  .mobile-cta-btn{background:var(--gold);color:var(--navy-deep);font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:2px;padding:12px 22px;border-radius:6px;text-decoration:none;flex-shrink:0;}
+}
 
 
 /* ── EVENTS CALENDAR ── */
@@ -341,6 +352,7 @@ footer{background:var(--navy-deep);padding:32px 60px;}
   .ev-modal-close,.ev-modal-ics{width:100%;}
   /* Carrousels mobile : swipe horizontal pour limiter le scroll vertical */
   .swipe-hint-m{display:block;}
+  #back-to-top{bottom:96px;}
   .semaine-link{display:inline-block;padding:12px 0 4px;}
   .semaine-grid,.ev-grid{
     display:flex!important;grid-template-columns:none!important;
@@ -686,6 +698,15 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
   </div>
 </div>
 
+<!-- Barre d'action mobile : le prochain rendez-vous toujours à portée de pouce -->
+<div class="mobile-cta" id="mobileCta">
+  <div>
+    <span class="mobile-cta-title">Ce dimanche · Social Run</span>
+    <span class="mobile-cta-sub">10h20 · Gratuit · Ouvert à tous</span>
+  </div>
+  <a href="https://www.strava.com/clubs/lecielestbleu" target="_blank" rel="noopener" class="mobile-cta-btn">Strava →</a>
+</div>
+
 <footer>
   <div class="footer-inner">
     <a href="#" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'});" aria-label="Retour en haut" style="display:inline-flex;cursor:pointer;"><img src="CIELBLEU.png" alt="Ciel Bleu" class="footer-logo-img"></a>
@@ -833,6 +854,15 @@ function scrollGallery(dir){
   const track=document.getElementById('galleryTrack');
   if(!track)return;
   track.scrollBy({left:dir*Math.round(track.clientWidth*0.8),behavior:'smooth'});
+}
+
+// Barre d'action mobile : apparaît une fois le hero dépassé
+const mobileCta=document.getElementById('mobileCta');
+if(mobileCta){
+  const heroEl=document.querySelector('.hero');
+  window.addEventListener('scroll',()=>{
+    mobileCta.classList.toggle('visible',window.scrollY>heroEl.offsetHeight-100);
+  },{passive:true});
 }
 
 // Bouton retour en haut

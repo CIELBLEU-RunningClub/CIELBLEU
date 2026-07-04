@@ -17,6 +17,8 @@
 <meta property="og:site_name" content="Le Ciel Est Bleu — Running Club">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,700;1,700&family=Unbounded:wght@700;800&display=swap" rel="stylesheet">
 <style>
@@ -282,6 +284,7 @@ footer{background:var(--navy-deep);padding:40px 60px;}
       <div class="ev-modal-details" id="evModalDetails"></div>
       <div class="ev-modal-actions">
         <button class="ev-modal-ics" id="evModalIcsBtn" onclick="downloadICS()">📅 &nbsp;Ajouter à mon agenda</button>
+        <button class="ev-modal-ics" id="evModalShareBtn" onclick="shareEvent()">📤 &nbsp;Partager</button>
         <button class="ev-modal-close" onclick="closeModal()">Fermer</button>
       </div>
     </div>
@@ -425,6 +428,21 @@ function closeModal(){document.getElementById('evModal').classList.remove('open'
 function closeModalOutside(e){if(e.target===document.getElementById('evModal'))closeModal();}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
 
+function shareEvent(){
+  if(!currentEventId)return;
+  const ev=EVENTS_BY_ID[currentEventId];
+  const text=`${ev.title} — ${ev.dateStr}\n📍 ${ev.location||'Paris'}\nAvec le Ciel Bleu Running Club`;
+  const url='https://cielbleu-runningclub.github.io/CIELBLEU/calendrier.html';
+  if(navigator.share){
+    navigator.share({title:ev.title,text,url}).catch(()=>{});
+  } else if(navigator.clipboard){
+    navigator.clipboard.writeText(text+'\n'+url).then(()=>{
+      const b=document.getElementById('evModalShareBtn');
+      b.textContent='Copié ✓';
+      setTimeout(()=>{b.innerHTML='📤 &nbsp;Partager';},1600);
+    });
+  }
+}
 function downloadICS(){
   if(!currentEventId)return;
   const ev=EVENTS_BY_ID[currentEventId];
