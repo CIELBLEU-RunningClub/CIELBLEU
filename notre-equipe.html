@@ -140,9 +140,10 @@ footer{background:var(--navy-deep);padding:40px 60px;}
   .nav-hamburger{display:flex;align-items:center;}
   .page-hero{padding:100px 20px 50px;min-height:auto;}
   section{padding:48px 20px;scroll-margin-top:70px;}
-  .orga-grid{display:flex!important;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding-bottom:12px;scrollbar-width:none;-ms-overflow-style:none;}
+  .orga-grid{display:grid!important;grid-template-columns:none!important;grid-auto-flow:column;grid-template-rows:repeat(2,1fr);grid-auto-columns:44%;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding-bottom:12px;scrollbar-width:none;-ms-overflow-style:none;}
   .orga-grid::-webkit-scrollbar{display:none;}
-  .orga-card{flex:0 0 44%;scroll-snap-align:center;min-height:180px;}
+  .orga-card{scroll-snap-align:center;min-height:150px;}
+  .card-inner{min-height:150px;}
   .orga-photo{width:60px;height:60px;}
   .orga-name{font-size:14px;}
   .equipe-contact{flex-direction:column;text-align:center;}
