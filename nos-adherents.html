@@ -111,6 +111,7 @@ section:nth-child(even){background:var(--white);}
 .rec-tab.active{background:var(--navy);color:white;border-color:var(--navy);}
 .rec-tab .rec-tab-n{font-size:11px;opacity:.55;}
 .rec-board{display:flex;flex-direction:column;gap:12px;}
+.rec-empty{text-align:center;color:var(--mid);font-size:13px;padding:32px 20px;border:1.5px dashed rgba(18,43,68,.15);border-radius:14px;}
 .rec-row{display:flex;align-items:center;gap:18px;background:linear-gradient(160deg,var(--navy),var(--navy-deep));border:1px solid rgba(182,205,224,.14);border-radius:16px;padding:15px 24px;color:white;position:relative;overflow:hidden;transition:transform .25s ease,box-shadow .25s ease;}
 .rec-row:hover{transform:translateX(5px);box-shadow:0 14px 32px rgba(11,29,48,.38);}
 .rec-row.top{background:linear-gradient(150deg,#1a3d5c 0%,var(--navy) 70%);border-color:rgba(232,176,107,.45);}
@@ -419,23 +420,11 @@ renderExploits();
 
 /* ===== WALL OF FAME (leaderboard par distance) ===== */
 /* photo: chemin d'un headshot (optionnel) — sinon avatar avec l'initiale */
+/* Records à compléter dès que les vrais chronos seront communiqués */
 const recordCats=[
-  {key:'10k',label:'10 KM',records:[
-    {who:'Thomas',time:'34:12',event:'10K Hoka · 2026',hue:2,photo:''},
-    {who:'Mélanie',time:'38:45',event:'10K Unicef · 2025',hue:5,photo:''},
-    {who:'Damien',time:'39:20',event:'10K Adidas · 2026',hue:9,photo:''},
-    {who:'Julia',time:'41:08',event:'10K Hoka · 2026',hue:7,photo:''},
-  ]},
-  {key:'semi',label:'Semi-marathon',records:[
-    {who:'Damien',time:'1h18',event:'Semi de Boulogne · 2025',hue:9,photo:''},
-    {who:'Thomas',time:'1h21',event:'Semi de Paris · 2026',hue:2,photo:''},
-    {who:'Candice',time:'1h32',event:'Semi de Nice · 2026',hue:4,photo:''},
-  ]},
-  {key:'marathon',label:'Marathon',records:[
-    {who:'Thomas',time:'2h57',event:'Marathon de Gand · 2025',hue:2,photo:''},
-    {who:'Julien',time:'3h08',event:'Marathon de Paris · 2026',hue:6,photo:''},
-    {who:'Mélanie',time:'3h24',event:'Marathon de Paris · 2026',hue:5,photo:''},
-  ]},
+  {key:'10k',label:'10 KM',records:[]},
+  {key:'semi',label:'Semi-marathon',records:[]},
+  {key:'marathon',label:'Marathon',records:[]},
 ];
 const recBoard=document.getElementById('recordsGrid');
 const recTabs=document.getElementById('recTabs');
@@ -447,7 +436,7 @@ function headHTML(r){
 function renderRecords(){
   const cat=recordCats[recActive];
   recTabs.innerHTML=recordCats.map((c,i)=>`<button class="rec-tab${i===recActive?' active':''}" onclick="setRecord(${i})">${c.label} <span class="rec-tab-n">${c.records.length}</span></button>`).join("");
-  recBoard.innerHTML=cat.records.map((r,i)=>`
+  recBoard.innerHTML=cat.records.length?cat.records.map((r,i)=>`
     <div class="rec-row${i===0?' top':''}">
       <div class="rec-rank">${i===0?'🥇':i===1?'🥈':i===2?'🥉':(i+1)}</div>
       ${headHTML(r)}
@@ -456,7 +445,7 @@ function renderRecords(){
         <div class="rec-event">${r.event}</div>
       </div>
       <div class="rec-time">${r.time}</div>
-    </div>`).join("");
+    </div>`).join(""):`<div class="rec-empty">Chronos à venir — cette catégorie sera bientôt complétée.</div>`;
 }
 function setRecord(i){recActive=i;renderRecords();}
 renderRecords();
