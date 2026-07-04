@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0b1d30">
-<title>Nos adhérents & le mur des records — Le Ciel Est Bleu Running Club Paris</title>
+<title>Nos adhérents & le mur des fiertés — Le Ciel Est Bleu Running Club Paris</title>
 <meta name="description" content="Les meilleurs chronos des adhérents du Ciel Bleu Running Club : 10 km, semi-marathon et marathon. Une communauté de 110+ coureurs à Paris.">
 <!-- Canonical : à remplacer par le nom de domaine définitif quand il sera acheté -->
 <link rel="canonical" href="https://cielbleu-runningclub.github.io/CIELBLEU/nos-adherents.html">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Nos adhérents & le mur des records — Le Ciel Est Bleu Running Club Paris">
+<meta property="og:title" content="Nos adhérents & le mur des fiertés — Le Ciel Est Bleu Running Club Paris">
 <meta property="og:description" content="Les meilleurs chronos des adhérents du Ciel Bleu Running Club : 10 km, semi-marathon et marathon. Une communauté de 110+ coureurs à Paris.">
 <meta property="og:image" content="https://cielbleu-runningclub.github.io/CIELBLEU/og-image.jpg">
 <meta property="og:url" content="https://cielbleu-runningclub.github.io/CIELBLEU/nos-adherents.html">
@@ -73,16 +73,16 @@ section:nth-child(even){background:var(--white);}
 .trombi-search svg{position:absolute;left:15px;top:50%;transform:translateY(-50%);color:var(--mid);}
 .trombi-count{font-size:13px;color:var(--mid);letter-spacing:1px;}
 .trombi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:16px;}
-.trombi-card{aspect-ratio:3/4;perspective:800px;cursor:pointer;}
+.trombi-card{aspect-ratio:1/1;perspective:800px;cursor:pointer;}
 .trombi-inner{position:relative;width:100%;height:100%;transition:transform .55s cubic-bezier(.3,.8,.3,1);transform-style:preserve-3d;}
 .trombi-card:hover .trombi-inner,.trombi-inner.flipped{transform:rotateY(180deg);}
-.trombi-face{position:absolute;inset:0;border-radius:14px;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden;}
-.trombi-front{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:14px 10px;background:var(--white);border:1.5px solid rgba(18,43,68,.08);}
+.trombi-face{position:absolute;inset:0;border-radius:50%;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden;}
+.trombi-front{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:0 10px 22%;background:var(--white);border:1.5px solid rgba(182,205,224,.35);}
 .trombi-avatar{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:46px;color:rgba(255,255,255,.92);letter-spacing:1px;}
 .trombi-avatar::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(11,29,48,.78) 0%,transparent 55%);}
 .trombi-name{position:relative;z-index:1;font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:1.5px;color:white;}
-.trombi-fliphint{position:absolute;top:8px;right:10px;z-index:1;font-size:11px;color:rgba(255,255,255,.7);}
-.trombi-back{transform:rotateY(180deg);background:linear-gradient(150deg,var(--navy),var(--navy-deep));border:1.5px solid rgba(182,205,224,.2);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px 12px;}
+.trombi-fliphint{position:absolute;top:14%;right:14%;z-index:1;font-size:11px;color:rgba(255,255,255,.7);}
+.trombi-back{transform:rotateY(180deg);background:linear-gradient(150deg,var(--navy),var(--navy-deep));border:1.5px solid rgba(182,205,224,.3);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20%;}
 .trombi-quote{font-family:'Playfair Display',serif;font-style:italic;font-size:13px;color:var(--blue-sky);line-height:1.45;}
 .trombi-back .qn{margin-top:10px;font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:1.5px;color:rgba(255,255,255,.55);}
 .trombi-empty{grid-column:1/-1;text-align:center;color:var(--mid);padding:30px;font-size:14px;}
@@ -266,8 +266,8 @@ footer{background:var(--navy-deep);padding:40px 60px;}
 
 <!-- WALL OF FAME -->
 <section id="records">
-  <div class="s-label">02 — Wall of Fame</div>
-  <h2 class="s-title">Le mur des records.</h2>
+  <div class="s-label">02 — Mur des fiertés</div>
+  <h2 class="s-title">Le mur des fiertés.</h2>
   <p class="s-intro">Les meilleurs chronos du club, distance par distance. Choisis une distance pour comparer les performances.</p>
   <div class="rec-tabs" id="recTabs"></div>
   <div class="rec-board" id="recordsGrid"></div>
@@ -347,7 +347,8 @@ document.addEventListener('click',e=>{const m=document.getElementById('navMobile
 
 /* ===== DONNÉES ===== */
 function hue(i){return (i*47)%360;}
-function grad(i){const h=hue(i);return `linear-gradient(150deg,hsl(${h} 45% 55%),hsl(${(h+40)%360} 50% 38%))`;}
+// Palette bleue du club uniquement (variation de teinte/luminosité autour du bleu, pas d'arc-en-ciel)
+function grad(i){const l1=48+((i*13)%22);const l2=26+((i*11)%16);const h=200+((i*7)%26);return `linear-gradient(150deg,hsl(${h} 55% ${l1}%),hsl(${h+8} 60% ${l2}%))`;}
 
 
 /* ===== TROMBINOSCOPE ===== */
@@ -450,7 +451,7 @@ document.getElementById('recSubmitForm').addEventListener('submit',e=>{
   const course=document.getElementById('rsCourse').value.trim();
   const distance=document.getElementById('rsDistance').value;
   const temps=document.getElementById('rsTemps').value.trim();
-  const subject=`Record pour le mur des records — ${prenom} ${nom}`;
+  const subject=`Record pour le mur des fiertés — ${prenom} ${nom}`;
   const body=`Prénom : ${prenom}\nNom : ${nom}\nEmail : ${email}\nDistance : ${distance}\nCourse : ${course}\nTemps : ${temps}`;
   window.location.href=`mailto:contact.lcebrunning@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 });
