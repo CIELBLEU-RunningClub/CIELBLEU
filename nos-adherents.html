@@ -133,21 +133,6 @@ section:nth-child(even){background:var(--white);}
   .rec-time{font-size:27px;}
 }
 
-/* ── SOUMETTRE UN RECORD ── */
-.rec-submit{margin-top:32px;background:var(--cream);border:1.5px solid rgba(18,43,68,.1);border-radius:16px;padding:28px 32px;display:flex;align-items:center;gap:32px;flex-wrap:wrap;}
-.rec-submit-text{flex:0 0 220px;}
-.rec-submit-title{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:1.5px;color:var(--navy);margin-bottom:4px;}
-.rec-submit-text p{font-size:13px;color:var(--mid);line-height:1.5;}
-.rec-submit-form{flex:1;min-width:280px;display:flex;flex-wrap:wrap;gap:10px;}
-.rec-submit-form input,.rec-submit-form select,.rec-submit-form textarea{flex:1;min-width:130px;padding:12px 14px;border:1.5px solid rgba(18,43,68,.15);border-radius:10px;font-size:13px;font-family:'Open Sans',sans-serif;color:var(--navy);background:var(--white);transition:border-color .2s;}
-.rec-submit-form textarea{flex:0 0 100%;resize:vertical;min-height:56px;font-family:'Open Sans',sans-serif;}
-.rec-submit-form input:focus,.rec-submit-form select:focus,.rec-submit-form textarea:focus{outline:none;border-color:var(--blue-sky);}
-.rec-submit-btn{flex:0 0 100%;background:var(--navy);color:white;font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:2px;padding:13px 20px;border-radius:10px;border:none;cursor:pointer;transition:background .2s;}
-.rec-submit-btn:hover{background:var(--blue-steel);}
-@media(max-width:768px){
-  .rec-submit{flex-direction:column;align-items:stretch;padding:24px 20px;}
-  .rec-submit-text{flex:none;}
-}
 
 /* ── EN IMAGES (carrousel adhérents) ── */
 .amedia-track{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding-bottom:8px;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
@@ -216,7 +201,7 @@ footer{background:var(--navy-deep);padding:40px 60px;}
   .page-hero-stats{gap:26px;}
   section{padding:48px 20px;scroll-margin-top:70px;}
   .trombi-grid{grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:12px;}
-  .trombi-search input,.rec-submit-form input,.rec-submit-form select,.rec-submit-form textarea{font-size:16px;}
+  .trombi-search input{font-size:16px;}
   footer{padding:28px 20px;}
   .footer-inner{flex-direction:column;align-items:center;text-align:center;gap:16px;}
   .footer-socials{justify-content:center;gap:14px;}
@@ -292,31 +277,6 @@ footer{background:var(--navy-deep);padding:40px 60px;}
     <div class="chronos-title">Pour les curieux : les meilleurs chronos</div>
     <div class="rec-tabs" id="recTabs"></div>
     <div class="rec-board" id="recordsGrid"></div>
-  </div>
-
-  <div class="rec-submit reveal">
-    <div class="rec-submit-text">
-      <div class="rec-submit-title">Une fierté à partager&nbsp;?</div>
-      <p>Premier marathon, retour de blessure, défi un peu fou... Raconte-nous et on l'ajoute au mur.</p>
-    </div>
-    <form id="recSubmitForm" class="rec-submit-form">
-      <input type="text" id="rsPrenom" placeholder="Prénom" required>
-      <input type="text" id="rsNom" placeholder="Nom" required>
-      <input type="email" id="rsEmail" placeholder="Email" required>
-      <select id="rsCategorie" required>
-        <option value="" disabled selected>Type d'exploit</option>
-        <option value="🎯 Premier marathon / semi / 10 km">🎯 Premier marathon / semi / 10 km</option>
-        <option value="🌍 Marathon Majors">🌍 Marathon Majors (New York, Boston...)</option>
-        <option value="💪 Retour de blessure / dépassement">💪 Retour de blessure / dépassement de soi</option>
-        <option value="🏔️ Défi extrême">🏔️ Défi extrême (ultra, trail...)</option>
-        <option value="🎉 Exploit fun ou collectif">🎉 Exploit fun ou collectif</option>
-        <option value="Autre">Autre</option>
-      </select>
-      <input type="text" id="rsCourse" placeholder="Course / événement" required>
-      <input type="text" id="rsTemps" placeholder="Temps (optionnel)">
-      <textarea id="rsStory" placeholder="Pourquoi c'est une fierté pour toi ?" rows="2" required></textarea>
-      <button type="submit" class="rec-submit-btn">Envoyer ma fierté →</button>
-    </form>
   </div>
 </section>
 
@@ -500,21 +460,6 @@ function renderRecords(){
 }
 function setRecord(i){recActive=i;renderRecords();}
 renderRecords();
-
-/* ===== SOUMETTRE UNE FIERTÉ ===== */
-document.getElementById('recSubmitForm').addEventListener('submit',e=>{
-  e.preventDefault();
-  const prenom=document.getElementById('rsPrenom').value.trim();
-  const nom=document.getElementById('rsNom').value.trim();
-  const email=document.getElementById('rsEmail').value.trim();
-  const categorie=document.getElementById('rsCategorie').value;
-  const course=document.getElementById('rsCourse').value.trim();
-  const temps=document.getElementById('rsTemps').value.trim();
-  const story=document.getElementById('rsStory').value.trim();
-  const subject=`Fierté pour le mur — ${prenom} ${nom}`;
-  const body=`Prénom : ${prenom}\nNom : ${nom}\nEmail : ${email}\nType d'exploit : ${categorie}\nCourse / événement : ${course}\nTemps : ${temps||'(non précisé)'}\nPourquoi c'est une fierté : ${story}`;
-  window.location.href=`mailto:contact.lcebrunning@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-});
 
 /* ===== EN IMAGES (carrousel adhérents) ===== */
 (function(){
