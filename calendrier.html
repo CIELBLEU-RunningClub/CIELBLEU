@@ -459,6 +459,13 @@ function downloadICS(){
 const obs=new IntersectionObserver(e=>e.forEach(i=>{if(i.isIntersecting){i.target.classList.add('visible');obs.unobserve(i.target);}}),{threshold:0.12,rootMargin:'0px 0px -8% 0px'});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 window.addEventListener('scroll',()=>{document.getElementById('back-to-top').classList.toggle('show',window.scrollY>400);},{passive:true});
+
+// Ouvre directement le détail d'un événement si on arrive depuis un lien
+// du type calendrier.html?event=ID (ex. teaser « Prochains rendez-vous » de l'accueil)
+(function(){
+  const wantedId=new URLSearchParams(location.search).get('event');
+  if(wantedId&&EVENTS_BY_ID[wantedId])openModal(wantedId);
+})();
 </script>
 </body>
 </html>

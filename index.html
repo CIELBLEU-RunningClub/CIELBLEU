@@ -799,7 +799,7 @@ function toggleFaq(btn){const open=btn.parentElement.classList.toggle('open');bt
     const kind=ev.session
       ? `<span class="ev-kind ev-kind-seance"><span class="ev-kind-ico">↻</span>${WD_NAMES[ev.wd]}</span>`
       : `<span class="ev-kind ev-kind-seance"><span class="ev-kind-ico">↻</span>${WD_NAMES[wd]}</span><span class="ev-kind ev-kind-special"><span class="ev-kind-ico">★</span>Spécial</span>`;
-    return `<div class="ev-card${ev.session?' seance wd-'+ev.wd:' special'}" onclick="location.href='calendrier.html'">
+    return `<div class="ev-card${ev.session?' seance wd-'+ev.wd:' special'}" onclick="location.href='calendrier.html?event='+encodeURIComponent('${ev.id}')">
       <div class="ev-card-top" style="background:${ev.color}"></div>
       <div class="ev-card-body">
         <div class="ev-card-kind-row">${kind}</div>
