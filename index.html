@@ -141,6 +141,11 @@ section:nth-child(even){background:var(--white);}
 .ab-perks li{font-size:13px;color:rgba(255,255,255,.65);padding:7px 0;border-bottom:1px solid rgba(182,205,224,.08);display:flex;align-items:center;gap:10px;}
 .ab-perks li:last-child{border:none;}
 .ab-perks li::before{content:"✓";color:var(--blue-sky);font-weight:700;font-size:14px;}
+.ab-price-tiers{display:flex;flex-direction:column;}
+.ab-price-row{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid rgba(182,205,224,.08);}
+.ab-price-row:last-child{border:none;}
+.ab-price-period{font-size:12px;color:rgba(255,255,255,.6);line-height:1.4;}
+.ab-price-amount{font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--gold);letter-spacing:1px;flex-shrink:0;}
 
 /* CTA pill (teaser partenaires) */
 .equipe-strip-cta{font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:2px;color:var(--navy);text-decoration:none;border:1.5px solid rgba(18,43,68,.2);border-radius:30px;padding:12px 24px;white-space:nowrap;transition:all .2s;}
@@ -610,7 +615,7 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
 <section id="adhesion">
   <div class="s-label">05 — Adhésion</div>
   <h2 class="s-title">Devenir<br>adhérent.</h2>
-  <p class="s-intro" style="font-size:15px;color:var(--mid);max-width:640px;line-height:1.7;margin:0 0 28px;">Adhérer, ce n'est pas que les trois rendez-vous de la semaine : c'est aussi les testings produits avec les marques, les soirées du club, les trips trail et le marathon en relais. Le tout pour 35&nbsp;€ par an.</p>
+  <p class="s-intro" style="font-size:15px;color:var(--mid);max-width:640px;line-height:1.7;margin:0 0 28px;">Adhérer, ce n'est pas que les trois rendez-vous de la semaine : c'est aussi les testings produits avec les marques, les soirées du club, les trips trail et le marathon en relais. Le tarif dépend de la période et de ton ancienneté — détail ci-contre.</p>
   <div class="adhesion-block reveal">
     <div class="ab-text">
       <h3>8 raisons de<br><em>rejoindre LCEB.</em></h3>
@@ -627,9 +632,14 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
     </div>
     <div class="ab-perks-box">
       <div>
-        <div class="ab-perks-title">Tarif annuel</div>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:44px;color:var(--gold);line-height:1;letter-spacing:2px;">35€</div>
-        <div style="font-size:12px;color:rgba(255,255,255,.45);margin-top:4px;letter-spacing:1px;">Par an · Saison 2025–2026</div>
+        <div class="ab-perks-title">Tarifs · Saison 2026–2027</div>
+        <div class="ab-price-tiers">
+          <div class="ab-price-row"><span class="ab-price-period">1er – 30 sept. · Early bird anciens</span><span class="ab-price-amount">35€</span></div>
+          <div class="ab-price-row"><span class="ab-price-period">1er – 30 sept. · Early bird nouveaux</span><span class="ab-price-amount">45€</span></div>
+          <div class="ab-price-row"><span class="ab-price-period">À partir du 1er oct. (≤ 150 adhérents)</span><span class="ab-price-amount">50€</span></div>
+          <div class="ab-price-row"><span class="ab-price-period">Au-delà de 150 adhérents</span><span class="ab-price-amount">55€</span></div>
+          <div class="ab-price-row"><span class="ab-price-period">À partir de février · Demi-saison</span><span class="ab-price-amount">30€</span></div>
+        </div>
       </div>
       <div style="border-top:1px solid rgba(182,205,224,.1);padding-top:16px;">
         <div class="ab-perks-title" style="margin-bottom:8px;">Comment adhérer</div>
