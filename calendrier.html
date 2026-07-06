@@ -283,8 +283,8 @@ footer{background:var(--navy-deep);padding:40px 60px;}
       <div class="ev-modal-desc" id="evModalDesc"></div>
       <div class="ev-modal-details" id="evModalDetails"></div>
       <div class="ev-modal-actions">
-        <button class="ev-modal-ics" id="evModalIcsBtn" onclick="downloadICS()">📅 &nbsp;Ajouter à mon agenda</button>
-        <button class="ev-modal-ics" id="evModalShareBtn" onclick="shareEvent()">📤 &nbsp;Partager</button>
+        <button class="ev-modal-ics" id="evModalIcsBtn" onclick="downloadICS()">Ajouter à mon agenda</button>
+        <button class="ev-modal-ics" id="evModalShareBtn" onclick="shareEvent()">Partager</button>
         <button class="ev-modal-close" onclick="closeModal()">Fermer</button>
       </div>
     </div>
@@ -439,7 +439,7 @@ function shareEvent(){
     navigator.clipboard.writeText(text+'\n'+url).then(()=>{
       const b=document.getElementById('evModalShareBtn');
       b.textContent='Copié ✓';
-      setTimeout(()=>{b.innerHTML='📤 &nbsp;Partager';},1600);
+      setTimeout(()=>{b.innerHTML='Partager';},1600);
     });
   }
 }

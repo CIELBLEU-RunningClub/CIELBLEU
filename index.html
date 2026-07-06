@@ -77,10 +77,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .hero-strava{display:flex;align-items:center;gap:20px;background:rgba(11,29,48,.55);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border:1px solid rgba(182,205,224,0.2);border-radius:12px;padding:18px 24px;width:100%;}
 .hero-strava-dot{width:10px;height:10px;border-radius:50%;background:var(--gold);flex-shrink:0;animation:pulse 2s infinite;}
 @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(232,176,107,0.5);}50%{box-shadow:0 0 0 7px rgba(232,176,107,0);}}
-#scroll-progress{position:fixed;top:20px;left:0;height:3px;width:0%;background:linear-gradient(90deg,var(--blue-sky),var(--gold));z-index:9999;transition:width .1s linear;}
-#scroll-progress::after{content:'👟';position:absolute;right:-18px;top:-14px;font-size:32px;line-height:1;filter:drop-shadow(0 0 6px rgba(232,176,107,.8)) drop-shadow(0 2px 4px rgba(0,0,0,.6));}
-#scroll-medal{position:fixed;top:6px;right:10px;font-size:28px;z-index:9999;opacity:0;transform:scale(0) rotate(-20deg);transition:opacity .4s ease,transform .4s cubic-bezier(.34,1.56,.64,1);filter:drop-shadow(0 0 8px rgba(232,176,107,1));pointer-events:none;}
-#scroll-medal.visible{opacity:1;transform:scale(1) rotate(0deg);}
 /* Bouton retour en haut */
 #back-to-top{position:fixed;bottom:32px;right:28px;width:48px;height:48px;background:var(--navy);border:1.5px solid rgba(182,205,224,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;cursor:pointer;z-index:999;opacity:0;transform:translateY(20px);transition:opacity .3s,transform .3s,box-shadow .2s;box-shadow:0 4px 16px rgba(0,0,0,.3);text-decoration:none;color:white;}
 #back-to-top.show{opacity:1;transform:translateY(0);}
@@ -427,8 +423,6 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
 <noscript><style>.reveal,.reveal-left,.reveal-right,.reveal-zoom,.reveal-children>*,.s-label,.s-title,.gallery-item{opacity:1!important;transform:none!important;}</style></noscript>
 </head>
 <body>
-<div id="scroll-progress"></div>
-<div id="scroll-medal">🏅</div>
 <nav>
   <a href="index.html" class="nav-logo"><img src="CIELBLEU.png" alt="Ciel Bleu" height="20"></a>
   <ul class="nav-links">
@@ -456,7 +450,7 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
   <img src="couverture.jpg?v=3" alt="" class="hero-bg-img" fetchpriority="high">
   <div class="hero-eyebrow">Le Ciel Est Bleu · Running Club · Paris</div>
   <h1>Ici, on court<br><em>ensemble.</em></h1>
-  <p class="hero-tagline">Et on vibre ensemble, sous le ciel de Paris.</p>
+  <p class="hero-tagline">Trois séances par semaine, tous les niveaux — et le café d'après.</p>
   <div class="hero-cta-group">
     <div class="hero-strava">
       <div class="hero-strava-dot"></div>
@@ -474,7 +468,7 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
   <div class="hero-bottom">
     <div class="hero-marquee" aria-hidden="true"><div class="hero-marquee-track" id="heroMarquee"></div></div>
     <div class="hero-stats">
-      <a class="hero-stat" href="nos-adherents.html"><div class="num" data-count="124" data-suffix="+">0</div><div class="lbl">Adhérents actifs <span class="stat-arrow">→</span></div></a>
+      <a class="hero-stat" href="nos-adherents.html"><div class="num">124</div><div class="lbl">Adhérents actifs <span class="stat-arrow">→</span></div></a>
       <a class="hero-stat" href="calendrier.html"><div class="num">3</div><div class="lbl">Séances par semaine <span class="stat-arrow">→</span></div></a>
       <div class="hero-stat"><div class="num">2024</div><div class="lbl">Année de création</div></div>
       <a class="hero-stat" href="notre-equipe.html"><div class="num">10</div><div class="lbl">Encadrants impliqués <span class="stat-arrow">→</span></div></a>
@@ -485,14 +479,14 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
 <!-- LA SEMAINE -->
 <section id="semaine">
   <div class="s-label">01 — La semaine bleue</div>
-  <h2 class="s-title">Trois rendez-vous<br>chaque semaine.</h2>
+  <h2 class="s-title">Lundi piste, mercredi quais,<br>dimanche social run.</h2>
   <div class="semaine-grid reveal-children">
     <div class="semaine-card">
       <div class="semaine-day">Lundi</div>
       <div class="semaine-name">La Piste</div>
       <span class="semaine-badge adherents">Adhérents</span>
       <p class="semaine-desc">Fractionné encadré, un lundi sur deux. La séance où on progresse vraiment : VMA, allures spécifiques, préparation d'objectifs.</p>
-      <div class="semaine-meta"><span>🏟️ Stade Ladoumègue · Paris 19e</span><span>🕢 19h30 · 1 lundi sur 2</span></div>
+      <div class="semaine-meta"><span>Stade Ladoumègue · Paris 19e</span><span>19h30 · 1 lundi sur 2</span></div>
       <a href="calendrier.html" class="semaine-link">Toutes les dates →</a>
     </div>
     <div class="semaine-card">
@@ -500,7 +494,7 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
       <div class="semaine-name">Les Quais</div>
       <span class="semaine-badge adherents">Adhérents</span>
       <p class="semaine-desc">Footing collectif le long de la Seine, en trois groupes d'allure (5'30 · 6'00 · 6'30). La séance plaisir du milieu de semaine.</p>
-      <div class="semaine-meta"><span>🌉 Quais de Seine · Paris</span><span>🕢 19h20 · chaque semaine</span></div>
+      <div class="semaine-meta"><span>Quais de Seine · Paris</span><span>19h20 · chaque semaine</span></div>
       <a href="calendrier.html" class="semaine-link">Toutes les dates →</a>
     </div>
     <div class="semaine-card dimanche">
@@ -508,7 +502,7 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
       <div class="semaine-name">Le Social Run</div>
       <span class="semaine-badge open">Ouvert à tous · Gratuit</span>
       <p class="semaine-desc">Jamais deux fois le même départ : chaque semaine un nouveau quartier de Paris, publié sur Strava. On court en groupes d'allure, puis café tous ensemble.</p>
-      <div class="semaine-meta"><span>📍 Itinérant — point publié sur Strava</span><span>🕥 10h20 · sans inscription</span></div>
+      <div class="semaine-meta"><span>Itinérant — point publié sur Strava</span><span>10h20 · sans inscription</span></div>
       <a href="calendrier.html" class="semaine-link">Toutes les dates →</a>
     </div>
   </div>
@@ -518,7 +512,7 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
 <!-- PROCHAINS RENDEZ-VOUS -->
 <section id="rendez-vous">
   <div class="s-label">02 — Prochains rendez-vous</div>
-  <h2 class="s-title">Ça arrive<br>bientôt.</h2>
+  <h2 class="s-title">À vos agendas.</h2>
   <div class="ev-grid" id="evNext"></div>
   <div class="swipe-hint-m">← Glissez pour découvrir →</div>
   <div style="text-align:center;margin-top:36px;">
@@ -546,7 +540,7 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
 <!-- GALERIE -->
 <section id="galerie">
   <div class="s-label">04 — Galerie</div>
-  <h2 class="s-title">Une communauté<br>de folie.</h2>
+  <h2 class="s-title">Vous verrez,<br>on sourit beaucoup.</h2>
   <div class="gallery-carousel-wrap">
   <button class="gallery-nav prev" onclick="scrollGallery(-1)" aria-label="Photos précédentes">‹</button>
   <button class="gallery-nav next" onclick="scrollGallery(1)" aria-label="Photos suivantes">›</button>
@@ -631,7 +625,7 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
   <p class="s-intro" style="font-size:15px;color:var(--mid);max-width:640px;line-height:1.7;margin:0 0 28px;">Adhérer, ce n'est pas que les trois rendez-vous de la semaine : c'est aussi les testings produits avec les marques, les soirées du club, les trips trail et le marathon en relais. Le tarif dépend de la période et de ton ancienneté — détail ci-contre.</p>
   <div class="adhesion-block reveal">
     <div class="ab-text">
-      <h3>8 raisons de<br><em>rejoindre LCEB.</em></h3>
+      <h3>Ce que ça change<br>d'être adhérent.</h3>
       <ul class="ab-perks" style="margin-top:8px;">
         <li>Accès à tous les runs — mercredi soir, dimanche matin, séances piste 2 lundis/mois</li>
         <li>Dossards &amp; goodies partenaires</li>
@@ -669,7 +663,7 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
   <h2 class="s-title">Ils courent<br>avec nous.</h2>
   <div class="partners-teaser reveal">
     <div>
-      <h3>Des marques qui nous font <em>confiance.</em></h3>
+      <h3>Des partenaires qui jouent le jeu.</h3>
       <p>Adidas, Naturalia, L'OR Espresso, ACT, Arkose, 60 Pour Cent… Des collaborations qui font vivre le club et profitent aux adhérents.</p>
       <div class="partners-logos-row">
         <span class="partners-logo-sm"><img src="Logo-adidas.png" alt="Adidas" loading="lazy" decoding="async"></span>
@@ -754,32 +748,6 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
 
 <script src="events.js?v=5"></script>
 <script>
-// Compteurs animés
-function animateCounter(el){
-  const target=parseInt(el.dataset.count);
-  const suffix=el.dataset.suffix||'';
-  const duration=target>=2000?2000:1200;
-  const start=performance.now();
-  const startVal=target>=2000?1980:0;
-  function step(now){
-    const progress=Math.min((now-start)/duration,1);
-    const ease=1-Math.pow(1-progress,3);
-    const val=Math.round(startVal+(target-startVal)*ease);
-    el.textContent=val+suffix;
-    if(progress<1)requestAnimationFrame(step);
-  }
-  requestAnimationFrame(step);
-}
-const counterObs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      animateCounter(e.target);
-      counterObs.unobserve(e.target);
-    }
-  });
-},{threshold:0.5});
-document.querySelectorAll('.num[data-count]').forEach(el=>counterObs.observe(el));
-
 // Parallaxe hero
 const heroBg=document.querySelector('.hero-bg-img');
 if(heroBg){
@@ -789,23 +757,6 @@ if(heroBg){
   },{passive:true});
 }
 
-// Scroll progress bar
-const progressBar=document.getElementById('scroll-progress');
-const medal=document.getElementById('scroll-medal');
-function updateProgress(){
-  const start=document.getElementById('semaine').offsetTop;
-  const maxScroll=document.documentElement.scrollHeight-window.innerHeight;
-  const scrolled=window.scrollY;
-  const range=Math.max(maxScroll-start,1);
-  const pct=Math.min(Math.max((scrolled-start)/range*100,0),100);
-  progressBar.style.width=pct+'%';
-  // médaille déclenchée dès qu'on atteint le bas de page
-  if(pct>=99 || scrolled>=maxScroll-4) medal.classList.add('visible');
-  else medal.classList.remove('visible');
-}
-window.addEventListener('scroll',updateProgress,{passive:true});
-window.addEventListener('resize',updateProgress,{passive:true});
-updateProgress();
 
 const obs=new IntersectionObserver(e=>e.forEach(i=>{if(i.isIntersecting){i.target.classList.add('visible');obs.unobserve(i.target);}}),{threshold:0.12,rootMargin:'0px 0px -8% 0px'});
 document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-zoom,.reveal-children,.s-label,.s-title,.gallery-item').forEach(el=>obs.observe(el));
