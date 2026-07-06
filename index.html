@@ -79,6 +79,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(232,176,107,0.5);}50%{box-shadow:0 0 0 7px rgba(232,176,107,0);}}
 #scroll-progress{position:fixed;top:20px;left:0;height:3px;width:0%;background:linear-gradient(90deg,var(--blue-sky),var(--gold));z-index:9999;transition:width .1s linear;}
 #scroll-progress::after{content:'👟';position:absolute;right:-18px;top:-14px;font-size:32px;line-height:1;filter:drop-shadow(0 0 6px rgba(232,176,107,.8)) drop-shadow(0 2px 4px rgba(0,0,0,.6));}
+#scroll-medal{position:fixed;top:6px;right:10px;font-size:28px;z-index:9999;opacity:0;transform:scale(0) rotate(-20deg);transition:opacity .4s ease,transform .4s cubic-bezier(.34,1.56,.64,1);filter:drop-shadow(0 0 8px rgba(232,176,107,1));pointer-events:none;}
+#scroll-medal.visible{opacity:1;transform:scale(1) rotate(0deg);}
 /* Bouton retour en haut */
 #back-to-top{position:fixed;bottom:32px;right:28px;width:48px;height:48px;background:var(--navy);border:1.5px solid rgba(182,205,224,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;cursor:pointer;z-index:999;opacity:0;transform:translateY(20px);transition:opacity .3s,transform .3s,box-shadow .2s;box-shadow:0 4px 16px rgba(0,0,0,.3);text-decoration:none;color:white;}
 #back-to-top.show{opacity:1;transform:translateY(0);}
@@ -426,6 +428,7 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
 </head>
 <body>
 <div id="scroll-progress"></div>
+<div id="scroll-medal">🏅</div>
 <nav>
   <a href="index.html" class="nav-logo"><img src="CIELBLEU.png" alt="Ciel Bleu" height="20"></a>
   <ul class="nav-links">
@@ -854,14 +857,17 @@ function scrollGallery(dir){
   }
 })();
 
-// Barre de progression : la basket avance à mesure qu'on descend la page
+// Barre de progression : la basket avance, la médaille récompense la fin de page
 const progressBar=document.getElementById('scroll-progress');
+const medal=document.getElementById('scroll-medal');
 function updateProgress(){
   const start=document.getElementById('semaine').offsetTop;
   const maxScroll=document.documentElement.scrollHeight-window.innerHeight;
   const range=Math.max(maxScroll-start,1);
   const pct=Math.min(Math.max((window.scrollY-start)/range*100,0),100);
   progressBar.style.width=pct+'%';
+  if(pct>=99||window.scrollY>=maxScroll-4)medal.classList.add('visible');
+  else medal.classList.remove('visible');
 }
 window.addEventListener('scroll',updateProgress,{passive:true});
 window.addEventListener('resize',updateProgress,{passive:true});
