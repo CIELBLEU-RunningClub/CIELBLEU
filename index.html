@@ -282,7 +282,7 @@ footer{background:var(--navy-deep);padding:32px 60px;}
 
 /* ── HAMBURGER ── */
 .nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:8px;color:white;font-size:24px;line-height:1;}
-.nav-mobile{display:none;position:fixed;top:70px;left:0;right:0;background:rgba(11,29,48,0.98);z-index:99;padding:8px 20px 20px;list-style:none;border-bottom:1px solid rgba(182,205,224,0.1);backdrop-filter:blur(12px);}
+.nav-mobile{display:none;position:fixed;top:70px;left:0;right:0;bottom:0;background:rgba(11,29,48,0.98);z-index:99;padding:8px 20px calc(20px + env(safe-area-inset-bottom));list-style:none;backdrop-filter:blur(12px);overflow-y:auto;}
 .nav-mobile.open{display:flex;flex-direction:column;}
 .nav-mobile li a{display:block;font-size:13px;letter-spacing:2px;font-weight:600;color:rgba(255,255,255,0.7);text-decoration:none;text-transform:uppercase;padding:15px 0;border-bottom:1px solid rgba(182,205,224,0.08);}
 .nav-mobile li:last-child a{border:none;}
@@ -437,6 +437,7 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
     <li><a href="notre-equipe.html">L'équipe</a></li>
     <li><a href="nos-adherents.html">Nos adhérents</a></li>
     <li><a href="nos-partenaires.html">Nos partenaires</a></li>
+    <li><a href="nos-adherents.html#merch">Merch</a></li>
     <li><a href="#faq">FAQ</a></li>
   </ul>
   <a href="#adhesion" class="nav-cta">Devenir adhérent →</a>
@@ -448,6 +449,7 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
   <li><a href="notre-equipe.html" onclick="toggleNav()">L'équipe</a></li>
   <li><a href="nos-adherents.html" onclick="toggleNav()">Nos adhérents</a></li>
   <li><a href="nos-partenaires.html" onclick="toggleNav()">Nos partenaires</a></li>
+  <li><a href="nos-adherents.html#merch" onclick="toggleNav()">Merch</a></li>
   <li><a href="#faq" onclick="toggleNav()">FAQ</a></li>
   <li><a href="#adhesion" onclick="toggleNav()" style="color:var(--gold)!important;">→ Devenir adhérent</a></li>
 </ul>
