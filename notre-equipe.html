@@ -20,7 +20,7 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,700;1,700&family=Big+Shoulders+Display:wght@800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
 <style>
 :root{--navy:#122b44;--navy-deep:#0b1d30;--blue-steel:#6d879a;--blue-sky:#b6cde0;--blue-pale:#d5e0e4;--cream:#F6F9FC;--white:#FFFFFF;--mid:#5B738A;--gold:#E8B06B;}
 *{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
@@ -50,7 +50,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .page-hero-bg-img{position:absolute;top:0;right:0;width:58%;height:100%;object-fit:cover;object-position:center 30%;opacity:0.15;pointer-events:none;z-index:0;-webkit-mask-image:linear-gradient(to right,transparent 0%,black 55%),linear-gradient(to bottom,black 85%,transparent 100%);mask-image:linear-gradient(to right,transparent 0%,black 55%),linear-gradient(to bottom,black 85%,transparent 100%);-webkit-mask-composite:source-in;mask-composite:intersect;}
 @media(max-width:768px){.page-hero-bg-img{width:100%;opacity:0.1;-webkit-mask-image:linear-gradient(to bottom,black 30%,transparent 92%);mask-image:linear-gradient(to bottom,black 30%,transparent 92%);}}
 .page-hero-eyebrow{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:5px;color:var(--blue-sky);opacity:.8;margin-bottom:14px;position:relative;z-index:1;}
-.page-hero h1{font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:clamp(42px,7.2vw,88px);line-height:1.02;letter-spacing:-0.5px;color:white;position:relative;z-index:1;}
+.page-hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(44px,7.6vw,92px);line-height:1;letter-spacing:.5px;color:white;position:relative;z-index:1;}
 .page-hero h1 em{color:var(--blue-sky);font-style:normal;}
 .page-hero p{font-size:16px;color:rgba(255,255,255,.65);font-weight:300;max-width:560px;line-height:1.7;margin-top:18px;position:relative;z-index:1;}
 .page-hero-stats{display:flex;gap:40px;margin-top:38px;flex-wrap:wrap;position:relative;z-index:1;}
@@ -62,7 +62,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 section{padding:72px 60px;border-bottom:1px solid rgba(18,43,68,0.07);scroll-margin-top:112px;}
 section:nth-child(even){background:var(--white);}
 .s-label{font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:5px;color:var(--blue-steel);margin-bottom:12px;}
-.s-title{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,40px);font-weight:700;color:var(--navy);line-height:1.15;margin-bottom:8px;}
+.s-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(30px,4.3vw,44px);letter-spacing:.5px;color:var(--navy);line-height:1.1;margin-bottom:8px;}
 .s-intro{font-size:15px;color:var(--mid);max-width:620px;line-height:1.7;margin-bottom:40px;}
 
 /* ── CARTES ÉQUIPE ── */
@@ -73,7 +73,7 @@ section:nth-child(even){background:var(--white);}
 .card-front,.card-back{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:14px;padding:24px 16px 20px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;text-align:center;}
 .card-front{background:var(--white);border:1.5px solid rgba(18,43,68,.08);}
 .card-back{background:linear-gradient(150deg,var(--navy),var(--navy-deep));border:1.5px solid rgba(182,205,224,.15);transform:rotateY(180deg);justify-content:center;}
-.card-back-text{font-family:'Playfair Display',serif;font-style:italic;font-size:14px;color:var(--blue-sky);line-height:1.5;}
+.card-back-text{font-family:'Open Sans',sans-serif;font-style:italic;font-size:14px;color:var(--blue-sky);line-height:1.5;}
 .orga-photo{width:80px;height:80px;border-radius:50%;object-fit:cover;margin:0 auto 14px;display:block;}
 .orga-name{font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:1.5px;color:var(--navy);margin-bottom:4px;}
 .orga-role{font-size:11px;color:var(--blue-steel);text-transform:uppercase;letter-spacing:1.5px;font-weight:600;}
@@ -83,7 +83,7 @@ section:nth-child(even){background:var(--white);}
 /* ── NOTRE HISTOIRE ── */
 .premiere-wrap{background:linear-gradient(135deg,var(--navy-deep),var(--navy));border-radius:20px;padding:56px;color:white;position:relative;overflow:hidden;}
 .premiere-wrap::before{content:'';position:absolute;top:-40%;right:-10%;width:500px;height:500px;background:radial-gradient(circle,rgba(182,205,224,0.08) 0%,transparent 65%);border-radius:50%;}
-.histoire-quote{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(20px,2.6vw,26px);color:var(--blue-sky);line-height:1.55;max-width:760px;margin-bottom:18px;position:relative;z-index:1;}
+.histoire-quote{font-family:'Open Sans',sans-serif;font-style:italic;font-size:clamp(18px,2.2vw,22px);color:var(--blue-sky);line-height:1.55;max-width:760px;margin-bottom:18px;position:relative;z-index:1;}
 .histoire-suite{font-size:15px;color:rgba(255,255,255,.6);line-height:1.7;max-width:640px;position:relative;z-index:1;}
 @media(max-width:768px){.premiere-wrap{padding:32px 24px;}}
 /* ── EN IMAGES (carrousel équipe) ── */
@@ -187,9 +187,9 @@ footer{background:var(--navy-deep);padding:40px 60px;}
   <h1>UNE ÉQUIPE <em>ORGA</em><br>DE CHOC.</h1>
   <p>10 personnes bénévoles qui donnent de leur temps pour faire vivre le club. Du président à la comm', ils sont derrière chaque run, chaque événement, chaque café.</p>
   <div class="page-hero-stats">
-    <div class="phs"><span class="n">10</span><span class="l">Membres du bureau</span></div>
-    <div class="phs"><span class="n">124+</span><span class="l">Adhérents</span></div>
-    <div class="phs"><span class="n">3</span><span class="l">Séances par semaine</span></div>
+    <div class="phs"><span class="n" data-count="10">0</span><span class="l">Membres du bureau</span></div>
+    <div class="phs"><span class="n" data-count="124" data-suffix="+">0</span><span class="l">Adhérents</span></div>
+    <div class="phs"><span class="n" data-count="3">0</span><span class="l">Séances par semaine</span></div>
   </div>
 </header>
 
@@ -277,7 +277,7 @@ footer{background:var(--navy-deep);padding:40px 60px;}
       <a href="https://www.linkedin.com/company/le-ciel-est-bleu-running-club/" target="_blank">LinkedIn</a>
       <a href="mailto:contact.lcebrunning@gmail.com">Contact</a>
     </div>
-    <span class="footer-copy">© 2026 Ciel Bleu · Paris</span>
+    <span class="footer-copy">© 2026 Ciel Bleu · Paris · <a href="mentions-legales.html" style="color:inherit;">Mentions légales</a></span>
   </div>
 </footer>
 
@@ -296,6 +296,27 @@ document.addEventListener('click',e=>{const m=document.getElementById('navMobile
 
 const obs=new IntersectionObserver(e=>e.forEach(i=>{if(i.isIntersecting){i.target.classList.add('visible');obs.unobserve(i.target);}}),{threshold:0.12,rootMargin:'0px 0px -8% 0px'});
 document.querySelectorAll('.reveal,.reveal-children').forEach(el=>obs.observe(el));
+
+// Compteurs animés
+(function(){
+  function animate(el){
+    const target=parseInt(el.dataset.count,10);
+    const suffix=el.dataset.suffix||'';
+    const duration=700;
+    const start=performance.now();
+    function step(now){
+      const p=Math.min((now-start)/duration,1);
+      const eased=1-Math.pow(1-p,3);
+      el.textContent=Math.round(target*eased)+suffix;
+      if(p<1)requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  const cObs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){animate(e.target);cObs.unobserve(e.target);}});
+  },{threshold:0.6});
+  document.querySelectorAll('[data-count]').forEach(el=>cObs.observe(el));
+})();
 
 window.addEventListener('scroll',()=>{
   document.getElementById('back-to-top').classList.toggle('show',window.scrollY>400);

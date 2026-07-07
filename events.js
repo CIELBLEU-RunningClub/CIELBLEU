@@ -52,7 +52,7 @@ sessionTpl.forEach(tpl=>{
       const id='s'+(uid++);
       const ds=dtFmt(YEAR,m,d,timeToHMS(tpl.time));
       const de=dtFmt(YEAR,m,d,addMinutes(tpl.time,tpl.dur));
-      const ev={id,y:YEAR,m,d,date,title:tpl.title,color:tpl.color,tags:[tpl.tag],desc:tpl.desc,details:[['Horaire',tpl.time],...tpl.details],dtStart:ds,dtEnd:de,location:tpl.location,session:true,wd:tpl.wd,dateStr:d+' '+MONTHS[m]+' '+YEAR};
+      const ev={id,y:YEAR,m,d,date,title:tpl.title,color:tpl.color,tags:[tpl.tag],desc:tpl.desc,details:[['Horaire',tpl.time],...tpl.details],dtStart:ds,dtEnd:de,location:tpl.location,session:true,wd:tpl.wd,dateStr:d+' '+MONTHS[m]+' '+YEAR,time:tpl.time};
       EVENTS_BY_ID[id]=ev;allEvents.push(ev);
     }
   }
@@ -63,7 +63,7 @@ specials.forEach(s=>{
   const id='e'+(uid++);
   const ds=dtFmt(s.y,s.m,s.d,timeToHMS(s.time));
   const de=dtFmt(s.y,s.m,s.d,addMinutes(s.time,s.dur));
-  const ev={id,y:s.y,m:s.m,d:s.d,date:new Date(s.y,s.m,s.d),title:s.title,color:'#E8B06B',tags:s.tags,desc:s.desc,details:s.details,dtStart:ds,dtEnd:de,location:s.location,session:false,dateStr:s.d+' '+MONTHS[s.m]+' '+s.y};
+  const ev={id,y:s.y,m:s.m,d:s.d,date:new Date(s.y,s.m,s.d),title:s.title,color:'#E8B06B',tags:s.tags,desc:s.desc,details:s.details,dtStart:ds,dtEnd:de,location:s.location,session:false,dateStr:s.d+' '+MONTHS[s.m]+' '+s.y,time:s.time};
   EVENTS_BY_ID[id]=ev;allEvents.push(ev);
 });
 allEvents.sort((a,b)=>a.date-b.date);
