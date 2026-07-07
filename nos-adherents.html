@@ -390,11 +390,11 @@ function grad(i){const l1=48+((i*13)%22);const l2=26+((i*11)%16);const h=200+((i
 (function(){
   // Le nombre d'adhérents vient de membres.js, pas d'une valeur en dur
   const heroCount=document.querySelector('.page-hero-stats [data-count]');
-  if(heroCount&&typeof MEMBRES!=="undefined")heroCount.dataset.count=MEMBRES.length;
+  if(heroCount&&typeof MEMBRES!=="undefined"){heroCount.dataset.count=MEMBRES.length;delete heroCount.dataset.suffix;} // chiffre exact : pas de « + »
   function animate(el){
     const target=parseInt(el.dataset.count,10);
     const suffix=el.dataset.suffix||'';
-    const duration=700;
+    const duration=2000;
     const start=performance.now();
     function step(now){
       const p=Math.min((now-start)/duration,1);

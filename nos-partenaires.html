@@ -375,7 +375,7 @@ document.querySelectorAll('.reveal,.reveal-children').forEach(el=>obs.observe(el
   function animate(el){
     const target=parseInt(el.dataset.count,10);
     const suffix=el.dataset.suffix||'';
-    const duration=700;
+    const duration=2000;
     const start=performance.now();
     function step(now){
       const p=Math.min((now-start)/duration,1);
