@@ -735,7 +735,7 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
   function animate(el){
     const target=parseInt(el.dataset.count,10);
     const suffix=el.dataset.suffix||'';
-    const duration=700;
+    const duration=2000;
     const start=performance.now();
     function step(now){
       const p=Math.min((now-start)/duration,1);
