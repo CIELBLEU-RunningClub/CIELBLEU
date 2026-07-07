@@ -77,16 +77,17 @@ section:nth-child(even){background:var(--white);}
 .orga-photo{width:80px;height:80px;border-radius:50%;object-fit:cover;margin:0 auto 14px;display:block;}
 .orga-name{font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:1.5px;color:var(--navy);margin-bottom:4px;}
 .orga-role{font-size:11px;color:var(--blue-steel);text-transform:uppercase;letter-spacing:1.5px;font-weight:600;}
-}@media(max-width:768px){.orga-role{font-size:9px;letter-spacing:0.5px;
+@media(max-width:768px){.orga-role{font-size:9px;letter-spacing:0.5px;}}
 .orga-section-label{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:4px;color:var(--blue-steel);margin-bottom:18px;display:flex;align-items:center;gap:14px;}
 .orga-section-label::after{content:'';flex:1;height:1px;background:rgba(18,43,68,.1);}
 
 /* ── NOTRE HISTOIRE ── */
-.premiere-wrap{background:linear-gradient(135deg,var(--navy-deep),var(--navy));border-radius:20px;padding:56px;color:white;position:relative;overflow:hidden;}
+.premiere-wrap{background:linear-gradient(135deg,var(--navy-deep),var(--navy));border:1.5px solid rgba(182,205,224,.15);border-radius:20px;padding:56px;color:white;position:relative;overflow:hidden;}
 .premiere-wrap::before{content:'';position:absolute;top:-40%;right:-10%;width:500px;height:500px;background:radial-gradient(circle,rgba(182,205,224,0.08) 0%,transparent 65%);border-radius:50%;}
-.histoire-quote{font-family:'Open Sans',sans-serif;font-style:italic;font-size:clamp(18px,2.2vw,22px);color:var(--blue-sky);line-height:1.55;max-width:760px;margin-bottom:18px;position:relative;z-index:1;}
-.histoire-suite{font-size:15px;color:rgba(255,255,255,.6);line-height:1.7;max-width:640px;position:relative;z-index:1;}
-@media(max-width:768px){.premiere-wrap{padding:32px 24px;}}
+.premiere-wrap::after{content:'“';position:absolute;top:-30px;right:28px;font-family:'Bebas Neue',sans-serif;font-size:220px;line-height:1;color:rgba(182,205,224,.1);pointer-events:none;}
+.histoire-quote{font-family:'Open Sans',sans-serif;font-style:italic;font-size:clamp(18px,2.2vw,22px);color:var(--blue-sky);line-height:1.55;max-width:760px;margin-bottom:18px;position:relative;z-index:1;border-left:3px solid var(--gold);padding-left:22px;}
+.histoire-suite{font-size:15px;color:rgba(255,255,255,.6);line-height:1.7;max-width:640px;position:relative;z-index:1;padding-left:25px;}
+@media(max-width:768px){.premiere-wrap{padding:32px 24px;}.premiere-wrap::after{font-size:140px;top:-20px;right:16px;}.histoire-quote{padding-left:16px;}.histoire-suite{padding-left:19px;}}
 /* ── EN IMAGES (carrousel équipe) ── */
 .amedia-track{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding-bottom:8px;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
 .amedia-track::-webkit-scrollbar{display:none;}
@@ -189,7 +190,7 @@ footer{background:var(--navy-deep);padding:40px 60px;}
   <p>10 personnes bénévoles qui donnent de leur temps pour faire vivre le club. Du président à la comm', ils sont derrière chaque run, chaque événement, chaque café.</p>
   <div class="page-hero-stats">
     <div class="phs"><span class="n" data-count="10">0</span><span class="l">Membres du bureau</span></div>
-    <div class="phs"><span class="n" data-count="124" data-suffix="+">0</span><span class="l">Adhérents</span></div>
+    <div class="phs"><span class="n" id="countAdherents" data-count="124">0</span><span class="l">Adhérents</span></div>
     <div class="phs"><span class="n" data-count="3">0</span><span class="l">Séances par semaine</span></div>
   </div>
 </header>
@@ -284,6 +285,7 @@ footer{background:var(--navy-deep);padding:40px 60px;}
 
 <a id="back-to-top" href="#" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'});" aria-label="Retour en haut">↑</a>
 
+<script src="membres.js?v=999"></script>
 <script>
 function toggleNav(){document.getElementById('navMobile').classList.toggle('open');}
 document.addEventListener('click',e=>{const m=document.getElementById('navMobile');if(m.classList.contains('open')&&!m.contains(e.target)&&!e.target.closest('.nav-hamburger'))m.classList.remove('open');});
@@ -300,6 +302,9 @@ document.querySelectorAll('.reveal,.reveal-children').forEach(el=>obs.observe(el
 
 // Compteurs animés
 (function(){
+  // Le nombre d'adhérents vient de membres.js : chiffre exact, sans « + »
+  const ca=document.getElementById('countAdherents');
+  if(ca&&typeof MEMBRES!=="undefined")ca.dataset.count=MEMBRES.length;
   function animate(el){
     const target=parseInt(el.dataset.count,10);
     const suffix=el.dataset.suffix||'';
