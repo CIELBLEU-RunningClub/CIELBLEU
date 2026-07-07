@@ -386,6 +386,30 @@ function grad(i){const l1=48+((i*13)%22);const l2=26+((i*11)%16);const h=200+((i
   renderTrombi();
 })();
 
+/* ===== COMPTEURS ANIMÉS (hero) ===== */
+(function(){
+  // Le nombre d'adhérents vient de membres.js, pas d'une valeur en dur
+  const heroCount=document.querySelector('.page-hero-stats [data-count]');
+  if(heroCount&&typeof MEMBRES!=="undefined")heroCount.dataset.count=MEMBRES.length;
+  function animate(el){
+    const target=parseInt(el.dataset.count,10);
+    const suffix=el.dataset.suffix||'';
+    const duration=700;
+    const start=performance.now();
+    function step(now){
+      const p=Math.min((now-start)/duration,1);
+      const eased=1-Math.pow(1-p,3);
+      el.textContent=Math.round(target*eased)+suffix;
+      if(p<1)requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  const cObs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){animate(e.target);cObs.unobserve(e.target);}});
+  },{threshold:0.6});
+  document.querySelectorAll('[data-count]').forEach(el=>cObs.observe(el));
+})();
+
 /* ===== EXPLOITS & FIERTÉS ===== */
 /* Des accomplissements personnels, pas un classement — le temps n'est qu'un détail secondaire. */
 const EXPLOIT_CATS={
