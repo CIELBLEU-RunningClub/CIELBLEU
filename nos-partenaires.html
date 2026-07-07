@@ -20,7 +20,7 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,700;1,700&family=Big+Shoulders+Display:wght@800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
 <style>
 :root{--navy:#122b44;--navy-deep:#0b1d30;--blue-steel:#6d879a;--blue-sky:#b6cde0;--blue-pale:#d5e0e4;--cream:#F6F9FC;--white:#FFFFFF;--mid:#5B738A;--gold:#E8B06B;}
 *{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
@@ -48,7 +48,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .page-hero{min-height:62vh;background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy) 60%,#1a3d5c 100%);display:flex;flex-direction:column;justify-content:center;padding:150px 60px 70px;position:relative;overflow:hidden;}
 .page-hero::before{content:'';position:absolute;top:-20%;right:-5%;width:600px;height:600px;background:radial-gradient(circle,rgba(182,205,224,0.12) 0%,transparent 65%);border-radius:50%;}
 .page-hero-eyebrow{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:5px;color:var(--blue-sky);opacity:.8;margin-bottom:14px;position:relative;z-index:1;}
-.page-hero h1{font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:clamp(42px,7.2vw,88px);line-height:1.02;letter-spacing:-0.5px;color:white;position:relative;z-index:1;}
+.page-hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(44px,7.6vw,92px);line-height:1;letter-spacing:.5px;color:white;position:relative;z-index:1;}
 .page-hero h1 em{color:var(--blue-sky);font-style:normal;}
 .page-hero p{font-size:16px;color:rgba(255,255,255,.65);font-weight:300;max-width:560px;line-height:1.7;margin-top:18px;position:relative;z-index:1;}
 .page-hero-stats{display:flex;gap:40px;margin-top:38px;flex-wrap:wrap;position:relative;z-index:1;}
@@ -60,7 +60,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 section{padding:72px 60px;border-bottom:1px solid rgba(18,43,68,0.07);scroll-margin-top:112px;}
 section:nth-child(even){background:var(--white);}
 .s-label{font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:5px;color:var(--blue-steel);margin-bottom:12px;}
-.s-title{font-family:'Playfair Display',serif;font-size:clamp(30px,4.5vw,44px);font-weight:700;color:var(--navy);line-height:1.15;margin-bottom:14px;}
+.s-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(32px,4.8vw,48px);letter-spacing:.5px;color:var(--navy);line-height:1.1;margin-bottom:14px;}
 .s-intro{font-size:15px;color:var(--mid);max-width:620px;line-height:1.7;margin-bottom:40px;}
 
 /* ── LOGOS ── */
@@ -71,7 +71,7 @@ section:nth-child(even){background:var(--white);}
 
 /* ── PITCH ── */
 .partners-pitch{margin:8px 0 30px;}
-.partners-pitch-title{font-family:'Playfair Display',serif;font-size:clamp(24px,3.5vw,34px);font-weight:700;color:var(--navy);line-height:1.2;margin-bottom:14px;}
+.partners-pitch-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(26px,3.8vw,36px);letter-spacing:.5px;color:var(--navy);line-height:1.1;margin-bottom:14px;}
 .partners-pitch-title em{font-style:italic;color:var(--blue-steel);}
 .partners-pitch p{font-size:15px;color:var(--mid);max-width:660px;line-height:1.75;margin-bottom:26px;}
 .partners-audience{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
@@ -106,7 +106,7 @@ section:nth-child(even){background:var(--white);}
 /* ── CTA ── */
 .partners-cred{font-size:14px;color:var(--mid);line-height:1.75;max-width:700px;margin-bottom:36px;}
 .partners-cta-box{background:linear-gradient(135deg,var(--navy-deep),var(--navy));border-radius:16px;padding:32px 36px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
-.partners-cta-box h3{font-family:'Playfair Display',serif;font-size:22px;color:white;}
+.partners-cta-box h3{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:.5px;color:white;}
 .partners-cta-box h3 em{color:var(--gold);font-style:italic;}
 .partners-cta-box p{font-size:14px;color:rgba(255,255,255,.55);margin-top:6px;line-height:1.6;}
 .partners-cta-btn{background:var(--gold);color:var(--navy-deep);font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:2px;padding:14px 28px;border-radius:4px;text-decoration:none;white-space:nowrap;transition:background .2s;flex-shrink:0;}
@@ -228,9 +228,9 @@ footer{background:var(--navy-deep);padding:40px 60px;}
   <h1>NOS <em>PARTENAIRES</em></h1>
   <p>Des marques qui partagent nos valeurs et nous font confiance pour activer une communauté engagée au cœur de Paris.</p>
   <div class="page-hero-stats">
-    <div class="phs"><span class="n">6</span><span class="l">Partenaires actifs</span></div>
-    <div class="phs"><span class="n">124+</span><span class="l">Coureurs à activer</span></div>
-    <div class="phs"><span class="n">380K+</span><span class="l">Vues / 90 jours</span></div>
+    <div class="phs"><span class="n" data-count="6">0</span><span class="l">Partenaires actifs</span></div>
+    <div class="phs"><span class="n" data-count="124" data-suffix="+">0</span><span class="l">Coureurs à activer</span></div>
+    <div class="phs"><span class="n" data-count="500" data-suffix="K+">0</span><span class="l">Vues au total</span></div>
   </div>
 </header>
 
@@ -267,14 +267,14 @@ footer{background:var(--navy-deep);padding:40px 60px;}
 <!-- COMMUNAUTÉ -->
 <section id="communaute">
   <div class="s-label">02 — L'audience</div>
-  <h2 class="s-title">124 coureurs,<br>380 000 vues.</h2>
+  <h2 class="s-title">124 coureurs,<br>500 000 vues.</h2>
   <div class="partners-pitch reveal">
     <p>Marque, média ou organisateur de course ? Ciel Bleu, c'est une communauté engagée de 124+ coureurs à Paris : jeunes actifs urbains, CSP+, <strong style="color:var(--navy)">27 ans</strong> de moyenne d'âge et une <strong style="color:var(--navy)">parité parfaite</strong>. Une audience prescriptrice — et du contenu qui performe vraiment sur Instagram, Strava et TikTok.</p>
     <div class="partners-audience">
-      <div class="pa-tile"><div class="n">3 200</div><div class="l">Abonnés Instagram</div></div>
-      <div class="pa-tile"><div class="n">2 200</div><div class="l">Abonnés Strava</div></div>
-      <div class="pa-tile"><div class="n">1 100</div><div class="l">Abonnés TikTok</div></div>
-      <div class="pa-tile"><div class="n">380K+</div><div class="l">Vues sur 90 jours</div></div>
+      <div class="pa-tile"><div class="n" data-count="3200" data-format="space">0</div><div class="l">Abonnés Instagram</div></div>
+      <div class="pa-tile"><div class="n" data-count="2200" data-format="space">0</div><div class="l">Abonnés Strava</div></div>
+      <div class="pa-tile"><div class="n" data-count="1100" data-format="space">0</div><div class="l">Abonnés TikTok</div></div>
+      <div class="pa-tile"><div class="n" data-count="500" data-suffix="K+">0</div><div class="l">Vues au total</div></div>
     </div>
   </div>
   <div class="partners-offer-title">Des contenus qui performent</div>
@@ -357,7 +357,7 @@ footer{background:var(--navy-deep);padding:40px 60px;}
       <a href="https://www.linkedin.com/company/le-ciel-est-bleu-running-club/" target="_blank">LinkedIn</a>
       <a href="mailto:contact.lcebrunning@gmail.com">Contact</a>
     </div>
-    <span class="footer-copy">© 2026 Ciel Bleu · Paris</span>
+    <span class="footer-copy">© 2026 Ciel Bleu · Paris · <a href="mentions-legales.html" style="color:inherit;">Mentions légales</a></span>
   </div>
 </footer>
 
@@ -369,6 +369,29 @@ document.addEventListener('click',e=>{const m=document.getElementById('navMobile
 
 const obs=new IntersectionObserver(e=>e.forEach(i=>{if(i.isIntersecting){i.target.classList.add('visible');obs.unobserve(i.target);}}),{threshold:0.12,rootMargin:'0px 0px -8% 0px'});
 document.querySelectorAll('.reveal,.reveal-children').forEach(el=>obs.observe(el));
+
+// Compteurs animés
+(function(){
+  function animate(el){
+    const target=parseInt(el.dataset.count,10);
+    const suffix=el.dataset.suffix||'';
+    const duration=700;
+    const start=performance.now();
+    function step(now){
+      const p=Math.min((now-start)/duration,1);
+      const eased=1-Math.pow(1-p,3);
+      let val=Math.round(target*eased);
+      const txt=el.dataset.format==='space'?val.toLocaleString('fr-FR').replace(/ |,/g,' '):val;
+      el.textContent=txt+suffix;
+      if(p<1)requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  const cObs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){animate(e.target);cObs.unobserve(e.target);}});
+  },{threshold:0.6});
+  document.querySelectorAll('[data-count]').forEach(el=>cObs.observe(el));
+})();
 
 // ===== MÉDIAS PARTENAIRES =====
 (function(){
