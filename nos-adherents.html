@@ -340,9 +340,9 @@ function grad(i){const l1=48+((i*13)%22);const l2=26+((i*11)%16);const h=200+((i
 
 
 /* ===== TROMBINOSCOPE ===== */
-(function(){
+(function initTrombi(){
   const grid=document.getElementById('trombiGrid');if(!grid)return;
-  if(typeof MEMBRES==='undefined')return; // si membres.js ne charge pas, on n'entraîne pas le reste
+  if(typeof MEMBRES==='undefined'){setTimeout(initTrombi,50);return;} // attendre que membres.js charge
   const PAGE=20;
   let expanded=false;
   function cardHTML(m,i){
