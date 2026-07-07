@@ -4,8 +4,9 @@
     {
       "name": "site",
       "runtimeExecutable": "python3",
-      "runtimeArgs": ["/private/tmp/claude-501/-Users-julianazzareno-Documents-CIEL-BLEU-CIELBLEU-website/eb175aa1-07a1-4f2c-9319-72704f806abd/scratchpad/serve.py"],
-      "port": 8742
+      "runtimeArgs": ["/private/tmp/claude-501/-Users-julianazzareno-Documents-CIEL-BLEU-CIELBLEU-website/5366740f-a057-4ce9-95f2-bf69aca3ddfc/scratchpad/serve.py"],
+      "port": 8000,
+      "autoPort": true
     }
   ]
 }
