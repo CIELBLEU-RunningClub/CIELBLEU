@@ -104,10 +104,10 @@ section:nth-child(even){background:var(--white);}
 .ev-filter-btn.past{opacity:.4;}
 @media(max-width:600px){.ev-filter-grid{grid-template-columns:repeat(3,1fr);}}
 .ev-empty{text-align:center;color:var(--mid);padding:40px 20px;font-size:14px;}
-.ev-summer-break{text-align:center;padding:60px 40px;color:var(--mid);margin:40px 0;}
-.ev-summer-break-emoji{font-size:72px;margin:20px 0;}
-.ev-summer-break-text{font-size:18px;color:var(--navy);font-weight:600;margin:10px 0;}
-.ev-summer-break-sub{font-size:14px;color:var(--blue-steel);margin-top:8px;}
+.ev-summer-break{text-align:center;padding:48px 40px 56px;color:var(--mid);margin:36px 0 8px;border-top:1px solid rgba(18,43,68,.08);}
+.ev-summer-break-illus{width:200px;height:auto;display:block;margin:0 auto 14px;}
+.ev-summer-break-text{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:2px;color:var(--navy);margin:6px 0 8px;}
+.ev-summer-break-sub{font-size:14px;color:var(--blue-steel);max-width:420px;margin:0 auto;line-height:1.6;}
 /* Filtre par type (séances / spéciaux) */
 .ev-typefilter{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px;}
 .ev-type-btn{display:inline-flex;align-items:center;gap:9px;font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;color:var(--mid);background:var(--white);border:1.5px solid rgba(18,43,68,.12);border-radius:30px;padding:10px 20px;cursor:pointer;transition:all .2s;}
@@ -377,9 +377,31 @@ function renderEvents(){
   // Pause estivale : affichée en bas de la vue de juillet (le club se met en pause après le KM Bleu TDF)
   if(activeMonth===6){
     html+=`<div class="ev-summer-break">
-      <div class="ev-summer-break-emoji">☀️🏖️</div>
+      <svg class="ev-summer-break-illus" viewBox="0 0 260 210" role="img" aria-label="Une basket de running posée sur une plage">
+        <defs>
+          <clipPath id="sbClip"><circle cx="130" cy="88" r="82"/></clipPath>
+          <linearGradient id="sbSea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b6cde0"/><stop offset="1" stop-color="#6d879a"/></linearGradient>
+        </defs>
+        <circle cx="130" cy="88" r="82" fill="#e5eef7"/>
+        <g clip-path="url(#sbClip)">
+          <circle cx="96" cy="50" r="30" fill="#f0d7b0" opacity=".55"/>
+          <circle cx="96" cy="50" r="16" fill="#E8B06B"/>
+          <rect x="48" y="90" width="164" height="30" fill="url(#sbSea)"/>
+          <path d="M48 100 q13 -6 26 0 t26 0 t26 0 t26 0 t26 0 t26 0" fill="none" stroke="#eaf1f8" stroke-width="2" opacity=".6"/>
+          <path d="M48 120 h164 v50 h-164 Z" fill="#efe7d6"/>
+          <path d="M182 118 C181 100 183 84 186 74" stroke="#4d6577" stroke-width="4" fill="none" stroke-linecap="round"/>
+          <g fill="#5f8a76"><path d="M186 74 C176 66 164 66 156 72 C168 70 178 72 186 78 Z"/><path d="M186 74 C196 66 208 68 214 76 C204 72 194 73 186 79 Z"/><path d="M186 74 C182 62 184 52 190 46 C188 56 188 66 189 76 Z"/></g>
+        </g>
+        <ellipse cx="120" cy="165" rx="64" ry="7" fill="#122b44" opacity=".08"/>
+        <path d="M52 150 C45 150 43 161 55 162 L188 162 C207 162 216 150 203 144 C196 141 140 140 110 141 C80 142 60 144 55 145 C52 146 52 148 52 150 Z" fill="#d5e0e4"/>
+        <path d="M55 156 C48 156 46 163 57 163 L188 163 C204 163 212 155 203 152 L59 152 C56 152 55 154 55 156 Z" fill="#122b44"/>
+        <path d="M60 145 C53 139 54 120 66 115 L82 110 C86 101 96 101 100 110 L104 111 C134 111 172 120 192 139 C196 142 194 145 190 145 Z" fill="#6d879a"/>
+        <path d="M82 110 C86 101 96 101 100 110 C98 116 90 118 84 116 Z" fill="#3f5568"/>
+        <path d="M92 140 C118 128 152 128 184 139" stroke="#E8B06B" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+        <g stroke="#eef4f9" stroke-width="2.4" stroke-linecap="round"><path d="M104 116 l12 4"/><path d="M110 112 l12 4"/><path d="M116 109 l12 4"/></g>
+      </svg>
       <div class="ev-summer-break-text">Pause estivale</div>
-      <div class="ev-summer-break-sub">Le club se repose après le 26 juillet · Rendez-vous le 30 août pour le run collectif de rentrée !</div>
+      <div class="ev-summer-break-sub">Le club se repose après le KM Bleu TDF du 26 juillet · Rendez-vous le 30 août pour le run collectif de rentrée !</div>
     </div>`;
   }
   cont.innerHTML=html||'<div class="ev-empty">Aucun événement pour ce filtre.</div>';
