@@ -164,5 +164,6 @@ function toggleNav(){document.getElementById('navMobile').classList.toggle('open
 document.addEventListener('click',e=>{const m=document.getElementById('navMobile');if(m.classList.contains('open')&&!m.contains(e.target)&&!e.target.closest('.nav-hamburger'))m.classList.remove('open');});
 window.addEventListener('scroll',()=>{document.getElementById('back-to-top').classList.toggle('show',window.scrollY>400);});
 </script>
+<script src="scroll-shoe.js?v=1"></script>
 </body>
 </html>
