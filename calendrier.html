@@ -374,12 +374,13 @@ function renderEvents(){
       <div class="ev-grid">${evs.map(evCardHTML).join('')}</div>
     </div>`;
   });
-  // Affiche pause estivale entre juillet (6) et août (7) si pas d'événements en août
-  if((activeMonth==='all'||activeMonth===6)&&monthsWith.includes(6)&&!allEvents.filter(e=>e.m===7&&matchType(e)&&matchDay(e)).length){
+  // Affiche pause estivale entre juillet (6) et août (7) si pas d'événements filtrés en août
+  const augEvents=allEvents.filter(e=>e.m===7&&matchType(e)&&matchDay(e));
+  if((activeMonth==='all'||activeMonth===6)&&monthsWith.includes(6)&&!augEvents.length){
     html+=`<div class="ev-summer-break">
       <div class="ev-summer-break-emoji">☀️🏖️</div>
       <div class="ev-summer-break-text">Pause estivale</div>
-      <div class="ev-summer-break-sub">Aucun événement jusqu'au 30 août. On se repose avant la rentrée !</div>
+      <div class="ev-summer-break-sub">Aucun événement avant le 30 août · On se repose avant la rentrée !</div>
     </div>`;
   }
   cont.innerHTML=html||'<div class="ev-empty">Aucun événement pour ce filtre.</div>';

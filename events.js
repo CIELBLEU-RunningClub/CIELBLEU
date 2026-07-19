@@ -38,6 +38,7 @@ const EVENTS_BY_ID={};
 let allEvents=[];let uid=0;
 // Dates occupées par un événement spécial (pour éviter les doublons avec les séances)
 const specialDays=new Set(specials.map(s=>s.m+'-'+s.d));
+specialDays.add('6-29'); // Pas de run le 29 juillet
 // séances
 sessionTpl.forEach(tpl=>{
   let occ=0;
