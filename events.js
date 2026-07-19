@@ -38,7 +38,8 @@ const EVENTS_BY_ID={};
 let allEvents=[];let uid=0;
 // Dates occupées par un événement spécial (pour éviter les doublons avec les séances)
 const specialDays=new Set(specials.map(s=>s.m+'-'+s.d));
-specialDays.add('6-29'); // Pas de run le 29 juillet
+// Séances annulées : pause estivale à partir du 27 juillet, aucun run jusqu'au 30 août
+['6-19','6-20','6-27','6-28','6-29','6-30','6-31'].forEach(k=>specialDays.add(k));
 // séances
 sessionTpl.forEach(tpl=>{
   let occ=0;

@@ -166,6 +166,25 @@ section:nth-child(even){background:var(--white);}
   .mb-text h3{font-size:24px;}
   .mb-product{width:100%;min-width:unset;}
 }
+/* ── ADHÉSION ── */
+.adhesion-block{background:var(--navy);border-radius:20px;padding:36px 40px;display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center;}
+.ab-text h3{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:.5px;color:white;margin-bottom:12px;}
+.ab-text h3 em{color:var(--gold);font-style:italic;}
+.ab-perks-box{background:rgba(182,205,224,.07);border:1px solid rgba(182,205,224,.15);border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:16px;}
+.ab-perks-title{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:3px;color:var(--blue-sky);margin-bottom:12px;}
+.ab-perks{list-style:none;}
+.ab-perks li{font-size:13px;color:rgba(255,255,255,.65);padding:7px 0;border-bottom:1px solid rgba(182,205,224,.08);display:flex;align-items:center;gap:10px;}
+.ab-perks li:last-child{border:none;}
+.ab-perks li::before{content:"✓";color:var(--blue-sky);font-weight:700;font-size:14px;}
+.ab-price-tiers{display:flex;flex-direction:column;}
+.ab-price-row{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid rgba(182,205,224,.08);}
+.ab-price-row:last-child{border:none;}
+.ab-price-period{font-size:12px;color:rgba(255,255,255,.6);line-height:1.4;}
+.ab-price-amount{font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--gold);letter-spacing:1px;flex-shrink:0;}
+@media(max-width:768px){
+  .adhesion-block{grid-template-columns:1fr;padding:24px 20px;gap:24px;border-radius:14px;}
+  .ab-text h3{font-size:22px;}
+}
 /* ── FOOTER ── */
 footer{background:var(--navy-deep);padding:40px 60px;}
 .footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;}
