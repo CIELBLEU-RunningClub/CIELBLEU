@@ -1,4 +1,4 @@
-// Le trombinoscope des adhérents — une ligne par membre.
+// Le trombinoscope des adhérents : une ligne par membre.
 // Pour ajouter un headshot : photo:'membres/prenom.jpg' (les initiales s'affichent sinon).
 const MEMBRES=[
   {nom:'Adrien', citation:'Le club a changé mon rapport à la course.', photo:''},
