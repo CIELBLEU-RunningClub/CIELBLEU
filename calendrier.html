@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0b1d30">
 <title>Calendrier de la saison · Le Ciel Est Bleu Running Club Paris</title>
-<meta name="description" content="Toutes les dates du Ciel Bleu Running Club à Paris : Social Run du dimanche, séances piste et quais, événements avec les marques. Ajoutez-les à votre agenda.">
+<meta name="description" content="Toutes les dates du CIELBLEU Running Club à Paris : Social Run du dimanche, séances piste et quais, événements avec les marques. Ajoutez-les à votre agenda.">
 <!-- Canonical : à remplacer par le nom de domaine définitif quand il sera acheté -->
 <link rel="canonical" href="https://cielbleu-runningclub.github.io/CIELBLEU/calendrier.html">
 <meta property="og:type" content="website">
@@ -232,7 +232,7 @@ footer{background:var(--navy-deep);padding:40px 60px;}
 <body>
 
 <nav>
-  <a href="index.html" class="nav-logo"><img src="CIELBLEU.png" alt="Ciel Bleu" height="20"></a>
+  <a href="index.html" class="nav-logo"><img src="CIELBLEU.png" alt="CIELBLEU" height="20"></a>
   <ul class="nav-links">
     <li><a href="index.html#semaine">Le club</a></li>
     <li><a href="calendrier.html" class="active">Calendrier</a></li>
@@ -308,7 +308,7 @@ footer{background:var(--navy-deep);padding:40px 60px;}
       <a href="https://www.linkedin.com/company/le-ciel-est-bleu-running-club/" target="_blank">LinkedIn</a>
       <a href="mailto:contact.lcebrunning@gmail.com">Contact</a>
     </div>
-    <span class="footer-copy">© 2026 Ciel Bleu · Paris · <a href="mentions-legales.html" style="color:inherit;display:none;">Mentions légales</a></span>
+    <span class="footer-copy">© 2026 CIELBLEU · Paris · <a href="mentions-legales.html" style="color:inherit;display:none;">Mentions légales</a></span>
   </div>
 </footer>
 
@@ -463,7 +463,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
 function shareEvent(){
   if(!currentEventId)return;
   const ev=EVENTS_BY_ID[currentEventId];
-  const text=`${ev.title} · ${ev.dateStr}\n📍 ${ev.location||'Paris'}\nAvec le Ciel Bleu Running Club`;
+  const text=`${ev.title} · ${ev.dateStr}\n📍 ${ev.location||'Paris'}\nAvec le CIELBLEU Running Club`;
   const url='https://cielbleu-runningclub.github.io/CIELBLEU/calendrier.html';
   if(navigator.share){
     navigator.share({title:ev.title,text,url}).catch(()=>{});
@@ -480,7 +480,7 @@ function downloadICS(){
   const ev=EVENTS_BY_ID[currentEventId];
   const desc=ev.desc.replace(/,/g,'\\,').replace(/\n/g,'\\n');
   const loc=(ev.location||'').replace(/,/g,'\\,');
-  const ics=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Ciel Bleu Running//FR','CALSCALE:GREGORIAN','METHOD:PUBLISH','BEGIN:VEVENT','UID:'+ev.id+'@cielbleu.run','DTSTART:'+ev.dtStart,'DTEND:'+ev.dtEnd,'SUMMARY:'+ev.title+' · Ciel Bleu Running','DESCRIPTION:'+desc,'LOCATION:'+loc,'END:VEVENT','END:VCALENDAR'].join('\r\n');
+  const ics=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//CIELBLEU Running//FR','CALSCALE:GREGORIAN','METHOD:PUBLISH','BEGIN:VEVENT','UID:'+ev.id+'@cielbleu.run','DTSTART:'+ev.dtStart,'DTEND:'+ev.dtEnd,'SUMMARY:'+ev.title+' · Ciel Bleu Running','DESCRIPTION:'+desc,'LOCATION:'+loc,'END:VEVENT','END:VCALENDAR'].join('\r\n');
   const blob=new Blob([ics],{type:'text/calendar;charset=utf-8'});
   const url=URL.createObjectURL(blob);
   const a=document.createElement('a');a.href=url;a.download=ev.title.replace(/[^a-z0-9]/gi,'_').toLowerCase()+'.ics';
