@@ -274,7 +274,7 @@ footer{background:var(--navy-deep);padding:40px 60px;}
 (function(){
   const wrap=document.getElementById('amediaTrack');if(!wrap)return;
   const photos=['commu-equipe-13.jpg','commu-equipe-14.jpg','commu-equipe-15.jpg','commu-equipe-16.jpg','commu-equipe-17.jpg','commu-equipe-18.jpg'];
-  wrap.innerHTML=photos.map(src=>`<div class="amedia-tile"><img src="${src}" alt="L'équipe Ciel Bleu" class="amedia-tile-img" loading="lazy" decoding="async"></div>`).join('');
+  wrap.innerHTML=photos.map(src=>`<div class="amedia-tile"><img src="${src}" alt="L'équipe CIELBLEU" class="amedia-tile-img" loading="lazy" decoding="async"></div>`).join('');
 })();
 
 const obs=new IntersectionObserver(e=>e.forEach(i=>{if(i.isIntersecting){i.target.classList.add('visible');obs.unobserve(i.target);}}),{threshold:0.12,rootMargin:'0px 0px -8% 0px'});
