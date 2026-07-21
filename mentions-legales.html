@@ -31,11 +31,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .nav-links a:hover::after,.nav-links a.active::after{width:100%;}
 .nav-cta{background:var(--blue-sky);color:var(--navy);font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:2px;padding:10px 22px;border-radius:4px;text-decoration:none;transition:background .2s;}
 .nav-cta:hover{background:white;}
-.nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:8px;color:white;font-size:24px;line-height:1;}
-.nav-mobile{display:none;position:fixed;top:70px;left:0;right:0;bottom:0;background:rgba(11,29,48,0.98);z-index:99;padding:8px 20px calc(20px + env(safe-area-inset-bottom));list-style:none;backdrop-filter:blur(12px);overflow-y:auto;}
-.nav-mobile.open{display:flex;flex-direction:column;}
-.nav-mobile li a{display:block;font-size:13px;letter-spacing:2px;font-weight:600;color:rgba(255,255,255,0.7);text-decoration:none;text-transform:uppercase;padding:15px 0;border-bottom:1px solid rgba(182,205,224,0.08);}
-.nav-mobile li:last-child a{border:none;}
 
 /* ── HERO ── */
 .page-hero{min-height:32vh;background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy) 60%,#1a3d5c 100%);display:flex;flex-direction:column;justify-content:center;padding:150px 60px 50px;position:relative;overflow:hidden;}
@@ -68,7 +63,7 @@ footer{background:var(--navy-deep);padding:36px 60px;}
 @media(max-width:768px){
   nav{padding:0 20px;height:70px;}
   .nav-links,.nav-cta{display:none;}
-  .nav-hamburger{display:flex;align-items:center;}
+  
   .page-hero{padding:100px 20px 40px;min-height:auto;}
   .legal-wrap{padding:40px 20px;}
   footer{padding:24px 20px;}
@@ -88,22 +83,9 @@ footer{background:var(--navy-deep);padding:36px 60px;}
     <li><a href="notre-equipe.html">L'équipe</a></li>
     <li><a href="nos-adherents.html">Nos adhérents</a></li>
     <li><a href="nos-partenaires.html">Nos partenaires</a></li>
-    <li><a href="index.html#merch">Merch</a></li>
-    <li><a href="index.html#faq">FAQ</a></li>
   </ul>
   <a href="index.html#adhesion" class="nav-cta">Devenir adhérent →</a>
-  <button class="nav-hamburger" onclick="toggleNav()" aria-label="Menu">&#9776;</button>
 </nav>
-<ul class="nav-mobile" id="navMobile">
-  <li><a href="index.html#semaine" onclick="toggleNav()">Le club</a></li>
-  <li><a href="calendrier.html" onclick="toggleNav()">Calendrier</a></li>
-  <li><a href="notre-equipe.html" onclick="toggleNav()">L'équipe</a></li>
-  <li><a href="nos-adherents.html" onclick="toggleNav()">Nos adhérents</a></li>
-  <li><a href="nos-partenaires.html" onclick="toggleNav()">Nos partenaires</a></li>
-  <li><a href="index.html#merch" onclick="toggleNav()">Merch</a></li>
-  <li><a href="index.html#faq" onclick="toggleNav()">FAQ</a></li>
-  <li><a href="index.html#adhesion" onclick="toggleNav()" style="color:var(--gold)!important;">→ Devenir adhérent</a></li>
-</ul>
 
 <header class="page-hero">
   <div class="page-hero-eyebrow">Informations légales</div>
@@ -112,35 +94,69 @@ footer{background:var(--navy-deep);padding:36px 60px;}
 
 <div class="legal-wrap">
 
-  <h2>Mentions légales</h2>
-  <p><strong>Le Ciel Est Bleu</strong> est une association loi 1901, basée à Paris.</p>
-  <!-- À compléter avec les informations officielles de l'association -->
+  <h2>Éditeur du site</h2>
   <p>
-    Nom de l'association : Le Ciel Est Bleu Running Club<br>
-    Siège social : [adresse à compléter], Paris<br>
-    N° SIRET / RNA : [à compléter]<br>
-    Directeur de la publication : [nom du président ou représentant légal]<br>
-    Contact : <a href="mailto:contact.lcebrunning@gmail.com">contact.lcebrunning@gmail.com</a>
+    <strong>Association LE CIEL EST BLEU RUNNING CLUB</strong><br>
+    N° RNA : W751 280 327<br>
+    N° SIREN : 990 673 493<br>
+    Siège social : 8 rue Demarquay – 75010 Paris<br>
+    Email : <a href="mailto:contact.lcebrunning@gmail.com">contact.lcebrunning@gmail.com</a>
   </p>
 
-  <h3>Hébergement du site</h3>
-  <p>Ce site est hébergé par GitHub, Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, États-Unis (GitHub Pages).</p>
+  <h2>Directeur de la publication</h2>
+  <p>Monsieur Hugo Guillet<br>
+  Email : <a href="mailto:contact.lcebrunning@gmail.com">contact.lcebrunning@gmail.com</a></p>
 
-  <h2>Politique de confidentialité</h2>
+  <h2>Hébergement du site</h2>
+  <p>
+    <strong>Hébergeur :</strong> GitHub, Inc.<br>
+    <strong>Adresse :</strong> 88 Colin P Kelly Jr Street, San Francisco, CA 94107, États-Unis<br>
+    <strong>Site web :</strong> <a href="https://github.com" target="_blank">github.com</a><br>
+    <strong>Service :</strong> GitHub Pages
+  </p>
 
-  <h3>Ce que ce site ne fait pas</h3>
-  <p>Le site ne dépose aucun cookie, n'utilise aucun outil de mesure d'audience (type Google Analytics) et ne comporte aucun formulaire transmettant des données à un serveur. Il n'y a donc pas de collecte automatique de données personnelles.</p>
+  <h2>Propriété intellectuelle</h2>
+  <p>L'ensemble des contenus présents sur le site (textes, images, photographies, logos, graphismes, vidéos, icônes, mise en page, etc.) est la propriété exclusive de l'association LE CIEL EST BLEU RUNNING CLUB, sauf mention contraire, et est protégé par les dispositions du Code de la propriété intellectuelle.</p>
+  <p>Toute reproduction, représentation, modification, publication, adaptation totale ou partielle des éléments du site, quel que soit le moyen ou le procédé utilisé, est interdite sans l'autorisation écrite préalable de l'association, sauf pour les documents explicitement mis à disposition du public à des fins d'information (statuts, comptes rendus, etc.).</p>
 
-  <h3>Ce que nous recevons</h3>
-  <p>Lorsque vous nous écrivez par e-mail (par exemple pour une demande d'adhésion), vous nous transmettez volontairement les informations que vous choisissez d'inclure : nom, e-mail, et éventuellement les informations du dossier d'inscription. Ces données sont utilisées uniquement pour traiter votre demande et ne sont jamais cédées à des tiers.</p>
+  <h2>Données personnelles & politique de confidentialité</h2>
 
-  <h3>Liens externes</h3>
-  <p>Le site renvoie vers des services tiers (Strava, Instagram, TikTok, LinkedIn) qui disposent de leurs propres politiques de confidentialité, indépendantes de la nôtre.</p>
+  <h3>Cadre réglementaire</h3>
+  <p>Conformément au Règlement (UE) 2016/679 du 27 avril 2016 (RGPD) et à la loi n° 78-17 du 6 janvier 1978 modifiée relative à l'informatique, aux fichiers et aux libertés, l'association s'engage à protéger les données personnelles des utilisateurs du site.</p>
+
+  <h3>Responsable du traitement</h3>
+  <p>Association LE CIEL EST BLEU RUNNING CLUB</p>
+
+  <h3>Finalités des traitements</h3>
+  <ul>
+    <li>Gestion des adhésions</li>
+    <li>Envoi de newsletters</li>
+    <li>Formulaire de contact</li>
+    <li>Inscription à des événements</li>
+    <li>Traitement et suivi des commandes de merchandising</li>
+    <li>Communication liée aux achats de merchandising ou participations à des événements</li>
+  </ul>
+
+  <h3>Données collectées</h3>
+  <p>Nom, prénom, date de naissance, adresse e-mail, adresse postale.</p>
+
+  <h3>Durée de conservation</h3>
+  <p>Les données sont conservées pendant 3 ans, correspondant à la durée nécessaire aux finalités pour lesquelles elles sont collectées.</p>
 
   <h3>Vos droits</h3>
-  <p>Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression des données que vous nous avez transmises. Il vous suffit d'en faire la demande à <a href="mailto:contact.lcebrunning@gmail.com">contact.lcebrunning@gmail.com</a>.</p>
+  <p>Conformément à la réglementation, toute personne dispose d'un droit d'accès, de rectification, d'effacement, de limitation, d'opposition et de portabilité de ses données. Ces droits peuvent être exercés en écrivant à <a href="mailto:contact.lcebrunning@gmail.com">contact.lcebrunning@gmail.com</a>, et en justifiant de son identité.</p>
+  <p>En cas de difficulté persistante, l'utilisateur peut introduire une réclamation auprès de la Commission Nationale de l'Informatique et des Libertés (CNIL) — <a href="https://www.cnil.fr" target="_blank">www.cnil.fr</a>.</p>
 
-  <div class="legal-note">Les informations administratives de l'association (adresse, SIRET/RNA, représentant légal) sont à compléter : contactez le bureau du club pour les obtenir.</div>
+  <h3>Sécurité des données</h3>
+  <p>L'association met en œuvre des mesures raisonnables pour protéger vos données contre tout accès non autorisé, perte ou divulgation.</p>
+
+  <h2>Limitation de responsabilité</h2>
+  <p>L'association s'efforce d'assurer l'exactitude et la mise à jour des informations diffusées sur le site, mais ne peut garantir l'absence d'erreur ou d'omission. L'association ne saurait être tenue responsable des dommages directs ou indirects résultant de l'accès ou de l'utilisation du site.</p>
+
+  <h2>Droit applicable</h2>
+  <p>Les présentes mentions légales sont soumises au droit français. En cas de litige, et à défaut de résolution amiable, les juridictions françaises seront seuls compétents.</p>
+
+  <div class="legal-note">Mentions légales mises à jour le 21 juillet 2026.</div>
 </div>
 
 <footer>
@@ -160,8 +176,7 @@ footer{background:var(--navy-deep);padding:36px 60px;}
 <a id="back-to-top" href="#" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'});" aria-label="Retour en haut">↑</a>
 
 <script>
-function toggleNav(){document.getElementById('navMobile').classList.toggle('open');}
-document.addEventListener('click',e=>{const m=document.getElementById('navMobile');if(m.classList.contains('open')&&!m.contains(e.target)&&!e.target.closest('.nav-hamburger'))m.classList.remove('open');});
+
 window.addEventListener('scroll',()=>{document.getElementById('back-to-top').classList.toggle('show',window.scrollY>400);});
 </script>
 <script src="scroll-shoe.js?v=1"></script>
