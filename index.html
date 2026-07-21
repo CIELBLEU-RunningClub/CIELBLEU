@@ -91,11 +91,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .hero-strava-cta{background:var(--gold);color:var(--navy-deep);font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;padding:10px 20px;border-radius:4px;text-decoration:none;white-space:nowrap;transition:all .2s;flex-shrink:0;}
 .hero-strava-cta:hover{background:white;}
 .hero-bottom{position:absolute;bottom:0;left:0;right:0;animation:fadeUp .8s .5s ease both;background:rgba(11,29,48,.78);}
-.hero-marquee{overflow:hidden;border-top:1px solid rgba(182,205,224,0.15);padding:13px 0;white-space:nowrap;}
-.hero-marquee-track{display:inline-block;animation:marquee 36s linear infinite;}
-.hero-marquee-track span{font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:4px;color:rgba(182,205,224,.4);padding:0 18px;}
-@keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
-@media(prefers-reduced-motion:reduce){.hero-marquee-track{animation:none;}}
 .hero-stats{display:flex;border-top:1px solid rgba(182,205,224,0.1);}
 .hero-stat{flex:1;padding:28px 40px;border-right:1px solid rgba(182,205,224,0.1);}
 .hero-stat:last-child{border-right:none;}
@@ -186,7 +181,6 @@ footer{background:var(--navy-deep);padding:32px 60px;}
 .footer-copy{font-size:12px;color:rgba(255,255,255,.25);letter-spacing:1px;}
 .socials a:hover img{opacity:1;}
 
-
 /* ── LA SEMAINE ── */
 .semaine-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
 .semaine-card{background:var(--navy);border-radius:16px;padding:36px 32px;color:white;display:flex;flex-direction:column;gap:12px;transition:transform .3s ease,box-shadow .3s ease;}
@@ -212,7 +206,6 @@ footer{background:var(--navy-deep);padding:32px 60px;}
   .mobile-cta-sub{display:block;font-size:11px;color:rgba(255,255,255,.55);margin-top:2px;}
   .mobile-cta-btn{background:var(--gold);color:var(--navy-deep);font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:2px;padding:12px 22px;border-radius:6px;text-decoration:none;flex-shrink:0;}
 }
-
 
 /* ── EVENTS CALENDAR ── */
 .ev-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;}
@@ -296,13 +289,6 @@ footer{background:var(--navy-deep);padding:32px 60px;}
   .reveal,.reveal-left,.reveal-right,.reveal-zoom,.reveal-children > *,.s-label,.s-title,.gallery-item{transition:none!important;opacity:1!important;transform:none!important;}
 }
 
-/* ── HAMBURGER ── */
-.nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:8px;color:white;font-size:24px;line-height:1;}
-.nav-mobile{display:none;position:fixed;top:70px;left:0;right:0;bottom:0;background:rgba(11,29,48,0.98);z-index:99;padding:8px 20px calc(20px + env(safe-area-inset-bottom));list-style:none;backdrop-filter:blur(12px);overflow-y:auto;}
-.nav-mobile.open{display:flex;flex-direction:column;}
-.nav-mobile li a{display:block;font-size:13px;letter-spacing:2px;font-weight:600;color:rgba(255,255,255,0.7);text-decoration:none;text-transform:uppercase;padding:15px 0;border-bottom:1px solid rgba(182,205,224,0.08);}
-.nav-mobile li:last-child a{border:none;}
-
 /* ── TABLETTE ── */
 @media(min-width:769px) and (max-width:1024px){
   nav{padding:0 36px;}
@@ -320,7 +306,7 @@ footer{background:var(--navy-deep);padding:32px 60px;}
 @media(max-width:768px){
   nav{padding:0 20px;height:70px;}
   .nav-links,.nav-cta{display:none;}
-  .nav-hamburger{display:flex;align-items:center;}
+  
 
   /* Mobile : retour au design d'origine (fond navy, photo en filigrane discret) */
   .hero{padding:80px 20px 0;min-height:auto;background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy) 60%,#1a3d5c 100%);}
@@ -337,7 +323,6 @@ footer{background:var(--navy-deep);padding:32px 60px;}
   .hero-strava-cta{align-self:stretch;text-align:center;padding:12px 20px;}
   .hero-links{gap:22px;}
   .hero-bottom{position:relative;}
-  .hero-marquee{margin:0 -20px;}
   .hero-stats{display:grid;grid-template-columns:1fr 1fr;}
   .hero-stat{padding:18px 16px;border-right:1px solid rgba(182,205,224,0.1);}
   .hero-stat:nth-child(2n){border-right:none;}
@@ -369,7 +354,6 @@ footer{background:var(--navy-deep);padding:32px 60px;}
   .section-cta > div{padding:36px 20px !important;}
   .section-cta .cta-btns{flex-direction:column !important;}
   .section-cta .cta-btns a{text-align:center;}
-
 
   footer{padding:24px 20px;}
   .footer-inner{flex-direction:column;align-items:center;text-align:center;gap:16px;}
@@ -453,22 +437,9 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
     <li><a href="notre-equipe.html">L'équipe</a></li>
     <li><a href="nos-adherents.html">Nos adhérents</a></li>
     <li><a href="nos-partenaires.html">Nos partenaires</a></li>
-    <li><a href="#merch">Merch</a></li>
-    <li><a href="#faq">FAQ</a></li>
   </ul>
   <a href="#adhesion" class="nav-cta">Devenir adhérent →</a>
-  <button class="nav-hamburger" onclick="toggleNav()" aria-label="Menu">&#9776;</button>
 </nav>
-<ul class="nav-mobile" id="navMobile">
-  <li><a href="#semaine" onclick="toggleNav()">Le club</a></li>
-  <li><a href="calendrier.html" onclick="toggleNav()">Calendrier</a></li>
-  <li><a href="notre-equipe.html" onclick="toggleNav()">L'équipe</a></li>
-  <li><a href="nos-adherents.html" onclick="toggleNav()">Nos adhérents</a></li>
-  <li><a href="nos-partenaires.html" onclick="toggleNav()">Nos partenaires</a></li>
-  <li><a href="#merch" onclick="toggleNav()">Merch</a></li>
-  <li><a href="#faq" onclick="toggleNav()">FAQ</a></li>
-  <li><a href="#adhesion" onclick="toggleNav()" style="color:var(--gold)!important;">→ Devenir adhérent</a></li>
-</ul>
 
 <div class="hero">
   <img src="couverture.jpg?v=3" alt="" class="hero-bg-img" fetchpriority="high">
@@ -490,7 +461,6 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
     </div>
   </div>
   <div class="hero-bottom">
-    <div class="hero-marquee" aria-hidden="true"><div class="hero-marquee-track" id="heroMarquee"></div></div>
     <div class="hero-stats">
       <a class="hero-stat" href="nos-adherents.html"><div class="num" data-count="124">0</div><div class="lbl">Adhérents actifs <span class="stat-arrow">→</span></div></a>
       <a class="hero-stat" href="calendrier.html"><div class="num" data-count="3">0</div><div class="lbl">Séances par semaine <span class="stat-arrow">→</span></div></a>
@@ -632,8 +602,6 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
     </a>
   </div>
 </section>
-
-
 
 <!-- ADHÉSION -->
 <section id="adhesion">
@@ -795,15 +763,10 @@ if(heroBg){
   },{passive:true});
 }
 
-
 const obs=new IntersectionObserver(e=>e.forEach(i=>{if(i.isIntersecting){i.target.classList.add('visible');obs.unobserve(i.target);}}),{threshold:0.12,rootMargin:'0px 0px -8% 0px'});
 document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-zoom,.reveal-children,.s-label,.s-title,.gallery-item').forEach(el=>obs.observe(el));
-function toggleNav(){const m=document.getElementById('navMobile');m.classList.toggle('open');}
-// Fermer le menu mobile au clic en dehors
-document.addEventListener('click',e=>{const m=document.getElementById('navMobile');if(m.classList.contains('open')&&!m.contains(e.target)&&!e.target.closest('.nav-hamburger'))m.classList.remove('open');});
 // FAQ accessible
 function toggleFaq(btn){const open=btn.parentElement.classList.toggle('open');btn.setAttribute('aria-expanded',open);}
-
 
 // ===== TEASER PROCHAINS RENDEZ-VOUS =====
 (function(){
@@ -876,19 +839,6 @@ function scrollGallery(dir){
   if(!track)return;
   track.scrollBy({left:dir*Math.round(track.clientWidth*0.8),behavior:'smooth'});
 }
-
-// Marquee du hero : la moitié du ruban doit couvrir l'écran pour une boucle sans trou
-(function(){
-  const track=document.getElementById('heroMarquee');if(!track)return;
-  const items=['Social Run','La Piste','Les Quais','KM Bleu','Marathon en relais','Testings produits','Soirées du club'];
-  const set=items.map(i=>`<span>${i}</span><span>·</span>`).join('');
-  let half=set;
-  track.innerHTML=half+half;
-  while(track.scrollWidth/2<window.innerWidth&&half.length<set.length*8){
-    half+=set;
-    track.innerHTML=half+half;
-  }
-})();
 
 // Barre de progression : la basket avance, la médaille récompense la fin de page
 const progressBar=document.getElementById('scroll-progress');
