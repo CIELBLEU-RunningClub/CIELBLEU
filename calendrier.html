@@ -459,7 +459,7 @@ function downloadICS(){
   const ev=EVENTS_BY_ID[currentEventId];
   const desc=ev.desc.replace(/,/g,'\\,').replace(/\n/g,'\\n');
   const loc=(ev.location||'').replace(/,/g,'\\,');
-  const ics=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//CIELBLEU Running//FR','CALSCALE:GREGORIAN','METHOD:PUBLISH','BEGIN:VEVENT','UID:'+ev.id+'@cielbleu.run','DTSTART:'+ev.dtStart,'DTEND:'+ev.dtEnd,'SUMMARY:'+ev.title+' · Ciel Bleu Running','DESCRIPTION:'+desc,'LOCATION:'+loc,'END:VEVENT','END:VCALENDAR'].join('\r\n');
+  const ics=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//CIELBLEU Running//FR','CALSCALE:GREGORIAN','METHOD:PUBLISH','BEGIN:VEVENT','UID:'+ev.id+'@cielbleu.run','DTSTART:'+ev.dtStart,'DTEND:'+ev.dtEnd,'SUMMARY:'+ev.title+' · CIELBLEU Running','DESCRIPTION:'+desc,'LOCATION:'+loc,'END:VEVENT','END:VCALENDAR'].join('\r\n');
   const blob=new Blob([ics],{type:'text/calendar;charset=utf-8'});
   const url=URL.createObjectURL(blob);
   const a=document.createElement('a');a.href=url;a.download=ev.title.replace(/[^a-z0-9]/gi,'_').toLowerCase()+'.ics';
