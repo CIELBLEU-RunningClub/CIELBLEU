@@ -43,7 +43,7 @@
 }
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
 <style>
 :root{--navy:#122b44;--navy-deep:#0b1d30;--blue-steel:#6d879a;--blue-sky:#b6cde0;--blue-pale:#d5e0e4;--cream:#F6F9FC;--white:#FFFFFF;--mid:#5B738A;--gold:#E8B06B;}
 *{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
@@ -437,6 +437,36 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
 .vid-sound{position:absolute;bottom:10px;right:10px;z-index:5;width:36px;height:36px;border-radius:50%;border:none;background:rgba(11,29,48,.6);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);color:#fff;font-size:15px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,transform .2s;}
 .vid-sound:hover{background:rgba(11,29,48,.9);transform:scale(1.08);}
 @media(max-width:768px){.vid-sound{width:44px;height:44px;font-size:18px;}}
+/* ═══════════ DA SAISON 3 ═══════════ */
+/* Titres d'affichage : police lourde Anton, façon nouvelle DA */
+.hero h1,.s-title,.ab-title,.offer-name,.km-cta-title{font-family:'Anton',sans-serif;font-weight:400;}
+.s-title{letter-spacing:.3px;}
+
+/* Pastilles (badges) — système unifié */
+.ev-card-tag{font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:5px 13px;border-radius:999px;border:1.5px solid transparent;line-height:1.15;}
+.ev-card-tag.tag-open,.ev-card-tag.tag-social{background:rgba(232,176,107,.14);color:#9A6F2E;border-color:rgba(232,176,107,.7);}
+.ev-card-tag.tag-adherent{background:var(--navy);color:#fff;border-color:var(--navy);}
+.ev-card-tag.tag-seance{background:rgba(18,43,68,.05);color:var(--navy);border-color:rgba(18,43,68,.2);}
+.ev-card-tag.tag-partner{background:transparent;color:var(--blue-steel);border-color:rgba(109,135,154,.55);}
+.ev-card-tag.tag-km{background:var(--navy);color:#fff;border-color:var(--navy);}
+.ev-card-tag.tag-trail{background:rgba(109,135,154,.14);color:var(--blue-steel);border-color:rgba(109,135,154,.45);}
+
+/* ── LES 3 OFFRES ── */
+.septembre-note{display:flex;align-items:center;gap:14px;background:linear-gradient(100deg,rgba(232,176,107,.16),rgba(182,205,224,.1));border:1px solid rgba(232,176,107,.4);border-radius:14px;padding:16px 22px;margin-bottom:28px;}
+.septembre-note .sn-tag{font-family:'Anton',sans-serif;font-size:15px;letter-spacing:1px;color:#9A6F2E;text-transform:uppercase;white-space:nowrap;}
+.septembre-note .sn-txt{font-size:14px;color:var(--mid);line-height:1.55;}
+.offer-name{font-size:30px;line-height:.98;letter-spacing:.5px;color:white;text-transform:uppercase;margin:2px 0 4px;}
+.semaine-badge{font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:2px;text-transform:uppercase;padding:5px 14px;border-radius:999px;align-self:flex-start;}
+.semaine-badge.adherents{background:transparent;color:var(--blue-sky);border:1.5px solid rgba(182,205,224,.5);}
+.semaine-badge.open{background:var(--gold);color:var(--navy-deep);border:1.5px solid var(--gold);}
+.semaine-card .semaine-day{font-size:20px;letter-spacing:3px;text-transform:uppercase;opacity:.85;}
+
+/* ── ADHÉSION façon « NOUS REJOINDRE » ── */
+.ab-title{font-size:clamp(30px,4vw,46px);line-height:.98;color:white;text-transform:uppercase;margin-bottom:10px;}
+.join-cta{display:inline-flex;align-items:center;gap:10px;background:var(--gold);color:var(--navy-deep);font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:2px;padding:15px 28px;border-radius:6px;text-decoration:none;transition:background .2s,transform .2s;}
+.join-cta:hover{background:white;transform:translateY(-2px);}
+.join-hint{font-size:12px;color:rgba(255,255,255,.5);margin-top:12px;}
+.join-baseline{font-family:'Anton',sans-serif;font-size:22px;letter-spacing:1px;color:white;text-transform:uppercase;margin-top:6px;}
 </style>
 <noscript><style>.reveal,.reveal-left,.reveal-right,.reveal-zoom,.reveal-children>*,.s-label,.s-title,.gallery-item{opacity:1!important;transform:none!important;}</style></noscript>
 </head>
@@ -500,33 +530,37 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
   </div>
 </div>
 
-<!-- LA SEMAINE -->
+<!-- LE PROGRAMME -->
 <section id="semaine">
-  <div class="s-label">01 · La semaine bleue</div>
-  <h2 class="s-title">Lundi piste, mercredi quais,<br>dimanche social run.</h2>
+  <div class="s-label">01 · Le programme</div>
+  <h2 class="s-title">Trois rendez-vous<br>chaque semaine.</h2>
+  <div class="septembre-note reveal">
+    <span class="sn-tag">Septembre Bleu</span>
+    <span class="sn-txt">Tout le mois de septembre, <strong style="color:var(--navy)">tous nos runs sont ouverts à tous</strong> — Tartan Bleu et Mercredi Bleu comme le Social Bleu. Dès octobre, la piste du lundi et le mercredi redeviennent réservés aux adhérents.</span>
+  </div>
   <div class="semaine-grid reveal-children">
     <div class="semaine-card">
       <div class="semaine-day">Lundi</div>
-      <div class="semaine-name">La Piste</div>
+      <div class="offer-name">Tartan Bleu</div>
       <span class="semaine-badge adherents">Adhérents</span>
-      <p class="semaine-desc">Fractionné encadré, un lundi sur deux. La séance où on repousse ses limites : VMA, allures spécifiques, préparation d'objectifs.</p>
-      <div class="semaine-meta"><span>Stade · Paris 19e</span><span>19h30 · 1 lundi sur 2</span></div>
+      <p class="semaine-desc">La séance piste : fractionné encadré, VMA et allures spécifiques. Là où on progresse, dans la bonne humeur.</p>
+      <div class="semaine-meta"><span>Piste · Paris</span><span>19h45 · chaque lundi</span></div>
       <a href="calendrier.html" class="semaine-link">Toutes les dates →</a>
     </div>
     <div class="semaine-card">
       <div class="semaine-day">Mercredi</div>
-      <div class="semaine-name">Les Quais</div>
+      <div class="offer-name">Mercredi Bleu</div>
       <span class="semaine-badge adherents">Adhérents</span>
-      <p class="semaine-desc">Footing collectif le long de la Seine, en trois groupes d'allure (5'30 · 6'00 · 6'30). La séance plaisir entre copains du milieu de semaine.</p>
-      <div class="semaine-meta"><span>Quais de Seine · Paris</span><span>19h20 · chaque semaine</span></div>
+      <p class="semaine-desc">Le run des adhérents en milieu de semaine, en groupes d'allure dans Paris. La séance plaisir entre copains.</p>
+      <div class="semaine-meta"><span>Le Cavalier Bleu · Paris 4e</span><span>19h20 · chaque mercredi</span></div>
       <a href="calendrier.html" class="semaine-link">Toutes les dates →</a>
     </div>
     <div class="semaine-card dimanche">
       <div class="semaine-day">Dimanche</div>
-      <div class="semaine-name">Le Social Run</div>
+      <div class="offer-name">Social Bleu</div>
       <span class="semaine-badge open">Ouvert à tous · Gratuit</span>
-      <p class="semaine-desc">Jamais deux fois le même départ : chaque semaine un nouveau quartier de Paris, publié sur Strava. On court en groupes d'allure, puis café tous ensemble.</p>
-      <div class="semaine-meta"><span>Itinérant · point publié sur Strava</span><span>10h20 · sans inscription</span></div>
+      <p class="semaine-desc">Le rendez-vous du week-end, ouvert à tous sans inscription : 8 km en groupes d'allure, un nouveau quartier chaque semaine, puis café.</p>
+      <div class="semaine-meta"><span>Point publié sur Strava</span><span>10h20 · sans inscription</span></div>
       <a href="calendrier.html" class="semaine-link">Toutes les dates →</a>
     </div>
   </div>
@@ -636,38 +670,35 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
 <!-- ADHÉSION -->
 <section id="adhesion">
   <div class="s-label">05 · Adhésion</div>
-  <h2 class="s-title">Devenir<br>adhérent.</h2>
+  <h2 class="s-title">Nous rejoindre.</h2>
   <div class="adhesion-block reveal">
     <div class="ab-text">
       <h3>Ce que ça change<br>d'être adhérent.</h3>
       <ul class="ab-perks" style="margin-top:8px;">
-        <li>Accès à tous les runs : mercredi soir, dimanche matin, séances piste 2 lundis/mois</li>
+        <li>Accès à toutes les séances : Tartan Bleu le lundi, Mercredi Bleu, et le Social Bleu du dimanche</li>
         <li>Dossards &amp; goodies partenaires</li>
         <li>Réduction sur le merchandising</li>
-        <li>Sorties extra (trail, etc.)</li>
+        <li>Sorties extra (trail, interclubs, ekiden…)</li>
         <li>Accès prioritaire aux soirées CIELBLEU</li>
         <li>Assurance en cas de blessure ou accident</li>
         <li>Aide à la planification d'entraînement</li>
-        <li>Continuer de profiter de la convivialité CIELBLEU !</li>
+        <li>La convivialité CIELBLEU toute l'année !</li>
       </ul>
     </div>
     <div class="ab-perks-box">
       <div>
-        <div class="ab-perks-title">Tarifs · Saison 2026–2027</div>
+        <div class="ab-perks-title">Adhésion · Saison 2026-2027</div>
         <div class="ab-price-tiers">
-          <div class="ab-price-row"><span class="ab-price-period">1er – 30 sept. · Early bird anciens</span><span class="ab-price-amount">35€</span></div>
-          <div class="ab-price-row"><span class="ab-price-period">1er – 30 sept. · Early bird nouveaux</span><span class="ab-price-amount">45€</span></div>
-          <div class="ab-price-row"><span class="ab-price-period">À partir du 1er oct. (≤ 150 adhérents)</span><span class="ab-price-amount">50€</span></div>
-          <div class="ab-price-row"><span class="ab-price-period">Au-delà de 150 adhérents</span><span class="ab-price-amount">55€</span></div>
+          <div class="ab-price-row"><span class="ab-price-period">1<sup>er</sup>–30 sept. · Renouvellement <span style="color:rgba(255,255,255,.4)">· early bird</span></span><span class="ab-price-amount">35€</span></div>
+          <div class="ab-price-row"><span class="ab-price-period">1<sup>er</sup>–30 sept. · Nouvelle adhésion <span style="color:rgba(255,255,255,.4)">· early bird</span></span><span class="ab-price-amount">40€</span></div>
+          <div class="ab-price-row"><span class="ab-price-period">À partir du 1<sup>er</sup> octobre</span><span class="ab-price-amount">50€</span></div>
         </div>
       </div>
-      <div style="border-top:1px solid rgba(182,205,224,.1);padding-top:16px;">
-        <div class="ab-perks-title" style="margin-bottom:8px;">Comment adhérer</div>
-        <p style="font-size:13px;color:rgba(255,255,255,.55);line-height:1.6;margin-bottom:14px;">Télécharge le dossier et envoie-nous le tout par mail.</p>
-        <div style="margin-bottom:14px;">
-          <a href="dossier-inscription-lceb.pdf" download style="display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:var(--navy-deep);font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;padding:11px 18px;border-radius:4px;text-decoration:none;transition:background .2s;" onmouseover="this.style.background='white'" onmouseout="this.style.background='var(--gold)'">↓ &nbsp;TÉLÉCHARGER LE DOSSIER</a>
-        </div>
-        <a href="mailto:contact.lcebrunning@gmail.com" style="font-family:'Open Sans',sans-serif;font-size:12px;color:rgba(255,255,255,.45);text-decoration:none;border-bottom:1px solid rgba(182,205,224,.2);padding-bottom:2px;">contact.lcebrunning@gmail.com</a>
+      <div style="border-top:1px solid rgba(182,205,224,.1);padding-top:18px;">
+        <div class="join-baseline">On vous attend.</div>
+        <p style="font-size:13px;color:rgba(255,255,255,.55);line-height:1.6;margin:8px 0 16px;">Adhésion 100&nbsp;% en ligne, en deux minutes, via HelloAsso.</p>
+        <a href="https://www.helloasso.com/beta/associations/le-ciel-est-bleu-running-club/adhesions/adhesion-saison-26-27-1" target="_blank" rel="noopener" class="join-cta">Adhérer sur HelloAsso →</a>
+        <div class="join-hint">Une question ? <a href="mailto:contact.lcebrunning@gmail.com" style="color:var(--blue-sky);text-decoration:none;">contact.lcebrunning@gmail.com</a></div>
       </div>
     </div>
   </div>
@@ -765,7 +796,7 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
   </div>
 </footer>
 
-<script src="events.js?v=9"></script>
+<script src="events.js?v=10"></script>
 <script>
 // Compteurs animés : les stats montent en flèche une fois à l'écran
 (function(){
