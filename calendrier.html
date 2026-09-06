@@ -20,7 +20,7 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
 <style>
 :root{--navy:#122b44;--navy-deep:#0b1d30;--blue-steel:#6d879a;--blue-sky:#b6cde0;--blue-pale:#d5e0e4;--cream:#F6F9FC;--white:#FFFFFF;--mid:#5B738A;--gold:#E8B06B;}
 *{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
@@ -228,6 +228,18 @@ footer{background:var(--navy-deep);padding:40px 60px;}
   .footer-inner{flex-direction:column;align-items:center;text-align:center;gap:16px;}
   .footer-socials{justify-content:center;gap:14px;}
 }
+
+/* ═══════════ DA SAISON 3 ═══════════ */
+.page-hero h1,.s-title{font-family:'Anton',sans-serif;font-weight:400;letter-spacing:.3px;}
+.ev-card-title{font-family:'Bebas Neue',sans-serif;}
+/* Pastilles (badges) — système unifié */
+.ev-card-tag{font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:5px 13px;border-radius:999px;border:1.5px solid transparent;line-height:1.15;}
+.ev-card-tag.tag-open,.ev-card-tag.tag-social{background:rgba(232,176,107,.14);color:#9A6F2E;border-color:rgba(232,176,107,.7);}
+.ev-card-tag.tag-adherent{background:var(--navy);color:#fff;border-color:var(--navy);}
+.ev-card-tag.tag-seance{background:rgba(18,43,68,.05);color:var(--navy);border-color:rgba(18,43,68,.2);}
+.ev-card-tag.tag-partner{background:transparent;color:var(--blue-steel);border-color:rgba(109,135,154,.55);}
+.ev-card-tag.tag-km{background:var(--navy);color:#fff;border-color:var(--navy);}
+.ev-card-tag.tag-trail{background:rgba(109,135,154,.14);color:var(--blue-steel);border-color:rgba(109,135,154,.45);}
 </style>
 </head>
 <body>
@@ -311,7 +323,7 @@ footer{background:var(--navy-deep);padding:40px 60px;}
 
 <a id="back-to-top" href="#" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'});" aria-label="Retour en haut">↑</a>
 
-<script src="events.js?v=9"></script>
+<script src="events.js?v=10"></script>
 <script>
 
 document.getElementById('statTotal').textContent=allEvents.length;
@@ -368,30 +380,6 @@ function renderEvents(){
       <div class="ev-grid">${evs.map(evCardHTML).join('')}</div>
     </div>`;
   });
-  // Pause estivale : affichée en bas de la vue de juillet (le club se met en pause après le KM Bleu TDF)
-  if(activeMonth===6){
-    html+=`<div class="ev-summer-break">
-      <svg class="ev-summer-break-illus" viewBox="0 0 260 210" role="img" aria-label="Une basket de running posée sur une plage">
-        <defs>
-          <clipPath id="sbClip"><circle cx="130" cy="95" r="88"/></clipPath>
-          <linearGradient id="sbSea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b6cde0"/><stop offset="1" stop-color="#6d879a"/></linearGradient>
-        </defs>
-        <circle cx="130" cy="95" r="88" fill="#e5eef7"/>
-        <g clip-path="url(#sbClip)">
-          <circle cx="92" cy="52" r="30" fill="#f0d7b0" opacity=".55"/>
-          <circle cx="92" cy="52" r="16" fill="#E8B06B"/>
-          <rect x="42" y="94" width="176" height="34" fill="url(#sbSea)"/>
-          <path d="M42 104 q14 -6 28 0 t28 0 t28 0 t28 0 t28 0 t28 0" fill="none" stroke="#eaf1f8" stroke-width="2" opacity=".6"/>
-          <path d="M42 128 h176 v60 h-176 Z" fill="#efe7d6"/>
-          <path d="M190 126 C189 106 191 90 194 80" stroke="#4d6577" stroke-width="4" fill="none" stroke-linecap="round"/>
-          <g fill="#5f8a76"><path d="M194 80 C184 72 172 72 164 78 C176 76 186 78 194 84 Z"/><path d="M194 80 C204 72 216 74 222 82 C212 78 202 79 194 85 Z"/><path d="M194 80 C190 68 192 58 198 52 C196 62 196 72 197 82 Z"/></g>
-        </g>
-        <text x="128" y="162" font-size="52" text-anchor="middle">👟</text>
-      </svg>
-      <div class="ev-summer-break-text">Pause estivale</div>
-      <div class="ev-summer-break-sub">Le club se repose après le KM Bleu TDF du 26 juillet · Rendez-vous le 30 août pour le run collectif de rentrée !</div>
-    </div>`;
-  }
   cont.innerHTML=html||'<div class="ev-empty">Aucun événement pour ce filtre.</div>';
 }
 
