@@ -166,6 +166,11 @@ footer{background:var(--navy-deep);padding:36px 60px;}
   <h3>Sécurité des données</h3>
   <p>L'association met en œuvre des mesures raisonnables pour protéger vos données contre tout accès non autorisé, perte ou divulgation.</p>
 
+  <h2>Cookies et mesure d'audience</h2>
+  <p>Le site utilise <strong>Google Analytics</strong> (fourni par Google Ireland Limited) pour mesurer son audience de façon statistique : nombre de visiteurs, pages consultées, provenance et type d'appareil. Cet outil dépose des cookies sur votre terminal.</p>
+  <p>Ces cookies ne sont déposés <strong>qu'avec votre consentement</strong> : à votre première visite, un bandeau vous permet d'accepter ou de refuser la mesure d'audience. Aucun cookie de mesure n'est déposé tant que vous n'avez pas accepté, et le refus n'a aucune conséquence sur votre navigation. Vous pouvez modifier votre choix à tout moment via le lien « Gérer les cookies » en bas de chaque page.</p>
+  <p>Les données collectées sont traitées de manière agrégée et anonymisée (adresse IP tronquée), conservées 14 mois maximum, et peuvent être transférées à Google, y compris en dehors de l'Union européenne, dans le cadre des garanties prévues par le RGPD. Pour en savoir plus : <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">politique de confidentialité de Google</a>.</p>
+
   <h2>Limitation de responsabilité</h2>
   <p>L'association s'efforce d'assurer l'exactitude et la mise à jour des informations diffusées sur le site, mais ne peut garantir l'absence d'erreur ou d'omission. L'association ne saurait être tenue responsable des dommages directs ou indirects résultant de l'accès ou de l'utilisation du site.</p>
 
@@ -198,5 +203,6 @@ window.addEventListener('scroll',()=>{document.getElementById('back-to-top').cla
 <script src="scroll-shoe.js?v=1"></script>
 <script>function toggleNav(){document.getElementById('navMobile').classList.toggle('open');}
 document.addEventListener('click',function(e){var m=document.getElementById('navMobile');if(m&&m.classList.contains('open')&&!m.contains(e.target)&&!e.target.closest('.nav-hamburger'))m.classList.remove('open');});</script>
+<script src="analytics.js?v=1"></script>
 </body>
 </html>
