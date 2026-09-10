@@ -52,7 +52,7 @@ const MEMBRES=[
   {nom:'Leonardo', citation:'', photo:''},
   {nom:'Agathe', citation:'', photo:''},
   {nom:'Yohan', citation:'', photo:''},
-  {nom:'Adèle', citation:'', photo:''},
+  {nom:'Adèle', citation:'Oublies que tu as aucune chance, sur un malentendu ça peut marcher.', photo:''},
   {nom:'Kalome', citation:'', photo:''},
   {nom:'Manon', citation:'', photo:''},
   {nom:'Solène', citation:'', photo:''},
