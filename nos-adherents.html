@@ -132,6 +132,11 @@ section:nth-child(even){background:var(--white);}
 }
 
 /* ── EN IMAGES (carrousel adhérents) ── */
+.amedia-wrap{position:relative;}
+.amedia-nav{position:absolute;top:50%;transform:translateY(-50%);background:var(--white);color:var(--navy);border:1.5px solid rgba(18,43,68,.15);border-radius:50%;width:46px;height:46px;cursor:pointer;font-size:22px;display:flex;align-items:center;justify-content:center;transition:all .2s;z-index:3;box-shadow:0 2px 14px rgba(18,43,68,.15);}
+.amedia-nav:hover{background:var(--navy);color:white;border-color:var(--navy);}
+.amedia-nav.prev{left:-20px;}
+.amedia-nav.next{right:-20px;}
 .amedia-track{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding-bottom:8px;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
 .amedia-track::-webkit-scrollbar{display:none;}
 .amedia-tile{flex:0 0 300px;height:380px;border-radius:16px;overflow:hidden;scroll-snap-align:start;position:relative;border:1.5px solid rgba(18,43,68,.08);}
@@ -142,6 +147,7 @@ section:nth-child(even){background:var(--white);}
   .amedia-tile{flex:0 0 78%;height:auto;aspect-ratio:3/4;}
   .amedia-tile.video{flex:0 0 70%;}
   .amedia-hint{display:block;}
+  .amedia-nav{display:none;}
 }
 
 /* ── ADHÉSION ── */
@@ -283,7 +289,11 @@ footer{background:var(--navy-deep);padding:40px 60px;}
   <div class="s-label">03 · Galerie</div>
   <h2 class="s-title">En images.</h2>
   <p class="s-intro">Un aperçu de l'ambiance, capté par et pour les adhérents.</p>
-  <div class="amedia-track" id="amediaTrack"></div>
+  <div class="amedia-wrap">
+    <button class="amedia-nav prev" onclick="scrollAmedia(-1)" aria-label="Images précédentes">‹</button>
+    <button class="amedia-nav next" onclick="scrollAmedia(1)" aria-label="Images suivantes">›</button>
+    <div class="amedia-track" id="amediaTrack"></div>
+  </div>
   <div class="amedia-hint">← Glissez pour découvrir →</div>
 </section>
 
@@ -449,10 +459,7 @@ const recordCats=[
   {key:'5k',label:'5 KM',records:[]},
   {key:'10k',label:'10 KM',records:[]},
   {key:'semi',label:'Semi-marathon',records:[]},
-  {key:'marathon',label:'Marathon',records:[
-    {who:'Julia',time:'4h32',event:'Marathon de Paris · 2026',hue:7,photo:''},
-    {who:'Julien',time:'4h30',event:'Marathon de New York · 2025',hue:6,photo:''},
-  ]},
+  {key:'marathon',label:'Marathon',records:[]},
   {key:'trail',label:'Trail / Ultra-trail',records:[]},
 ];
 const recBoard=document.getElementById('recordsGrid');
@@ -462,10 +469,21 @@ function headHTML(r){
   if(r.photo)return `<div class="rec-head"><img src="${r.photo}" alt="${r.who}"></div>`;
   return `<div class="rec-head" style="background:${grad(r.hue)}">${r.who.charAt(0)}</div>`;
 }
+// Convertit un chrono ("4h30", "1h45", "38:20", "38'20") en secondes, pour classer du plus rapide au plus lent
+function chronoToSec(t){
+  t=String(t).trim();
+  const h=t.match(/(\d+)\s*h\s*(\d*)/i);
+  if(h)return (+h[1])*3600+(h[2]?+h[2]:0)*60;
+  const ms=t.match(/(\d+)[:'](\d+)/);
+  if(ms)return (+ms[1])*60+(+ms[2]);
+  const n=t.match(/(\d+)/);
+  return n?(+n[1])*60:Number.MAX_SAFE_INTEGER;
+}
 function renderRecords(){
   const cat=recordCats[recActive];
+  const ranked=[...cat.records].sort((a,b)=>chronoToSec(a.time)-chronoToSec(b.time));
   recTabs.innerHTML=recordCats.map((c,i)=>`<button class="rec-tab${i===recActive?' active':''}" onclick="setRecord(${i})">${c.label} <span class="rec-tab-n">${c.records.length}</span></button>`).join("");
-  recBoard.innerHTML=cat.records.length?cat.records.map((r,i)=>`
+  recBoard.innerHTML=ranked.length?ranked.map((r,i)=>`
     <div class="rec-row${i===0?' top':''}">
       <div class="rec-rank">${i===0?'🥇':i===1?'🥈':i===2?'🥉':(i+1)}</div>
       ${headHTML(r)}
@@ -503,6 +521,10 @@ renderRecords();
   });
   wrap.innerHTML=h;
 })();
+function scrollAmedia(dir){
+  const track=document.getElementById('amediaTrack');if(!track)return;
+  track.scrollBy({left:dir*Math.round(track.clientWidth*0.8),behavior:'smooth'});
+}
 
 /* ===== SON SUR LES VIDÉOS (muté par défaut, clic pour activer) ===== */
 (function(){
