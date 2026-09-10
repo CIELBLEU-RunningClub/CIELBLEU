@@ -26,7 +26,7 @@ const MEMBRES=[
   {nom:'Clemence', citation:'', photo:''},
   {nom:'Julien n°2', citation:'Bonjour, je suis coach.', photo:''},
   {nom:'Yoann', citation:'On m\'a dit « méfiez-vous » en arrivant l\'an dernier : ils avaient raison, je suis devenu addict au Ciel Bleu.', photo:''},
-  {nom:'Thomas n°3', citation:'Les relations humaines, vous savez…', photo:''},
+  {nom:'Thomas « El coche »', citation:'Les relations humaines, vous savez…', photo:''},
   {nom:'Hugo n°1', citation:'Après chaque montée, il y a une descente.', photo:''},
   {nom:'Fanny', citation:'', photo:''},
   {nom:'Théo', citation:'Entraînement difficile, course facile.', photo:''},
