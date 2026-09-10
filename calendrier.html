@@ -342,7 +342,7 @@ footer{background:var(--navy-deep);padding:40px 60px;}
 
 <a id="back-to-top" href="#" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'});" aria-label="Retour en haut">↑</a>
 
-<script src="events.js?v=15"></script>
+<script src="events.js?v=16"></script>
 <script>
 
 document.getElementById('statTotal').textContent=allEvents.length;
@@ -540,6 +540,12 @@ function downloadICS(){
   const desc=ev.desc.replace(/,/g,'\\,').replace(/\n/g,'\\n');
   const loc=(ev.location||'').replace(/,/g,'\\,');
   const ics=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//CIELBLEU Running//FR','CALSCALE:GREGORIAN','METHOD:PUBLISH','BEGIN:VEVENT','UID:'+ev.id+'@cielbleu.run','DTSTART:'+ev.dtStart,'DTEND:'+ev.dtEnd,'SUMMARY:'+ev.title+' · CIELBLEU Running','DESCRIPTION:'+desc,'LOCATION:'+loc,'END:VEVENT','END:VCALENDAR'].join('\r\n');
+  const isIOS=/iP(hone|ad|od)/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+  if(isIOS){
+    // iOS Safari ne gère pas le téléchargement Blob/download : ouvrir la data-URI déclenche l'ajout à l'agenda
+    window.location.href='data:text/calendar;charset=utf-8,'+encodeURIComponent(ics);
+    return;
+  }
   const blob=new Blob([ics],{type:'text/calendar;charset=utf-8'});
   const url=URL.createObjectURL(blob);
   const a=document.createElement('a');a.href=url;a.download=ev.title.replace(/[^a-z0-9]/gi,'_').toLowerCase()+'.ics';

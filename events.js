@@ -76,7 +76,7 @@ const tartanTpl={wd:1,color:C_TARTAN,time:'19h45',dur:90,title:'Tartan Bleu · S
   details:[['Format','Séance piste'],['Niveau','Tous niveaux'],['Lieu','Piste · communiqué sur Strava'],['Accès','Réservé aux adhérents']],location:'Paris (piste)'};
 const mercrediTpl={wd:3,color:C_MERCREDI,time:'19h20',dur:70,title:'Mercredi Bleu · Adhérents club',
   tags:[{l:'Adhérents',c:'tag-adherent'}],
-  desc:"Le run des adhérents du mercredi soir, en groupes d'allure dans Paris. La séance plaisir du milieu de semaine.",
+  desc:"Le run des adhérents du mercredi soir, en groupes d'allure dans Paris. La séance plaisir du milieu de semaine, qui se prolonge souvent autour d'un verre au bar partenaire.",
   details:[['Distance','~8 km'],['Allures','Groupes d\'allure'],['Lieu','Paris 4e'],['Accès','Réservé aux adhérents']],location:'Paris 4e'};
 const socialTpl={wd:0,color:C_SOCIAL,time:'10h20',dur:90,title:'Social Bleu',
   tags:[{l:'Ouvert à tous',c:'tag-open'}],
