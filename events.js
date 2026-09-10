@@ -200,7 +200,7 @@ function pushEvent(o){
   const ds=dtFmt(YEAR,o.m,o.d,timeToHMS(o.time));
   const de=dtFmt(YEAR,o.m,o.d,addMinutes(o.time,o.dur||90));
   const details=isSession?[['Horaire',o.time],...o.details]:o.details;
-  const ev={id,y:YEAR,m:o.m,d:o.d,date:new Date(YEAR,o.m,o.d),title:o.title,color:o.color||'#E8B06B',
+  const ev={id,y:YEAR,m:o.m,d:o.d,date:new Date(YEAR,o.m,o.d),title:o.title,color:o.color||'#DA5B47',
     tags:o.tags,desc:o.desc,details,dtStart:ds,dtEnd:de,location:o.location,
     session:isSession,wd:o.wd,dateStr:o.d+' '+MONTHS[o.m]+' '+YEAR,time:o.time};
   EVENTS_BY_ID[id]=ev;allEvents.push(ev);
