@@ -113,13 +113,13 @@ section:nth-child(even){background:var(--white);}
 .ev-type-btn{display:inline-flex;align-items:center;gap:9px;font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;color:var(--mid);background:var(--white);border:1.5px solid rgba(18,43,68,.12);border-radius:30px;padding:10px 20px;cursor:pointer;transition:all .2s;}
 .ev-type-btn:hover{border-color:var(--blue-sky);color:var(--navy);}
 .ev-type-dot{width:11px;height:11px;border-radius:50%;flex-shrink:0;}
-.ev-type-btn[data-t="all"] .ev-type-dot{background:linear-gradient(90deg,#6d879a 50%,#E8B06B 50%);}
+.ev-type-btn[data-t="all"] .ev-type-dot{background:linear-gradient(90deg,#6d879a 50%,#DA5B47 50%);}
 .ev-type-btn[data-t="seance"] .ev-type-dot{background:#6d879a;}
-.ev-type-btn[data-t="special"] .ev-type-dot{background:#E8B06B;}
+.ev-type-btn[data-t="special"] .ev-type-dot{background:#DA5B47;}
 .ev-type-btn .ev-type-n{font-size:11px;opacity:.6;}
 .ev-type-btn.active{color:var(--navy);border-color:var(--navy);background:rgba(18,43,68,.05);}
 .ev-type-btn.active[data-t="seance"]{color:var(--blue-steel);border-color:var(--blue-steel);background:rgba(109,135,154,.1);}
-.ev-type-btn.active[data-t="special"]{color:#9A6F2E;border-color:var(--gold);background:rgba(232,176,107,.12);}
+.ev-type-btn.active[data-t="special"]{color:#A63A2C;border-color:#DA5B47;background:rgba(218,91,71,.1);}
 /* Filtre par jour (lundi / mercredi / dimanche) */
 .ev-dayfilter{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px;}
 .ev-day-btn{display:inline-flex;align-items:center;gap:9px;font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;color:var(--mid);background:var(--white);border:1.5px solid rgba(18,43,68,.12);border-radius:30px;padding:10px 20px;cursor:pointer;transition:all .2s;}
@@ -139,7 +139,7 @@ section:nth-child(even){background:var(--white);}
 .ev-kind{display:inline-flex;align-items:center;gap:6px;font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:2px;padding:4px 11px 4px 8px;border-radius:20px;}
 .ev-kind-ico{font-size:12px;line-height:1;}
 .ev-kind-seance{background:rgba(109,135,154,.14);color:var(--blue-steel);}
-.ev-kind-special{background:rgba(232,176,107,.2);color:#9A6F2E;}
+.ev-kind-special{background:rgba(218,91,71,.16);color:#A63A2C;}
 /* Carte séance (compacte, teinte bleue, bord pointillé = récurrent) */
 .ev-card.seance{background:rgba(109,135,154,.06);border:1.5px dashed rgba(109,135,154,.35);}
 .ev-card.seance .ev-card-day{font-size:38px;color:var(--blue-steel);}
@@ -156,10 +156,10 @@ section:nth-child(even){background:var(--white);}
 .tag-social{background:rgba(232,176,107,.18);color:#9A6F2E;}
 .tag-km{background:rgba(18,43,68,.85);color:#fff;}
 /* Carte événement spécial (mise en avant, doré) */
-.ev-card.special{border:1.5px solid rgba(232,176,107,.55);background:linear-gradient(165deg,rgba(232,176,107,.12),var(--white) 55%);}
+.ev-card.special{border:1.5px solid rgba(218,91,71,.5);background:linear-gradient(165deg,rgba(218,91,71,.1),var(--white) 55%);}
 .ev-card.special .ev-card-top{height:7px;}
-.ev-card.special .ev-card-day{color:#9A6F2E;font-size:54px;}
-.ev-card.special:hover{box-shadow:0 14px 34px rgba(232,176,107,.28);}
+.ev-card.special .ev-card-day{color:#A63A2C;font-size:54px;}
+.ev-card.special:hover{box-shadow:0 14px 34px rgba(218,91,71,.26);}
 .ev-legend{display:flex;gap:22px;flex-wrap:wrap;margin-bottom:30px;font-size:12px;color:var(--mid);letter-spacing:1px;}
 .ev-legend span{display:inline-flex;align-items:center;gap:8px;}
 .ev-legend i{width:22px;height:5px;border-radius:3px;display:inline-block;}
@@ -281,7 +281,7 @@ footer{background:var(--navy-deep);padding:40px 60px;}
 <section id="evenements">
   <div class="s-label">01 · Calendrier</div>
   <h2 class="s-title">Les événements.</h2>
-  <p class="s-intro">Choisis un mois pour voir les rendez-vous. Séances en bleu, événements spéciaux en doré.</p>
+  <p class="s-intro">Choisis un mois pour voir les rendez-vous. Séances en bleu, événements spéciaux en rouge.</p>
   <div class="ev-filter" id="evFilter"></div>
   <div id="evContainer"></div>
 </section>
@@ -322,7 +322,7 @@ footer{background:var(--navy-deep);padding:40px 60px;}
 
 <a id="back-to-top" href="#" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'});" aria-label="Retour en haut">↑</a>
 
-<script src="events.js?v=14"></script>
+<script src="events.js?v=15"></script>
 <script>
 
 document.getElementById('statTotal').textContent=allEvents.length;
@@ -333,8 +333,8 @@ function evCardHTML(ev){
   const tags=ev.tags.map(t=>`<span class="ev-card-tag ${t.c}">${t.l}</span>`).join('');
   const wd=new Date(ev.y,ev.m,ev.d).getDay();
   const kind=ev.session
-    ? `<span class="ev-kind ev-kind-seance"><span class="ev-kind-ico">↻</span>${WD_NAMES[ev.wd]}</span>`
-    : `<span class="ev-kind ev-kind-seance"><span class="ev-kind-ico">↻</span>${WD_NAMES[wd]}</span><span class="ev-kind ev-kind-special"><span class="ev-kind-ico">★</span>Spécial</span>`;
+    ? `<span class="ev-kind ev-kind-seance">${WD_NAMES[ev.wd]}</span>`
+    : `<span class="ev-kind ev-kind-seance">${WD_NAMES[wd]}</span><span class="ev-kind ev-kind-special"><span class="ev-kind-ico">★</span>Spécial</span>`;
   const pastLbl=past?'<span class="ev-card-past-lbl">Passé</span>':'';
   return `<div class="ev-card${ev.session?' seance wd-'+ev.wd:' special'}${past?' past':''}" onclick="openModal('${ev.id}')">
     <div class="ev-card-top" style="background:${ev.color}"></div>
