@@ -1,7 +1,7 @@
 /* Service worker CIELBLEU — stratégie « réseau d'abord » pour que l'app installée
    (icône écran d'accueil) affiche TOUJOURS la dernière version quand elle est en ligne,
    et ne serve le cache qu'en secours (hors-ligne). */
-const CACHE = 'cielbleu-v1';
+const CACHE = 'cielbleu-v2';
 
 self.addEventListener('install', (e) => {
   // Activer immédiatement la nouvelle version du SW
@@ -20,8 +20,11 @@ self.addEventListener('activate', (e) => {
 async function networkFirst(req) {
   try {
     const fresh = await fetch(req);
-    const cache = await caches.open(CACHE);
-    cache.put(req, fresh.clone());
+    // Ne mettre en cache que les réponses valides (pas les 404/500)
+    if (fresh && fresh.ok) {
+      const cache = await caches.open(CACHE);
+      cache.put(req, fresh.clone());
+    }
     return fresh;
   } catch (err) {
     const cached = await caches.match(req);
