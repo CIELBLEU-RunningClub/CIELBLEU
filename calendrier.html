@@ -299,11 +299,6 @@ footer{background:var(--navy-deep);padding:40px 60px;}
   <div class="page-hero-eyebrow">La saison</div>
   <h1>LE <em>CALENDRIER</em></h1>
   <p>Toutes les dates du club au même endroit : les trois séances de la semaine, les événements avec les marques et les grands rendez-vous. Clique sur une date pour l'ajouter à ton agenda.</p>
-  <div class="page-hero-stats">
-    <div class="phs"><span class="n" id="statTotal">…</span><span class="l">Rendez-vous cette année</span></div>
-    <div class="phs"><span class="n">3</span><span class="l">Séances par semaine</span></div>
-    <div class="phs"><span class="n" id="statSpecials">…</span><span class="l">Événements spéciaux</span></div>
-  </div>
 </header>
 
 <!-- CALENDRIER -->
@@ -352,8 +347,6 @@ footer{background:var(--navy-deep);padding:40px 60px;}
 <script src="events.js?v=16"></script>
 <script>
 
-document.getElementById('statTotal').textContent=allEvents.length;
-document.getElementById('statSpecials').textContent=allEvents.filter(e=>!e.session).length;
 
 function evCardHTML(ev){
   const past=isPast(ev);
