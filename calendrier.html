@@ -115,19 +115,10 @@ section:nth-child(even){background:var(--white);}
 /* Barre de filtres : dropdown « jour » + pastilles de mois */
 .ev-filter-inner{display:flex;align-items:center;gap:10px;}
 .ev-filter-inner .ev-filter-grid{flex:1 1 auto;min-width:0;}
-.ev-dayfilter{position:relative;flex:0 0 auto;}
-.ev-dayfilter-btn{display:inline-flex;align-items:center;gap:8px;font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;color:var(--mid);background:rgba(18,43,68,.05);border:1.5px solid rgba(18,43,68,.1);border-radius:30px;padding:9px 16px;cursor:pointer;transition:all .2s;white-space:nowrap;}
-.ev-dayfilter-btn:hover{border-color:var(--blue-sky);color:var(--navy);}
-.ev-dayfilter-btn.on{background:var(--navy);color:white;border-color:var(--navy);}
-.ev-dayfilter-caret{font-size:10px;transition:transform .2s;}
-.ev-dayfilter-btn[aria-expanded="true"] .ev-dayfilter-caret{transform:rotate(180deg);}
-.ev-dayfilter-menu{position:absolute;top:calc(100% + 8px);left:0;min-width:230px;background:var(--white);border:1.5px solid rgba(18,43,68,.12);border-radius:14px;box-shadow:0 12px 34px rgba(18,43,68,.18);padding:6px;display:flex;flex-direction:column;gap:2px;z-index:60;}
-.ev-dayfilter-opt{display:flex;align-items:center;gap:10px;text-align:left;font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:1px;color:var(--navy);background:none;border:none;padding:11px 14px;border-radius:9px;cursor:pointer;transition:background .15s;}
-.ev-dayfilter-opt:hover{background:rgba(18,43,68,.06);}
-.ev-dayfilter-opt.sel{background:rgba(18,43,68,.08);}
-.ev-dayfilter-opt .od{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
-.ev-dayfilter-opt .oc{margin-left:auto;font-size:12px;color:var(--mid);opacity:.7;}
-@media(max-width:768px){.ev-dayfilter-menu{min-width:210px;}}
+.ev-dayselect{flex:0 0 auto;font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;color:var(--mid);background-color:rgba(18,43,68,.05);background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%235B738A' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 13px center;background-size:12px;border:1.5px solid rgba(18,43,68,.1);border-radius:30px;padding:10px 34px 10px 16px;cursor:pointer;-webkit-appearance:none;-moz-appearance:none;appearance:none;transition:border-color .2s,color .2s;max-width:58vw;}
+.ev-dayselect:hover{border-color:var(--blue-sky);color:var(--navy);}
+.ev-dayselect:focus{outline:none;border-color:var(--blue-sky);}
+.ev-dayselect.on{border-color:var(--navy);color:var(--navy);background-color:rgba(18,43,68,.09);}
 .ev-empty{text-align:center;color:var(--mid);padding:40px 20px;font-size:14px;}
 .ev-summer-break{text-align:center;padding:48px 40px 56px;color:var(--mid);margin:36px 0 8px;border-top:1px solid rgba(18,43,68,.08);}
 .ev-summer-break-illus{width:200px;height:auto;display:block;margin:0 auto 14px;}
@@ -455,16 +446,12 @@ function renderEvents(){
 }
 
 function dayMenuHTML(){
-  const cur=DAY_FILTERS.find(d=>d.k===activeDay)||DAY_FILTERS[0];
-  const btnLabel = activeDay==='all' ? 'Filtrer par jour' : cur.label;
+  // Menu déroulant NATIF (<select>) : fiable sur mobile/iPhone, se referme tout seul après le choix
   const opts=DAY_FILTERS.map(d=>{
-    const dot=d.color?`<span class="od" style="background:${d.color}"></span>`:`<span class="od" style="background:linear-gradient(90deg,#6d879a 50%,#DA5B47 50%)"></span>`;
-    return `<button class="ev-dayfilter-opt${activeDay===d.k?' sel':''}" onclick="setDay('${d.k}')">${dot}${d.label}<span class="oc">${countFor(d.k)}</span></button>`;
+    const lbl = d.k==='all' ? `${d.label} (${countFor(d.k)})` : `${d.label} (${countFor(d.k)})`;
+    return `<option value="${d.k}"${activeDay===d.k?' selected':''}>${lbl}</option>`;
   }).join('');
-  return `<div class="ev-dayfilter">
-    <button class="ev-dayfilter-btn${activeDay!=='all'?' on':''}" id="dayFilterBtn" aria-haspopup="true" aria-expanded="false" onclick="toggleDayFilter(event)">${btnLabel}<span class="ev-dayfilter-caret">▾</span></button>
-    <div class="ev-dayfilter-menu" id="dayFilterMenu" hidden onclick="event.stopPropagation()">${opts}</div>
-  </div>`;
+  return `<select class="ev-dayselect${activeDay!=='all'?' on':''}" id="dayFilterSelect" aria-label="Filtrer par jour" onchange="setDay(this.value)">${opts}</select>`;
 }
 
 function renderFilter(){
@@ -484,11 +471,6 @@ function setFilter(m){
   activeMonth=m;renderFilter();renderEvents();
   scrollToFilter();
 }
-function toggleDayFilter(e){
-  e.stopPropagation();
-  const m=document.getElementById('dayFilterMenu');const b=document.getElementById('dayFilterBtn');
-  const willOpen=m.hidden; m.hidden=!willOpen; b.setAttribute('aria-expanded',String(willOpen));
-}
 function setDay(k){
   activeDay=k;
   // Un filtre « jour » actif balaie toute la saison ; « Tous » revient au mois courant
@@ -502,25 +484,6 @@ function scrollToFilter(){
   const y=f.getBoundingClientRect().top+window.scrollY-off;
   window.scrollTo({top:y,behavior:'smooth'});
 }
-// Fermeture du menu jour quand on interagit en dehors.
-// Phase de CAPTURE + pointerdown : se déclenche pour souris ET tactile (iOS), et ne peut pas
-// être bloqué par un stopPropagation interne (iOS ne déclenche pas toujours un click hors élément cliquable).
-function closeDayMenu(){
-  const m=document.getElementById('dayFilterMenu');
-  if(!m||m.hidden)return;
-  m.hidden=true;const b=document.getElementById('dayFilterBtn');if(b)b.setAttribute('aria-expanded','false');
-}
-function closeDayMenuOutside(e){
-  const m=document.getElementById('dayFilterMenu');
-  if(!m||m.hidden)return;
-  const dd=document.querySelector('.ev-dayfilter');
-  if(dd&&dd.contains(e.target))return; // tap sur le bouton ou une option : on laisse son handler agir
-  closeDayMenu();
-}
-document.addEventListener('pointerdown',closeDayMenuOutside,true);
-document.addEventListener('click',closeDayMenuOutside,true);
-document.addEventListener('touchstart',closeDayMenuOutside,{passive:true,capture:true});
-window.addEventListener('scroll',closeDayMenu,{passive:true});
 
 // Filtre par défaut : mois courant s'il a des événements, sinon prochain mois avec événements
 (function(){
