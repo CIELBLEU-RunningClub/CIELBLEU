@@ -121,20 +121,20 @@ section:nth-child(even){background:var(--white);}
 .rec-tab:hover{border-color:var(--blue-sky);color:var(--navy);}
 .rec-tab.active{background:var(--navy);color:white;border-color:var(--navy);}
 .rec-tab .rec-tab-n{font-size:11px;opacity:.55;}
-.rec-board{display:flex;flex-direction:column;gap:12px;}
+.rec-board{display:flex;flex-direction:column;gap:9px;max-width:620px;margin:0 auto;}
 .rec-empty{text-align:center;color:var(--mid);font-size:13px;padding:32px 20px;border:1.5px dashed rgba(18,43,68,.15);border-radius:14px;}
-.rec-row{display:flex;align-items:center;gap:18px;background:linear-gradient(160deg,var(--navy),var(--navy-deep));border:1px solid rgba(182,205,224,.14);border-radius:16px;padding:15px 24px;color:white;position:relative;overflow:hidden;transition:transform .25s ease,box-shadow .25s ease;}
+.rec-row{display:flex;align-items:center;gap:14px;background:linear-gradient(160deg,var(--navy),var(--navy-deep));border:1px solid rgba(182,205,224,.14);border-radius:16px;padding:11px 18px;color:white;position:relative;overflow:hidden;transition:transform .25s ease,box-shadow .25s ease;}
 .rec-row:hover{transform:translateX(5px);box-shadow:0 14px 32px rgba(11,29,48,.38);}
 .rec-row.top{background:linear-gradient(150deg,#1a3d5c 0%,var(--navy) 70%);border-color:rgba(232,176,107,.45);}
-.rec-rank{font-family:'Bebas Neue',sans-serif;font-size:26px;width:40px;text-align:center;flex-shrink:0;color:var(--blue-sky);}
+.rec-rank{font-family:'Bebas Neue',sans-serif;font-size:22px;width:30px;text-align:center;flex-shrink:0;color:var(--blue-sky);}
 .rec-row.top .rec-rank{color:var(--gold);}
-.rec-head{width:56px;height:56px;border-radius:50%;flex-shrink:0;overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:24px;color:rgba(255,255,255,.95);border:2px solid rgba(182,205,224,.3);}
+.rec-head{width:44px;height:44px;border-radius:50%;flex-shrink:0;overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:19px;color:rgba(255,255,255,.95);border:2px solid rgba(182,205,224,.3);}
 .rec-row.top .rec-head{border-color:var(--gold);}
 .rec-head img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
 .rec-info{flex:1;min-width:0;}
-.rec-name{font-family:'Bebas Neue',sans-serif;font-size:21px;letter-spacing:1.5px;line-height:1;}
-.rec-event{font-size:12px;color:rgba(255,255,255,.6);margin-top:5px;}
-.rec-time{font-family:'Bebas Neue',sans-serif;font-size:36px;line-height:1;color:var(--gold);letter-spacing:1px;flex-shrink:0;}
+.rec-name{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:1.5px;line-height:1;}
+.rec-event{font-size:11px;color:rgba(255,255,255,.6);margin-top:3px;}
+.rec-time{font-family:'Bebas Neue',sans-serif;font-size:27px;line-height:1;color:var(--gold);letter-spacing:1px;flex-shrink:0;}
 @media(max-width:768px){
   .rec-row{gap:12px;padding:13px 16px;}
 
@@ -293,7 +293,7 @@ footer{background:var(--navy-deep);padding:40px 60px;}
   <div class="exploits-grid reveal-children" id="exploitsGrid"></div>
 
   <div class="chronos-box reveal">
-    <div class="chronos-title">Pour les curieux : les meilleurs chronos</div>
+    <div class="chronos-title">Les chronos du club, tous niveaux</div>
     <div class="rec-tabs" id="recTabs"></div>
     <div class="rec-board" id="recordsGrid"></div>
   </div>
@@ -363,7 +363,7 @@ footer{background:var(--navy-deep);padding:40px 60px;}
 
 <a id="back-to-top" href="#" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'});" aria-label="Retour en haut">↑</a>
 
-<script src="membres.js?v=1005"></script>
+<script src="membres.js?v=1006"></script>
 <script>
 
 /* ===== DONNÉES ===== */
@@ -489,7 +489,7 @@ renderExploits();
 /* Records à compléter dès que les vrais chronos seront communiqués */
 const recordCats=[
   {key:'5k',label:'5 KM',records:[
-    {who:'Thomas n°3',time:"17'27",event:'',hue:1,photo:''},
+    {who:'Thomas « El coche »',time:"17'27",event:'',hue:1,photo:''},
     {who:'Théo',time:"19'10",event:'',hue:2,photo:''},
     {who:'Ethan',time:"19'20",event:'',hue:3,photo:''},
     {who:'Julien n°2',time:"19'55",event:'',hue:4,photo:''},
@@ -497,11 +497,11 @@ const recordCats=[
     {who:'Sarah',time:"22'30",event:'',hue:6,photo:''},
     {who:'Yoann',time:"23'00",event:'',hue:7,photo:''},
     {who:'Romane',time:"25'00",event:'',hue:8,photo:''},
-    {who:'Elisa',time:"27'15",event:'Estimé d\'après l\'allure',hue:9,photo:''},
+    {who:'Elisa',time:"27'15",event:'',hue:9,photo:''},
   ]},
   {key:'10k',label:'10 KM',records:[
     {who:'Hugo n°2',time:"34'42",event:'',hue:10,photo:''},
-    {who:'Thomas n°3',time:"35'20",event:'',hue:11,photo:''},
+    {who:'Thomas « El coche »',time:"35'20",event:'',hue:11,photo:''},
     {who:'Thomas n°1',time:"35'53",event:'',hue:12,photo:''},
     {who:'Julien n°1',time:"36'00",event:'',hue:13,photo:''},
     {who:'Mélanie',time:"37'17",event:'',hue:14,photo:''},
@@ -530,11 +530,11 @@ const recordCats=[
     {who:'Agathe n°1',time:"54'00",event:'',hue:37,photo:''},
     {who:'Mathilde',time:"54'29",event:'',hue:38,photo:''},
     {who:'Quentin n°2',time:"55'04",event:'',hue:39,photo:''},
-    {who:'Elisa',time:"55'10",event:'Estimé d\'après l\'allure',hue:40,photo:''},
+    {who:'Elisa',time:"55'10",event:'',hue:40,photo:''},
     {who:'Ludivine',time:"56'58",event:'',hue:41,photo:''},
   ]},
   {key:'semi',label:'Semi-marathon',records:[
-    {who:'Thomas n°3',time:"1h17'47",event:'',hue:42,photo:''},
+    {who:'Thomas « El coche »',time:"1h17'47",event:'',hue:42,photo:''},
     {who:'Thomas n°1',time:"1h19'43",event:'',hue:43,photo:''},
     {who:'Mélanie',time:"1h22",event:'',hue:44,photo:''},
     {who:'Julien n°1',time:"1h23",event:'',hue:45,photo:''},
@@ -554,11 +554,11 @@ const recordCats=[
     {who:'Agathe n°2',time:"1h57",event:'Semi de Caen',hue:59,photo:''},
     {who:'Milena',time:"1h57",event:'',hue:60,photo:''},
     {who:'Flavie',time:"2h02",event:'',hue:61,photo:''},
-    {who:'Elisa',time:"2h03",event:'20 km · estimé d\'après l\'allure',hue:62,photo:''},
+    {who:'Elisa',time:"2h03",event:'20 km',hue:62,photo:''},
     {who:'Agathe n°1',time:"2h05",event:'',hue:63,photo:''},
   ]},
   {key:'marathon',label:'Marathon',records:[
-    {who:'Thomas n°3',time:"2h58",event:'',hue:64,photo:''},
+    {who:'Thomas « El coche »',time:"2h58",event:'',hue:64,photo:''},
     {who:'Matteo',time:"2h58",event:'',hue:65,photo:''},
     {who:'Hugo n°1',time:"3h04",event:'',hue:66,photo:''},
     {who:'Julien n°1',time:"3h10",event:'',hue:67,photo:''},
