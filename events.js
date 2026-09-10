@@ -82,21 +82,28 @@ const socialTpl={wd:0,color:C_SOCIAL,time:'10h20',dur:90,title:'Social Bleu',
   tags:[{l:'Ouvert à tous',c:'tag-open'}],
   desc:"Le Social Run du dimanche, ouvert à tous et sans inscription. 8 km en groupes d'allure, puis café tous ensemble. Le point de départ est publié sur Strava chaque semaine.",
   details:[['Distance','8 km'],['Allures','Groupes d\'allure · tous niveaux'],['Lieu','Point publié sur Strava'],['Accès','Ouvert à tous · sans inscription']],location:'Paris (point Strava)'};
+// La 1re séance piste de chaque mois — l'Open Track — est ouverte à tous (adhérents comme non-adhérents)
+const openTrackTpl={wd:1,color:C_TARTAN,time:'19h45',dur:90,title:'Tartan Bleu · Open Track',
+  tags:[{l:'Ouvert à tous',c:'tag-open'},{l:'Open Track',c:'tag-km'}],
+  desc:"L'Open Track, c'est la première séance piste du mois : elle est ouverte à tous, adhérents comme non-adhérents. L'occasion de tester la piste avec le club.",
+  details:[['Format','Séance piste · Open Track'],['Niveau','Tous niveaux'],['Lieu','Piste · communiqué sur Strava'],['Accès','Ouvert à tous']],location:'Paris (piste)'};
 
 // {tpl, m, dates:[...]} → séances récurrentes de la saison
 const recurring=[
-  // Octobre (m=9)
-  {tpl:tartanTpl,   m:9, dates:[5,12,19,26]},
-  {tpl:mercrediTpl, m:9, dates:[7,28]},
-  {tpl:socialTpl,   m:9, dates:[4,18]},
+  // Octobre (m=9) · 1re piste du mois = Open Track (ouverte à tous)
+  {tpl:openTrackTpl, m:9, dates:[5]},
+  {tpl:tartanTpl,    m:9, dates:[12,19,26]},
+  {tpl:mercrediTpl,  m:9, dates:[7,28]},
+  {tpl:socialTpl,    m:9, dates:[4,18]},
   // Novembre (m=10)
-  {tpl:tartanTpl,   m:10, dates:[2,9,16,23,30]},
-  {tpl:mercrediTpl, m:10, dates:[4,11,18,25]},
-  {tpl:socialTpl,   m:10, dates:[29]},
+  {tpl:openTrackTpl, m:10, dates:[2]},
+  {tpl:tartanTpl,    m:10, dates:[9,16,23,30]},
+  {tpl:mercrediTpl,  m:10, dates:[4,11,18,25]},
+  {tpl:socialTpl,    m:10, dates:[29]},
   // Décembre (m=11) · pause à partir du 21 (vacances de Noël)
-  {tpl:tartanTpl,   m:11, dates:[7]},
-  {tpl:mercrediTpl, m:11, dates:[2,9,16]},
-  {tpl:socialTpl,   m:11, dates:[20]},
+  {tpl:openTrackTpl, m:11, dates:[7]},
+  {tpl:mercrediTpl,  m:11, dates:[2,9,16]},
+  {tpl:socialTpl,    m:11, dates:[20]},
 ];
 
 // ─────────────────────────────────────────────────────────────
