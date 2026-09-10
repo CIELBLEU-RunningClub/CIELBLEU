@@ -106,6 +106,22 @@ section:nth-child(even){background:var(--white);}
 .ev-filter-btn .dotn{display:inline-block;margin-left:6px;font-size:11px;opacity:.6;}
 .ev-filter-btn.past{opacity:.4;}
 @media(max-width:768px){.ev-filter{top:70px;margin:0 -20px 20px;padding:10px 20px;}}
+/* Barre de filtres : dropdown « jour » + pastilles de mois */
+.ev-filter-inner{display:flex;align-items:center;gap:10px;}
+.ev-filter-inner .ev-filter-grid{flex:1 1 auto;min-width:0;}
+.ev-dayfilter{position:relative;flex:0 0 auto;}
+.ev-dayfilter-btn{display:inline-flex;align-items:center;gap:8px;font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;color:var(--mid);background:rgba(18,43,68,.05);border:1.5px solid rgba(18,43,68,.1);border-radius:30px;padding:9px 16px;cursor:pointer;transition:all .2s;white-space:nowrap;}
+.ev-dayfilter-btn:hover{border-color:var(--blue-sky);color:var(--navy);}
+.ev-dayfilter-btn.on{background:var(--navy);color:white;border-color:var(--navy);}
+.ev-dayfilter-caret{font-size:10px;transition:transform .2s;}
+.ev-dayfilter-btn[aria-expanded="true"] .ev-dayfilter-caret{transform:rotate(180deg);}
+.ev-dayfilter-menu{position:absolute;top:calc(100% + 8px);left:0;min-width:230px;background:var(--white);border:1.5px solid rgba(18,43,68,.12);border-radius:14px;box-shadow:0 12px 34px rgba(18,43,68,.18);padding:6px;display:flex;flex-direction:column;gap:2px;z-index:60;}
+.ev-dayfilter-opt{display:flex;align-items:center;gap:10px;text-align:left;font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:1px;color:var(--navy);background:none;border:none;padding:11px 14px;border-radius:9px;cursor:pointer;transition:background .15s;}
+.ev-dayfilter-opt:hover{background:rgba(18,43,68,.06);}
+.ev-dayfilter-opt.sel{background:rgba(18,43,68,.08);}
+.ev-dayfilter-opt .od{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+.ev-dayfilter-opt .oc{margin-left:auto;font-size:12px;color:var(--mid);opacity:.7;}
+@media(max-width:768px){.ev-dayfilter-menu{min-width:210px;}}
 .ev-empty{text-align:center;color:var(--mid);padding:40px 20px;font-size:14px;}
 .ev-summer-break{text-align:center;padding:48px 40px 56px;color:var(--mid);margin:36px 0 8px;border-top:1px solid rgba(18,43,68,.08);}
 .ev-summer-break-illus{width:200px;height:auto;display:block;margin:0 auto 14px;}
@@ -357,15 +373,41 @@ function evCardHTML(ev){
   </div>`;
 }
 
-// État du filtre : un seul axe, le mois
+// État des filtres : mois + jour/type (menu déroulant)
 let activeMonth='all';
+let activeDay='all';
+const DAY_FILTERS=[
+  {k:'all',     label:'Tous les rendez-vous',    color:''},
+  {k:'1',       label:'Lundi · Tartan Bleu',      color:'#6d879a'},
+  {k:'3',       label:'Mercredi · Mercredi Bleu', color:'#8fb3a8'},
+  {k:'0',       label:'Dimanche · Social Bleu',   color:'#E8B06B'},
+  {k:'special', label:'Événements spéciaux',      color:'#DA5B47'},
+];
+function matchDay(e){
+  if(activeDay==='all')return true;
+  if(activeDay==='special')return !e.session;
+  return e.session && String(e.wd)===activeDay;
+}
+function countFor(k){
+  return allEvents.filter(e=>{
+    if(k==='all')return true;
+    if(k==='special')return !e.session;
+    return e.session && String(e.wd)===k;
+  }).length;
+}
+function defaultMonth(){
+  const cm=TODAY.getFullYear()===YEAR?TODAY.getMonth():monthsWith[0];
+  if(monthsWith.includes(cm))return cm;
+  const up=monthsWith.find(m=>m>=cm);
+  return up!==undefined?up:monthsWith[0];
+}
 
 function renderEvents(){
   const cont=document.getElementById('evContainer');
   const monthsToShow = activeMonth==='all' ? monthsWith : [activeMonth];
   let html='';
   monthsToShow.forEach((m)=>{
-    const evs=allEvents.filter(e=>e.m===m);
+    const evs=allEvents.filter(e=>e.m===m && matchDay(e));
     if(!evs.length)return;
     html+=`<div class="ev-month-section">
       <div class="ev-month-header">
@@ -376,35 +418,66 @@ function renderEvents(){
       <div class="ev-grid">${evs.map(evCardHTML).join('')}</div>
     </div>`;
   });
-  cont.innerHTML=html||'<div class="ev-empty">Aucun événement ce mois-ci.</div>';
+  const emptyLbl = activeDay==='all' ? 'Aucun événement ce mois-ci.' : 'Aucun rendez-vous de ce type sur cette période.';
+  cont.innerHTML=html||`<div class="ev-empty">${emptyLbl}</div>`;
+}
+
+function dayMenuHTML(){
+  const cur=DAY_FILTERS.find(d=>d.k===activeDay)||DAY_FILTERS[0];
+  const btnLabel = activeDay==='all' ? 'Filtrer par jour' : cur.label;
+  const opts=DAY_FILTERS.map(d=>{
+    const dot=d.color?`<span class="od" style="background:${d.color}"></span>`:`<span class="od" style="background:linear-gradient(90deg,#6d879a 50%,#DA5B47 50%)"></span>`;
+    return `<button class="ev-dayfilter-opt${activeDay===d.k?' sel':''}" onclick="setDay('${d.k}')">${dot}${d.label}<span class="oc">${countFor(d.k)}</span></button>`;
+  }).join('');
+  return `<div class="ev-dayfilter">
+    <button class="ev-dayfilter-btn${activeDay!=='all'?' on':''}" id="dayFilterBtn" aria-haspopup="true" aria-expanded="false" onclick="toggleDayFilter(event)">${btnLabel}<span class="ev-dayfilter-caret">▾</span></button>
+    <div class="ev-dayfilter-menu" id="dayFilterMenu" hidden onclick="event.stopPropagation()">${opts}</div>
+  </div>`;
 }
 
 function renderFilter(){
   const f=document.getElementById('evFilter');
   let btns='';
   for(let m=0;m<12;m++){
-    const n=allEvents.filter(e=>e.m===m).length;
+    const n=allEvents.filter(e=>e.m===m && matchDay(e)).length;
     if(!n)continue;
     const isPastMonth=TODAY.getFullYear()===YEAR?m<TODAY.getMonth():false;
     btns+=`<button class="ev-filter-btn${activeMonth===m?' active':''}${isPastMonth?' past':''}" data-m="${m}" onclick="setFilter(${m})">${MONTHS_SHORT[m]} <span class="dotn">${n}</span></button>`;
   }
-  f.innerHTML=`<div class="ev-filter-grid">${btns}</div>`;
+  f.innerHTML=`<div class="ev-filter-inner">${dayMenuHTML()}<div class="ev-filter-grid">${btns}</div></div>`;
   const act=f.querySelector('.ev-filter-btn.active');
   if(act)act.scrollIntoView({inline:'center',block:'nearest'});
 }
 function setFilter(m){
   activeMonth=m;renderFilter();renderEvents();
+  scrollToFilter();
+}
+function toggleDayFilter(e){
+  e.stopPropagation();
+  const m=document.getElementById('dayFilterMenu');const b=document.getElementById('dayFilterBtn');
+  const willOpen=m.hidden; m.hidden=!willOpen; b.setAttribute('aria-expanded',String(willOpen));
+}
+function setDay(k){
+  activeDay=k;
+  // Un filtre « jour » actif balaie toute la saison ; « Tous » revient au mois courant
+  activeMonth = (k==='all') ? defaultMonth() : 'all';
+  renderFilter();renderEvents();
+  scrollToFilter();
+}
+function scrollToFilter(){
   const f=document.getElementById('evFilter');
   const off=(window.innerWidth<=768?70:112);
   const y=f.getBoundingClientRect().top+window.scrollY-off;
   window.scrollTo({top:y,behavior:'smooth'});
 }
+document.addEventListener('click',()=>{
+  const m=document.getElementById('dayFilterMenu');
+  if(m&&!m.hidden){m.hidden=true;const b=document.getElementById('dayFilterBtn');if(b)b.setAttribute('aria-expanded','false');}
+});
 
 // Filtre par défaut : mois courant s'il a des événements, sinon prochain mois avec événements
 (function(){
-  const cm=TODAY.getFullYear()===YEAR?TODAY.getMonth():monthsWith[0];
-  if(monthsWith.includes(cm))activeMonth=cm;
-  else{const up=monthsWith.find(m=>m>=cm);activeMonth=up!==undefined?up:monthsWith[0];}
+  activeMonth=defaultMonth();
   renderFilter();renderEvents();
 })();
 
