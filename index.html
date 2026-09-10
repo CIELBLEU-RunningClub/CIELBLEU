@@ -141,14 +141,14 @@ section:nth-child(even){background:var(--white);}
 
 /* Adhésion */
 .adhesion-block{background:var(--navy);border-radius:20px;padding:30px 34px;display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:center;}
-.ab-text h3{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:.5px;color:white;margin-bottom:10px;}
+.ab-text h3{font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:.5px;color:white;margin-bottom:14px;}
 .ab-text h3 em{color:var(--gold);font-style:italic;}
 .ab-perks-box{background:rgba(182,205,224,.07);border:1px solid rgba(182,205,224,.15);border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:14px;}
 .ab-perks-title{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:3px;color:var(--blue-sky);margin-bottom:12px;}
 .ab-perks{list-style:none;}
-.ab-perks li{font-size:13px;color:rgba(255,255,255,.65);padding:5px 0;border-bottom:1px solid rgba(182,205,224,.08);display:flex;align-items:center;gap:10px;}
+.ab-perks li{font-size:15.5px;color:rgba(255,255,255,.72);padding:11px 0;border-bottom:1px solid rgba(182,205,224,.08);display:flex;align-items:center;gap:12px;}
 .ab-perks li:last-child{border:none;}
-.ab-perks li::before{content:"✓";color:var(--blue-sky);font-weight:700;font-size:14px;}
+.ab-perks li::before{content:"✓";color:var(--blue-sky);font-weight:700;font-size:16px;}
 .ab-price-tiers{display:flex;flex-direction:column;}
 .ab-price-row{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:6px 0;border-bottom:1px solid rgba(182,205,224,.08);}
 .ab-price-row:last-child{border:none;}
@@ -581,14 +581,15 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
   <div class="s-label">03 · Kilomètre Bleu</div>
   <h2 class="s-title">Le meilleur public<br>de Paris.</h2>
   <p class="kmbleu-sub reveal">Sur chaque grande course, CIELBLEU installe sa fan zone Kilomètre Bleu. Cris, drapeaux, tambours et enceintes pour propulser les coureurs.</p>
+  <div class="kmbleu-hint" style="margin:0 0 14px;">← Glissez pour découvrir →</div>
   <div class="kmbleu-media reveal" id="kmbleuMedia"></div>
-  <div class="kmbleu-hint">← Glissez pour découvrir →</div>
 </section>
 
 <!-- GALERIE -->
 <section id="galerie">
   <div class="s-label">04 · Galerie</div>
   <h2 class="s-title">Vous verrez,<br>on sourit beaucoup.</h2>
+  <div class="gallery-swipe-hint" style="margin:0 0 14px;">← Glissez pour découvrir →</div>
   <div class="gallery-carousel-wrap">
   <button class="gallery-nav prev" onclick="scrollGallery(-1)" aria-label="Photos précédentes">‹</button>
   <button class="gallery-nav next" onclick="scrollGallery(1)" aria-label="Photos suivantes">›</button>
@@ -655,7 +656,6 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
     </div>
   </div>
   </div>
-  <div class="gallery-swipe-hint">← Glissez pour découvrir →</div>
   <div style="text-align:center;margin-top:32px;">
     <a href="https://www.instagram.com/cielbleu_runningclub/" target="_blank" style="display:inline-flex;align-items:center;gap:10px;font-family:'Open Sans',sans-serif;font-size:13px;letter-spacing:1.5px;color:var(--navy);text-decoration:none;border:1.5px solid rgba(18,43,68,.3);border-radius:30px;padding:12px 24px;transition:color .2s,border-color .2s,background .2s;" onmouseover="this.style.background='rgba(18,43,68,.07)';this.style.borderColor='var(--navy)'" onmouseout="this.style.background='transparent';this.style.borderColor='rgba(18,43,68,.3)'">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
