@@ -494,8 +494,11 @@ function renderFilter(){
   const pastBlock=(showPastSeason&&past)?`<span class="ev-season-tag">Saison ${SEASON_PAST_NUM}</span>${past}`:'';
   const curBlock=cur?`<span class="ev-season-tag now">Saison ${SEASON_CURRENT_NUM}</span>${cur}`:'';
   f.innerHTML=`<div class="ev-filter-inner">${dayMenuHTML()}<div class="ev-filter-grid">${toggle}${pastBlock}${curBlock}</div></div>`;
+  // Centrer la pastille active horizontalement, SANS faire défiler la page verticalement
+  // (scrollIntoView poussait la page vers le bas et cassait la bannière plein écran)
   const act=f.querySelector('.ev-filter-btn.active');
-  if(act)act.scrollIntoView({inline:'center',block:'nearest'});
+  const grid=f.querySelector('.ev-filter-grid');
+  if(act&&grid)grid.scrollLeft=act.offsetLeft-(grid.clientWidth-act.offsetWidth)/2;
 }
 function setFilter(m){
   activeMonth=m;renderFilter();renderEvents();
