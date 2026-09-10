@@ -61,8 +61,8 @@
       +'.cc-btn{font-family:\'Bebas Neue\',sans-serif;font-size:15px;letter-spacing:1.5px;padding:11px 24px;border-radius:6px;cursor:pointer;border:1.5px solid transparent;text-transform:uppercase;}'
       +'.cc-accept{background:#E8B06B;color:#0b1d30;}.cc-accept:hover{background:#fff;}'
       +'.cc-refuse{background:transparent;color:#fff;border-color:rgba(182,205,224,.5);}.cc-refuse:hover{border-color:#fff;}'
-      +'#cc-manage{background:none;border:none;color:inherit;cursor:pointer;font:inherit;text-decoration:underline;padding:0;}'
-      +'@media(max-width:768px){#cc-banner{padding:14px 16px calc(14px + env(safe-area-inset-bottom));gap:12px;}#cc-actions{width:100%;}.cc-btn{flex:1;}}';
+      +'#cc-manage{background:none;border:none;color:inherit;cursor:pointer;font:inherit;text-decoration:underline;text-underline-offset:2px;padding:0;}'
+      +'@media(max-width:768px){#cc-banner{padding:14px 16px calc(14px + env(safe-area-inset-bottom));gap:12px;}#cc-actions{width:100%;}.cc-btn{flex:1;}.cc-sep{display:none;}#cc-manage{display:block;margin:10px auto 0;}}';
     var st=document.createElement('style');st.id='cc-style';st.textContent=css;document.head.appendChild(st);
   }
   function showBanner(){
@@ -80,7 +80,8 @@
   function addManageLink(){
     var fc=document.querySelector('.footer-copy');
     if(!fc||document.getElementById('cc-manage'))return;
-    var sep=document.createTextNode(' · ');
+    injectStyles(); // s'assurer que #cc-manage est stylé même quand la bannière ne s'affiche pas
+    var sep=document.createElement('span');sep.className='cc-sep';sep.textContent=' · ';
     var btn=document.createElement('button');btn.id='cc-manage';btn.textContent='Gérer les cookies';
     btn.onclick=showBanner;
     fc.appendChild(sep);fc.appendChild(btn);
