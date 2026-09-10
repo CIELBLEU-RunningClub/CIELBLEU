@@ -1,5 +1,5 @@
 // Le trombinoscope des adhérents : une ligne par membre.
-// Saison 2026-2027 · 52 adhérents.
+// Saison 2026-2027 · 56 adhérents.
 // Pour ajouter un headshot : photo:'membres/prenom.jpg' (les initiales s'affichent sinon).
 // Pour ajouter une citation : citation:'…' (le verso reste neutre si vide).
 const MEMBRES=[
@@ -54,5 +54,9 @@ const MEMBRES=[
   {nom:'Yohan', citation:'', photo:''},
   {nom:'Adèle', citation:'', photo:''},
   {nom:'Kalome', citation:'', photo:''},
-  {nom:'Manon', citation:'', photo:''}
+  {nom:'Manon', citation:'', photo:''},
+  {nom:'Solène', citation:'', photo:''},
+  {nom:'Hugo', citation:'', photo:''},
+  {nom:'Noémie', citation:'', photo:''},
+  {nom:'Thomas', citation:'', photo:''}
 ];
