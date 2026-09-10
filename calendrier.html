@@ -502,16 +502,25 @@ function scrollToFilter(){
   const y=f.getBoundingClientRect().top+window.scrollY-off;
   window.scrollTo({top:y,behavior:'smooth'});
 }
-// Fermeture au tap en dehors — click + touchstart (iOS ne déclenche pas toujours click hors élément cliquable)
+// Fermeture du menu jour quand on interagit en dehors.
+// Phase de CAPTURE + pointerdown : se déclenche pour souris ET tactile (iOS), et ne peut pas
+// être bloqué par un stopPropagation interne (iOS ne déclenche pas toujours un click hors élément cliquable).
+function closeDayMenu(){
+  const m=document.getElementById('dayFilterMenu');
+  if(!m||m.hidden)return;
+  m.hidden=true;const b=document.getElementById('dayFilterBtn');if(b)b.setAttribute('aria-expanded','false');
+}
 function closeDayMenuOutside(e){
   const m=document.getElementById('dayFilterMenu');
   if(!m||m.hidden)return;
   const dd=document.querySelector('.ev-dayfilter');
   if(dd&&dd.contains(e.target))return; // tap sur le bouton ou une option : on laisse son handler agir
-  m.hidden=true;const b=document.getElementById('dayFilterBtn');if(b)b.setAttribute('aria-expanded','false');
+  closeDayMenu();
 }
-document.addEventListener('click',closeDayMenuOutside);
-document.addEventListener('touchstart',closeDayMenuOutside,{passive:true});
+document.addEventListener('pointerdown',closeDayMenuOutside,true);
+document.addEventListener('click',closeDayMenuOutside,true);
+document.addEventListener('touchstart',closeDayMenuOutside,{passive:true,capture:true});
+window.addEventListener('scroll',closeDayMenu,{passive:true});
 
 // Filtre par défaut : mois courant s'il a des événements, sinon prochain mois avec événements
 (function(){
