@@ -32,12 +32,15 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
 .nav-logo img{height:20px;width:auto;}
 .nav-links{display:flex;gap:20px;list-style:none;}
-.nav-links a{font-size:11px;letter-spacing:1.5px;font-weight:600;color:rgba(255,255,255,0.65);text-decoration:none;text-transform:uppercase;transition:color .2s;position:relative;}
+.nav-links a{font-size:12.5px;letter-spacing:1.5px;font-weight:600;color:rgba(255,255,255,0.65);text-decoration:none;text-transform:uppercase;transition:color .2s;position:relative;}
 .nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1.5px;background:var(--blue-sky);transition:width .25s ease;}
 .nav-links a:hover,.nav-links a.active{color:white;}
 .nav-links a:hover::after,.nav-links a.active::after{width:100%;}
-.nav-cta{background:var(--blue-sky);color:var(--navy);font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:2px;padding:10px 22px;border-radius:4px;text-decoration:none;transition:background .2s;}
+.nav-cta-group{display:flex;align-items:center;gap:12px;}
+.nav-cta{background:var(--blue-sky);color:var(--navy);font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:2px;padding:13px 26px;border-radius:5px;text-decoration:none;transition:background .2s;white-space:nowrap;}
 .nav-cta:hover{background:white;}
+.nav-cta-alt{background:transparent;color:var(--blue-sky);border:1.5px solid rgba(182,205,224,.5);}
+.nav-cta-alt:hover{background:rgba(182,205,224,.14);color:white;}
 .nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:8px;color:white;font-size:24px;line-height:1;}
 .nav-mobile{display:none;position:fixed;top:70px;left:0;right:0;bottom:0;background:rgba(11,29,48,0.98);z-index:99;padding:8px 20px calc(20px + env(safe-area-inset-bottom));list-style:none;backdrop-filter:blur(12px);overflow-y:auto;}
 .nav-mobile.open{display:flex;flex-direction:column;}
@@ -138,7 +141,7 @@ footer{background:var(--navy-deep);padding:40px 60px;}
 /* ── MOBILE ── */
 @media(max-width:768px){
   nav{padding:0 20px;height:70px;}
-  .nav-links,.nav-cta{display:none;}
+  .nav-links,.nav-cta,.nav-cta-group{display:none;}
   .nav-hamburger{display:flex;align-items:center;}
   
   .page-hero{padding:100px 20px 50px;min-height:auto;}
@@ -168,7 +171,10 @@ footer{background:var(--navy-deep);padding:40px 60px;}
     <li><a href="nos-adherents.html">Nos adhérents</a></li>
     <li><a href="nos-partenaires.html">Nos partenaires</a></li>
   </ul>
-  <a href="./#adhesion" class="nav-cta">Devenir adhérent →</a>
+  <div class="nav-cta-group">
+    <a href="./#adhesion" class="nav-cta">Devenir adhérent →</a>
+    <a href="nos-partenaires.html#contact" class="nav-cta nav-cta-alt">Devenir partenaire →</a>
+  </div>
   <button class="nav-hamburger" onclick="toggleNav()" aria-label="Menu">&#9776;</button>
 </nav>
 <ul class="nav-mobile" id="navMobile">
@@ -178,6 +184,7 @@ footer{background:var(--navy-deep);padding:40px 60px;}
   <li><a href="nos-adherents.html" onclick="toggleNav()">Nos adhérents</a></li>
   <li><a href="nos-partenaires.html" onclick="toggleNav()">Nos partenaires</a></li>
   <li><a href="./#adhesion" onclick="toggleNav()" style="color:var(--gold)!important;">→ Devenir adhérent</a></li>
+  <li><a href="nos-partenaires.html#contact" onclick="toggleNav()" style="color:var(--blue-sky)!important;">→ Devenir partenaire</a></li>
 </ul>
 
 <!-- HERO -->
