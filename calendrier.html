@@ -73,6 +73,12 @@ section:nth-child(even){background:var(--white);}
 .ev-month-line{flex:1;height:1px;background:rgba(18,43,68,.1);}
 .ev-month-count{font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:3px;color:var(--blue-steel);}
 .ev-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;}
+.ev-week{margin-bottom:24px;}
+.ev-week:last-child{margin-bottom:0;}
+.ev-week-label{display:flex;align-items:center;gap:12px;margin:0 0 12px;}
+.ev-week-name{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:3px;color:var(--blue-steel);text-transform:uppercase;white-space:nowrap;}
+.ev-week-range{font-family:'Open Sans',sans-serif;font-size:11.5px;letter-spacing:.3px;color:var(--mid);opacity:.75;white-space:nowrap;}
+.ev-week-label::after{content:'';flex:1;height:1px;background:rgba(18,43,68,.08);}
 .ev-card{background:var(--white);border:1.5px solid rgba(18,43,68,.08);border-radius:14px;overflow:hidden;cursor:pointer;transition:transform .2s,box-shadow .2s;}
 .ev-card:hover{transform:translateY(-5px);box-shadow:0 12px 32px rgba(18,43,68,.14);}
 .ev-card.past{opacity:.45;filter:grayscale(0.4);}
@@ -402,6 +408,22 @@ function defaultMonth(){
   return up!==undefined?up:monthsWith[0];
 }
 
+// Regroupement par semaine (lundi → dimanche)
+function isoWeekStart(dt){const d=new Date(dt);const off=(d.getDay()+6)%7;d.setDate(d.getDate()-off);d.setHours(0,0,0,0);return d;}
+function weeksOf(evs){
+  const sorted=[...evs].sort((a,b)=>a.d-b.d);
+  const groups=[];let cur=null;
+  sorted.forEach(e=>{const ws=isoWeekStart(e.date).getTime();
+    if(!cur||cur.ws!==ws){cur={ws,items:[]};groups.push(cur);}
+    cur.items.push(e);});
+  return groups;
+}
+function weekRange(ws){
+  const mon=new Date(ws);const sun=new Date(ws);sun.setDate(sun.getDate()+6);
+  const ms=MONTHS_SHORT[mon.getMonth()].toLowerCase(),ss=MONTHS_SHORT[sun.getMonth()].toLowerCase();
+  return mon.getMonth()===sun.getMonth()?`${mon.getDate()}–${sun.getDate()} ${ss}`:`${mon.getDate()} ${ms} – ${sun.getDate()} ${ss}`;
+}
+
 function renderEvents(){
   const cont=document.getElementById('evContainer');
   const monthsToShow = activeMonth==='all' ? monthsWith : [activeMonth];
@@ -409,13 +431,23 @@ function renderEvents(){
   monthsToShow.forEach((m)=>{
     const evs=allEvents.filter(e=>e.m===m && matchDay(e));
     if(!evs.length)return;
+    // Vue « tous » : lignes par semaine ; vue filtrée par jour : grille simple (1 rdv/semaine)
+    let body;
+    if(activeDay==='all'){
+      body=weeksOf(evs).map((g,i)=>`<div class="ev-week">
+        <div class="ev-week-label"><span class="ev-week-name">Semaine ${i+1}</span><span class="ev-week-range">${weekRange(g.ws)}</span></div>
+        <div class="ev-grid">${g.items.map(evCardHTML).join('')}</div>
+      </div>`).join('');
+    } else {
+      body=`<div class="ev-grid">${[...evs].sort((a,b)=>a.d-b.d).map(evCardHTML).join('')}</div>`;
+    }
     html+=`<div class="ev-month-section">
       <div class="ev-month-header">
         <div class="ev-month-name">${MONTHS[m].toUpperCase()} ${YEAR}</div>
         <div class="ev-month-line"></div>
         <div class="ev-month-count">${evs.length} rendez-vous</div>
       </div>
-      <div class="ev-grid">${evs.map(evCardHTML).join('')}</div>
+      ${body}
     </div>`;
   });
   const emptyLbl = activeDay==='all' ? 'Aucun événement ce mois-ci.' : 'Aucun rendez-vous de ce type sur cette période.';
