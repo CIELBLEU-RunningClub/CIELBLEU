@@ -94,15 +94,15 @@ section:nth-child(even){background:var(--white);}
 .tag-trail{background:rgba(109,135,154,.15);color:var(--blue-steel);}
 .ev-card-more{font-size:11px;color:var(--blue-steel);letter-spacing:1px;margin-left:auto;}
 /* Filtre de mois */
-.ev-filter{display:flex;flex-direction:column;gap:8px;margin-bottom:36px;}
-.ev-filter-all{display:flex;}
-.ev-filter-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;}
-.ev-filter-btn{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;color:var(--mid);background:rgba(18,43,68,.05);border:1.5px solid rgba(18,43,68,.1);border-radius:30px;padding:9px 18px;cursor:pointer;transition:all .2s;white-space:nowrap;text-align:center;}
+.ev-filter{position:sticky;top:112px;z-index:50;background:var(--white);margin:0 -60px 28px;padding:12px 60px;border-bottom:1px solid rgba(18,43,68,.08);}
+.ev-filter-grid{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;}
+.ev-filter-grid::-webkit-scrollbar{display:none;}
+.ev-filter-btn{flex:0 0 auto;font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;color:var(--mid);background:rgba(18,43,68,.05);border:1.5px solid rgba(18,43,68,.1);border-radius:30px;padding:9px 18px;cursor:pointer;transition:all .2s;white-space:nowrap;text-align:center;}
 .ev-filter-btn:hover{border-color:var(--blue-sky);color:var(--navy);}
 .ev-filter-btn.active{background:var(--navy);color:white;border-color:var(--navy);}
 .ev-filter-btn .dotn{display:inline-block;margin-left:6px;font-size:11px;opacity:.6;}
 .ev-filter-btn.past{opacity:.4;}
-@media(max-width:600px){.ev-filter-grid{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:768px){.ev-filter{top:70px;margin:0 -20px 20px;padding:10px 20px;}}
 .ev-empty{text-align:center;color:var(--mid);padding:40px 20px;font-size:14px;}
 .ev-summer-break{text-align:center;padding:48px 40px 56px;color:var(--mid);margin:36px 0 8px;border-top:1px solid rgba(18,43,68,.08);}
 .ev-summer-break-illus{width:200px;height:auto;display:block;margin:0 auto 14px;}
@@ -281,9 +281,7 @@ footer{background:var(--navy-deep);padding:40px 60px;}
 <section id="evenements">
   <div class="s-label">01 · Calendrier</div>
   <h2 class="s-title">Les événements.</h2>
-  <p class="s-intro">Filtre par type ou par mois. Les séances hebdomadaires sont en bleu, les événements spéciaux en doré.</p>
-  <div class="ev-typefilter" id="evTypeFilter"></div>
-  <div class="ev-dayfilter" id="evDayFilter"></div>
+  <p class="s-intro">Choisis un mois pour voir les rendez-vous. Séances en bleu, événements spéciaux en doré.</p>
   <div class="ev-filter" id="evFilter"></div>
   <div id="evContainer"></div>
 </section>
@@ -351,25 +349,15 @@ function evCardHTML(ev){
   </div>`;
 }
 
-// État des filtres
+// État du filtre : un seul axe, le mois
 let activeMonth='all';
-let typeFilter='all'; // 'all' | 'seance' | 'special'
-let dayFilter='all'; // 'all' | 0 (dimanche) | 1 (lundi) | 3 (mercredi)
-
-function matchType(e){
-  if(typeFilter==='seance')return e.session;
-  if(typeFilter==='special')return !e.session;
-  return true;
-}
-function wdOf(e){return e.session?e.wd:new Date(e.y,e.m,e.d).getDay();}
-function matchDay(e){return dayFilter==='all'||wdOf(e)===dayFilter;}
 
 function renderEvents(){
   const cont=document.getElementById('evContainer');
   const monthsToShow = activeMonth==='all' ? monthsWith : [activeMonth];
   let html='';
-  monthsToShow.forEach((m,i)=>{
-    const evs=allEvents.filter(e=>e.m===m&&matchType(e)&&matchDay(e));
+  monthsToShow.forEach((m)=>{
+    const evs=allEvents.filter(e=>e.m===m);
     if(!evs.length)return;
     html+=`<div class="ev-month-section">
       <div class="ev-month-header">
@@ -380,49 +368,36 @@ function renderEvents(){
       <div class="ev-grid">${evs.map(evCardHTML).join('')}</div>
     </div>`;
   });
-  cont.innerHTML=html||'<div class="ev-empty">Aucun événement pour ce filtre.</div>';
-}
-
-function renderTypeFilter(){
-  const nAll=allEvents.length;
-  const nSeance=allEvents.filter(e=>e.session).length;
-  const nSpecial=allEvents.filter(e=>!e.session).length;
-  document.getElementById('evTypeFilter').innerHTML=`
-    <button class="ev-type-btn${typeFilter==='all'?' active':''}" data-t="all" onclick="setType('all')"><span class="ev-type-dot"></span>Tout <span class="ev-type-n">${nAll}</span></button>
-    <button class="ev-type-btn${typeFilter==='special'?' active':''}" data-t="special" onclick="setType('special')"><span class="ev-type-dot"></span>★ Événements spéciaux <span class="ev-type-n">${nSpecial}</span></button>
-    <button class="ev-type-btn${typeFilter==='seance'?' active':''}" data-t="seance" onclick="setType('seance')"><span class="ev-type-dot"></span>↻ Séances hebdomadaires <span class="ev-type-n">${nSeance}</span></button>`;
-}
-
-function renderDayFilter(){
-  const days=[[1,'Lundi'],[3,'Mercredi'],[0,'Dimanche']];
-  document.getElementById('evDayFilter').innerHTML=days.map(([d,label])=>{
-    const n=allEvents.filter(e=>matchType(e)&&(d==='all'||wdOf(e)===d)).length;
-    const dAttr=typeof d==='string'?`'${d}'`:d;
-    return `<button class="ev-day-btn${dayFilter===d?' active':''}" data-d="${d}" onclick="setDay(${dAttr})"><span class="ev-day-dot"></span>${label} <span class="ev-day-n">${n}</span></button>`;
-  }).join('');
+  cont.innerHTML=html||'<div class="ev-empty">Aucun événement ce mois-ci.</div>';
 }
 
 function renderFilter(){
   const f=document.getElementById('evFilter');
-  const total=allEvents.filter(e=>matchType(e)&&matchDay(e)).length;
-  let grid='';
+  let btns='';
   for(let m=0;m<12;m++){
-    const n=allEvents.filter(e=>e.m===m&&matchType(e)&&matchDay(e)).length;
+    const n=allEvents.filter(e=>e.m===m).length;
+    if(!n)continue;
     const isPastMonth=TODAY.getFullYear()===YEAR?m<TODAY.getMonth():false;
-    grid+=`<button class="ev-filter-btn${activeMonth===m?' active':''}${isPastMonth?' past':''}" onclick="setFilter(${m})">${MONTHS_SHORT[m]} <span class="dotn">${n}</span></button>`;
+    btns+=`<button class="ev-filter-btn${activeMonth===m?' active':''}${isPastMonth?' past':''}" data-m="${m}" onclick="setFilter(${m})">${MONTHS_SHORT[m]} <span class="dotn">${n}</span></button>`;
   }
-  f.innerHTML=`<div class="ev-filter-grid">${grid}</div>`;
+  f.innerHTML=`<div class="ev-filter-grid">${btns}</div>`;
+  const act=f.querySelector('.ev-filter-btn.active');
+  if(act)act.scrollIntoView({inline:'center',block:'nearest'});
 }
-function setFilter(f){activeMonth=f;renderFilter();renderEvents();}
-function setType(t){typeFilter=t;renderTypeFilter();renderDayFilter();renderFilter();renderEvents();}
-function setDay(d){dayFilter=d;renderDayFilter();renderFilter();renderEvents();}
+function setFilter(m){
+  activeMonth=m;renderFilter();renderEvents();
+  const f=document.getElementById('evFilter');
+  const off=(window.innerWidth<=768?70:112);
+  const y=f.getBoundingClientRect().top+window.scrollY-off;
+  window.scrollTo({top:y,behavior:'smooth'});
+}
 
 // Filtre par défaut : mois courant s'il a des événements, sinon prochain mois avec événements
 (function(){
   const cm=TODAY.getFullYear()===YEAR?TODAY.getMonth():monthsWith[0];
   if(monthsWith.includes(cm))activeMonth=cm;
   else{const up=monthsWith.find(m=>m>=cm);activeMonth=up!==undefined?up:monthsWith[0];}
-  renderTypeFilter();renderDayFilter();renderFilter();renderEvents();
+  renderFilter();renderEvents();
 })();
 
 // ===== MODAL =====
