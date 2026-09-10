@@ -73,11 +73,8 @@ section:nth-child(even){background:var(--white);}
 .trombi-search svg{position:absolute;left:15px;top:50%;transform:translateY(-50%);color:var(--mid);}
 .trombi-count{font-size:13px;color:var(--mid);letter-spacing:1px;}
 .trombi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:16px;}
-.trombi-card{aspect-ratio:3/4;perspective:800px;cursor:pointer;}
-.trombi-inner{position:relative;width:100%;height:100%;transition:transform .55s cubic-bezier(.3,.8,.3,1);transform-style:preserve-3d;}
-.trombi-card:hover .trombi-inner,.trombi-inner.flipped{transform:rotateY(180deg);}
-.trombi-face{position:absolute;inset:0;border-radius:14px;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden;}
-.trombi-front{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:14px 10px;background:var(--white);border:1.5px solid rgba(182,205,224,.35);}
+.trombi-card{aspect-ratio:3/4;position:relative;border-radius:14px;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:14px 10px;background:var(--white);border:1.5px solid rgba(182,205,224,.35);transition:transform .2s,box-shadow .2s;}
+.trombi-card:hover{transform:translateY(-4px);box-shadow:0 10px 26px rgba(18,43,68,.16);}
 .trombi-avatar{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:46px;color:rgba(255,255,255,.92);letter-spacing:1px;}
 .trombi-avatar::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(11,29,48,.78) 0%,transparent 55%);}
 .trombi-name{position:relative;z-index:1;font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:1.5px;color:white;}
@@ -298,24 +295,22 @@ footer{background:var(--navy-deep);padding:40px 60px;}
     <div class="ab-text">
       <h3>Ce que ça change<br>d'être adhérent.</h3>
       <ul class="ab-perks" style="margin-top:8px;">
-        <li>Accès à toutes les séances : Tartan Bleu le lundi, Mercredi Bleu, et le Social Bleu du dimanche</li>
-        <li>Dossards &amp; goodies partenaires</li>
-        <li>Réduction sur le merchandising</li>
-        <li>Sorties extra (trail, interclubs, ekiden…)</li>
-        <li>Accès prioritaire aux soirées CIELBLEU</li>
-        <li>Assurance en cas de blessure ou accident</li>
-        <li>Aide à la planification d'entraînement</li>
-        <li>La convivialité CIELBLEU toute l'année !</li>
+        <li>Accès à toutes les séances : Tartan Bleu, Mercredi Bleu, Social Bleu</li>
+        <li>Dossards, goodies &amp; réductions partenaires</li>
+        <li>Sorties extra : trail, interclubs, ekiden, soirées</li>
+        <li>Assurance blessure &amp; aide à l'entraînement</li>
+        <li>La convivialité CIELBLEU toute l'année</li>
       </ul>
     </div>
     <div class="ab-perks-box">
       <div>
         <div class="ab-perks-title">Adhésion · Saison 2026-2027</div>
         <div class="ab-price-tiers">
-          <div class="ab-price-row"><span class="ab-price-period">1<sup>er</sup>–30 sept. · Renouvellement <span style="color:rgba(255,255,255,.4)">· early bird</span></span><span class="ab-price-amount">35€</span></div>
-          <div class="ab-price-row"><span class="ab-price-period">1<sup>er</sup>–30 sept. · Nouvelle adhésion <span style="color:rgba(255,255,255,.4)">· early bird</span></span><span class="ab-price-amount">40€</span></div>
-          <div class="ab-price-row"><span class="ab-price-period">À partir du 1<sup>er</sup> octobre</span><span class="ab-price-amount">50€</span></div>
+          <div class="ab-price-row"><span class="ab-price-period">Renouvellement</span><span class="ab-price-amount">35€</span></div>
+          <div class="ab-price-row"><span class="ab-price-period">Nouvelle adhésion</span><span class="ab-price-amount">40€</span></div>
+          <div class="ab-price-row"><span class="ab-price-period">Dès le 1<sup>er</sup> octobre</span><span class="ab-price-amount">50€</span></div>
         </div>
+        <div style="font-size:11px;color:rgba(255,255,255,.45);margin-top:10px;line-height:1.5;">Tarifs « early bird » 35€ / 40€ jusqu'au 30 septembre.</div>
       </div>
       <div style="border-top:1px solid rgba(182,205,224,.1);padding-top:18px;">
         <div style="font-family:'Anton',sans-serif;font-size:22px;letter-spacing:1px;color:white;text-transform:uppercase;">On vous attend.</div>
@@ -361,19 +356,9 @@ function grad(i){const l1=48+((i*13)%22);const l2=26+((i*11)%16);const h=200+((i
     const visu=m.photo
       ? `<div class="trombi-avatar" style="background:${grad(i)}"><img class="trombi-photo" src="${m.photo}" alt="${m.nom}" loading="lazy" decoding="async"></div>`
       : `<div class="trombi-avatar" style="background:${grad(i)}">${m.nom.charAt(0)}</div>`;
-    return `<div class="trombi-card" onclick="this.querySelector('.trombi-inner').classList.toggle('flipped')">
-      <div class="trombi-inner">
-        <div class="trombi-face trombi-front">
-          ${visu}
-          <span class="trombi-fliphint">"</span>
-          <span class="trombi-name">${m.nom}</span>
-        </div>
-        <div class="trombi-face trombi-back">
-          ${m.citation && m.citation.trim()
-            ? `<div class="trombi-quote">« ${m.citation} »</div><div class="qn">${m.nom}</div>`
-            : `<div class="trombi-name" style="font-size:19px;margin-bottom:8px;">${m.nom}</div><div class="qn">Membre du club · saison 26/27</div>`}
-        </div>
-      </div>
+    return `<div class="trombi-card">
+      ${visu}
+      <span class="trombi-name">${m.nom}</span>
     </div>`;
   }
   function renderTrombi(filter=""){
@@ -436,7 +421,7 @@ const EXPLOITS=[
 ];
 function renderExploits(){
   const wrap=document.getElementById('exploitsGrid');if(!wrap)return;
-  if(!EXPLOITS.length){wrap.innerHTML=`<div class="rec-empty">Les premières fiertés seront bientôt affichées ici. Envoyez-nous vos histoires !</div>`;return;}
+  if(!EXPLOITS.length){wrap.innerHTML=`<div class="rec-empty">Les premières fiertés seront bientôt affichées ici.<br>Partage la tienne à <a href="mailto:contact.lcebrunning@gmail.com?subject=Ma%20fierté%20CIELBLEU" style="color:var(--navy);font-weight:600;text-decoration:underline;">contact.lcebrunning@gmail.com</a></div>`;return;}
   wrap.innerHTML=EXPLOITS.map(e=>{
     const c=EXPLOIT_CATS[e.cat]||{label:'Exploit',icon:'⭐',color:'#6d879a'};
     const avatar=e.photo?`<img src="${e.photo}" alt="${e.who}">`:e.who.charAt(0);
