@@ -112,6 +112,10 @@ section:nth-child(even){background:var(--white);}
 .ev-filter-btn.active{background:var(--navy);color:white;border-color:var(--navy);}
 .ev-filter-btn .dotn{display:inline-block;margin-left:6px;font-size:11px;opacity:.6;}
 .ev-filter-btn.past{opacity:.4;}
+.ev-season-tag{flex:0 0 auto;align-self:center;font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--blue-steel);padding:0 4px 0 8px;white-space:nowrap;}
+.ev-season-tag.now{color:var(--navy);}
+.ev-season-toggle{flex:0 0 auto;font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:1.5px;color:var(--blue-steel);background:none;border:1.5px dashed rgba(18,43,68,.2);border-radius:30px;padding:8px 14px;cursor:pointer;white-space:nowrap;transition:all .2s;}
+.ev-season-toggle:hover{color:var(--navy);border-color:var(--blue-sky);background:rgba(18,43,68,.04);}
 @media(max-width:768px){.ev-filter{top:70px;margin:0 -20px 20px;padding:10px 20px;}}
 /* Barre de filtres : dropdown « jour » + pastilles de mois */
 .ev-filter-inner{display:flex;align-items:center;gap:10px;}
@@ -465,16 +469,27 @@ function dayMenuHTML(){
   return `<select class="ev-dayselect${activeDay!=='all'?' on':''}" id="dayFilterSelect" aria-label="Filtrer par jour" onchange="setDay(this.value)">${opts}</select>`;
 }
 
+// La saison démarre en septembre : sept.→déc. 2026 = Saison 3, janv.→août 2026 = fin de Saison 2
+const SEASON_START_MONTH=8;
+const SEASON_CURRENT_NUM=3, SEASON_PAST_NUM=2;
+let showPastSeason=false;
+function togglePastSeason(){showPastSeason=!showPastSeason;renderFilter();}
+
 function renderFilter(){
   const f=document.getElementById('evFilter');
-  let btns='';
+  let past='',cur='';
   for(let m=0;m<12;m++){
     const n=allEvents.filter(e=>e.m===m && matchDay(e)).length;
     if(!n)continue;
     const isPastMonth=TODAY.getFullYear()===YEAR?m<TODAY.getMonth():false;
-    btns+=`<button class="ev-filter-btn${activeMonth===m?' active':''}${isPastMonth?' past':''}" data-m="${m}" onclick="setFilter(${m})">${MONTHS_SHORT[m]} <span class="dotn">${n}</span></button>`;
+    const btn=`<button class="ev-filter-btn${activeMonth===m?' active':''}${isPastMonth?' past':''}" data-m="${m}" onclick="setFilter(${m})">${MONTHS_SHORT[m]} <span class="dotn">${n}</span></button>`;
+    if(m<SEASON_START_MONTH)past+=btn; else cur+=btn;
   }
-  f.innerHTML=`<div class="ev-filter-inner">${dayMenuHTML()}<div class="ev-filter-grid">${btns}</div></div>`;
+  // Saison précédente masquée par défaut, mais consultable via le bouton (historique conservé)
+  const toggle=past?`<button class="ev-season-toggle" onclick="togglePastSeason()">${showPastSeason?'✕ Masquer la saison '+SEASON_PAST_NUM:'⤺ Saison '+SEASON_PAST_NUM}</button>`:'';
+  const pastBlock=(showPastSeason&&past)?`<span class="ev-season-tag">Saison ${SEASON_PAST_NUM}</span>${past}`:'';
+  const curBlock=cur?`<span class="ev-season-tag now">Saison ${SEASON_CURRENT_NUM}</span>${cur}`:'';
+  f.innerHTML=`<div class="ev-filter-inner">${dayMenuHTML()}<div class="ev-filter-grid">${toggle}${pastBlock}${curBlock}</div></div>`;
   const act=f.querySelector('.ev-filter-btn.active');
   if(act)act.scrollIntoView({inline:'center',block:'nearest'});
 }
