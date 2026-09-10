@@ -418,10 +418,21 @@ function weekRange(ws){
 
 function renderEvents(){
   const cont=document.getElementById('evContainer');
-  const monthsToShow = activeMonth==='all' ? monthsWith : [activeMonth];
+  // Mois en cours (0 = janvier). Si la saison est future : -1 (rien de passé) ; si passée : 12 (tout passé)
+  const curMonth = TODAY.getFullYear()===YEAR ? TODAY.getMonth() : (TODAY.getFullYear()<YEAR ? -1 : 12);
+  let monthsToShow;
+  if(activeMonth==='all'){
+    monthsToShow = monthsWith.filter(m=>m>=curMonth);            // à partir du mois en cours
+    if(!monthsToShow.length) monthsToShow = monthsWith;          // sécurité : saison terminée
+  } else {
+    monthsToShow = [activeMonth];
+  }
   let html='';
   monthsToShow.forEach((m)=>{
-    const evs=allEvents.filter(e=>e.m===m && matchDay(e));
+    let evs=allEvents.filter(e=>e.m===m && matchDay(e));
+    // On masque les rendez-vous déjà passés, SAUF si l'utilisateur a explicitement ouvert un mois passé
+    const explicitPastMonth = (activeMonth!=='all' && m<curMonth);
+    if(!explicitPastMonth) evs=evs.filter(e=>!isPast(e));
     if(!evs.length)return;
     // Vue « tous » : lignes par semaine ; vue filtrée par jour : grille simple (1 rdv/semaine)
     let body;
