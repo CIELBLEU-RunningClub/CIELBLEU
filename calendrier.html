@@ -330,10 +330,10 @@ footer{background:var(--navy-deep);padding:40px 60px;}
   <div class="footer-inner">
     <a href="#" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'});" aria-label="Retour en haut" style="display:inline-flex;cursor:pointer;"><img src="CIELBLEU.png" alt="CIELBLEU"></a>
     <div class="footer-socials">
-      <a href="https://www.instagram.com/cielbleu_runningclub/" target="_blank">Instagram</a>
-      <a href="https://www.strava.com/clubs/lecielestbleu" target="_blank">Strava</a>
-      <a href="https://www.tiktok.com/@lecielestbleu_running" target="_blank">TikTok</a>
-      <a href="https://www.linkedin.com/company/le-ciel-est-bleu-running-club/" target="_blank">LinkedIn</a>
+      <a href="https://www.instagram.com/cielbleu_runningclub/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.strava.com/clubs/lecielestbleu" target="_blank" rel="noopener">Strava</a>
+      <a href="https://www.tiktok.com/@lecielestbleu_running" target="_blank" rel="noopener">TikTok</a>
+      <a href="https://www.linkedin.com/company/le-ciel-est-bleu-running-club/" target="_blank" rel="noopener">LinkedIn</a>
       <a href="mailto:contact.lcebrunning@gmail.com">Contact</a>
     </div>
     <span class="footer-copy">© 2026 CIELBLEU · Paris · <a href="mentions-legales.html" style="color:inherit;">Mentions légales</a></span>
@@ -561,7 +561,8 @@ window.addEventListener('scroll',()=>{document.getElementById('back-to-top').cla
 // du type calendrier.html?event=ID (ex. teaser « Prochains rendez-vous » de l'accueil)
 (function(){
   const wantedId=new URLSearchParams(location.search).get('event');
-  if(wantedId&&EVENTS_BY_ID[wantedId])openModal(wantedId);
+  // hasOwnProperty : évite qu'une clé du prototype (ex. ?event=constructor) ne casse la page
+  if(wantedId&&Object.prototype.hasOwnProperty.call(EVENTS_BY_ID,wantedId))openModal(wantedId);
 })();
 </script>
 <script src="scroll-shoe.js?v=1"></script>
