@@ -49,8 +49,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .nav-mobile li:last-child a{border:none;}
 
 /* ── HERO ── */
-.page-hero{min-height:62vh;background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy) 60%,#1a3d5c 100%);display:flex;flex-direction:column;justify-content:center;padding:150px 60px 70px;position:relative;overflow:hidden;}
-.page-hero::before{content:'';position:absolute;top:-20%;right:-5%;width:600px;height:600px;background:radial-gradient(circle,rgba(182,205,224,0.12) 0%,transparent 65%);border-radius:50%;}
+.page-hero{min-height:100vh;min-height:100svh;background:var(--navy-deep);display:flex;flex-direction:column;justify-content:center;padding:150px 60px 70px;position:relative;overflow:hidden;}
+.page-hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(80deg,rgba(11,29,48,.96) 0%,rgba(11,29,48,.84) 38%,rgba(11,29,48,.56) 68%,rgba(18,43,68,.4) 100%),linear-gradient(to top,rgba(11,29,48,.92) 0%,rgba(11,29,48,.3) 32%,rgba(11,29,48,.08) 58%);}
+.page-hero-bg-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;opacity:.85;pointer-events:none;z-index:0;}
+.page-hero > *:not(.page-hero-bg-img){position:relative;z-index:2;}
+@media(max-width:768px){.page-hero::before{background:linear-gradient(180deg,rgba(11,29,48,.5) 0%,rgba(11,29,48,.28) 32%,rgba(11,29,48,.55) 70%,rgba(11,29,48,.9) 100%),linear-gradient(90deg,rgba(11,29,48,.85) 0%,rgba(11,29,48,.5) 48%,rgba(11,29,48,.18) 100%);}.page-hero-bg-img{opacity:.9;object-position:center 32%;}}
 .page-hero-eyebrow{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:5px;color:var(--blue-sky);opacity:.8;margin-bottom:14px;position:relative;z-index:1;}
 .page-hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(44px,7.6vw,92px);line-height:1;letter-spacing:.5px;color:white;position:relative;z-index:1;}
 .page-hero h1 em{color:var(--blue-sky);font-style:normal;}
@@ -241,7 +244,7 @@ footer{background:var(--navy-deep);padding:40px 60px;}
   .nav-links,.nav-cta,.nav-cta-group{display:none;}
   .nav-hamburger{display:flex;align-items:center;}
   
-  .page-hero{padding:100px 20px 50px;min-height:auto;}
+  .page-hero{padding:110px 20px 60px;min-height:100vh;min-height:100svh;}
   section{padding:48px 20px;scroll-margin-top:70px;}
   .ev-modal-actions{display:flex;flex-direction:column;gap:10px;}
   .ev-modal-close,.ev-modal-ics{width:100%;}
@@ -292,6 +295,7 @@ footer{background:var(--navy-deep);padding:40px 60px;}
 
 <!-- HERO -->
 <header class="page-hero">
+  <img src="adidas10k.JPG" alt="" class="page-hero-bg-img" fetchpriority="high">
   <div class="page-hero-eyebrow">La saison</div>
   <h1>LE <em>CALENDRIER</em></h1>
   <p>Toutes les dates du club au même endroit : les trois séances de la semaine, les événements avec les marques et les grands rendez-vous. Clique sur une date pour l'ajouter à ton agenda.</p>
