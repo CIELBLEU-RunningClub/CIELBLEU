@@ -363,7 +363,7 @@ footer{background:var(--navy-deep);padding:40px 60px;}
 
 <a id="back-to-top" href="#" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'});" aria-label="Retour en haut">↑</a>
 
-<script src="membres.js?v=1003"></script>
+<script src="membres.js?v=1004"></script>
 <script>
 
 /* ===== DONNÉES ===== */
@@ -488,15 +488,59 @@ renderExploits();
 /* photo: chemin d'un headshot (optionnel), sinon avatar avec l'initiale */
 /* Records à compléter dès que les vrais chronos seront communiqués */
 const recordCats=[
-  {key:'5k',label:'5 KM',records:[]},
+  {key:'5k',label:'5 KM',records:[
+    {who:'Ethan',time:"19'20",event:'',hue:1,photo:''},
+    {who:'Théo',time:"19'10",event:'',hue:2,photo:''},
+    {who:'Alvin',time:"22'00",event:'',hue:3,photo:''},
+    {who:'Sarah',time:"22'30",event:'',hue:4,photo:''},
+    {who:'Yoann',time:"23'00",event:'',hue:5,photo:''},
+    {who:'Romane',time:"25'00",event:'',hue:6,photo:''},
+  ]},
   {key:'10k',label:'10 KM',records:[
-    {who:'Agathe n°1',time:"54'00",event:'',hue:2,photo:''},
+    {who:'Mélanie',time:"37'17",event:'',hue:3,photo:''},
+    {who:'Théo',time:"38'52",event:'',hue:4,photo:''},
+    {who:'Thibault',time:"40'00",event:'',hue:5,photo:''},
+    {who:'Yohan',time:"40'35",event:'',hue:6,photo:''},
+    {who:'Candice',time:"40'46",event:'',hue:7,photo:''},
+    {who:'Matheo',time:"41'00",event:'',hue:8,photo:''},
+    {who:'Alvin',time:"43'00",event:'',hue:9,photo:''},
+    {who:'Kalome',time:"44'12",event:'',hue:10,photo:''},
+    {who:'Sarah',time:"46'55",event:'',hue:11,photo:''},
+    {who:'Mathieu',time:"47'00",event:'',hue:12,photo:''},
+    {who:'Anaïs',time:"48'00",event:'',hue:13,photo:''},
+    {who:'Clarisse',time:"50'00",event:'',hue:14,photo:''},
+    {who:'Clemence',time:"50'00",event:'',hue:15,photo:''},
+    {who:'Flavie',time:"50'00",event:'',hue:16,photo:''},
+    {who:'Romane',time:"50'00",event:'',hue:17,photo:''},
+    {who:'Milena',time:"50'47",event:'',hue:18,photo:''},
+    {who:'Lucile',time:"51'00",event:'',hue:19,photo:''},
+    {who:'Enora',time:"51'17",event:'',hue:20,photo:''},
+    {who:'Clémence',time:"52'30",event:'',hue:21,photo:''},
+    {who:'Agathe n°1',time:"54'00",event:'',hue:22,photo:''},
+    {who:'Mathilde',time:"54'29",event:'',hue:23,photo:''},
+    {who:'Ludivine',time:"56'58",event:'',hue:24,photo:''},
   ]},
   {key:'semi',label:'Semi-marathon',records:[
-    {who:'Agathe n°2',time:'1h57',event:'Semi de Caen',hue:5,photo:''},
-    {who:'Agathe n°1',time:'2h05',event:'',hue:2,photo:''},
+    {who:'Mélanie',time:"1h22",event:'',hue:2,photo:''},
+    {who:'Théo',time:"1h28",event:'',hue:3,photo:''},
+    {who:'Mathéo',time:"1h30",event:'',hue:4,photo:''},
+    {who:'Matheo',time:"1h37",event:'',hue:5,photo:''},
+    {who:'Baptiste',time:"1h38",event:'',hue:6,photo:''},
+    {who:'Fanny',time:"1h40",event:'',hue:7,photo:''},
+    {who:'Mathieu',time:"1h43",event:'',hue:8,photo:''},
+    {who:'Justine',time:"1h44",event:'',hue:9,photo:''},
+    {who:'Romane',time:"1h45",event:'',hue:10,photo:''},
+    {who:'Yoann',time:"1h49",event:'',hue:11,photo:''},
+    {who:'Agathe n°2',time:"1h57",event:'Semi de Caen',hue:12,photo:''},
+    {who:'Milena',time:"1h57",event:'',hue:13,photo:''},
+    {who:'Flavie',time:"2h02",event:'',hue:14,photo:''},
+    {who:'Agathe n°1',time:"2h05",event:'',hue:15,photo:''},
   ]},
-  {key:'marathon',label:'Marathon',records:[]},
+  {key:'marathon',label:'Marathon',records:[
+    {who:'Matteo',time:"2h58",event:'',hue:5,photo:''},
+    {who:'Ethan',time:"3h30",event:'',hue:6,photo:''},
+    {who:'Matheo',time:"3h32",event:'',hue:7,photo:''},
+  ]},
   {key:'trail',label:'Trail / Ultra-trail',records:[]},
 ];
 const recBoard=document.getElementById('recordsGrid');
