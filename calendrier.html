@@ -144,7 +144,7 @@ section:nth-child(even){background:var(--white);}
 .ev-kind-seance{background:rgba(109,135,154,.14);color:var(--blue-steel);}
 .ev-kind-special{background:rgba(218,91,71,.16);color:#A63A2C;}
 /* Carte séance (compacte, teinte bleue, bord pointillé = récurrent) */
-.ev-card.seance{background:rgba(109,135,154,.06);border:1.5px dashed rgba(109,135,154,.35);}
+.ev-card.seance{background:rgba(109,135,154,.06);border:1.5px solid rgba(109,135,154,.35);}
 .ev-card.seance .ev-card-day{font-size:38px;color:var(--blue-steel);}
 .ev-card.seance .ev-card-body{padding:16px 18px;}
 .ev-card.seance .ev-card-title{font-size:15px;color:var(--navy);}
@@ -288,7 +288,7 @@ footer{background:var(--navy-deep);padding:40px 60px;}
 <section id="evenements">
   <div class="s-label">01 · Calendrier</div>
   <h2 class="s-title">Les événements.</h2>
-  <p class="s-intro">Choisis un mois pour voir les rendez-vous. Séances récurrentes en pointillés (bleu), événements spéciaux en trait plein (rouge).</p>
+  <p class="s-intro">Choisis un mois pour voir les rendez-vous. Séances en bleu, événements spéciaux en rouge.</p>
   <div class="ev-filter" id="evFilter"></div>
   <div id="evContainer"></div>
 </section>
