@@ -178,6 +178,11 @@ footer{background:var(--navy-deep);padding:40px 60px;}
 /* ── MÉDIAS PARTENAIRES (carrousel) ── */
 .pmedia-subhead{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:3px;color:var(--navy);margin-bottom:18px;display:flex;align-items:center;gap:12px;}
 .pmedia-subhead::after{content:'';flex:1;height:1px;background:rgba(18,43,68,.1);}
+.pmedia-wrap{position:relative;}
+.pmedia-nav{position:absolute;top:50%;transform:translateY(-50%);background:var(--white);color:var(--navy);border:1.5px solid rgba(18,43,68,.15);border-radius:50%;width:46px;height:46px;cursor:pointer;font-size:22px;display:flex;align-items:center;justify-content:center;transition:all .2s;z-index:3;box-shadow:0 2px 14px rgba(18,43,68,.15);}
+.pmedia-nav:hover{background:var(--navy);color:white;border-color:var(--navy);}
+.pmedia-nav.prev{left:-20px;}
+.pmedia-nav.next{right:-20px;}
 .pmedia-track{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding-bottom:8px;scrollbar-width:none;}
 .pmedia-track::-webkit-scrollbar{display:none;}
 .pmedia-tile{flex:0 0 280px;height:340px;border-radius:16px;scroll-snap-align:start;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;border:1.5px solid rgba(18,43,68,.1);background:var(--cream);}
@@ -193,6 +198,7 @@ footer{background:var(--navy-deep);padding:40px 60px;}
   .pmedia-tile{flex:0 0 78%;height:auto;aspect-ratio:3/4;}
   .pmedia-tile.video{flex:0 0 70%;}
   .pmedia-hint{display:block;}
+  .pmedia-nav{display:none;}
 }
 .page-hero h1,.s-title{font-family:'Anton',sans-serif;font-weight:400;letter-spacing:.3px;}
 </style>
@@ -258,7 +264,11 @@ footer{background:var(--navy-deep);padding:40px 60px;}
     </a>
   </div>
   <div class="pmedia-subhead">Les partenariats en action</div>
-  <div class="pmedia-track" id="pmediaTrack"></div>
+  <div class="pmedia-wrap">
+    <button class="pmedia-nav prev" onclick="scrollPmedia(-1)" aria-label="Médias précédents">‹</button>
+    <button class="pmedia-nav next" onclick="scrollPmedia(1)" aria-label="Médias suivants">›</button>
+    <div class="pmedia-track" id="pmediaTrack"></div>
+  </div>
   <div class="pmedia-hint">← Faites défiler →</div>
 </section>
 
@@ -414,6 +424,10 @@ document.querySelectorAll('.reveal,.reveal-children').forEach(el=>obs.observe(el
   });
   wrap.innerHTML=h;
 })();
+function scrollPmedia(dir){
+  const track=document.getElementById('pmediaTrack');if(!track)return;
+  track.scrollBy({left:dir*Math.round(track.clientWidth*0.8),behavior:'smooth'});
+}
 
 window.addEventListener('scroll',()=>{
   document.getElementById('back-to-top').classList.toggle('show',window.scrollY>400);
