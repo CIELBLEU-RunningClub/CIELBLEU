@@ -78,8 +78,17 @@ section:nth-child(even){background:var(--white);}
 .trombi-search svg{position:absolute;left:15px;top:50%;transform:translateY(-50%);color:var(--mid);}
 .trombi-count{font-size:13px;color:var(--mid);letter-spacing:1px;}
 .trombi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:16px;}
-.trombi-card{aspect-ratio:3/4;position:relative;border-radius:14px;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:14px 10px;background:var(--white);border:1.5px solid rgba(182,205,224,.35);transition:transform .2s,box-shadow .2s;}
-.trombi-card:hover{transform:translateY(-4px);box-shadow:0 10px 26px rgba(18,43,68,.16);}
+.trombi-card{aspect-ratio:3/4;position:relative;perspective:900px;transition:transform .2s,box-shadow .2s;}
+.trombi-card:hover{transform:translateY(-4px);}
+.trombi-inner{position:relative;width:100%;height:100%;transition:transform .55s cubic-bezier(.3,.8,.3,1);transform-style:preserve-3d;}
+.trombi-card.has-quote{cursor:pointer;}
+.trombi-card.has-quote:hover .trombi-inner,.trombi-inner.flipped{transform:rotateY(180deg);}
+.trombi-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:14px;overflow:hidden;border:1.5px solid rgba(182,205,224,.35);background:var(--white);display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:14px 10px;}
+.trombi-card:hover .trombi-face{box-shadow:0 10px 26px rgba(18,43,68,.16);}
+.trombi-back{transform:rotateY(180deg);background:linear-gradient(150deg,var(--navy),var(--navy-deep));border-color:rgba(182,205,224,.2);justify-content:center;gap:8px;padding:12px 9px;}
+.trombi-quote{font-family:'Open Sans',sans-serif;font-style:italic;font-size:10.5px;line-height:1.42;color:var(--blue-sky);text-align:center;}
+.trombi-back-name{font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:1.5px;color:rgba(255,255,255,.5);}
+.trombi-quote-dot{position:absolute;top:7px;right:8px;width:6px;height:6px;border-radius:50%;background:var(--gold);opacity:.85;}
 .trombi-avatar{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:46px;color:rgba(255,255,255,.92);letter-spacing:1px;}
 .trombi-avatar::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(11,29,48,.78) 0%,transparent 55%);}
 .trombi-name{position:relative;z-index:1;font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:1.5px;color:white;}
@@ -354,7 +363,7 @@ footer{background:var(--navy-deep);padding:40px 60px;}
 
 <a id="back-to-top" href="#" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'});" aria-label="Retour en haut">↑</a>
 
-<script src="membres.js?v=1001"></script>
+<script src="membres.js?v=1002"></script>
 <script>
 
 /* ===== DONNÉES ===== */
@@ -366,15 +375,33 @@ function grad(i){const l1=48+((i*13)%22);const l2=26+((i*11)%16);const h=200+((i
 (function initTrombi(){
   const grid=document.getElementById('trombiGrid');if(!grid)return;
   if(typeof MEMBRES==="undefined"){setTimeout(initTrombi,100);return;} // attendre que membres.js charge
+  // Tap/clic pour retourner une carte : indispensable sur mobile, où il n'y a pas de survol
+  grid.addEventListener('click',e=>{
+    const card=e.target.closest('.trombi-card.has-quote');
+    if(!card)return;
+    const inner=card.querySelector('.trombi-inner');
+    if(inner)inner.classList.toggle('flipped');
+  });
   const PAGE=20;
   let expanded=false;
   function cardHTML(m,i){
     const visu=m.photo
       ? `<div class="trombi-avatar" style="background:${grad(i)}"><img class="trombi-photo" src="${m.photo}" alt="${m.nom}" loading="lazy" decoding="async"></div>`
       : `<div class="trombi-avatar" style="background:${grad(i)}">${m.nom.charAt(0)}</div>`;
-    return `<div class="trombi-card">
-      ${visu}
-      <span class="trombi-name">${m.nom}</span>
+    const q=(m.citation||'').trim();
+    const back=q?`<div class="trombi-face trombi-back">
+        <p class="trombi-quote">« ${q} »</p>
+        <span class="trombi-back-name">${m.nom}</span>
+      </div>`:'';
+    return `<div class="trombi-card${q?' has-quote':''}">
+      <div class="trombi-inner">
+        <div class="trombi-face trombi-front">
+          ${visu}
+          <span class="trombi-name">${m.nom}</span>
+          ${q?'<span class="trombi-quote-dot" aria-hidden="true"></span>':''}
+        </div>
+        ${back}
+      </div>
     </div>`;
   }
   function renderTrombi(filter=""){
@@ -462,8 +489,13 @@ renderExploits();
 /* Records à compléter dès que les vrais chronos seront communiqués */
 const recordCats=[
   {key:'5k',label:'5 KM',records:[]},
-  {key:'10k',label:'10 KM',records:[]},
-  {key:'semi',label:'Semi-marathon',records:[]},
+  {key:'10k',label:'10 KM',records:[
+    {who:'Agathe',time:"54'00",event:'',hue:2,photo:''},
+  ]},
+  {key:'semi',label:'Semi-marathon',records:[
+    {who:'Agathe',time:'1h57',event:'Semi de Caen',hue:5,photo:''},
+    {who:'Agathe',time:'2h05',event:'',hue:2,photo:''},
+  ]},
   {key:'marathon',label:'Marathon',records:[]},
   {key:'trail',label:'Trail / Ultra-trail',records:[]},
 ];
