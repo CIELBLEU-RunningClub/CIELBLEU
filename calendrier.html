@@ -502,10 +502,16 @@ function scrollToFilter(){
   const y=f.getBoundingClientRect().top+window.scrollY-off;
   window.scrollTo({top:y,behavior:'smooth'});
 }
-document.addEventListener('click',()=>{
+// Fermeture au tap en dehors — click + touchstart (iOS ne déclenche pas toujours click hors élément cliquable)
+function closeDayMenuOutside(e){
   const m=document.getElementById('dayFilterMenu');
-  if(m&&!m.hidden){m.hidden=true;const b=document.getElementById('dayFilterBtn');if(b)b.setAttribute('aria-expanded','false');}
-});
+  if(!m||m.hidden)return;
+  const dd=document.querySelector('.ev-dayfilter');
+  if(dd&&dd.contains(e.target))return; // tap sur le bouton ou une option : on laisse son handler agir
+  m.hidden=true;const b=document.getElementById('dayFilterBtn');if(b)b.setAttribute('aria-expanded','false');
+}
+document.addEventListener('click',closeDayMenuOutside);
+document.addEventListener('touchstart',closeDayMenuOutside,{passive:true});
 
 // Filtre par défaut : mois courant s'il a des événements, sinon prochain mois avec événements
 (function(){
