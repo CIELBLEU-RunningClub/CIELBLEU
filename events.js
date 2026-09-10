@@ -29,7 +29,7 @@ const septembre=[
   {m:8,d:9,session:true,wd:3,color:C_MERCREDI,time:'19h20',dur:70,title:'Mercredi Bleu #122',
    tags:[{l:'Ouvert à tous',c:'tag-open'},{l:'Septembre Bleu',c:'tag-km'}],
    desc:"Le run du mercredi soir, 8 km en groupes d'allure. Ouvert à tous pendant Septembre Bleu.",
-   details:[['Distance','8 km'],['Allures','Groupes d\'allure · tous niveaux'],['Lieu','Le Cavalier Bleu · Paris 4e'],['Accès','Ouvert à tous']],location:'Le Cavalier Bleu, Paris 4e'},
+   details:[['Distance','8 km'],['Allures','Groupes d\'allure · tous niveaux'],['Lieu','Paris 4e'],['Accès','Ouvert à tous']],location:'Paris 4e'},
   {m:8,d:13,session:true,wd:0,color:C_SOCIAL,time:'10h20',dur:90,title:'Social Bleu #123',
    tags:[{l:'Ouvert à tous',c:'tag-open'},{l:'Septembre Bleu',c:'tag-km'}],
    desc:"Social Bleu du dimanche, 8 km en groupes d'allure puis café. Ouvert à tous pendant Septembre Bleu.",
@@ -41,7 +41,7 @@ const septembre=[
   {m:8,d:16,session:true,wd:3,color:C_MERCREDI,time:'19h20',dur:70,title:'Mercredi Bleu #124',
    tags:[{l:'Ouvert à tous',c:'tag-open'},{l:'Septembre Bleu',c:'tag-km'}],
    desc:"Le run du mercredi soir, 8 km en groupes d'allure. Ouvert à tous pendant Septembre Bleu.",
-   details:[['Distance','8 km'],['Allures','Groupes d\'allure · tous niveaux'],['Lieu','Le Cavalier Bleu · Paris 4e'],['Accès','Ouvert à tous']],location:'Le Cavalier Bleu, Paris 4e'},
+   details:[['Distance','8 km'],['Allures','Groupes d\'allure · tous niveaux'],['Lieu','Paris 4e'],['Accès','Ouvert à tous']],location:'Paris 4e'},
   {m:8,d:20,session:true,wd:0,color:C_SOCIAL,time:'10h20',dur:90,title:'Social Bleu #125',
    tags:[{l:'Ouvert à tous',c:'tag-open'},{l:'Septembre Bleu',c:'tag-km'}],
    desc:"Social Bleu du dimanche, 8 km en groupes d'allure puis café. Ouvert à tous pendant Septembre Bleu.",
@@ -53,7 +53,7 @@ const septembre=[
   {m:8,d:23,session:true,wd:3,color:C_MERCREDI,time:'19h20',dur:70,title:'Mercredi Bleu #126',
    tags:[{l:'Ouvert à tous',c:'tag-open'},{l:'Septembre Bleu',c:'tag-km'}],
    desc:"Le run du mercredi soir, 8 km en groupes d'allure. Ouvert à tous pendant Septembre Bleu.",
-   details:[['Distance','8 km'],['Allures','Groupes d\'allure · tous niveaux'],['Lieu','Le Cavalier Bleu · Paris 4e'],['Accès','Ouvert à tous']],location:'Le Cavalier Bleu, Paris 4e'},
+   details:[['Distance','8 km'],['Allures','Groupes d\'allure · tous niveaux'],['Lieu','Paris 4e'],['Accès','Ouvert à tous']],location:'Paris 4e'},
   {m:8,d:28,session:true,wd:1,color:C_TARTAN,time:'19h45',dur:90,title:'Tartan Bleu · Séance piste',
    tags:[{l:'Ouvert à tous',c:'tag-open'},{l:'Septembre Bleu',c:'tag-km'}],
    desc:"La séance piste du lundi, encadrée, tous niveaux. Ouverte à tous pendant Septembre Bleu.",
@@ -61,7 +61,7 @@ const septembre=[
   {m:8,d:30,session:true,wd:3,color:C_MERCREDI,time:'19h20',dur:70,title:'Mercredi Bleu #127',
    tags:[{l:'Ouvert à tous',c:'tag-open'},{l:'Septembre Bleu',c:'tag-km'}],
    desc:"Le run du mercredi soir, 8 km en groupes d'allure. Ouvert à tous pendant Septembre Bleu.",
-   details:[['Distance','8 km'],['Allures','Groupes d\'allure · tous niveaux'],['Lieu','Le Cavalier Bleu · Paris 4e'],['Accès','Ouvert à tous']],location:'Le Cavalier Bleu, Paris 4e'},
+   details:[['Distance','8 km'],['Allures','Groupes d\'allure · tous niveaux'],['Lieu','Paris 4e'],['Accès','Ouvert à tous']],location:'Paris 4e'},
 ];
 
 // ─────────────────────────────────────────────────────────────
@@ -77,7 +77,7 @@ const tartanTpl={wd:1,color:C_TARTAN,time:'19h45',dur:90,title:'Tartan Bleu · S
 const mercrediTpl={wd:3,color:C_MERCREDI,time:'19h20',dur:70,title:'Mercredi Bleu · Adhérents club',
   tags:[{l:'Adhérents',c:'tag-adherent'}],
   desc:"Le run des adhérents du mercredi soir, en groupes d'allure dans Paris. La séance plaisir du milieu de semaine.",
-  details:[['Distance','~8 km'],['Allures','Groupes d\'allure'],['Lieu','Le Cavalier Bleu · Paris 4e'],['Accès','Réservé aux adhérents']],location:'Le Cavalier Bleu, Paris 4e'};
+  details:[['Distance','~8 km'],['Allures','Groupes d\'allure'],['Lieu','Paris 4e'],['Accès','Réservé aux adhérents']],location:'Paris 4e'};
 const socialTpl={wd:0,color:C_SOCIAL,time:'10h20',dur:90,title:'Social Bleu',
   tags:[{l:'Ouvert à tous',c:'tag-open'}],
   desc:"Le Social Run du dimanche, ouvert à tous et sans inscription. 8 km en groupes d'allure, puis café tous ensemble. Le point de départ est publié sur Strava chaque semaine.",

@@ -54,16 +54,19 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
 .nav-logo img{height:20px;width:auto;}
 .nav-links{display:flex;gap:20px;list-style:none;}
-.nav-links a{font-size:11px;letter-spacing:1.5px;font-weight:600;color:rgba(255,255,255,0.65);text-decoration:none;text-transform:uppercase;transition:color .2s;position:relative;}
+.nav-links a{font-size:12.5px;letter-spacing:1.5px;font-weight:600;color:rgba(255,255,255,0.65);text-decoration:none;text-transform:uppercase;transition:color .2s;position:relative;}
 .nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1.5px;background:var(--blue-sky);transition:width .25s ease;}
 .nav-links a:hover,.nav-links a.active{color:white;}
 .nav-links a:hover::after,.nav-links a.active::after{width:100%;}
-.nav-cta{background:var(--blue-sky);color:var(--navy);font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:2px;padding:10px 22px;border-radius:4px;text-decoration:none;transition:background .2s;}
+.nav-cta-group{display:flex;align-items:center;gap:12px;}
+.nav-cta{background:var(--blue-sky);color:var(--navy);font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:2px;padding:13px 26px;border-radius:5px;text-decoration:none;transition:background .2s;white-space:nowrap;}
 .nav-cta:hover{background:white;}
+.nav-cta-alt{background:transparent;color:var(--blue-sky);border:1.5px solid rgba(182,205,224,.5);}
+.nav-cta-alt:hover{background:rgba(182,205,224,.14);color:white;}
 .nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:8px;color:white;font-size:24px;line-height:1;}
 .nav-mobile{display:none;position:fixed;top:70px;left:0;right:0;bottom:0;background:rgba(11,29,48,0.98);z-index:99;padding:8px 20px calc(20px + env(safe-area-inset-bottom));list-style:none;backdrop-filter:blur(12px);overflow-y:auto;}
 .nav-mobile.open{display:flex;flex-direction:column;}
-.nav-mobile li a{display:block;font-size:13px;letter-spacing:2px;font-weight:600;color:rgba(255,255,255,0.7);text-decoration:none;text-transform:uppercase;padding:15px 0;border-bottom:1px solid rgba(182,205,224,0.08);}
+.nav-mobile li a{display:block;font-size:15px;letter-spacing:2px;font-weight:600;color:rgba(255,255,255,0.7);text-decoration:none;text-transform:uppercase;padding:15px 0;border-bottom:1px solid rgba(182,205,224,0.08);}
 .nav-mobile li:last-child a{border:none;}
 
 .hero{min-height:100vh;background:var(--navy-deep);display:flex;flex-direction:column;justify-content:center;padding:150px 60px 0;position:relative;overflow:hidden;}
@@ -77,7 +80,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .hero-desc{font-size:15px;color:rgba(255,255,255,.6);font-weight:300;max-width:560px;line-height:1.65;margin-bottom:20px;animation:fadeUp .8s .3s ease both;}
 .hero-cta-group{display:flex;flex-direction:column;gap:18px;margin-bottom:110px;align-self:flex-start;animation:fadeUp .8s .4s ease both;max-width:600px;width:100%;}
 .hero-links{display:flex;gap:32px;flex-wrap:wrap;align-items:center;}
-.hero-link{font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:2.5px;color:rgba(255,255,255,.85);text-decoration:none;border-bottom:1.5px solid rgba(182,205,224,.4);padding-bottom:3px;transition:color .2s,border-color .2s;text-shadow:0 1px 8px rgba(11,29,48,.8);}
+.hero-link{font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:2.5px;color:rgba(255,255,255,.85);text-decoration:none;border-bottom:1.5px solid rgba(182,205,224,.4);padding-bottom:3px;transition:color .2s,border-color .2s;text-shadow:0 1px 8px rgba(11,29,48,.8);}
 .hero-link:hover{color:white;border-color:var(--blue-sky);}
 .hero-socials{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
 .hero-socials-label{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2.5px;color:rgba(255,255,255,.5);text-shadow:0 1px 8px rgba(11,29,48,.8);}
@@ -175,10 +178,10 @@ section:nth-child(even){background:var(--white);}
 .faq-item{border-bottom:1px solid rgba(18,43,68,.1);}
 .faq-item:first-child{border-top:1px solid rgba(18,43,68,.1);}
 .faq-q{display:flex;align-items:center;justify-content:space-between;gap:24px;cursor:pointer;padding:18px 0;width:100%;background:none;border:none;text-align:left;font:inherit;}
-.faq-q-text{font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:1.5px;color:var(--navy);}
+.faq-q-text{font-family:'Bebas Neue',sans-serif;font-size:19px;letter-spacing:1.5px;color:var(--navy);}
 .faq-toggle{font-size:22px;color:var(--blue-steel);flex-shrink:0;transition:transform .25s;line-height:1;}
 .faq-item.open .faq-toggle{transform:rotate(45deg);color:var(--navy);}
-.faq-a{font-size:15px;color:var(--mid);line-height:1.75;max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease;}
+.faq-a{font-size:16px;color:var(--mid);line-height:1.75;max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease;}
 .faq-item.open .faq-a{max-height:300px;padding-bottom:24px;}
 /* Footer simplifié */
 footer{background:var(--navy-deep);padding:32px 60px;}
@@ -202,9 +205,9 @@ footer{background:var(--navy-deep);padding:32px 60px;}
 .semaine-badge{align-self:flex-start;font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;padding:5px 14px;border-radius:20px;}
 .semaine-badge.adherents{background:rgba(182,205,224,.22);color:var(--blue-sky);}
 .semaine-badge.open{background:rgba(232,176,107,.25);color:var(--gold);}
-.semaine-desc{font-size:13.5px;color:rgba(255,255,255,.68);line-height:1.65;flex:1;}
-.semaine-meta{display:flex;flex-direction:column;gap:5px;font-size:12px;color:rgba(255,255,255,.55);border-top:1px solid rgba(182,205,224,.12);padding-top:12px;}
-.semaine-link{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;color:var(--blue-sky);text-decoration:none;margin-top:4px;}
+.semaine-desc{font-size:15px;color:rgba(255,255,255,.72);line-height:1.65;flex:1;}
+.semaine-meta{display:flex;flex-direction:column;gap:5px;font-size:13px;color:rgba(255,255,255,.6);border-top:1px solid rgba(182,205,224,.12);padding-top:12px;}
+.semaine-link{font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:2px;color:var(--blue-sky);text-decoration:none;margin-top:4px;}
 .semaine-link:hover{color:white;}
 .swipe-hint-m{display:none;text-align:center;margin-top:14px;font-size:12px;letter-spacing:2px;color:var(--blue-steel);text-transform:uppercase;}
 /* ── BARRE D'ACTION MOBILE ── */
@@ -318,7 +321,7 @@ footer{background:var(--navy-deep);padding:32px 60px;}
 /* ── MOBILE ── */
 @media(max-width:768px){
   nav{padding:0 20px;height:70px;}
-  .nav-links,.nav-cta{display:none;}
+  .nav-links,.nav-cta,.nav-cta-group{display:none;}
   .nav-hamburger{display:flex;align-items:center;}
   
 
@@ -456,10 +459,11 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
 .septembre-note .sn-tag{font-family:'Anton',sans-serif;font-size:15px;letter-spacing:1px;color:#9A6F2E;text-transform:uppercase;white-space:nowrap;}
 .septembre-note .sn-txt{font-size:14px;color:var(--mid);line-height:1.55;}
 .offer-name{font-size:30px;line-height:.98;letter-spacing:.5px;color:white;text-transform:uppercase;margin:2px 0 4px;}
-.semaine-badge{font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:2px;text-transform:uppercase;padding:5px 14px;border-radius:999px;align-self:flex-start;}
+.semaine-badge{font-family:'Bebas Neue',sans-serif;font-size:13.5px;letter-spacing:2px;text-transform:uppercase;padding:6px 15px;border-radius:999px;align-self:flex-start;}
 .semaine-badge.adherents{background:transparent;color:var(--blue-sky);border:1.5px solid rgba(182,205,224,.5);}
 .semaine-badge.open{background:var(--gold);color:var(--navy-deep);border:1.5px solid var(--gold);}
 .semaine-card .semaine-day{font-size:20px;letter-spacing:3px;text-transform:uppercase;opacity:.85;}
+.semaine-allures{font-size:13px;line-height:1.45;color:var(--blue-sky);background:rgba(182,205,224,.1);border:1px solid rgba(182,205,224,.22);border-radius:8px;padding:8px 12px;margin:2px 0;}
 
 /* ── ADHÉSION façon « NOUS REJOINDRE » ── */
 .ab-title{font-size:clamp(30px,4vw,46px);line-height:.98;color:white;text-transform:uppercase;margin-bottom:10px;}
@@ -482,7 +486,10 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
     <li><a href="nos-adherents.html">Nos adhérents</a></li>
     <li><a href="nos-partenaires.html">Nos partenaires</a></li>
   </ul>
-  <a href="#adhesion" class="nav-cta">Devenir adhérent →</a>
+  <div class="nav-cta-group">
+    <a href="#adhesion" class="nav-cta">Devenir adhérent →</a>
+    <a href="nos-partenaires.html#contact" class="nav-cta nav-cta-alt">Devenir partenaire →</a>
+  </div>
   <button class="nav-hamburger" onclick="toggleNav()" aria-label="Menu">&#9776;</button>
 </nav>
 <ul class="nav-mobile" id="navMobile">
@@ -492,6 +499,7 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
   <li><a href="nos-adherents.html" onclick="toggleNav()">Nos adhérents</a></li>
   <li><a href="nos-partenaires.html" onclick="toggleNav()">Nos partenaires</a></li>
   <li><a href="#adhesion" onclick="toggleNav()" style="color:var(--gold)!important;">→ Devenir adhérent</a></li>
+  <li><a href="nos-partenaires.html#contact" onclick="toggleNav()" style="color:var(--blue-sky)!important;">→ Devenir partenaire</a></li>
 </ul>
 
 <div class="hero">
@@ -537,7 +545,8 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
       <div class="offer-name">Mercredi Bleu</div>
       <span class="semaine-badge adherents">Adhérents</span>
       <p class="semaine-desc">Le run des adhérents en milieu de semaine, en groupes d'allure dans Paris. La séance plaisir entre copains.</p>
-      <div class="semaine-meta"><span>Le Cavalier Bleu · Paris 4e</span><span>19h20 · chaque mercredi</span></div>
+      <div class="semaine-allures">3 groupes d'allure · 5:30, 6:00 &amp; 6:30 /km — vraiment tous niveaux.</div>
+      <div class="semaine-meta"><span>Paris</span><span>19h20 · chaque mercredi</span></div>
       <a href="calendrier.html" class="semaine-link">Toutes les dates →</a>
     </div>
     <div class="semaine-card dimanche">
@@ -545,6 +554,7 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
       <div class="offer-name">Social Bleu</div>
       <span class="semaine-badge open">Ouvert à tous · Gratuit</span>
       <p class="semaine-desc">Le rendez-vous du week-end, ouvert à tous sans inscription : 8 km en groupes d'allure, un nouveau quartier chaque semaine, puis café.</p>
+      <div class="semaine-allures">3 groupes d'allure · 5:30, 6:00 &amp; 6:30 /km — vraiment tous niveaux.</div>
       <div class="semaine-meta"><span>Point publié sur Strava</span><span>10h20 · sans inscription</span></div>
       <a href="calendrier.html" class="semaine-link">Toutes les dates →</a>
     </div>
@@ -726,9 +736,9 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
     <p style="font-size:13px;color:rgba(232,176,107,.8);margin-bottom:6px;letter-spacing:1px;">Et si tu te sens chez toi : l'adhésion est à partir de 35 € par an*.</p>
     <p style="font-size:10px;color:rgba(255,255,255,.35);margin-bottom:36px;">*Tarif early bird anciens adhérents (1er–30 sept. 2026). Tarif plus élevé pour les nouveaux et hors période early bird.</p>
     <div class="cta-btns" style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
-      <a href="https://www.strava.com/clubs/lecielestbleu" target="_blank" style="background:var(--gold);color:var(--navy-deep);font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:2px;padding:16px 32px;border-radius:4px;text-decoration:none;" onmouseover="this.style.background='white'" onmouseout="this.style.background='var(--gold)'">Voir le point de départ sur Strava</a>
-      <a href="https://www.instagram.com/lecielestbleu_runningclub/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;border:1.5px solid rgba(182,205,224,.35);color:rgba(255,255,255,.8);font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:2px;padding:16px 32px;border-radius:4px;text-decoration:none;" onmouseover="this.style.borderColor='rgba(182,205,224,.9)';this.style.color='white'" onmouseout="this.style.borderColor='rgba(182,205,224,.35)';this.style.color='rgba(255,255,255,.8)'"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>Nous suivre sur Instagram</a>
-      <a href="#adhesion" style="border:1.5px solid rgba(182,205,224,.35);color:rgba(255,255,255,.8);font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:2px;padding:16px 32px;border-radius:4px;text-decoration:none;" onmouseover="this.style.borderColor='rgba(182,205,224,.9)';this.style.color='white'" onmouseout="this.style.borderColor='rgba(182,205,224,.35)';this.style.color='rgba(255,255,255,.8)'">Devenir adhérent</a>
+      <a href="https://www.strava.com/clubs/lecielestbleu" target="_blank" style="background:var(--gold);color:var(--navy-deep);font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:2px;padding:17px 34px;border-radius:4px;text-decoration:none;" onmouseover="this.style.background='white'" onmouseout="this.style.background='var(--gold)'">Voir le point de départ sur Strava</a>
+      <a href="https://www.instagram.com/lecielestbleu_runningclub/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;border:1.5px solid rgba(182,205,224,.35);color:rgba(255,255,255,.8);font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:2px;padding:17px 34px;border-radius:4px;text-decoration:none;" onmouseover="this.style.borderColor='rgba(182,205,224,.9)';this.style.color='white'" onmouseout="this.style.borderColor='rgba(182,205,224,.35)';this.style.color='rgba(255,255,255,.8)'"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>Nous suivre sur Instagram</a>
+      <a href="#adhesion" style="border:1.5px solid rgba(182,205,224,.35);color:rgba(255,255,255,.8);font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:2px;padding:17px 34px;border-radius:4px;text-decoration:none;" onmouseover="this.style.borderColor='rgba(182,205,224,.9)';this.style.color='white'" onmouseout="this.style.borderColor='rgba(182,205,224,.35)';this.style.color='rgba(255,255,255,.8)'">Devenir adhérent</a>
     </div>
   </div>
 </div>
@@ -759,7 +769,7 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
   </div>
 </footer>
 
-<script src="events.js?v=13"></script>
+<script src="events.js?v=14"></script>
 <script>
 // Compteurs animés : les stats montent en flèche une fois à l'écran
 (function(){
