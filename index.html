@@ -887,7 +887,9 @@ function scrollGallery(dir){
 const progressBar=document.getElementById('scroll-progress');
 const medal=document.getElementById('scroll-medal');
 function updateProgress(){
-  const start=document.getElementById('semaine').offsetTop;
+  // Progression sur toute la page : la basket avance dès le premier scroll
+  // (elle reste masquée à 0 %, donc invisible tant qu'on n'a pas bougé)
+  const start=0;
   const maxScroll=document.documentElement.scrollHeight-window.innerHeight;
   const range=Math.max(maxScroll-start,1);
   const pct=Math.min(Math.max((window.scrollY-start)/range*100,0),100);
