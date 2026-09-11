@@ -1,7 +1,7 @@
 /* Service worker CIELBLEU — stratégie « réseau d'abord » pour que l'app installée
    (icône écran d'accueil) affiche TOUJOURS la dernière version quand elle est en ligne,
    et ne serve le cache qu'en secours (hors-ligne). */
-const CACHE = 'cielbleu-v2';
+const CACHE = 'cielbleu-v3';
 
 self.addEventListener('install', (e) => {
   // Activer immédiatement la nouvelle version du SW
@@ -19,7 +19,10 @@ self.addEventListener('activate', (e) => {
 
 async function networkFirst(req) {
   try {
-    const fresh = await fetch(req);
+    // { cache: 'no-store' } est indispensable : sans lui, ce « fetch réseau »
+    // est servi par le cache HTTP du navigateur (GitHub Pages renvoie
+    // cache-control: max-age=600), et on remet une vieille page en cache.
+    const fresh = await fetch(req.url, { cache: 'no-store', credentials: 'same-origin' });
     // Ne mettre en cache que les réponses valides (pas les 404/500)
     if (fresh && fresh.ok) {
       const cache = await caches.open(CACHE);
@@ -35,7 +38,9 @@ async function networkFirst(req) {
 async function staleWhileRevalidate(req) {
   const cache = await caches.open(CACHE);
   const cached = await cache.match(req);
-  const network = fetch(req)
+  // Même remarque que plus haut : on court-circuite le cache HTTP pour que la
+  // mise à jour en arrière-plan récupère vraiment la dernière version.
+  const network = fetch(req.url, { cache: 'no-store', credentials: 'same-origin' })
     .then((res) => { if (res && res.status === 200) cache.put(req, res.clone()); return res; })
     .catch(() => cached);
   return cached || network;
