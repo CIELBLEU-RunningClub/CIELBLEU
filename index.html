@@ -91,7 +91,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .hero-strava{display:flex;align-items:center;gap:20px;background:rgba(11,29,48,.55);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border:1px solid rgba(182,205,224,0.2);border-radius:12px;padding:18px 24px;width:100%;}
 .hero-strava-dot{width:10px;height:10px;border-radius:50%;background:var(--gold);flex-shrink:0;animation:pulse 2s infinite;}
 @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(232,176,107,0.5);}50%{box-shadow:0 0 0 7px rgba(232,176,107,0);}}
-#scroll-progress{position:fixed;top:20px;left:0;height:3px;width:0%;background:linear-gradient(90deg,var(--blue-sky),var(--gold));z-index:9999;transition:width .1s linear;}
+#scroll-progress{position:fixed;top:20px;left:0;height:3px;width:0%;background:linear-gradient(90deg,var(--blue-sky),var(--gold));z-index:9999;opacity:0;transition:width .1s linear,opacity .3s ease;}
+#scroll-progress.visible{opacity:1;}
 #scroll-progress::after{content:'👟';position:absolute;right:-18px;top:-14px;font-size:32px;line-height:1;filter:drop-shadow(0 0 6px rgba(232,176,107,.8)) drop-shadow(0 2px 4px rgba(0,0,0,.6));}
 #scroll-medal{position:fixed;top:6px;right:10px;font-size:28px;z-index:9999;opacity:0;transform:scale(0) rotate(-20deg);transition:opacity .4s ease,transform .4s cubic-bezier(.34,1.56,.64,1);filter:drop-shadow(0 0 8px rgba(232,176,107,1));pointer-events:none;}
 #scroll-medal.visible{opacity:1;transform:scale(1) rotate(0deg);}
@@ -891,6 +892,8 @@ function updateProgress(){
   const range=Math.max(maxScroll-start,1);
   const pct=Math.min(Math.max((window.scrollY-start)/range*100,0),100);
   progressBar.style.width=pct+'%';
+  // La basket reste invisible tant qu'elle n'avance pas (évite de la voir « garée » sur le logo)
+  progressBar.classList.toggle('visible',pct>0);
   if(pct>=99||window.scrollY>=maxScroll-4)medal.classList.add('visible');
   else medal.classList.remove('visible');
 }

@@ -7,7 +7,8 @@
 
   // Styles (couleurs figées pour être indépendantes des variables CSS de chaque page)
   var css=''
-    +'#scroll-progress{position:fixed;top:20px;left:0;height:3px;width:0%;background:linear-gradient(90deg,#b6cde0,#E8B06B);z-index:9999;transition:width .1s linear;}'
+    +'#scroll-progress{position:fixed;top:20px;left:0;height:3px;width:0%;background:linear-gradient(90deg,#b6cde0,#E8B06B);z-index:9999;opacity:0;transition:width .1s linear,opacity .3s ease;}'
+    +'#scroll-progress.visible{opacity:1;}'
     +"#scroll-progress::after{content:'👟';position:absolute;right:-18px;top:-14px;font-size:32px;line-height:1;filter:drop-shadow(0 0 6px rgba(232,176,107,.8)) drop-shadow(0 2px 4px rgba(0,0,0,.6));}"
     +'#scroll-medal{position:fixed;top:6px;right:10px;font-size:28px;z-index:9999;opacity:0;transform:scale(0) rotate(-20deg);transition:opacity .4s ease,transform .4s cubic-bezier(.34,1.56,.64,1);filter:drop-shadow(0 0 8px rgba(232,176,107,1));pointer-events:none;}'
     +'#scroll-medal.visible{opacity:1;transform:scale(1) rotate(0deg);}';
@@ -32,6 +33,8 @@
     var range=Math.max(maxScroll-start,1);
     var pct=Math.min(Math.max((window.scrollY-start)/range*100,0),100);
     progressBar.style.width=pct+'%';
+    // Invisible tant qu'elle n'avance pas
+    progressBar.classList.toggle('visible',pct>0);
     if(pct>=99||window.scrollY>=maxScroll-4)medal.classList.add('visible');
     else medal.classList.remove('visible');
   }
