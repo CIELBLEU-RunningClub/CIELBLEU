@@ -14,9 +14,12 @@ const C_SOCIAL='#E8B06B';   // dimanche · social run
 
 // Lieux : volontairement génériques. On ne publie jamais l'adresse exacte,
 // elle est communiquée sur Instagram et Strava.
+const STRAVA_URL='https://www.strava.com/clubs/lecielestbleu';
 const L_PISTE='Piste · Paris';
 const L_BAR='Bar partenaire · Paris';
-const L_STRAVA='Point publié sur Strava';
+// Le dimanche, le lieu renvoie directement sur le club Strava où le point
+// de départ est publié chaque semaine.
+const L_STRAVA='Point publié sur <a href="'+STRAVA_URL+'" target="_blank" rel="noopener">notre Strava ↗</a>';
 
 // ─────────────────────────────────────────────────────────────
 // SEPTEMBRE · « Septembre Bleu » : tous les runs ouverts à tous pendant 1 mois
