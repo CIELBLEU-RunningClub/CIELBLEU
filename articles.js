@@ -15,7 +15,7 @@ const ARTICLES=[
     tag:'Événement',
     date:'2026-09-20',
     dateLabel:'20 septembre 2026',
-    read:'3 min',
+    read:'2 min',
     title:'42,195 km à 42. En relais.',
     teaser:"La distance mythique découpée en tours de piste, quarante-deux coureurs qui se passent le relais, et un départ à 9h tapantes. Le Marathon Bleu, c'est dimanche."
   }
