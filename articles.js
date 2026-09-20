@@ -10,7 +10,7 @@ const ARTICLES=[
     id:'marathon-bleu',
     url:'article-marathon-bleu.html',
     cover:'New3.jpeg',
-    coverPos:'center 42%',
+    coverPos:'center 60%',
     alt:"Les coureurs du CIELBLEU sur la piste, de nuit",
     tag:'Événement',
     date:'2026-09-20',
