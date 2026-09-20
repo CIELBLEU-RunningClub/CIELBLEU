@@ -40,6 +40,24 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .nav-mobile.open{display:flex;flex-direction:column;}
 .nav-mobile li a{display:block;font-size:13px;letter-spacing:2px;font-weight:600;color:rgba(255,255,255,0.7);text-decoration:none;text-transform:uppercase;padding:15px 0;border-bottom:1px solid rgba(182,205,224,0.08);}
 .nav-mobile li:last-child a{border:none;}
+.nav-links a{white-space:nowrap;}
+/* Sous 1150px, les 6 liens + les 2 boutons ne tiennent plus dans la barre :
+   le menu complet débordait hors de l'écran (« Devenir partenaire » invisible).
+   On bascule sur le menu burger, qui contient déjà les deux boutons. */
+@media(max-width:1150px){
+  .nav-links,.nav-cta,.nav-cta-group{display:none;}
+  .nav-hamburger{display:flex;align-items:center;}
+  .nav-mobile{top:112px;}
+}
+@media(max-width:768px){.nav-mobile{top:70px;}}
+/* Entre 1151 et 1400px, on resserre un peu pour garder de l'air autour des boutons */
+@media(min-width:1151px) and (max-width:1400px){
+  nav{padding:0 28px;}
+  .nav-links{gap:13px;}
+  .nav-links a{font-size:11.5px;letter-spacing:1px;}
+  .nav-cta-group{gap:8px;}
+  .nav-cta{font-size:14px;letter-spacing:1.5px;padding:11px 18px;}
+}
 
 /* ── HERO ── */
 .page-hero{min-height:32vh;background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy) 60%,#1a3d5c 100%);display:flex;flex-direction:column;justify-content:center;padding:150px 60px 50px;position:relative;overflow:hidden;}
@@ -91,6 +109,7 @@ footer{background:var(--navy-deep);padding:36px 60px;}
   <ul class="nav-links">
     <li><a href="./#semaine">Le club</a></li>
     <li><a href="calendrier.html">Calendrier</a></li>
+    <li><a href="actualites.html">Actualités</a></li>
     <li><a href="notre-equipe.html">L'équipe</a></li>
     <li><a href="nos-adherents.html">Nos adhérents</a></li>
     <li><a href="nos-partenaires.html">Nos partenaires</a></li>
@@ -104,6 +123,7 @@ footer{background:var(--navy-deep);padding:36px 60px;}
 <ul class="nav-mobile" id="navMobile">
   <li><a href="./#semaine" onclick="toggleNav()">Le club</a></li>
   <li><a href="calendrier.html" onclick="toggleNav()">Calendrier</a></li>
+  <li><a href="actualites.html" onclick="toggleNav()">Actualités</a></li>
   <li><a href="notre-equipe.html" onclick="toggleNav()">L'équipe</a></li>
   <li><a href="nos-adherents.html" onclick="toggleNav()">Nos adhérents</a></li>
   <li><a href="nos-partenaires.html" onclick="toggleNav()">Nos partenaires</a></li>
