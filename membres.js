@@ -46,7 +46,7 @@ const MEMBRES=[
   {nom:'Mathieu', citation:'La confiance n\'exclut pas le contrôle.', photo:''},
   {nom:'Alban', citation:'', photo:''},
   {nom:'Justine', citation:'', photo:''},
-  {nom:'Julia', citation:'« Je savais pas que c\'était impossible, alors je l\'ai fait. » — Clem qui court', photo:''},
+  {nom:'Julia', citation:'Je suis fan de Clem qui court.', photo:''},
   {nom:'Matheo', citation:'', photo:''},
   {nom:'Julien n°3', citation:'', photo:''},
   {nom:'Leonardo', citation:'42 km ? En moto oui !', photo:''},
