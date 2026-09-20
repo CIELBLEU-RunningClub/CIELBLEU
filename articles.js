@@ -9,7 +9,7 @@ const ARTICLES=[
   {
     id:'marathon-bleu',
     url:'article-marathon-bleu.html',
-    cover:'marathon-cover.jpg',
+    cover:'marathon-cover.jpg?v=2',
     coverPos:'center 50%',
     alt:"Les adhérents du CIELBLEU réunis sur la piste bleue du stade",
     tag:'Événement',
