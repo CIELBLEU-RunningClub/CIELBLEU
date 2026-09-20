@@ -13,8 +13,8 @@ const ARTICLES=[
     coverPos:'center 60%',
     alt:"Les coureurs du CIELBLEU sur la piste, de nuit",
     tag:'Événement',
-    date:'2026-09-20',
-    dateLabel:'20 septembre 2026',
+    date:'2026-09-20',              // parution (sert au classement)
+    dateLabel:'27 septembre 2026',   // date affichée : celle de l'événement
     read:'2 min',
     title:'42,195 km à 42. En relais.',
     teaser:"La distance mythique découpée en tours de piste, 42 coureurs qui se passent le relais. Le Marathon Bleu, c'est le 27 septembre."
