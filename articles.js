@@ -11,7 +11,7 @@ const ARTICLES=[
     url:'article-marathon-bleu.html',
     cover:'marathon-cover.jpg',
     coverPos:'center 50%',
-    alt:"Les adhérents du CIELBLEU réunis place de la Concorde",
+    alt:"Les adhérents du CIELBLEU réunis sur la piste bleue du stade",
     tag:'Événement',
     date:'2026-09-20',              // parution (sert au classement)
     dateLabel:'27 septembre 2026',   // date affichée : celle de l'événement
