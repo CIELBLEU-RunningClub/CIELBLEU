@@ -340,7 +340,7 @@ footer{background:var(--navy-deep);padding:40px 60px;}
     <div class="rec-tabs" id="recTabs"></div>
     <div class="rec-board" id="recordsGrid"></div>
   </div>
-  <p class="chronos-share">Un chrono, un premier dossard, un défi un peu fou&nbsp;? Partage ta fierté à <a href="mailto:contact.lcebrunning@gmail.com?subject=Ma%20fierté%20CIELBLEU">contact.lcebrunning@gmail.com</a> et on l'ajoute au mur.</p>
+  <p class="chronos-share">Un chrono, un premier dossard, un défi un peu fou&nbsp;? Partage ta fierté à <a href="mailto:contact.cielbleurunningclub@gmail.com?subject=Ma%20fierté%20CIELBLEU">contact.cielbleurunningclub@gmail.com</a> et on l'ajoute au mur.</p>
 </section>
 
 <!-- GALERIE -->
@@ -385,7 +385,7 @@ footer{background:var(--navy-deep);padding:40px 60px;}
         <div style="font-family:'Anton',sans-serif;font-size:22px;letter-spacing:1px;color:white;text-transform:uppercase;">On vous attend.</div>
         <p style="font-size:13px;color:rgba(255,255,255,.55);line-height:1.6;margin:8px 0 16px;">Adhésion 100&nbsp;% en ligne, en deux minutes, via HelloAsso.</p>
         <a href="https://www.helloasso.com/beta/associations/le-ciel-est-bleu-running-club/adhesions/adhesion-saison-26-27-1" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;background:var(--gold);color:var(--navy-deep);font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:2px;padding:15px 28px;border-radius:6px;text-decoration:none;transition:background .2s;" onmouseover="this.style.background='white'" onmouseout="this.style.background='var(--gold)'">Adhérer sur HelloAsso →</a>
-        <div style="font-size:12px;color:rgba(255,255,255,.5);margin-top:12px;">Une question ? <a href="mailto:contact.lcebrunning@gmail.com" style="color:var(--blue-sky);text-decoration:none;">contact.lcebrunning@gmail.com</a></div>
+        <div style="font-size:12px;color:rgba(255,255,255,.5);margin-top:12px;">Une question ? <a href="mailto:contact.cielbleurunningclub@gmail.com" style="color:var(--blue-sky);text-decoration:none;">contact.cielbleurunningclub@gmail.com</a></div>
       </div>
     </div>
   </div>
@@ -399,7 +399,7 @@ footer{background:var(--navy-deep);padding:40px 60px;}
       <a href="https://www.strava.com/clubs/lecielestbleu" target="_blank" rel="noopener">Strava</a>
       <a href="https://www.tiktok.com/@lecielestbleu_running" target="_blank" rel="noopener">TikTok</a>
       <a href="https://www.linkedin.com/company/le-ciel-est-bleu-running-club/" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="mailto:contact.lcebrunning@gmail.com">Contact</a>
+      <a href="mailto:contact.cielbleurunningclub@gmail.com">Contact</a>
     </div>
     <span class="footer-copy">© 2026 CIELBLEU · Paris · <a href="mentions-legales.html" style="color:inherit;">Mentions légales</a></span>
   </div>
@@ -511,7 +511,7 @@ const EXPLOITS=[
 ];
 function renderExploits(){
   const wrap=document.getElementById('exploitsGrid');if(!wrap)return;
-  if(!EXPLOITS.length){wrap.innerHTML=`<div class="rec-empty">Les premières fiertés seront bientôt affichées ici.<br>Partage la tienne à <a href="mailto:contact.lcebrunning@gmail.com?subject=Ma%20fierté%20CIELBLEU" style="color:var(--navy);font-weight:600;text-decoration:underline;">contact.lcebrunning@gmail.com</a></div>`;return;}
+  if(!EXPLOITS.length){wrap.innerHTML=`<div class="rec-empty">Les premières fiertés seront bientôt affichées ici.<br>Partage la tienne à <a href="mailto:contact.cielbleurunningclub@gmail.com?subject=Ma%20fierté%20CIELBLEU" style="color:var(--navy);font-weight:600;text-decoration:underline;">contact.cielbleurunningclub@gmail.com</a></div>`;return;}
   wrap.innerHTML=EXPLOITS.map(e=>{
     const c=EXPLOIT_CATS[e.cat]||{label:'Exploit',icon:'⭐',color:'#6d879a'};
     const avatar=e.photo?`<img src="${e.photo}" alt="${e.who}">`:e.who.charAt(0);
