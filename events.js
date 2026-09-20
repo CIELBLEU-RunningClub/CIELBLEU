@@ -131,7 +131,8 @@ const specials=[
   {m:8,d:27,time:'8h30',dur:240,title:'Marathon Bleu · En relais',
    tags:[{l:'Adhérents',c:'tag-adherent'}],
    desc:"Le Marathon Bleu en relais : 42 coureurs se partagent la distance mythique sur la piste. L'événement adhérents de septembre.",
-   details:[['Horaire','8h30 – 12h30'],['Lieu',L_PISTE]],location:'Paris'},
+   details:[['Horaire','8h30 – 12h30'],['Lieu',L_PISTE]],location:'Paris',
+   article:'article-marathon-bleu.html',articleTitle:'42,195 km à 42. En relais.'},
   // Octobre
   {m:9,d:14,time:'19h20',dur:70,title:'CIELBLEU × Fitzroy',
    tags:[{l:'Ouvert à tous',c:'tag-open'},{l:'Partenariat',c:'tag-partner'}],
@@ -211,6 +212,7 @@ function pushEvent(o){
   const details=isSession?[['Horaire',o.time],...o.details]:o.details;
   const ev={id,y:YEAR,m:o.m,d:o.d,date:new Date(YEAR,o.m,o.d),title:o.title,color:o.color||'#DA5B47',
     tags:o.tags,desc:o.desc,details,dtStart:ds,dtEnd:de,location:o.location,
+    article:o.article||'',articleTitle:o.articleTitle||'',
     session:isSession,wd:o.wd,dateStr:o.d+' '+MONTHS[o.m]+' '+YEAR,time:o.time};
   EVENTS_BY_ID[id]=ev;allEvents.push(ev);
 }
