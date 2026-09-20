@@ -1,5 +1,5 @@
 // Le trombinoscope des adhérents : une ligne par membre.
-// Saison 2026-2027 · 56 adhérents.
+// Saison 2026-2027 · 84 adhérents.
 // Pour ajouter un headshot : photo:'membres/prenom.jpg' (les initiales s'affichent sinon).
 // Pour ajouter une citation : citation:'…' (le verso reste neutre si vide).
 const MEMBRES=[
@@ -9,9 +9,9 @@ const MEMBRES=[
   {nom:'Clarisse', citation:'', photo:''},
   {nom:'Thomas n°2', citation:'', photo:''},
   {nom:'Ethan', citation:'Passionné de course à pied et de rencontres avec d\'autres coureurs.', photo:''},
-  {nom:'Matteo', citation:'La vie c\'est comme une boîte de chocolat : ça coûte cher, on fait semblant d\'aimer, mais on se rend vite compte que c\'est écœurant !', photo:''},
+  {nom:'Matteo n°1', citation:'La vie c\'est comme une boîte de chocolat : ça coûte cher, on fait semblant d\'aimer, mais on se rend vite compte que c\'est écœurant !', photo:''},
   {nom:'Quentin n°1', citation:'Visez la lune en gardant les pieds sur terre.', photo:''},
-  {nom:'Romane', citation:'Vive le Sud-Ouest !', photo:''},
+  {nom:'Romane n°1', citation:'Vive le Sud-Ouest !', photo:''},
   {nom:'Elisa', citation:'', photo:''},
   {nom:'Lorenzo', citation:'', photo:''},
   {nom:'Mathéo', citation:'', photo:''},
@@ -28,8 +28,8 @@ const MEMBRES=[
   {nom:'Yoann', citation:'On m\'a dit « méfiez-vous » en arrivant l\'an dernier : ils avaient raison, je suis devenu addict au Ciel Bleu.', photo:''},
   {nom:'Thomas « El coche »', citation:'Les relations humaines, vous savez…', photo:''},
   {nom:'Hugo n°1', citation:'Après chaque montée, il y a une descente.', photo:''},
-  {nom:'Fanny', citation:'', photo:''},
-  {nom:'Théo', citation:'Entraînement difficile, course facile.', photo:''},
+  {nom:'Fanny n°1', citation:'', photo:''},
+  {nom:'Théo n°1', citation:'Entraînement difficile, course facile.', photo:''},
   {nom:'Enzo', citation:'', photo:''},
   {nom:'Maxence', citation:'', photo:''},
   {nom:'Milena', citation:'', photo:''},
@@ -58,5 +58,33 @@ const MEMBRES=[
   {nom:'Solène', citation:'', photo:''},
   {nom:'Hugo n°2', citation:'Grand rêve nécessite grand sacrifice.', photo:''},
   {nom:'Noémie', citation:'', photo:''},
-  {nom:'Thomas n°4', citation:'Thomvol Golgoth.', photo:''}
+  {nom:'Thomas n°4', citation:'Thomvol Golgoth.', photo:''},
+  {nom:'Imogen', citation:'Audacieuse.', photo:''},
+  {nom:'Mare', citation:'', photo:''},
+  {nom:'Lou', citation:'', photo:''},
+  {nom:'Fanny n°2', citation:'Je sais pas où je vais, mais j\'y vais en courant.', photo:''},
+  {nom:'Eva', citation:'La vie c\'est ce qui arrive quand tu ne l\'avais pas prévu.', photo:''},
+  {nom:'Aline', citation:'Jamais deux sans trois.', photo:''},
+  {nom:'Maéva', citation:'', photo:''},
+  {nom:'Sabrina', citation:'I\'m not superstitious, but I\'m a little stitious.', photo:''},
+  {nom:'Apollonia', citation:'', photo:''},
+  {nom:'Romane n°2', citation:'La discipline pour progresser, motivation pour avancer, plaisir pour continuer.', photo:''},
+  {nom:'Anna', citation:'', photo:''},
+  {nom:'Clara', citation:'On n\'a pas peur du bonheur ici.', photo:''},
+  {nom:'Louise', citation:'Fume la vie avant que la vue ne te fume.', photo:''},
+  {nom:'Maha', citation:'No pain no gain.', photo:''},
+  {nom:'Yaël', citation:'Dans 500 m, y\'a la buvette.', photo:''},
+  {nom:'Bastien', citation:'Courir avec le smile.', photo:''},
+  {nom:'Matteo n°2', citation:'Tout ce que je sais, c\'est que je ne sais rien.', photo:''},
+  {nom:'Gauthier', citation:'', photo:''},
+  {nom:'Jason', citation:'Avec un peu d\'entraînement, les JO ça se fait bien.', photo:''},
+  {nom:'Théo n°2', citation:'C\'est de la zinzinnerie !', photo:''},
+  {nom:'Fabien', citation:'', photo:''},
+  {nom:'Arthur', citation:'', photo:''},
+  {nom:'Raphaël', citation:'', photo:''},
+  {nom:'Guillaume', citation:'Boire, c\'est la victoire.', photo:''},
+  {nom:'Lino', citation:'Pour combien on accélère ?', photo:''},
+  {nom:'Corentin', citation:'Toujours regarder à droite au passage piéton.', photo:''},
+  {nom:'Théo n°3', citation:'Qui ne tente rien n\'a rien.', photo:''},
+  {nom:'Axel', citation:'', photo:''}
 ];
