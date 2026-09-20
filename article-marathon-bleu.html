@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b1d30">
+<title>42,195 km à 42, en relais · Le Marathon Bleu · CIELBLEU</title>
+<meta name="description" content="Le Marathon Bleu du CIELBLEU Running Club : 42,195 km sur la piste, découpés en relais de 400 m entre 42 coureurs. Départ à 9h tapantes, dimanche 27 septembre.">
+<!-- Canonical : à remplacer par le nom de domaine définitif quand il sera acheté -->
+<link rel="canonical" href="https://cielbleu-runningclub.github.io/CIELBLEU/article-marathon-bleu.html">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-09-20">
+<meta property="og:title" content="42,195 km à 42. En relais.">
+<meta property="og:description" content="La distance mythique découpée en tours de piste, quarante-deux coureurs qui se passent le relais, et un départ à 9h tapantes.">
+<meta property="og:image" content="https://cielbleu-runningclub.github.io/CIELBLEU/og-marathon-bleu.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:alt" content="Les coureurs du CIELBLEU en peloton sur une piste d'athlétisme bleue">
+<meta property="og:url" content="https://cielbleu-runningclub.github.io/CIELBLEU/article-marathon-bleu.html">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="CIELBLEU Running Club">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="42,195 km à 42. En relais.">
+<meta name="twitter:description" content="La distance mythique découpée en tours de piste. Départ à 9h tapantes.">
+<meta name="twitter:image" content="https://cielbleu-runningclub.github.io/CIELBLEU/og-marathon-bleu.jpg">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="manifest" href="manifest.webmanifest">
+<script>if("serviceWorker" in navigator){addEventListener("load",function(){navigator.serviceWorker.register("sw.js").catch(function(){})});}</script>
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#122b44;--navy-deep:#0b1d30;--blue-steel:#6d879a;--blue-sky:#b6cde0;--blue-pale:#d5e0e4;--cream:#F6F9FC;--white:#FFFFFF;--mid:#5B738A;--gold:#E8B06B;}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+a,button,input,select{-webkit-tap-highlight-color:rgba(182,205,224,.25);touch-action:manipulation;}
+body{font-family:'Open Sans',sans-serif;background:var(--cream);color:var(--navy);overflow-x:hidden;}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 60px;height:112px;background:rgba(11,29,48,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(182,205,224,0.1);}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-logo img{height:20px;width:auto;}
+.nav-links{display:flex;gap:20px;list-style:none;}
+.nav-links a{font-size:12.5px;letter-spacing:1.5px;font-weight:600;color:rgba(255,255,255,0.65);text-decoration:none;text-transform:uppercase;transition:color .2s;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1.5px;background:var(--blue-sky);transition:width .25s ease;}
+.nav-links a:hover,.nav-links a.active{color:white;}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%;}
+.nav-cta-group{display:flex;align-items:center;gap:12px;}
+.nav-cta{background:var(--blue-sky);color:var(--navy);font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:2px;padding:13px 26px;border-radius:5px;text-decoration:none;transition:background .2s;white-space:nowrap;}
+.nav-cta:hover{background:white;}
+.nav-cta-alt{background:transparent;color:var(--blue-sky);border:1.5px solid rgba(182,205,224,.5);}
+.nav-cta-alt:hover{background:rgba(182,205,224,.14);color:white;}
+.nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:8px;color:white;font-size:24px;line-height:1;}
+.nav-mobile{display:none;position:fixed;top:70px;left:0;right:0;bottom:0;background:rgba(11,29,48,0.98);z-index:99;padding:8px 20px calc(20px + env(safe-area-inset-bottom));list-style:none;backdrop-filter:blur(12px);overflow-y:auto;}
+.nav-mobile.open{display:flex;flex-direction:column;}
+.nav-mobile li a{display:block;font-size:13px;letter-spacing:2px;font-weight:600;color:rgba(255,255,255,0.7);text-decoration:none;text-transform:uppercase;padding:15px 0;border-bottom:1px solid rgba(182,205,224,0.08);}
+.nav-mobile li:last-child a{border:none;}
+.nav-links a{white-space:nowrap;}
+/* Sous 1150px, les 6 liens + les 2 boutons ne tiennent plus dans la barre :
+   le menu complet débordait hors de l'écran (« Devenir partenaire » invisible).
+   On bascule sur le menu burger, qui contient déjà les deux boutons. */
+@media(max-width:1150px){
+  .nav-links,.nav-cta,.nav-cta-group{display:none;}
+  .nav-hamburger{display:flex;align-items:center;}
+  .nav-mobile{top:112px;}
+}
+@media(max-width:768px){.nav-mobile{top:70px;}}
+/* Entre 1151 et 1400px, on resserre un peu pour garder de l'air autour des boutons */
+@media(min-width:1151px) and (max-width:1400px){
+  nav{padding:0 28px;}
+  .nav-links{gap:13px;}
+  .nav-links a{font-size:11.5px;letter-spacing:1px;}
+  .nav-cta-group{gap:8px;}
+  .nav-cta{font-size:14px;letter-spacing:1.5px;padding:11px 18px;}
+}
+
+/* ── HERO ARTICLE ── */
+.art-hero{min-height:78vh;background:var(--navy-deep);display:flex;flex-direction:column;justify-content:flex-end;padding:150px 60px 56px;position:relative;overflow:hidden;}
+.art-hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(to top,rgba(11,29,48,.97) 0%,rgba(11,29,48,.78) 34%,rgba(11,29,48,.34) 66%,rgba(11,29,48,.5) 100%);}
+.art-hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 42%;opacity:.9;pointer-events:none;z-index:0;}
+.art-hero > *:not(.art-hero-bg){position:relative;z-index:2;}
+.art-hero-inner{max-width:820px;}
+.art-kicker{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:18px;}
+.art-kicker .tag{font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:5px 13px;border-radius:999px;background:var(--gold);color:var(--navy-deep);}
+.art-kicker .date,.art-kicker .read{font-size:12.5px;color:rgba(255,255,255,.6);letter-spacing:.3px;}
+.art-kicker .dot{color:rgba(255,255,255,.35);}
+.art-hero h1{font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(36px,6.2vw,74px);line-height:1.03;letter-spacing:.3px;color:white;}
+.art-hero h1 em{color:var(--blue-sky);font-style:normal;}
+.art-hero .art-standfirst{font-size:17px;color:rgba(255,255,255,.72);font-weight:300;line-height:1.7;margin-top:20px;max-width:620px;}
+
+/* ── CORPS DE L'ARTICLE ── */
+.art-body{max-width:720px;margin:0 auto;padding:56px 60px 20px;}
+.art-body p{font-size:17px;line-height:1.85;color:#2c4257;margin-bottom:24px;}
+.art-body p.lede{font-size:20px;line-height:1.7;color:var(--navy);font-weight:600;}
+.art-body h2{font-family:'Bebas Neue',sans-serif;font-size:29px;letter-spacing:1.5px;color:var(--navy);margin:44px 0 16px;}
+.art-body strong{color:var(--navy);font-weight:700;}
+.art-quote{font-family:'Open Sans',sans-serif;font-style:italic;font-size:22px;line-height:1.55;color:var(--navy);border-left:3px solid var(--gold);padding-left:24px;margin:38px 0;}
+.art-figure{margin:38px 0;}
+.art-figure img{width:100%;border-radius:16px;display:block;}
+.art-figure figcaption{font-size:12.5px;color:var(--mid);margin-top:10px;letter-spacing:.2px;}
+
+/* Encadré infos pratiques */
+.art-facts{background:linear-gradient(135deg,var(--navy-deep),var(--navy));border:1.5px solid rgba(182,205,224,.15);border-radius:18px;padding:32px 36px;margin:40px 0;color:white;}
+.art-facts h3{font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:4px;color:var(--blue-sky);margin-bottom:20px;text-transform:uppercase;}
+.art-facts dl{display:grid;grid-template-columns:130px 1fr;gap:12px 18px;}
+.art-facts dt{font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:2px;color:rgba(255,255,255,.45);text-transform:uppercase;padding-top:2px;}
+.art-facts dd{font-size:15px;color:white;line-height:1.5;}
+.art-facts dd a{color:var(--gold);text-decoration:underline;text-underline-offset:2px;}
+
+/* Pied d'article */
+.art-foot{max-width:720px;margin:0 auto;padding:0 60px 64px;}
+.art-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:34px;}
+.art-btn{font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:2px;padding:14px 28px;border-radius:5px;text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:all .2s;white-space:nowrap;}
+.art-btn.primary{background:var(--navy);color:white;}
+.art-btn.primary:hover{background:var(--navy-deep);}
+.art-btn.ghost{background:transparent;color:var(--navy);border-color:rgba(18,43,68,.2);}
+.art-btn.ghost:hover{background:rgba(18,43,68,.06);}
+.art-back{display:inline-block;font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:2px;color:var(--blue-steel);text-decoration:none;padding:6px 0;transition:color .2s;}
+.art-back:hover{color:var(--navy);}
+
+/* ── FOOTER ── */
+footer{background:var(--navy-deep);padding:40px 60px;}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;}
+.footer-inner img{height:9px;width:auto;filter:brightness(0) invert(1);}
+.footer-socials{display:flex;gap:28px;align-items:center;flex-wrap:wrap;}
+.footer-socials a{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s;display:inline-block;padding:10px 2px;}
+.footer-socials a:hover{color:white;}
+.footer-copy{font-size:12px;color:rgba(255,255,255,.25);letter-spacing:1px;}
+
+/* ── BACK TO TOP ── */
+#back-to-top{position:fixed;bottom:32px;right:28px;width:48px;height:48px;background:var(--navy);border:1.5px solid rgba(182,205,224,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;cursor:pointer;z-index:999;opacity:0;transform:translateY(20px);transition:opacity .3s,transform .3s,box-shadow .2s;box-shadow:0 4px 16px rgba(0,0,0,.3);text-decoration:none;color:white;}
+#back-to-top.show{opacity:1;transform:translateY(0);}
+#back-to-top:hover{box-shadow:0 6px 24px rgba(0,0,0,.45);transform:translateY(-3px);}
+
+/* ── TABLETTE ── */
+@media(min-width:769px) and (max-width:1024px){
+  nav{padding:0 36px;}.nav-links{gap:16px;}
+  .art-hero{padding:140px 36px 48px;}
+  .art-body{padding:48px 36px 20px;}
+  .art-foot{padding:0 36px 56px;}
+  footer{padding:36px;}
+}
+
+/* ── MOBILE ── */
+@media(max-width:768px){
+  nav{padding:0 20px;height:70px;}
+  .nav-links,.nav-cta,.nav-cta-group{display:none;}
+  .nav-hamburger{display:flex;align-items:center;}
+  .art-hero{padding:100px 20px 40px;min-height:72vh;}
+  .art-hero .art-standfirst{font-size:16px;}
+  .art-body{padding:36px 20px 16px;}
+  .art-body p{font-size:16.5px;}
+  .art-body p.lede{font-size:18.5px;}
+  .art-body h2{font-size:25px;margin:34px 0 14px;}
+  .art-quote{font-size:19px;padding-left:18px;margin:30px 0;}
+  .art-facts{padding:26px 22px;}
+  .art-facts dl{grid-template-columns:1fr;gap:4px;}
+  .art-facts dd{margin-bottom:12px;}
+  .art-foot{padding:0 20px 48px;}
+  .art-actions{width:100%;}
+  .art-btn{flex:1;text-align:center;}
+  footer{padding:28px 20px;}
+  .footer-inner{flex-direction:column;align-items:center;text-align:center;gap:16px;}
+  .footer-socials{justify-content:center;gap:14px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="./" class="nav-logo"><img src="CIELBLEU.png" alt="CIELBLEU" height="20"></a>
+  <ul class="nav-links">
+    <li><a href="./#semaine">Le club</a></li>
+    <li><a href="calendrier.html">Calendrier</a></li>
+    <li><a href="actualites.html" class="active">Actualités</a></li>
+    <li><a href="notre-equipe.html">L'équipe</a></li>
+    <li><a href="nos-adherents.html">Nos adhérents</a></li>
+    <li><a href="nos-partenaires.html">Nos partenaires</a></li>
+  </ul>
+  <div class="nav-cta-group">
+    <a href="./#adhesion" class="nav-cta">Devenir adhérent →</a>
+    <a href="nos-partenaires.html#contact" class="nav-cta nav-cta-alt">Devenir partenaire →</a>
+  </div>
+  <button class="nav-hamburger" onclick="toggleNav()" aria-label="Menu">&#9776;</button>
+</nav>
+<ul class="nav-mobile" id="navMobile">
+  <li><a href="./#semaine" onclick="toggleNav()">Le club</a></li>
+  <li><a href="calendrier.html" onclick="toggleNav()">Calendrier</a></li>
+  <li><a href="actualites.html" onclick="toggleNav()">Actualités</a></li>
+  <li><a href="notre-equipe.html" onclick="toggleNav()">L'équipe</a></li>
+  <li><a href="nos-adherents.html" onclick="toggleNav()">Nos adhérents</a></li>
+  <li><a href="nos-partenaires.html" onclick="toggleNav()">Nos partenaires</a></li>
+  <li><a href="./#adhesion" onclick="toggleNav()" style="color:var(--gold)!important;">→ Devenir adhérent</a></li>
+  <li><a href="nos-partenaires.html#contact" onclick="toggleNav()" style="color:var(--blue-sky)!important;">→ Devenir partenaire</a></li>
+</ul>
+
+<!-- HERO -->
+<header class="art-hero">
+  <img src="New3.jpeg" alt="" class="art-hero-bg" fetchpriority="high">
+  <div class="art-hero-inner">
+    <div class="art-kicker">
+      <span class="tag">Événement</span>
+      <span class="date">20 septembre 2026</span>
+      <span class="dot">·</span>
+      <span class="read">3 min de lecture</span>
+    </div>
+    <h1>42,195 KM À 42.<br><em>EN RELAIS.</em></h1>
+    <p class="art-standfirst">La distance mythique découpée en tours de piste, quarante-deux coureurs qui se passent le relais, et un départ à 9h tapantes. Bienvenue au Marathon Bleu.</p>
+  </div>
+</header>
+
+<!-- ARTICLE -->
+<article class="art-body">
+  <p class="lede">Un marathon, normalement, ça se court seul. On s'entraîne seul pendant des mois, on souffre seul au trentième kilomètre, on passe la ligne seul. Le Marathon Bleu, c'est l'inverse exact.</p>
+
+  <p>Dimanche, on aligne la même distance — <strong>42,195 km</strong>, pas un mètre de moins — mais on la découpe. Sur une piste d'athlétisme, cette distance a une traduction très concrète : <strong>105 tours, plus 195 mètres</strong>. C'est long. C'est même absurdement long quand on regarde le chiffre écrit comme ça.</p>
+
+  <p>Sauf que personne ne va les faire seul.</p>
+
+  <h2>Le principe : 400 mètres, puis tu passes la main</h2>
+
+  <p>On forme des équipes. Chacun court <strong>un tour de piste, 400 mètres</strong>, puis passe le relais au suivant. Le coureur qui vient de finir récupère, encourage, et repart un peu plus tard pour un autre tour. Le chrono, lui, ne s'arrête jamais : entre le premier départ et le dernier mètre, la distance avance en continu.</p>
+
+  <p>Faites le calcul. Cent cinq tours et demi, répartis sur quarante-deux coureurs, ça fait environ <strong>deux tours et demi chacun</strong> — un petit kilomètre par personne. Pris séparément, c'est presque rien. Mis bout à bout, c'est un marathon.</p>
+
+  <p class="art-quote">C'est toute l'idée : une distance que presque personne ne court, rendue accessible parce qu'on la porte à quarante-deux.</p>
+
+  <h2>Pourquoi 42 ?</h2>
+
+  <p>Parce que 42, c'est le chiffre du marathon. Quarante-deux kilomètres, quarante-deux coureurs : un par borne, si on veut. C'est une coquetterie, on l'assume complètement — mais c'est aussi ce qui donne à la matinée sa forme particulière. Il faut être quarante-deux. Chaque dossard compte, chaque tour compte, et la ligne d'arrivée n'appartient à personne en particulier.</p>
+
+  <p>Sur la piste, ça donne quelque chose qu'on ne vit pas ailleurs : des gens qui s'échauffent pendant que d'autres finissent leur relais, des cris à chaque passage de témoin, et un décompte collectif des tours restants qui devient de plus en plus bruyant à mesure qu'on approche des 105.</p>
+
+  <h2>Départ à 9h tapantes</h2>
+
+  <p>Le mot « tapantes » est important. Un relais, ça ne peut pas démarrer en retard : si le premier tour part à 9h05, tout le monde finit à 9h05. Rendez-vous est donc donné suffisamment en avance pour former les équipes, distribuer l'ordre de passage et s'échauffer tranquillement.</p>
+
+  <p>Le reste — l'ordre des relais, la composition des équipes, le ravitaillement — se règle sur place. Il n'y a rien à préparer, rien à performer. Il faut juste être là, et être prêt à courir un kilomètre en plusieurs fois, en hurlant le reste du temps.</p>
+
+  <div class="art-facts">
+    <h3>En pratique</h3>
+    <dl>
+      <dt>Quand</dt><dd>Dimanche 27 septembre 2026</dd>
+      <dt>Départ</dt><dd>9h tapantes</dd>
+      <dt>Où</dt><dd>Stade Jules Ladoumègue, Paris</dd>
+      <dt>Format</dt><dd>Relais de 400 m, en équipes · 42,195 km au total</dd>
+      <dt>Pour qui</dt><dd>Réservé aux adhérents · 42 coureurs</dd>
+      <dt>Infos</dt><dd>Détails et dernières minutes sur <a href="https://www.instagram.com/cielbleu_runningclub/" target="_blank" rel="noopener">notre Instagram</a> et <a href="https://www.strava.com/clubs/lecielestbleu" target="_blank" rel="noopener">notre Strava</a></dd>
+    </dl>
+  </div>
+
+  <p>Un marathon, ça se court seul. Sauf dimanche.</p>
+</article>
+
+<div class="art-foot">
+  <div class="art-actions">
+    <a class="art-btn primary" href="calendrier.html">Voir le calendrier →</a>
+    <button class="art-btn ghost" id="shareBtn" type="button">Partager l'article</button>
+  </div>
+  <a class="art-back" href="actualites.html">← Toutes les actus</a>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <a href="#" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'});" aria-label="Retour en haut" style="display:inline-flex;cursor:pointer;"><img src="CIELBLEU.png" alt="CIELBLEU"></a>
+    <div class="footer-socials">
+      <a href="https://www.instagram.com/cielbleu_runningclub/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.strava.com/clubs/lecielestbleu" target="_blank" rel="noopener">Strava</a>
+      <a href="https://www.tiktok.com/@lecielestbleu_running" target="_blank" rel="noopener">TikTok</a>
+      <a href="https://www.linkedin.com/company/le-ciel-est-bleu-running-club/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:contact.lcebrunning@gmail.com">Contact</a>
+    </div>
+    <span class="footer-copy">© 2026 CIELBLEU · Paris · <a href="mentions-legales.html" style="color:inherit;">Mentions légales</a></span>
+  </div>
+</footer>
+
+<a id="back-to-top" href="#" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'});" aria-label="Retour en haut">↑</a>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"NewsArticle",
+"headline":"42,195 km à 42. En relais.",
+"datePublished":"2026-09-20",
+"image":["https://cielbleu-runningclub.github.io/CIELBLEU/og-marathon-bleu.jpg"],
+"author":{"@type":"Organization","name":"CIELBLEU Running Club"},
+"publisher":{"@type":"Organization","name":"CIELBLEU Running Club"},
+"mainEntityOfPage":"https://cielbleu-runningclub.github.io/CIELBLEU/article-marathon-bleu.html"}
+</script>
+<script>
+(function(){
+  const btn=document.getElementById('shareBtn');
+  const data={title:'42,195 km à 42. En relais.',text:"Le Marathon Bleu du CIELBLEU : la distance mythique en relais de 400 m.",url:location.href};
+  btn.addEventListener('click',async function(){
+    if(navigator.share){try{await navigator.share(data);return;}catch(e){if(e&&e.name==='AbortError')return;}}
+    try{await navigator.clipboard.writeText(location.href);btn.textContent='Lien copié ✓';setTimeout(()=>{btn.textContent="Partager l'article";},2000);}catch(e){}
+  });
+})();
+window.addEventListener('scroll',()=>{
+  document.getElementById('back-to-top').classList.toggle('show',window.scrollY>400);
+});
+</script>
+<script src="scroll-shoe.js?v=2"></script>
+<script>function toggleNav(){document.getElementById('navMobile').classList.toggle('open');}
+document.addEventListener('click',function(e){var m=document.getElementById('navMobile');if(m&&m.classList.contains('open')&&!m.contains(e.target)&&!e.target.closest('.nav-hamburger'))m.classList.remove('open');});</script>
+<script src="analytics.js?v=2"></script>
+</body>
+</html>

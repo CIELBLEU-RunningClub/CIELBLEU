@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b1d30">
+<title>Actualités · CIELBLEU Running Club Paris</title>
+<meta name="description" content="Les actualités du CIELBLEU Running Club : la vie du club, les événements, les coulisses et les récits de nos rendez-vous à Paris.">
+<!-- Canonical : à remplacer par le nom de domaine définitif quand il sera acheté -->
+<link rel="canonical" href="https://cielbleu-runningclub.github.io/CIELBLEU/actualites.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Les actus du club">
+<meta property="og:description" content="La vie du club, les événements et les coulisses du CIELBLEU Running Club.">
+<meta property="og:image" content="https://cielbleu-runningclub.github.io/CIELBLEU/og-cielbleu.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:alt" content="CIELBLEU — coureurs en mouvement sur une piste bleue">
+<meta property="og:url" content="https://cielbleu-runningclub.github.io/CIELBLEU/actualites.html">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="CIELBLEU Running Club">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="manifest" href="manifest.webmanifest">
+<script>if("serviceWorker" in navigator){addEventListener("load",function(){navigator.serviceWorker.register("sw.js").catch(function(){})});}</script>
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#122b44;--navy-deep:#0b1d30;--blue-steel:#6d879a;--blue-sky:#b6cde0;--blue-pale:#d5e0e4;--cream:#F6F9FC;--white:#FFFFFF;--mid:#5B738A;--gold:#E8B06B;}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+a,button,input,select{-webkit-tap-highlight-color:rgba(182,205,224,.25);touch-action:manipulation;}
+body{font-family:'Open Sans',sans-serif;background:var(--cream);color:var(--navy);overflow-x:hidden;}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 60px;height:112px;background:rgba(11,29,48,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(182,205,224,0.1);}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-logo img{height:20px;width:auto;}
+.nav-links{display:flex;gap:20px;list-style:none;}
+.nav-links a{font-size:12.5px;letter-spacing:1.5px;font-weight:600;color:rgba(255,255,255,0.65);text-decoration:none;text-transform:uppercase;transition:color .2s;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1.5px;background:var(--blue-sky);transition:width .25s ease;}
+.nav-links a:hover,.nav-links a.active{color:white;}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%;}
+.nav-cta-group{display:flex;align-items:center;gap:12px;}
+.nav-cta{background:var(--blue-sky);color:var(--navy);font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:2px;padding:13px 26px;border-radius:5px;text-decoration:none;transition:background .2s;white-space:nowrap;}
+.nav-cta:hover{background:white;}
+.nav-cta-alt{background:transparent;color:var(--blue-sky);border:1.5px solid rgba(182,205,224,.5);}
+.nav-cta-alt:hover{background:rgba(182,205,224,.14);color:white;}
+.nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:8px;color:white;font-size:24px;line-height:1;}
+.nav-mobile{display:none;position:fixed;top:70px;left:0;right:0;bottom:0;background:rgba(11,29,48,0.98);z-index:99;padding:8px 20px calc(20px + env(safe-area-inset-bottom));list-style:none;backdrop-filter:blur(12px);overflow-y:auto;}
+.nav-mobile.open{display:flex;flex-direction:column;}
+.nav-mobile li a{display:block;font-size:13px;letter-spacing:2px;font-weight:600;color:rgba(255,255,255,0.7);text-decoration:none;text-transform:uppercase;padding:15px 0;border-bottom:1px solid rgba(182,205,224,0.08);}
+.nav-mobile li:last-child a{border:none;}
+.nav-links a{white-space:nowrap;}
+/* Sous 1150px, les 6 liens + les 2 boutons ne tiennent plus dans la barre :
+   le menu complet débordait hors de l'écran (« Devenir partenaire » invisible).
+   On bascule sur le menu burger, qui contient déjà les deux boutons. */
+@media(max-width:1150px){
+  .nav-links,.nav-cta,.nav-cta-group{display:none;}
+  .nav-hamburger{display:flex;align-items:center;}
+  .nav-mobile{top:112px;}
+}
+@media(max-width:768px){.nav-mobile{top:70px;}}
+/* Entre 1151 et 1400px, on resserre un peu pour garder de l'air autour des boutons */
+@media(min-width:1151px) and (max-width:1400px){
+  nav{padding:0 28px;}
+  .nav-links{gap:13px;}
+  .nav-links a{font-size:11.5px;letter-spacing:1px;}
+  .nav-cta-group{gap:8px;}
+  .nav-cta{font-size:14px;letter-spacing:1.5px;padding:11px 18px;}
+}
+
+/* ── HERO ── */
+.page-hero{min-height:100vh;min-height:100svh;background:var(--navy-deep);display:flex;flex-direction:column;justify-content:center;padding:150px 60px 70px;position:relative;overflow:hidden;}
+.page-hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(80deg,rgba(11,29,48,.96) 0%,rgba(11,29,48,.84) 38%,rgba(11,29,48,.56) 68%,rgba(18,43,68,.4) 100%),linear-gradient(to top,rgba(11,29,48,.92) 0%,rgba(11,29,48,.3) 32%,rgba(11,29,48,.08) 58%);}
+.page-hero-bg-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 28%;opacity:.85;pointer-events:none;z-index:0;}
+.page-hero > *:not(.page-hero-bg-img){position:relative;z-index:2;}
+@media(max-width:768px){.page-hero::before{background:linear-gradient(180deg,rgba(11,29,48,.5) 0%,rgba(11,29,48,.28) 32%,rgba(11,29,48,.55) 70%,rgba(11,29,48,.9) 100%),linear-gradient(90deg,rgba(11,29,48,.85) 0%,rgba(11,29,48,.5) 48%,rgba(11,29,48,.18) 100%);}.page-hero-bg-img{opacity:.9;object-position:center 30%;}}
+.page-hero-eyebrow{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:5px;color:var(--blue-sky);opacity:.8;margin-bottom:14px;position:relative;z-index:1;}
+.page-hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(44px,7.6vw,92px);line-height:1;letter-spacing:.5px;color:white;position:relative;z-index:1;}
+.page-hero h1 em{color:var(--blue-sky);font-style:normal;}
+.page-hero p{font-size:16px;color:rgba(255,255,255,.65);font-weight:300;max-width:560px;line-height:1.7;margin-top:18px;position:relative;z-index:1;}
+
+/* ── SECTIONS ── */
+section{padding:48px 60px;border-bottom:1px solid rgba(18,43,68,0.07);scroll-margin-top:112px;}
+section:nth-child(even){background:var(--white);}
+.s-label{font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:5px;color:var(--blue-steel);margin-bottom:12px;}
+.s-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(30px,4.3vw,44px);letter-spacing:.5px;color:var(--navy);line-height:1.1;margin-bottom:8px;}
+.s-intro{font-size:15px;color:var(--mid);max-width:620px;line-height:1.7;margin-bottom:40px;}
+
+/* ── ACTUALITÉS ── */
+.actu-wrap{max-width:1180px;margin:0 auto;}
+.actu-meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px;}
+.actu-tag{font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:5px 13px;border-radius:999px;background:var(--navy);color:#fff;}
+.actu-date,.actu-read{font-size:12px;color:var(--mid);letter-spacing:.3px;}
+.actu-dot{color:var(--blue-steel);opacity:.6;}
+.actu-more{font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:2px;color:#3E7CB1;margin-top:18px;display:inline-block;transition:transform .2s,color .2s;}
+
+/* Article mis en avant */
+.actu-feat{display:grid;grid-template-columns:1.08fr 1fr;background:var(--white);border:1.5px solid rgba(18,43,68,.1);border-radius:18px;overflow:hidden;text-decoration:none;color:inherit;transition:transform .25s ease,box-shadow .25s ease;}
+.actu-feat:hover{transform:translateY(-5px);box-shadow:0 18px 44px rgba(18,43,68,.16);}
+.actu-feat-media{position:relative;min-height:380px;overflow:hidden;background:var(--navy-deep);}
+.actu-feat-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.7,.3,1);}
+.actu-feat:hover .actu-feat-media img{transform:scale(1.045);}
+.actu-feat-body{padding:40px 44px;display:flex;flex-direction:column;justify-content:center;}
+.actu-feat-title{font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(26px,3vw,38px);line-height:1.1;letter-spacing:.3px;color:var(--navy);margin-bottom:14px;}
+.actu-feat-teaser{font-size:15.5px;color:var(--mid);line-height:1.75;}
+.actu-feat:hover .actu-more{transform:translateX(4px);color:var(--navy);}
+
+/* Grille des autres articles */
+.actu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px;margin-top:22px;}
+.actu-card{display:flex;flex-direction:column;background:var(--white);border:1.5px solid rgba(18,43,68,.1);border-radius:16px;overflow:hidden;text-decoration:none;color:inherit;transition:transform .25s ease,box-shadow .25s ease;}
+.actu-card:hover{transform:translateY(-5px);box-shadow:0 14px 34px rgba(18,43,68,.14);}
+.actu-card-media{position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--navy-deep);}
+.actu-card-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.7,.3,1);}
+.actu-card:hover .actu-card-media img{transform:scale(1.045);}
+.actu-card-body{padding:22px 24px 24px;display:flex;flex-direction:column;flex:1;}
+.actu-card-title{font-family:'Anton',sans-serif;font-weight:400;font-size:21px;line-height:1.2;letter-spacing:.3px;color:var(--navy);margin-bottom:10px;}
+.actu-card-teaser{font-size:14px;color:var(--mid);line-height:1.7;}
+.actu-card .actu-more{margin-top:auto;padding-top:16px;}
+.actu-card:hover .actu-more{transform:translateX(4px);color:var(--navy);}
+
+/* Bloc « la suite arrive » */
+.actu-next{margin-top:34px;background:linear-gradient(135deg,var(--navy-deep),var(--navy));border:1.5px solid rgba(182,205,224,.15);border-radius:18px;padding:34px 40px;color:white;display:flex;align-items:center;justify-content:space-between;gap:26px;flex-wrap:wrap;}
+.actu-next h3{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:1px;margin-bottom:8px;}
+.actu-next p{font-size:14.5px;color:rgba(255,255,255,.62);line-height:1.7;max-width:520px;}
+.actu-next-links{display:flex;gap:12px;flex-wrap:wrap;}
+.actu-next-btn{font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:2px;padding:14px 26px;border-radius:5px;text-decoration:none;white-space:nowrap;transition:all .2s;}
+.actu-next-btn.primary{background:var(--gold);color:var(--navy-deep);}
+.actu-next-btn.primary:hover{background:#f0c288;}
+.actu-next-btn.ghost{border:1.5px solid rgba(182,205,224,.4);color:var(--blue-sky);}
+.actu-next-btn.ghost:hover{background:rgba(182,205,224,.14);color:white;}
+
+/* ── FOOTER ── */
+footer{background:var(--navy-deep);padding:40px 60px;}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;}
+.footer-inner img{height:9px;width:auto;filter:brightness(0) invert(1);}
+.footer-socials{display:flex;gap:28px;align-items:center;flex-wrap:wrap;}
+.footer-socials a{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s;display:inline-block;padding:10px 2px;}
+.footer-socials a:hover{color:white;}
+.footer-copy{font-size:12px;color:rgba(255,255,255,.25);letter-spacing:1px;}
+
+/* ── BACK TO TOP ── */
+#back-to-top{position:fixed;bottom:32px;right:28px;width:48px;height:48px;background:var(--navy);border:1.5px solid rgba(182,205,224,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;cursor:pointer;z-index:999;opacity:0;transform:translateY(20px);transition:opacity .3s,transform .3s,box-shadow .2s;box-shadow:0 4px 16px rgba(0,0,0,.3);text-decoration:none;color:white;}
+#back-to-top.show{opacity:1;transform:translateY(0);}
+#back-to-top:hover{box-shadow:0 6px 24px rgba(0,0,0,.45);transform:translateY(-3px);}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .7s cubic-bezier(.16,.7,.3,1),transform .7s cubic-bezier(.16,.7,.3,1);}
+.reveal.visible{opacity:1;transform:translateY(0);}
+@media(prefers-reduced-motion:reduce){.reveal{transition:none!important;opacity:1!important;transform:none!important;}}
+
+/* ── TABLETTE ── */
+@media(min-width:769px) and (max-width:1024px){
+  nav{padding:0 36px;}.nav-links{gap:16px;}
+  .page-hero{padding:140px 36px 60px;}
+  section{padding:60px 36px;}
+  footer{padding:36px;}
+  .actu-feat-body{padding:32px 30px;}
+  .actu-feat-media{min-height:320px;}
+}
+
+/* ── MOBILE ── */
+@media(max-width:768px){
+  nav{padding:0 20px;height:70px;}
+  .nav-links,.nav-cta,.nav-cta-group{display:none;}
+  .nav-hamburger{display:flex;align-items:center;}
+  .page-hero{padding:110px 20px 60px;min-height:100vh;min-height:100svh;}
+  section{padding:40px 20px;scroll-margin-top:70px;}
+  .actu-feat{grid-template-columns:1fr;}
+  .actu-feat-media{min-height:0;aspect-ratio:16/10;}
+  .actu-feat-body{padding:26px 22px 28px;}
+  .actu-grid{grid-template-columns:1fr;gap:18px;}
+  .actu-next{flex-direction:column;align-items:flex-start;padding:28px 22px;}
+  .actu-next-links{width:100%;}
+  .actu-next-btn{flex:1;text-align:center;}
+  footer{padding:28px 20px;}
+  .footer-inner{flex-direction:column;align-items:center;text-align:center;gap:16px;}
+  .footer-socials{justify-content:center;gap:14px;}
+}
+.page-hero h1,.s-title{font-family:'Anton',sans-serif;font-weight:400;letter-spacing:.3px;}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="./" class="nav-logo"><img src="CIELBLEU.png" alt="CIELBLEU" height="20"></a>
+  <ul class="nav-links">
+    <li><a href="./#semaine">Le club</a></li>
+    <li><a href="calendrier.html">Calendrier</a></li>
+    <li><a href="actualites.html" class="active">Actualités</a></li>
+    <li><a href="notre-equipe.html">L'équipe</a></li>
+    <li><a href="nos-adherents.html">Nos adhérents</a></li>
+    <li><a href="nos-partenaires.html">Nos partenaires</a></li>
+  </ul>
+  <div class="nav-cta-group">
+    <a href="./#adhesion" class="nav-cta">Devenir adhérent →</a>
+    <a href="nos-partenaires.html#contact" class="nav-cta nav-cta-alt">Devenir partenaire →</a>
+  </div>
+  <button class="nav-hamburger" onclick="toggleNav()" aria-label="Menu">&#9776;</button>
+</nav>
+<ul class="nav-mobile" id="navMobile">
+  <li><a href="./#semaine" onclick="toggleNav()">Le club</a></li>
+  <li><a href="calendrier.html" onclick="toggleNav()">Calendrier</a></li>
+  <li><a href="actualites.html" onclick="toggleNav()">Actualités</a></li>
+  <li><a href="notre-equipe.html" onclick="toggleNav()">L'équipe</a></li>
+  <li><a href="nos-adherents.html" onclick="toggleNav()">Nos adhérents</a></li>
+  <li><a href="nos-partenaires.html" onclick="toggleNav()">Nos partenaires</a></li>
+  <li><a href="./#adhesion" onclick="toggleNav()" style="color:var(--gold)!important;">→ Devenir adhérent</a></li>
+  <li><a href="nos-partenaires.html#contact" onclick="toggleNav()" style="color:var(--blue-sky)!important;">→ Devenir partenaire</a></li>
+</ul>
+
+<!-- HERO -->
+<header class="page-hero">
+  <img src="New7.jpeg" alt="" class="page-hero-bg-img" fetchpriority="high">
+  <div class="page-hero-eyebrow">Le journal du club</div>
+  <h1>LES <em>ACTUS</em><br>DU CLUB.</h1>
+  <p>Les événements qu'on prépare, ceux qu'on vient de vivre, et tout ce qui se passe entre deux séances. Ici, on raconte.</p>
+</header>
+
+<!-- ARTICLES -->
+<section id="articles">
+  <div class="s-label">01 · À lire</div>
+  <h2 class="s-title">Ce qui fait<br>la vie du club.</h2>
+  <div class="actu-wrap">
+    <div id="actuFeatured"></div>
+    <div class="actu-grid" id="actuGrid"></div>
+    <div class="actu-next reveal">
+      <div>
+        <h3>La suite s'écrit en direct.</h3>
+        <p>Entre deux articles, tout se passe sur Instagram et sur Strava : les points de départ, les photos du dimanche et les coulisses de l'orga.</p>
+      </div>
+      <div class="actu-next-links">
+        <a class="actu-next-btn primary" href="https://www.instagram.com/cielbleu_runningclub/" target="_blank" rel="noopener">Viens slider dans nos DMs</a>
+        <a class="actu-next-btn ghost" href="https://www.strava.com/clubs/lecielestbleu" target="_blank" rel="noopener">Notre Strava</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <a href="#" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'});" aria-label="Retour en haut" style="display:inline-flex;cursor:pointer;"><img src="CIELBLEU.png" alt="CIELBLEU"></a>
+    <div class="footer-socials">
+      <a href="https://www.instagram.com/cielbleu_runningclub/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.strava.com/clubs/lecielestbleu" target="_blank" rel="noopener">Strava</a>
+      <a href="https://www.tiktok.com/@lecielestbleu_running" target="_blank" rel="noopener">TikTok</a>
+      <a href="https://www.linkedin.com/company/le-ciel-est-bleu-running-club/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:contact.lcebrunning@gmail.com">Contact</a>
+    </div>
+    <span class="footer-copy">© 2026 CIELBLEU · Paris · <a href="mentions-legales.html" style="color:inherit;">Mentions légales</a></span>
+  </div>
+</footer>
+
+<a id="back-to-top" href="#" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'});" aria-label="Retour en haut">↑</a>
+
+<script src="articles.js?v=1"></script>
+<script>
+(function(){
+  if(typeof ARTICLES==='undefined'||!ARTICLES.length)return;
+  document.getElementById('actuFeatured').innerHTML=articleCardHTML(ARTICLES[0],true);
+  document.getElementById('actuGrid').innerHTML=ARTICLES.slice(1).map(a=>articleCardHTML(a,false)).join('');
+})();
+
+const obs=new IntersectionObserver(e=>e.forEach(i=>{if(i.isIntersecting){i.target.classList.add('visible');obs.unobserve(i.target);}}),{threshold:0.12,rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+window.addEventListener('scroll',()=>{
+  document.getElementById('back-to-top').classList.toggle('show',window.scrollY>400);
+});
+</script>
+<script src="scroll-shoe.js?v=2"></script>
+<script>function toggleNav(){document.getElementById('navMobile').classList.toggle('open');}
+document.addEventListener('click',function(e){var m=document.getElementById('navMobile');if(m&&m.classList.contains('open')&&!m.contains(e.target)&&!e.target.closest('.nav-hamburger'))m.classList.remove('open');});</script>
+<script src="analytics.js?v=2"></script>
+</body>
+</html>
