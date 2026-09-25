@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CIELBLEU Running//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:s0@cielbleu.run
+DTSTAMP:20260925T183946Z
+DTSTART:20260906T102000
+DTEND:20260906T115000
+SUMMARY:Run de rentrée · Social Bleu · CIELBLEU Running
+DESCRIPTION:Le run de rentrée qui lance la saison 3. Social Bleu : 8 km en
+  groupes d'allure\, puis café tous ensemble.
+LOCATION:Paris
+END:VEVENT
+END:VCALENDAR

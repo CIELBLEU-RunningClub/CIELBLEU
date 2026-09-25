@@ -1,4 +1,10 @@
 // Données partagées du calendrier, utilisées par index.html et calendrier.html
+//
+// ⚠️ APRÈS TOUTE MODIFICATION D'UN ÉVÉNEMENT (date, titre, horaire, lieu) :
+// régénérer les fichiers du dossier agenda/, sinon le bouton « Ajouter à mon
+// agenda » servira l'ancienne version, ou renverra un fichier absent pour un
+// nouvel événement. Le nom de fichier vient de slugEvenement() dans
+// calendrier.html : titre + jour + mois + année, sans accents.
 // ===== SAISON 3 · 2026-2027 (septembre → décembre 2026) =====
 // Les événements de janvier 2027 et suivants seront ajoutés plus tard.
 const MONTHS=['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];

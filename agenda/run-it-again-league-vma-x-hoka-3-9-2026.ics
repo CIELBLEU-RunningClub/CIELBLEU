@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CIELBLEU Running//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:e35@cielbleu.run
+DTSTAMP:20260925T183946Z
+DTSTART:20260903T183000
+DTEND:20260903T200000
+SUMMARY:Run It Again League · VMA x Hoka · CIELBLEU Running
+DESCRIPTION:Ligue VMA en partenariat avec Hoka pour lancer la saison. Forma
+ t compétitif et convivial\, réservé aux adhérents.
+LOCATION:Clamart
+END:VEVENT
+END:VCALENDAR

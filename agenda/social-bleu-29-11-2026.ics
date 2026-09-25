@@ -1,0 +1,17 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CIELBLEU Running//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:s29@cielbleu.run
+DTSTAMP:20260925T183946Z
+DTSTART:20261129T102000
+DTEND:20261129T115000
+SUMMARY:Social Bleu · CIELBLEU Running
+DESCRIPTION:Le Social Run du dimanche\, ouvert à tous et sans inscription.
+  8 km en groupes d'allure\, puis café tous ensemble. Le point de départ 
+ est publié sur Strava chaque semaine.
+LOCATION:Paris
+END:VEVENT
+END:VCALENDAR

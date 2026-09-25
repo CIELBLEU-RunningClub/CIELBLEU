@@ -1,0 +1,17 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CIELBLEU Running//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:s17@cielbleu.run
+DTSTAMP:20260925T183946Z
+DTSTART:20261028T192000
+DTEND:20261028T203000
+SUMMARY:Mercredi Bleu · Adhérents club · CIELBLEU Running
+DESCRIPTION:Le run des adhérents du mercredi soir\, en groupes d'allure da
+ ns Paris. La séance plaisir du milieu de semaine\, qui se prolonge souven
+ t autour d'un verre au bar partenaire.
+LOCATION:Paris
+END:VEVENT
+END:VCALENDAR

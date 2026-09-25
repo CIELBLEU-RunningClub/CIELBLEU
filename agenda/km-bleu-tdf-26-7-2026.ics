@@ -1,0 +1,17 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CIELBLEU Running//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:e52@cielbleu.run
+DTSTAMP:20260925T183946Z
+DTSTART:20260726T140000
+DTEND:20260726T170000
+SUMMARY:KM Bleu TDF · CIELBLEU Running
+DESCRIPTION:Pas de run cette fois : on installe le Kilomètre Bleu pour met
+ tre l'ambiance et pousser les cyclistes du Tour de France dans la montée.
+  Cris\, drapeaux et tambours\, l'équipe orga est sur place dès 10h.
+LOCATION:Paris 18e
+END:VEVENT
+END:VCALENDAR

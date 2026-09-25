@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CIELBLEU Running//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:e48@cielbleu.run
+DTSTAMP:20260925T183946Z
+DTSTART:20260628T094500
+DTEND:20260628T111500
+SUMMARY:L'Or Espresso × CIELBLEU · 2ème édition · CIELBLEU Running
+DESCRIPTION:Run de 8 km dans Saint-Germain-des-Prés\, suivi d'une dégusta
+ tion gratuite des créations de L'Or Espresso. Allure 6:15/km.
+LOCATION:Paris
+END:VEVENT
+END:VCALENDAR

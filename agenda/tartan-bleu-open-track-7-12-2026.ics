@@ -1,0 +1,17 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CIELBLEU Running//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:s30@cielbleu.run
+DTSTAMP:20260925T183946Z
+DTSTART:20261207T194500
+DTEND:20261207T211500
+SUMMARY:Tartan Bleu · Open Track · CIELBLEU Running
+DESCRIPTION:L'Open Track\, c'est la première séance piste du mois : elle 
+ est ouverte à tous\, adhérents comme non-adhérents. L'occasion de teste
+ r la piste avec le club.
+LOCATION:Paris
+END:VEVENT
+END:VCALENDAR
