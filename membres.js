@@ -92,6 +92,6 @@ const MEMBRES=[
   {nom:'Gael', citation:'Plaisir rime aussi avec courir.', photo:''},
   {nom:'Hugo n°3', citation:'', photo:''},
   {nom:'Juliette', citation:'', photo:''},
-  {nom:'Maxime', citation:'WITNESS THE FITNESS', photo:''},
+  {nom:'Maxime', citation:'Witness the fitness.', photo:''},
   {nom:'Morgane', citation:'', photo:''}
 ];
