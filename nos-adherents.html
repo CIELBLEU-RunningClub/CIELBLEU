@@ -53,7 +53,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .nav-mobile li:last-child a{border:none;}
 .nav-links a{white-space:nowrap;}
 /* Sous 1150px, les 6 liens + les 2 boutons ne tiennent plus dans la barre :
-   le menu complet débordait hors de l'écran (« Devenir partenaire » invisible).
+   le menu complet débordait hors de l'écran (« Devenir partenaire » invisible).
    On bascule sur le menu burger, qui contient déjà les deux boutons. */
 @media(max-width:1150px){
   .nav-links,.nav-cta,.nav-cta-group{display:none;}
@@ -110,7 +110,7 @@ section:nth-child(even){background:var(--white);}
 .trombi-front > *{backface-visibility:hidden;-webkit-backface-visibility:hidden;}
 .trombi-back{transform:rotateY(180deg);background:linear-gradient(150deg,var(--navy),var(--navy-deep));border-color:rgba(182,205,224,.2);justify-content:center;gap:8px;padding:12px 9px;}
 .trombi-quote{font-family:'Open Sans',sans-serif;font-style:italic;font-size:10.5px;line-height:1.42;color:var(--blue-sky);text-align:center;}
-.trombi-back-name{font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:1.5px;color:rgba(255,255,255,.5);}
+.trombi-back-name{font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:1.5px;color:rgba(255,255,255,.5);text-wrap:balance;}
 .trombi-quote-dot{position:absolute;top:7px;right:8px;width:6px;height:6px;border-radius:50%;background:var(--gold);opacity:.85;}
 .trombi-avatar{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:46px;color:rgba(255,255,255,.92);letter-spacing:1px;}
 .trombi-avatar::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(11,29,48,.78) 0%,transparent 55%);}
@@ -379,7 +379,7 @@ footer{background:var(--navy-deep);padding:40px 60px;}
           <div class="ab-price-row"><span class="ab-price-period">Nouvelle adhésion</span><span class="ab-price-amount">40€</span></div>
           <div class="ab-price-row"><span class="ab-price-period">Dès le 1<sup>er</sup> octobre</span><span class="ab-price-amount">50€</span></div>
         </div>
-        <div style="font-size:11px;color:rgba(255,255,255,.45);margin-top:10px;line-height:1.5;">Tarifs « early bird » 35€ / 40€ jusqu'au 30 septembre.</div>
+        <div style="font-size:11px;color:rgba(255,255,255,.45);margin-top:10px;line-height:1.5;">Tarifs « early bird » 35€ / 40€ jusqu'au 30 septembre.</div>
       </div>
       <div style="border-top:1px solid rgba(182,205,224,.1);padding-top:18px;">
         <div style="font-family:'Anton',sans-serif;font-size:22px;letter-spacing:1px;color:white;text-transform:uppercase;">On vous attend.</div>
@@ -407,7 +407,7 @@ footer{background:var(--navy-deep);padding:40px 60px;}
 
 <a id="back-to-top" href="#" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'});" aria-label="Retour en haut">↑</a>
 
-<script src="membres.js?v=1011"></script>
+<script src="membres.js?v=1012"></script>
 <script>
 
 /* ===== DONNÉES ===== */
@@ -456,7 +456,7 @@ function grad(i){const l1=48+((i*13)%22);const l2=26+((i*11)%16);const h=200+((i
     const shown=MEMBRES.map((m,i)=>[m,i]).filter(([m])=>m.nom.toLowerCase().includes(f));
     const isFiltered=f.length>0;
     const visible=isFiltered||expanded?shown:shown.slice(0,PAGE);
-    grid.innerHTML = visible.length? visible.map(([m,i])=>cardHTML(m,i)).join("") : `<div class="trombi-empty">Aucun adhérent trouvé pour « ${filter} ».</div>`;
+    grid.innerHTML = visible.length? visible.map(([m,i])=>cardHTML(m,i)).join("") : `<div class="trombi-empty">Aucun adhérent trouvé pour « ${filter} ».</div>`;
     document.getElementById('trombiCount').textContent = `${shown.length} adhérent${shown.length>1?'s':''}`;
     const btn=document.getElementById('trombiToggle');
     if(!isFiltered && shown.length>PAGE){
@@ -478,7 +478,7 @@ function grad(i){const l1=48+((i*13)%22);const l2=26+((i*11)%16);const h=200+((i
 (function(){
   // Le nombre d'adhérents vient de membres.js, pas d'une valeur en dur
   const heroCount=document.querySelector('.page-hero-stats [data-count]');
-  if(heroCount&&typeof MEMBRES!=="undefined"){heroCount.dataset.count=MEMBRES.length;delete heroCount.dataset.suffix;} // chiffre exact : pas de « + »
+  if(heroCount&&typeof MEMBRES!=="undefined"){heroCount.dataset.count=MEMBRES.length;delete heroCount.dataset.suffix;} // chiffre exact : pas de « + »
   function animate(el){
     const target=parseInt(el.dataset.count,10);
     const suffix=el.dataset.suffix||'';
@@ -524,7 +524,7 @@ function renderExploits(){
           <div class="exploit-event">${e.event}</div>
         </div>
       </div>
-      <p class="exploit-story">« ${e.story} »</p>
+      <p class="exploit-story">« ${e.story} »</p>
       ${e.time?`<div class="exploit-time">Temps : ${e.time}</div>`:''}
     </div>`;
   }).join('');
@@ -536,7 +536,7 @@ renderExploits();
 /* Records à compléter dès que les vrais chronos seront communiqués */
 const recordCats=[
   {key:'5k',label:'5 KM',records:[
-    {who:'Thomas « El coche »',time:"17'27",event:'',hue:1,photo:'',sex:'H'},
+    {who:'Thomas « El coche »',time:"17'27",event:'',hue:1,photo:'',sex:'H'},
     {who:'Théo n°1',time:"19'10",event:'',hue:2,photo:'',sex:'H'},
     {who:'Ethan',time:"19'20",event:'',hue:3,photo:'',sex:'H'},
     {who:'Julien n°2',time:"19'55",event:'',hue:4,photo:'',sex:'H'},
@@ -548,7 +548,7 @@ const recordCats=[
   ]},
   {key:'10k',label:'10 KM',records:[
     {who:'Hugo n°2',time:"34'42",event:'',hue:10,photo:'',sex:'H'},
-    {who:'Thomas « El coche »',time:"35'20",event:'',hue:11,photo:'',sex:'H'},
+    {who:'Thomas « El coche »',time:"35'20",event:'',hue:11,photo:'',sex:'H'},
     {who:'Thomas n°1',time:"35'53",event:'',hue:12,photo:'',sex:'H'},
     {who:'Julien n°1',time:"36'00",event:'',hue:13,photo:'',sex:'H'},
     {who:'Mélanie',time:"37'17",event:'',hue:14,photo:'',sex:'F'},
@@ -582,7 +582,7 @@ const recordCats=[
     {who:'Ludivine',time:"56'58",event:'',hue:41,photo:'',sex:'F'},
   ]},
   {key:'semi',label:'Semi-marathon',records:[
-    {who:'Thomas « El coche »',time:"1h17'47",event:'',hue:42,photo:'',sex:'H'},
+    {who:'Thomas « El coche »',time:"1h17'47",event:'',hue:42,photo:'',sex:'H'},
     {who:'Thomas n°1',time:"1h19'43",event:'',hue:43,photo:'',sex:'H'},
     {who:'Mélanie',time:"1h22",event:'',hue:44,photo:'',sex:'F'},
     {who:'Julien n°1',time:"1h23",event:'',hue:45,photo:'',sex:'H'},
@@ -607,7 +607,7 @@ const recordCats=[
     {who:'Agathe n°1',time:"2h05",event:'',hue:63,photo:'',sex:'F'},
   ]},
   {key:'marathon',label:'Marathon',records:[
-    {who:'Thomas « El coche »',time:"2h58",event:'',hue:64,photo:'',sex:'H'},
+    {who:'Thomas « El coche »',time:"2h58",event:'',hue:64,photo:'',sex:'H'},
     {who:'Matteo n°1',time:"2h58",event:'',hue:65,photo:'',sex:'H'},
     {who:'Hugo n°1',time:"3h04",event:'',hue:66,photo:'',sex:'H'},
     {who:'Julien n°1',time:"3h10",event:'',hue:67,photo:'',sex:'H'},

@@ -26,7 +26,7 @@
   document.body.appendChild(medal);
 
   function updateProgress(){
-    // Point de départ : après la 1re section « semaine » sur l'accueil, sinon le haut de page
+    // Point de départ : après la 1re section « semaine » sur l'accueil, sinon le haut de page
     var startEl=document.getElementById('semaine');
     var start=startEl?startEl.offsetTop:0;
     var maxScroll=document.documentElement.scrollHeight-window.innerHeight;

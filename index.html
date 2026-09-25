@@ -75,7 +75,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .nav-mobile li:last-child a{border:none;}
 .nav-links a{white-space:nowrap;}
 /* Sous 1150px, les 6 liens + les 2 boutons ne tiennent plus dans la barre :
-   le menu complet débordait hors de l'écran (« Devenir partenaire » invisible).
+   le menu complet débordait hors de l'écran (« Devenir partenaire » invisible).
    On bascule sur le menu burger, qui contient déjà les deux boutons. */
 @media(max-width:1150px){
   .nav-links,.nav-cta,.nav-cta-group{display:none;}
@@ -491,7 +491,7 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
 .semaine-allures{font-size:13px;line-height:1.5;color:var(--blue-sky);background:rgba(182,205,224,.1);border:1px solid rgba(182,205,224,.22);border-radius:8px;padding:8px 12px;margin:2px 0;}
 .semaine-allures .al-pace{white-space:nowrap;font-variant-numeric:tabular-nums;}
 
-/* ── ADHÉSION façon « NOUS REJOINDRE » ── */
+/* ── ADHÉSION façon « NOUS REJOINDRE » ── */
 .ab-title{font-size:clamp(30px,4vw,46px);line-height:.98;color:white;text-transform:uppercase;margin-bottom:10px;}
 .join-cta{display:inline-flex;align-items:center;gap:10px;background:var(--gold);color:var(--navy-deep);font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:2px;padding:13px 26px;border-radius:6px;text-decoration:none;transition:background .2s,transform .2s;}
 .join-cta:hover{background:white;transform:translateY(-2px);}
@@ -714,7 +714,7 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
           <div class="ab-price-row"><span class="ab-price-period">Nouvelle adhésion</span><span class="ab-price-amount">40€</span></div>
           <div class="ab-price-row"><span class="ab-price-period">Dès le 1<sup>er</sup> octobre</span><span class="ab-price-amount">50€</span></div>
         </div>
-        <div style="font-size:11px;color:rgba(255,255,255,.45);margin-top:10px;line-height:1.5;">Tarifs « early bird » 35€ / 40€ jusqu'au 30 septembre.</div>
+        <div style="font-size:11px;color:rgba(255,255,255,.45);margin-top:10px;line-height:1.5;">Tarifs « early bird » 35€ / 40€ jusqu'au 30 septembre.</div>
       </div>
       <div style="border-top:1px solid rgba(182,205,224,.1);padding-top:14px;">
         <div class="join-baseline">On vous attend.</div>
@@ -919,7 +919,7 @@ function updateProgress(){
   const range=Math.max(maxScroll-start,1);
   const pct=Math.min(Math.max((window.scrollY-start)/range*100,0),100);
   progressBar.style.width=pct+'%';
-  // La basket reste invisible tant qu'elle n'avance pas (évite de la voir « garée » sur le logo)
+  // La basket reste invisible tant qu'elle n'avance pas (évite de la voir « garée » sur le logo)
   progressBar.classList.toggle('visible',pct>0);
   if(pct>=99||window.scrollY>=maxScroll-4)medal.classList.add('visible');
   else medal.classList.remove('visible');

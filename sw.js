@@ -1,4 +1,4 @@
-/* Service worker CIELBLEU — stratégie « réseau d'abord » pour que l'app installée
+/* Service worker CIELBLEU — stratégie « réseau d'abord » pour que l'app installée
    (icône écran d'accueil) affiche TOUJOURS la dernière version quand elle est en ligne,
    et ne serve le cache qu'en secours (hors-ligne). */
 const CACHE = 'cielbleu-v3';
@@ -19,7 +19,7 @@ self.addEventListener('activate', (e) => {
 
 async function networkFirst(req) {
   try {
-    // { cache: 'no-store' } est indispensable : sans lui, ce « fetch réseau »
+    // { cache: 'no-store' } est indispensable : sans lui, ce « fetch réseau »
     // est servi par le cache HTTP du navigateur (GitHub Pages renvoie
     // cache-control: max-age=600), et on remet une vieille page en cache.
     const fresh = await fetch(req.url, { cache: 'no-store', credentials: 'same-origin' });
