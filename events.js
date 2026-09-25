@@ -1,8 +1,8 @@
 // Données partagées du calendrier, utilisées par index.html et calendrier.html
 //
 // ⚠️ APRÈS TOUTE MODIFICATION D'UN ÉVÉNEMENT (date, titre, horaire, lieu) :
-// régénérer les fichiers du dossier agenda/, sinon le bouton « Ajouter à mon
-// agenda » servira l'ancienne version, ou renverra un fichier absent pour un
+// régénérer les fichiers du dossier agenda/, sinon le bouton « Ajouter à mon
+// agenda » servira l'ancienne version, ou renverra un fichier absent pour un
 // nouvel événement. Le nom de fichier vient de slugEvenement() dans
 // calendrier.html : titre + jour + mois + année, sans accents.
 // ===== SAISON 3 · 2026-2027 (septembre → décembre 2026) =====
@@ -28,7 +28,7 @@ const L_BAR='Bar partenaire · Paris';
 const L_STRAVA='Point publié sur <a href="'+STRAVA_URL+'" target="_blank" rel="noopener">notre Strava ↗</a>';
 
 // ─────────────────────────────────────────────────────────────
-// SEPTEMBRE · « Septembre Bleu » : tous les runs ouverts à tous pendant 1 mois
+// SEPTEMBRE · « Septembre Bleu » : tous les runs ouverts à tous pendant 1 mois
 // Programme repris à l'identique du post Instagram de la saison 3.
 // ─────────────────────────────────────────────────────────────
 const septembre=[
@@ -168,7 +168,7 @@ const specials=[
    details:[['Horaire','19h30 · à confirmer'],['Lieu','Paris']],location:'Paris'},
 ];
 
-// Séances à titre particulier (nom spécifique mais format « séance »)
+// Séances à titre particulier (nom spécifique mais format « séance »)
 const namedSessions=[
   {m:11,d:13,session:true,wd:0,color:C_SOCIAL,time:'10h20',dur:100,title:'Run Collectif de Noël',
    tags:[{l:'Ouvert à tous',c:'tag-open'}],

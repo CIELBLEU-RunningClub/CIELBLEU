@@ -53,7 +53,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .nav-mobile li:last-child a{border:none;}
 .nav-links a{white-space:nowrap;}
 /* Sous 1150px, les 6 liens + les 2 boutons ne tiennent plus dans la barre :
-   le menu complet débordait hors de l'écran (« Devenir partenaire » invisible).
+   le menu complet débordait hors de l'écran (« Devenir partenaire » invisible).
    On bascule sur le menu burger, qui contient déjà les deux boutons. */
 @media(max-width:1150px){
   .nav-links,.nav-cta,.nav-cta-group{display:none;}
@@ -142,7 +142,7 @@ section:nth-child(even){background:var(--white);}
 .ev-season-toggle{flex:0 0 auto;font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:1.5px;color:var(--blue-steel);background:none;border:1.5px dashed rgba(18,43,68,.2);border-radius:30px;padding:8px 14px;cursor:pointer;white-space:nowrap;transition:all .2s;}
 .ev-season-toggle:hover{color:var(--navy);border-color:var(--blue-sky);background:rgba(18,43,68,.04);}
 @media(max-width:768px){.ev-filter{top:70px;margin:0 -20px 20px;padding:10px 20px;}}
-/* Barre de filtres : dropdown « jour » + pastilles de mois */
+/* Barre de filtres : dropdown « jour » + pastilles de mois */
 .ev-filter-inner{display:flex;align-items:center;gap:10px;}
 .ev-filter-inner .ev-filter-grid{flex:1 1 auto;min-width:0;}
 .ev-dayselect{flex:0 0 auto;font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;color:var(--mid);background-color:rgba(18,43,68,.05);background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%235B738A' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 13px center;background-size:12px;border:1.5px solid rgba(18,43,68,.1);border-radius:30px;padding:10px 34px 10px 16px;cursor:pointer;-webkit-appearance:none;-moz-appearance:none;appearance:none;transition:border-color .2s,color .2s;max-width:58vw;}
@@ -468,7 +468,7 @@ function renderEvents(){
     const explicitPastMonth = (activeMonth!=='all' && m<curMonth);
     if(!explicitPastMonth) evs=evs.filter(e=>!isPast(e));
     if(!evs.length)return;
-    // Vue « tous » : lignes par semaine ; vue filtrée par jour : grille simple (1 rdv/semaine)
+    // Vue « tous » : lignes par semaine ; vue filtrée par jour : grille simple (1 rdv/semaine)
     let body;
     if(activeDay==='all'){
       body=weeksOf(evs).map((g,i)=>`<div class="ev-week">
@@ -533,7 +533,7 @@ function setFilter(m){
 }
 function setDay(k){
   activeDay=k;
-  // Un filtre « jour » actif balaie toute la saison ; « Tous » revient au mois courant
+  // Un filtre « jour » actif balaie toute la saison ; « Tous » revient au mois courant
   activeMonth = (k==='all') ? defaultMonth() : 'all';
   renderFilter();renderEvents();
   scrollToFilter();
@@ -630,7 +630,7 @@ function downloadICS(){
   const nom=ev.title.replace(/[^a-z0-9]/gi,'_').toLowerCase()+'.ics';
   const blob=new Blob([ics],{type:'text/calendar;charset=utf-8'});
   // Un vrai fichier .ics hébergé : servi en text/calendar, iOS ouvre alors
-  // directement la fiche « Ajouter au calendrier ». Un Blob téléchargé, lui,
+  // directement la fiche « Ajouter au calendrier ». Un Blob téléchargé, lui,
   // atterrit dans Fichiers et oblige à le retrouver à la main.
   const url='agenda/'+slugEvenement(ev)+'.ics';
   fetch(url,{method:'HEAD'}).then(r=>{
@@ -645,7 +645,7 @@ document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 window.addEventListener('scroll',()=>{document.getElementById('back-to-top').classList.toggle('show',window.scrollY>400);},{passive:true});
 
 // Ouvre directement le détail d'un événement si on arrive depuis un lien
-// du type calendrier.html?event=ID (ex. teaser « Prochains rendez-vous » de l'accueil)
+// du type calendrier.html?event=ID (ex. teaser « Prochains rendez-vous » de l'accueil)
 (function(){
   const wantedId=new URLSearchParams(location.search).get('event');
   // hasOwnProperty : évite qu'une clé du prototype (ex. ?event=constructor) ne casse la page

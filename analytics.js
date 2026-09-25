@@ -1,6 +1,6 @@
 // Mesure d'audience Google Analytics 4 + consentement (conforme CNIL)
-// GA ne se charge QU'APRÈS un « Accepter ». Aucun cookie tant que le visiteur
-// n'a pas donné son accord ; choix mémorisé et modifiable via « Gérer les cookies ».
+// GA ne se charge QU'APRÈS un « Accepter ». Aucun cookie tant que le visiteur
+// n'a pas donné son accord ; choix mémorisé et modifiable via « Gérer les cookies ».
 (function(){
   var GA_ID='G-0RG107FT7T';
   var KEY='cielbleu-consent-v1';
@@ -76,7 +76,7 @@
     document.getElementById('cc-refuse').onclick=function(){deny();b.remove();};
   }
 
-  // Lien « Gérer les cookies » ajouté au pied de page
+  // Lien « Gérer les cookies » ajouté au pied de page
   function addManageLink(){
     var fc=document.querySelector('.footer-copy');
     if(!fc||document.getElementById('cc-manage'))return;
