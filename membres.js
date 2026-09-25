@@ -1,9 +1,9 @@
 // Le trombinoscope des adhérents : une ligne par membre.
-// Saison 2026-2027 · 84 adhérents.
+// Saison 2026-2027 · 91 adhérents.
 // Pour ajouter un headshot : photo:'membres/prenom.jpg' (les initiales s'affichent sinon).
 // Pour ajouter une citation : citation:'…' (le verso reste neutre si vide).
 const MEMBRES=[
-  {nom:'Candice', citation:'', photo:''},
+  {nom:'Candice', citation:'Mieux vaut avoir des courbatures que des regrets.', photo:''},
   {nom:'Thomas n°1', citation:'Viva la vida.', photo:''},
   {nom:'Manon n°1', citation:'Plus vite on commence, plus vite on termine.', photo:''},
   {nom:'Clarisse', citation:'', photo:''},
@@ -44,11 +44,11 @@ const MEMBRES=[
   {nom:'Enora', citation:'', photo:''},
   {nom:'Quentin n°2', citation:'Qu\'est-ce que signifie « apprivoiser » ? C\'est une chose trop oubliée. Ça signifie « créer des liens ».', photo:''},
   {nom:'Mathieu', citation:'La confiance n\'exclut pas le contrôle.', photo:''},
-  {nom:'Alban', citation:'', photo:''},
+  {nom:'Alban', citation:'Tout le monde est sympa sauf moi.', photo:''},
   {nom:'Justine', citation:'', photo:''},
   {nom:'Julia', citation:'Je suis fan de Clem qui court.', photo:''},
   {nom:'Matheo', citation:'', photo:''},
-  {nom:'Julien n°3', citation:'', photo:''},
+  {nom:'Julien n°3', citation:'J\'ai couru le marathon de New York.', photo:''},
   {nom:'Leonardo', citation:'42 km ? En moto oui !', photo:''},
   {nom:'Agathe n°2', citation:'', photo:''},
   {nom:'Yohan', citation:'Heureux d\'être content.', photo:''},
@@ -86,5 +86,12 @@ const MEMBRES=[
   {nom:'Lino', citation:'Pour combien on accélère ?', photo:''},
   {nom:'Corentin', citation:'Toujours regarder à droite au passage piéton.', photo:''},
   {nom:'Théo n°3', citation:'Qui ne tente rien n\'a rien.', photo:''},
-  {nom:'Axel', citation:'', photo:''}
+  {nom:'Axel', citation:'', photo:''},
+  {nom:'Alain', citation:'', photo:''},
+  {nom:'Benoît', citation:'Show must go on !', photo:''},
+  {nom:'Gael', citation:'Plaisir rime aussi avec courir.', photo:''},
+  {nom:'Hugo n°3', citation:'', photo:''},
+  {nom:'Juliette', citation:'', photo:''},
+  {nom:'Maxime', citation:'WITNESS THE FITNESS', photo:''},
+  {nom:'Morgane', citation:'', photo:''}
 ];
