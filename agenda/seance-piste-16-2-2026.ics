@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CIELBLEU Running//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:s58@cielbleu.run
+DTSTAMP:20260925T183946Z
+DTSTART:20260216T193000
+DTEND:20260216T210000
+SUMMARY:Séance piste · CIELBLEU Running
+DESCRIPTION:Séance de fractionné sur piste\, encadrée. Le rendez-vous de
+ s adhérents qui veulent gagner en vitesse\, dans la bonne humeur.
+LOCATION:Paris
+END:VEVENT
+END:VCALENDAR

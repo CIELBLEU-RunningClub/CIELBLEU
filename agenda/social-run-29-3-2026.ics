@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CIELBLEU Running//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:s108@cielbleu.run
+DTSTAMP:20260925T183946Z
+DTSTART:20260329T102000
+DTEND:20260329T115000
+SUMMARY:Social Run · CIELBLEU Running
+DESCRIPTION:Le Social Run du dimanche\, ouvert à tous\, sans inscription. 
+ On court en groupes d'allure puis on partage un café. Le cœur du club.
+LOCATION:Paris
+END:VEVENT
+END:VCALENDAR

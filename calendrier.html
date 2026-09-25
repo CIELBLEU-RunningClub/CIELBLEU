@@ -378,7 +378,7 @@ footer{background:var(--navy-deep);padding:40px 60px;}
 
 <a id="back-to-top" href="#" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'});" aria-label="Retour en haut">↑</a>
 
-<script src="events.js?v=20"></script>
+<script src="events.js?v=21"></script>
 <script>
 
 
@@ -600,6 +600,14 @@ function foldICS(ligne){
   morceaux.push(cur);
   return morceaux.map((m,i)=>i===0?m:' '+m).join('\r\n');
 }
+// Nom du fichier .ics hébergé pour un événement. Sert à la fois au script de
+// génération (outils/genere-ics.md) et au bouton : les deux doivent rester identiques.
+function slugEvenement(ev){
+  const t=(ev.title+'-'+ev.d+'-'+(ev.m+1)+'-'+ev.y)
+    .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+    .toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
+  return t;
+}
 function enregistrerFichier(blob,nom){
   const url=URL.createObjectURL(blob);
   const a=document.createElement('a');a.href=url;a.download=nom;a.rel='noopener';
@@ -621,19 +629,14 @@ function downloadICS(){
   const ics=lignes.map(foldICS).join('\r\n')+'\r\n';
   const nom=ev.title.replace(/[^a-z0-9]/gi,'_').toLowerCase()+'.ics';
   const blob=new Blob([ics],{type:'text/calendar;charset=utf-8'});
-  // Sur iOS, la feuille de partage propose directement « Calendrier ».
-  // L'ancienne méthode (window.location vers une URI data:) est bloquée par Safari : il ne se passait rien.
-  const iOS=/iP(hone|ad|od)/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
-  if(iOS&&typeof File==='function'&&navigator.canShare){
-    try{
-      const fichier=new File([blob],nom,{type:'text/calendar'});
-      if(navigator.canShare({files:[fichier]})){
-        navigator.share({files:[fichier]}).catch(e=>{if(!e||e.name!=='AbortError')enregistrerFichier(blob,nom);});
-        return;
-      }
-    }catch(e){}
-  }
-  enregistrerFichier(blob,nom);
+  // Un vrai fichier .ics hébergé : servi en text/calendar, iOS ouvre alors
+  // directement la fiche « Ajouter au calendrier ». Un Blob téléchargé, lui,
+  // atterrit dans Fichiers et oblige à le retrouver à la main.
+  const url='agenda/'+slugEvenement(ev)+'.ics';
+  fetch(url,{method:'HEAD'}).then(r=>{
+    if(r.ok){window.location.href=url;}
+    else{enregistrerFichier(blob,nom);}          // événement sans fichier généré
+  }).catch(()=>enregistrerFichier(blob,nom));    // hors ligne
 }
 
 

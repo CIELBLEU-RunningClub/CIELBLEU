@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CIELBLEU Running//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:s11@cielbleu.run
+DTSTAMP:20260925T183946Z
+DTSTART:20261213T102000
+DTEND:20261213T120000
+SUMMARY:Run Collectif de Noël · CIELBLEU Running
+DESCRIPTION:Un run collectif festif avant les fêtes\, ouvert à tous. On c
+ ourt ensemble puis on partage un moment convivial.
+LOCATION:Paris
+END:VEVENT
+END:VCALENDAR
