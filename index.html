@@ -531,7 +531,7 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
 </ul>
 
 <div class="hero">
-  <img src="couverture.jpg?v=3" alt="" class="hero-bg-img" fetchpriority="high">
+  <img src="couverture.webp" alt="" class="hero-bg-img" fetchpriority="high">
   <div class="hero-eyebrow">Running Club · Paris</div>
   <h1>Méfiez-vous,<br><em>le ciel est bleu.</em></h1>
   <p class="hero-tagline">Trois séances par semaine, tous niveaux.<br>Et le café à l'arrivée.</p>
@@ -824,10 +824,16 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
 
 // Parallaxe hero
 const heroBg=document.querySelector('.hero-bg-img');
-if(heroBg){
+if(heroBg&&!matchMedia('(prefers-reduced-motion:reduce)').matches){
+  // Une seule écriture de style par frame, au lieu d'une par événement de défilement
+  let enAttente=false;
   window.addEventListener('scroll',()=>{
-    const y=window.scrollY;
-    heroBg.style.transform=`translateY(${y*0.35}px)`;
+    if(enAttente)return;
+    enAttente=true;
+    requestAnimationFrame(()=>{
+      enAttente=false;
+      heroBg.style.transform=`translate3d(0,${window.scrollY*0.35}px,0)`;
+    });
   },{passive:true});
 }
 

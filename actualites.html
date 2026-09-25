@@ -217,7 +217,7 @@ footer{background:var(--navy-deep);padding:40px 60px;}
 
 <!-- HERO -->
 <header class="page-hero">
-  <img src="New7.jpeg" alt="" class="page-hero-bg-img" fetchpriority="high">
+  <img src="New7.webp" alt="" class="page-hero-bg-img" fetchpriority="high">
   <div class="page-hero-eyebrow">Actualités</div>
   <h1>LE <em>JOURNAL</em><br>DU CLUB</h1>
   <p>Les événements qu'on prépare, ceux qu'on vient de vivre, et tout ce qui se passe entre deux séances. Ici, on raconte.</p>
@@ -272,9 +272,9 @@ document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
 window.addEventListener('scroll',()=>{
   document.getElementById('back-to-top').classList.toggle('show',window.scrollY>400);
-});
+},{passive:true});
 </script>
-<script src="scroll-shoe.js?v=2"></script>
+<script src="scroll-shoe.js?v=3"></script>
 <script>function toggleNav(){document.getElementById('navMobile').classList.toggle('open');}
 document.addEventListener('click',function(e){var m=document.getElementById('navMobile');if(m&&m.classList.contains('open')&&!m.contains(e.target)&&!e.target.closest('.nav-hamburger'))m.classList.remove('open');});</script>
 <script src="analytics.js?v=2"></script>
