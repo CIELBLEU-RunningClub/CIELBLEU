@@ -532,9 +532,15 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
 </ul>
 
 <div class="hero">
+  <!-- Deux cadrages (paysage / portrait) et deux résolutions chacun :
+       le navigateur ne télécharge qu'un seul fichier, adapté à l'écran et à sa densité. -->
   <picture>
-    <source media="(max-width:768px)" srcset="couverture-marathon-bleu-mobile.webp" width="1200" height="1600">
-    <img src="couverture-marathon-bleu.webp" alt="" class="hero-bg-img" fetchpriority="high" width="2000" height="1333">
+    <source media="(max-width:768px)"
+            srcset="hero-marathon-mobile-900.webp 900w, hero-marathon-mobile-1400.webp 1400w"
+            sizes="100vw">
+    <img src="hero-marathon-1600.webp"
+         srcset="hero-marathon-1600.webp 1600w, hero-marathon-2800.webp 2800w"
+         sizes="100vw" alt="" class="hero-bg-img" fetchpriority="high">
   </picture>
   <div class="hero-eyebrow">Running Club · Paris</div>
   <h1>Méfiez-vous,<br><em>le ciel est bleu.</em></h1>
