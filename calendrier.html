@@ -165,12 +165,12 @@ section:nth-child(even){background:var(--white);}
 .ev-dayselect:focus{outline:none;border-color:var(--blue-sky);}
 .ev-dayselect.on{border-color:var(--navy);color:var(--navy);background-color:rgba(18,43,68,.09);}
 .ev-empty{text-align:center;color:var(--mid);padding:40px 20px;font-size:14px;}
-.ev-winter-break{display:flex;align-items:center;gap:28px;background:linear-gradient(135deg,var(--navy-deep),var(--navy));border-radius:18px;padding:26px 34px;margin:4px 0 40px;color:#fff;}
-.ev-winter-break-illus{width:120px;height:auto;flex-shrink:0;display:block;}
-.ev-winter-break-kicker{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:3px;color:var(--gold);}
-.ev-winter-break-title{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:2px;line-height:1.1;margin:4px 0 6px;}
-.ev-winter-break-sub{font-size:14px;color:rgba(255,255,255,.65);line-height:1.6;}
-@media(max-width:600px){.ev-winter-break{flex-direction:column;text-align:center;gap:14px;padding:24px 20px;}.ev-winter-break-illus{width:104px;}}
+.ev-break{display:flex;align-items:center;gap:28px;background:linear-gradient(135deg,var(--navy-deep),var(--navy));border-radius:18px;padding:26px 34px;margin:4px 0 40px;color:#fff;}
+.ev-break-illus{width:120px;height:auto;flex-shrink:0;display:block;}
+.ev-break-kicker{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:3px;color:var(--gold);}
+.ev-break-title{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:2px;line-height:1.1;margin:4px 0 6px;}
+.ev-break-sub{font-size:14px;color:rgba(255,255,255,.65);line-height:1.6;}
+@media(max-width:600px){.ev-break{flex-direction:column;text-align:center;gap:14px;padding:24px 20px;}.ev-break-illus{width:104px;}}
 .ev-summer-break{text-align:center;padding:48px 40px 56px;color:var(--mid);margin:36px 0 8px;border-top:1px solid rgba(18,43,68,.08);}
 .ev-summer-break-illus{width:200px;height:auto;display:block;margin:0 auto 14px;}
 .ev-summer-break-text{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:2px;color:var(--navy);margin:6px 0 8px;}
@@ -492,11 +492,10 @@ function weekRange(ws){
   return mon.getMonth()===sun.getMonth()?`${mon.getDate()}–${sun.getDate()} ${ss}`:`${mon.getDate()} ${ms} – ${sun.getDate()} ${ss}`;
 }
 
-/* Trêve hivernale : lundi 21 décembre 2026 → dimanche 3 janvier 2027 inclus */
-function winterBreakHTML(){
-  return `<div class="ev-winter-break">
-    <svg class="ev-winter-break-illus" viewBox="0 0 120 120" fill="none" aria-hidden="true">
-      <circle cx="60" cy="60" r="56" fill="rgba(182,205,224,.1)"/>
+/* Trêves : Noël (lundi 21 décembre 2026 → dimanche 3 janvier 2027 inclus)
+   et été (lundi 12 juillet → mardi 31 août 2027 inclus) */
+const BREAK_SVG={
+  winter:`<circle cx="60" cy="60" r="56" fill="rgba(182,205,224,.1)"/>
       <path d="M60 18 78 46H68L84 70H72L90 94H30L48 70H36L52 46H42Z" fill="#b6cde0"/>
       <path d="M60 18 71 36 60 32 49 36Z M52 46 60 43 68 46 60 50Z M36 70 48 68 60 72 72 68 84 70 72 74 60 78 48 74Z" fill="#fff"/>
       <rect x="55" y="94" width="10" height="12" rx="2" fill="#6d879a"/>
@@ -505,12 +504,27 @@ function winterBreakHTML(){
         <path d="M98 22v8M94 26h8M95 23l6 6M101 23l-6 6"/>
         <path d="M100 66v8M96 70h8M97 67l6 6M103 67l-6 6"/>
       </g>
-      <circle cx="30" cy="84" r="2" fill="#fff"/><circle cx="92" cy="50" r="1.6" fill="#fff"/><circle cx="14" cy="64" r="1.6" fill="#fff"/>
-    </svg>
+      <circle cx="30" cy="84" r="2" fill="#fff"/><circle cx="92" cy="50" r="1.6" fill="#fff"/><circle cx="14" cy="64" r="1.6" fill="#fff"/>`,
+  summer:`<circle cx="60" cy="60" r="56" fill="rgba(232,176,107,.12)"/>
+      <circle cx="60" cy="52" r="20" fill="#E8B06B"/>
+      <g stroke="#E8B06B" stroke-width="3" stroke-linecap="round">
+        <path d="M60 20v8M60 76v8M28 52h8M84 52h8M37 29l6 6M83 29l-6 6M37 75l6-6M83 75l-6-6"/>
+      </g>
+      <path d="M14 92q9-9 18 0t18 0 18 0 18 0 18 0v12H14Z" fill="#6d879a"/>
+      <path d="M14 100q9-9 18 0t18 0 18 0 18 0 18 0v8H14Z" fill="#b6cde0"/>`
+};
+const BREAK_TXT={
+  winter:{kicker:'PAUSE DE NOËL',title:'Trêve hivernale',sub:'Du lundi 21 décembre au dimanche 3 janvier inclus, pas de séances. Joyeuses fêtes à toutes et tous, on se retrouve en janvier !'},
+  summer:{kicker:"PAUSE D'ÉTÉ",title:'Trêve estivale',sub:'Du lundi 12 juillet au mardi 31 août inclus, pas de séances. Bel été à toutes et tous, on se retrouve à la rentrée !'}
+};
+function breakHTML(kind){
+  const t=BREAK_TXT[kind];
+  return `<div class="ev-break">
+    <svg class="ev-break-illus" viewBox="0 0 120 120" fill="none" aria-hidden="true">${BREAK_SVG[kind]}</svg>
     <div>
-      <div class="ev-winter-break-kicker">PAUSE DE NOËL</div>
-      <div class="ev-winter-break-title">Trêve hivernale</div>
-      <div class="ev-winter-break-sub">Du lundi 21 décembre au dimanche 3 janvier inclus, pas de séances. Joyeuses fêtes à toutes et tous, on se retrouve en janvier !</div>
+      <div class="ev-break-kicker">${t.kicker}</div>
+      <div class="ev-break-title">${t.title}</div>
+      <div class="ev-break-sub">${t.sub}</div>
     </div>
   </div>`;
 }
@@ -531,9 +545,11 @@ function renderEvents(){
     // On masque les rendez-vous déjà passés, SAUF si l'utilisateur a explicitement ouvert un mois passé
     const explicitPastMonth = (activeMonth!=='all' && m<curMonth);
     if(!explicitPastMonth) evs=evs.filter(e=>!isPast(e));
-    // La trêve de Noël s'affiche à la suite de décembre, tant qu'elle n'est pas terminée
-    const winter=(m===2026*12+11 && activeDay==='all' && (explicitPastMonth || TODAY<=new Date(2027,0,3,23,59)))?winterBreakHTML():'';
-    if(!evs.length){html+=winter;return;}
+    // Chaque trêve s'affiche à la suite du dernier mois travaillé, tant qu'elle n'est pas terminée
+    const pauseKind=(m===2026*12+11)?'winter':(m===2027*12+6)?'summer':'';
+    const pauseEnd=pauseKind==='winter'?new Date(2027,0,3,23,59):new Date(2027,7,31,23,59);
+    const pause=(pauseKind && activeDay==='all' && (explicitPastMonth || TODAY<=pauseEnd))?breakHTML(pauseKind):'';
+    if(!evs.length){html+=pause;return;}
     // Vue « tous » : lignes par semaine ; vue filtrée par jour : grille simple (1 rdv/semaine)
     let body;
     if(activeDay==='all'){
@@ -551,7 +567,7 @@ function renderEvents(){
         <div class="ev-month-count">${evs.length} rendez-vous</div>
       </div>
       ${body}
-    </div>${winter}`;
+    </div>${pause}`;
   });
   const emptyLbl = activeDay==='all' ? 'Aucun événement ce mois-ci.' : 'Aucun rendez-vous de ce type sur cette période.';
   cont.innerHTML=html||`<div class="ev-empty">${emptyLbl}</div>`;
