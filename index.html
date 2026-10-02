@@ -157,8 +157,10 @@ section:nth-child(even){background:var(--white);}
 .gallery-item{position:relative;overflow:hidden;border-radius:12px;cursor:pointer;flex:0 0 320px;height:400px;scroll-snap-align:start;}
 .gallery-item.wide{flex:0 0 520px;}
 .gallery-item.tall{flex:0 0 320px;}
-/* Photo qui ne doit pas être recadrée : on garde son format paysage 3:2 */
-.gallery-item.full{flex:0 0 600px;}
+/* Photo paysage qu'on ne veut pas recadrer : elle reste entière, sur un fond flou de la même image */
+.gallery-item.full{flex:0 0 460px;background:#0b1d30;}
+.gallery-item.full::before{content:"";position:absolute;inset:-24px;background:var(--bg) center/cover no-repeat;filter:blur(22px) brightness(.8);}
+.gallery-item.full img{position:relative;object-fit:contain;}
 .gallery-item img,.gallery-item video{width:100%;height:100%;object-fit:cover;object-position:center center;transition:transform .5s ease;display:block;}
 .gallery-item.video::after{content:'';position:absolute;top:14px;right:14px;width:34px;height:34px;border-radius:50%;background:rgba(11,29,48,.55);backdrop-filter:blur(4px);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M8 5v14l11-7z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:center;pointer-events:none;z-index:2;}
 .gallery-item.tall img{object-position:center 20%;}
@@ -401,7 +403,7 @@ footer{background:var(--navy-deep);padding:32px 60px;}
   .semaine-card{padding:28px 22px;}
   .gallery-item,.gallery-item.tall{flex:0 0 280px;height:360px;}
   .gallery-item.wide{flex:0 0 460px;height:360px;}
-  .gallery-item.full{flex:0 0 540px;}
+  .gallery-item.full{flex:0 0 414px;}
   .merch-block{gap:32px;}
 }
 
@@ -440,7 +442,6 @@ footer{background:var(--navy-deep);padding:32px 60px;}
   .gallery-grid{height:auto;gap:12px;padding-bottom:10px;}
   .gallery-item,.gallery-item.wide,.gallery-item.tall{flex:0 0 82%;width:82%;height:auto;aspect-ratio:4/5;scroll-snap-align:center;}
   .gallery-item img{object-position:center 25%;}
-  .gallery-item.full{aspect-ratio:3/2;align-self:center;}
   .gallery-item.full img{object-position:center;}
   /* Légendes toujours visibles sur mobile (pas de hover) */
   .gallery-caption{transform:translateY(0);padding:48px 16px 14px;}
@@ -711,13 +712,9 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
       <img src="commu-photo-3.jpg" alt="La communauté CIELBLEU" loading="lazy" decoding="async">
       <div class="gallery-caption"><span>CIELBLEU</span><small>La tribu</small></div>
     </div>
-    <div class="gallery-item wide full">
-      <img src="commu-photo-16.jpg" alt="Quatre coureuses qui sautent devant le drapeau CIELBLEU" loading="lazy" decoding="async">
+    <div class="gallery-item wide full" style="--bg:url(commu-photo-16.jpg?v=2);">
+      <img src="commu-photo-16.jpg?v=2" alt="Quatre coureuses qui sautent devant le drapeau CIELBLEU" loading="lazy" decoding="async">
       <div class="gallery-caption"><span>Marathon Bleu</span><small>Ça saute !</small></div>
-    </div>
-    <div class="gallery-item wide">
-      <img src="commu-photo-4.jpg" alt="La communauté CIELBLEU" loading="lazy" decoding="async">
-      <div class="gallery-caption"><span>CIELBLEU</span><small>Run collectif</small></div>
     </div>
     <div class="gallery-item tall">
       <img src="commu-photo-5.jpg" alt="La communauté CIELBLEU" loading="lazy" decoding="async">
