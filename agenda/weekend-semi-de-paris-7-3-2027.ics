@@ -8,9 +8,9 @@ UID:e178@cielbleu.run
 DTSTAMP:20261002T120000Z
 DTSTART:20270307T090000
 DTEND:20270307T120000
-SUMMARY:Semi de Paris · CIELBLEU Running
-DESCRIPTION:Le week-end du Semi de Paris\, les 6 et 7 mars. Une équipe CIE
- LBLEU sur la ligne de départ.
+SUMMARY:Weekend Semi de Paris · CIELBLEU Running
+DESCRIPTION:Le weekend du Semi de Paris\, les 6 et 7 mars. Une équipe CIEL
+ BLEU sur la ligne de départ.
 LOCATION:Paris
 END:VEVENT
 END:VCALENDAR
