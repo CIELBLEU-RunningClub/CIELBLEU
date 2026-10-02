@@ -94,7 +94,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 
 .hero{min-height:100vh;background:var(--navy-deep);display:flex;flex-direction:column;justify-content:center;padding:150px 60px 0;position:relative;overflow:hidden;}
 .hero::before{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(80deg,rgba(11,29,48,.97) 0%,rgba(11,29,48,.85) 38%,rgba(11,29,48,.58) 68%,rgba(18,43,68,.42) 100%),linear-gradient(to top,rgba(11,29,48,.92) 0%,rgba(11,29,48,.35) 30%,rgba(11,29,48,.1) 55%);}
-.hero-bg-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 50%;pointer-events:none;z-index:0;opacity:.8;}
+.hero-bg-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 85%;pointer-events:none;z-index:0;opacity:.8;}
 .hero > *:not(.hero-bg-img):not(picture){position:relative;z-index:2;}
 .hero > picture{position:static;}
 .hero-eyebrow{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:5px;color:var(--blue-sky);margin-bottom:22px;animation:fadeUp .8s ease both;text-shadow:0 1px 12px rgba(11,29,48,.8);}
@@ -536,10 +536,10 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
        le navigateur ne télécharge qu'un seul fichier, adapté à l'écran et à sa densité. -->
   <picture>
     <source media="(max-width:768px)"
-            srcset="hero-marathon-mobile-900.webp?v=5 900w, hero-marathon-mobile-1400.webp?v=5 1400w"
+            srcset="hero-marathon-mobile-900.webp?v=6 900w, hero-marathon-mobile-1400.webp?v=6 1400w"
             sizes="100vw">
-    <img src="hero-marathon-1600.webp?v=5"
-         srcset="hero-marathon-1600.webp?v=5 1600w, hero-marathon-2800.webp?v=5 2800w"
+    <img src="hero-marathon-1600.webp?v=6"
+         srcset="hero-marathon-1600.webp?v=6 1600w, hero-marathon-2800.webp?v=6 2800w"
          sizes="100vw" alt="" class="hero-bg-img" fetchpriority="high">
   </picture>
   <div class="hero-eyebrow">Running Club · Paris</div>
