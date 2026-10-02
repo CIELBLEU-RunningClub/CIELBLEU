@@ -233,6 +233,12 @@ section:nth-child(even){background:var(--white);}
 .ev-modal-article:hover{background:rgba(62,124,177,.15);border-color:#3E7CB1;}
 .ev-modal-article .lbl{display:block;font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#3E7CB1;margin-bottom:5px;}
 .ev-modal-article .ttl{font-size:14.5px;font-weight:600;line-height:1.45;}
+/* Les lieux restent volontairement génériques : on offre un moyen simple de demander. */
+.ev-modal-contact{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin:-8px 0 22px;}
+.ev-modal-contact .lbl{font-size:12.5px;color:var(--mid);}
+.ev-modal-contact a{display:inline-flex;align-items:center;gap:6px;font-family:'Bebas Neue',sans-serif;font-size:12.5px;letter-spacing:1.5px;text-decoration:none;padding:7px 15px;border-radius:999px;border:1.5px solid rgba(18,43,68,.18);color:var(--navy);transition:border-color .2s,color .2s,background .2s;}
+.ev-modal-contact a:hover{border-color:#3E7CB1;color:#3E7CB1;background:rgba(62,124,177,.07);}
+@media(max-width:768px){.ev-modal-contact{gap:8px;}.ev-modal-contact .lbl{width:100%;}}
 .ev-modal-close{background:var(--navy);color:white;font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:2px;padding:12px 28px;border-radius:4px;border:none;cursor:pointer;transition:background .2s;}
 .ev-modal-close:hover{background:var(--blue-steel);}
 
@@ -353,6 +359,11 @@ footer{background:var(--navy-deep);padding:40px 60px;}
       <div class="ev-modal-desc" id="evModalDesc"></div>
       <div class="ev-modal-details" id="evModalDetails"></div>
       <a class="ev-modal-article" id="evModalArticle" hidden></a>
+      <div class="ev-modal-contact">
+        <span class="lbl">Une question sur ce rendez-vous&nbsp;?</span>
+        <a id="evModalMail" href="mailto:contact.cielbleurunningclub@gmail.com">✉ Nous écrire</a>
+        <a href="https://www.instagram.com/cielbleu_runningclub/" target="_blank" rel="noopener">Instagram ↗</a>
+      </div>
       <div class="ev-modal-actions">
         <button class="ev-modal-ics" id="evModalIcsBtn" onclick="downloadICS()">Ajouter à mon agenda</button>
         <button class="ev-modal-ics" id="evModalShareBtn" onclick="shareEvent()">Partager</button>
@@ -564,6 +575,9 @@ function openModal(id){
   const art=document.getElementById('evModalArticle');
   if(ev.article){art.href=ev.article;art.innerHTML=`<span class="lbl">À lire</span><span class="ttl">${ev.articleTitle||"Lire l'article"} →</span>`;art.hidden=false;}
   else{art.hidden=true;art.removeAttribute('href');}
+  // Objet pré-rempli : le club sait tout de suite de quel rendez-vous on parle
+  document.getElementById('evModalMail').href='mailto:contact.cielbleurunningclub@gmail.com?subject='
+    +encodeURIComponent('Question · '+ev.title+' · '+ev.dateStr);
   document.getElementById('evModal').classList.add('open');
   document.body.style.overflow='hidden';
 }
