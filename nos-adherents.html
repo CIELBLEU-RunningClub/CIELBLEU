@@ -147,7 +147,13 @@ section:nth-child(even){background:var(--white);}
 /* ── CHRONOS (encart secondaire) ── */
 .chronos-box{background:var(--cream);border:1px solid rgba(18,43,68,.08);border-radius:16px;padding:24px 26px;margin-bottom:18px;}
 .chronos-share{max-width:620px;margin:0 auto;text-align:center;font-size:14.5px;color:var(--mid);line-height:1.65;}
-.chronos-share a{color:var(--navy);font-weight:700;text-decoration:underline;text-underline-offset:3px;}
+.chronos-share p{margin-bottom:18px;}
+.share-mail{display:inline-flex;align-items:center;gap:12px;background:linear-gradient(135deg,var(--navy),#1c4466);color:#fff;text-decoration:none;font-family:'Bebas Neue',sans-serif;font-size:19px;letter-spacing:2.5px;padding:8px 24px 8px 8px;border-radius:999px;box-shadow:0 8px 22px rgba(18,43,68,.22);transition:transform .2s,box-shadow .2s;}
+.share-mail:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(18,43,68,.3);}
+.share-mail-ico{display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:var(--blue-sky);color:var(--navy);flex-shrink:0;}
+.share-mail-ico svg{width:22px;height:22px;}
+.share-mail-arrow{transition:transform .2s;}
+.share-mail:hover .share-mail-arrow{transform:translateX(4px);}
 .chronos-title{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;color:var(--blue-steel);margin-bottom:18px;}
 .rec-tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px;}
 .rec-tab{display:flex;align-items:baseline;gap:8px;font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:2px;color:var(--mid);background:var(--white);border:1.5px solid rgba(18,43,68,.12);border-radius:30px;padding:11px 22px;cursor:pointer;transition:all .2s;}
@@ -390,7 +396,14 @@ footer{background:var(--navy-deep);padding:40px 60px;}
     <div class="rec-tabs" id="recTabs"></div>
     <div class="rec-board" id="recordsGrid"></div>
   </div>
-  <p class="chronos-share">Un chrono, un premier dossard, un défi un peu fou&nbsp;? Partage ta fierté à <a href="mailto:contact.cielbleurunningclub@gmail.com?subject=Ma%20fierté%20CIELBLEU">contact.cielbleurunningclub@gmail.com</a> et on l'ajoute au mur.</p>
+  <div class="chronos-share">
+    <p>Un chrono, un premier dossard, un défi un peu fou&nbsp;? On l'ajoute au mur.</p>
+    <a class="share-mail" href="mailto:contact.cielbleurunningclub@gmail.com?subject=Ma%20fierté%20CIELBLEU">
+      <span class="share-mail-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m3.5 7 8.5 6 8.5-6"/></svg></span>
+      <span>Partage ta fierté</span>
+      <span class="share-mail-arrow" aria-hidden="true">→</span>
+    </a>
+  </div>
 </section>
 
 <!-- GALERIE -->
