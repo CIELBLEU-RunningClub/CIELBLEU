@@ -152,11 +152,20 @@ section:nth-child(even){background:var(--white);}
 .ev-filter-btn.active{background:var(--navy);color:white;border-color:var(--navy);}
 .ev-filter-btn .dotn{display:inline-block;margin-left:6px;font-size:11px;opacity:.6;}
 .ev-filter-btn.past{opacity:.4;}
-.ev-season-tag{flex:0 0 auto;align-self:center;font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--blue-steel);padding:0 4px 0 8px;white-space:nowrap;}
-.ev-season-tag.now{color:var(--navy);}
-.ev-season-toggle{flex:0 0 auto;font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:1.5px;color:var(--blue-steel);background:none;border:1.5px dashed rgba(18,43,68,.2);border-radius:30px;padding:8px 14px;cursor:pointer;white-space:nowrap;transition:all .2s;}
-.ev-season-toggle:hover{color:var(--navy);border-color:var(--blue-sky);background:rgba(18,43,68,.04);}
-@media(max-width:768px){.ev-filter{top:70px;margin:0 -20px 20px;padding:10px 20px;}}
+.ev-season-head{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:0 0 18px;}
+.ev-season-head-k{display:block;font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:3px;color:var(--navy);line-height:1.1;}
+.ev-season-head-d{display:block;font-size:13px;color:var(--blue-steel);margin-top:3px;}
+.ev-season-switch{flex:0 0 auto;min-height:44px;font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:2px;color:var(--navy);background:#fff;border:1.5px solid rgba(18,43,68,.25);border-radius:30px;padding:10px 20px;cursor:pointer;white-space:nowrap;transition:all .2s;}
+.ev-season-switch:hover{border-color:var(--navy);}
+.ev-season-switch.primary{background:var(--navy);color:#fff;border-color:var(--navy);}
+.ev-monthselect{display:none;}
+@media(max-width:768px){
+  .ev-filter{top:70px;margin:0 -20px 20px;padding:10px 20px;}
+  .ev-filter-inner{gap:8px;}
+  .ev-filter-inner .ev-filter-grid{display:none;}
+  .ev-filter-inner .ev-dayselect{flex:1 1 0;min-width:0;max-width:none;text-overflow:ellipsis;font-size:14px;padding-top:12px;padding-bottom:12px;}
+  .ev-filter-inner .ev-monthselect{display:block;flex:1.2 1 0;}
+}
 /* Barre de filtres : dropdown « jour » + pastilles de mois */
 .ev-filter-inner{display:flex;align-items:center;gap:10px;}
 .ev-filter-inner .ev-filter-grid{flex:1 1 auto;min-width:0;}
@@ -373,6 +382,7 @@ footer{background:var(--navy-deep);padding:40px 60px;}
 <section id="evenements">
   <div class="s-label">01 · Calendrier</div>
   <h2 class="s-title">Les événements.</h2>
+  <div class="ev-season-head" id="evSeasonHead"></div>
   <div class="ev-filter" id="evFilter"></div>
   <div id="evContainer"></div>
 </section>
@@ -576,33 +586,47 @@ function renderEvents(){
 function dayMenuHTML(){
   // Menu déroulant NATIF (<select>) : fiable sur mobile/iPhone, se referme tout seul après le choix
   const opts=DAY_FILTERS.map(d=>{
-    const lbl = d.k==='all' ? `${d.label} (${countFor(d.k)})` : `${d.label} (${countFor(d.k)})`;
+    const lbl = d.k==='all' ? (window.innerWidth<=768?'Tous les types':d.label) : `${d.label} (${countFor(d.k)})`;
     return `<option value="${d.k}"${activeDay===d.k?' selected':''}>${lbl}</option>`;
   }).join('');
   return `<select class="ev-dayselect${activeDay!=='all'?' on':''}" id="dayFilterSelect" aria-label="Filtrer par jour" onchange="setDay(this.value)">${opts}</select>`;
 }
 
-// La saison démarre en septembre : sept. 2026 → juil. 2027 = Saison 3, janv.→août 2026 = fin de Saison 2
+// La saison démarre en septembre : sept. 2026 → juil. 2027 = Saison 3, janv.→août 2026 = fin de Saison 2.
+// La saison 3 est mise en avant ; la saison 2 (historique) s'ouvre via le bouton de l'en-tête.
 const SEASON_START_MONTH=2026*12+8;
 const SEASON_CURRENT_NUM=3, SEASON_PAST_NUM=2;
-let showPastSeason=false;
-function togglePastSeason(){showPastSeason=!showPastSeason;renderFilter();}
+function seasonOf(k){return k>=SEASON_START_MONTH?SEASON_CURRENT_NUM:SEASON_PAST_NUM;}
+function viewedSeason(){return activeMonth==='all'?SEASON_CURRENT_NUM:seasonOf(activeMonth);}
+function showSeason(n){
+  // Ouvre la saison demandée sur son premier mois (historique) ou sur le mois courant (saison 3)
+  if(n===SEASON_CURRENT_NUM){activeDay='all';activeMonth=defaultMonth();}
+  else{activeDay='all';activeMonth=monthsWith.find(k=>seasonOf(k)===n);}
+  renderFilter();renderEvents();
+}
 
 function renderFilter(){
   const f=document.getElementById('evFilter');
-  let past='',cur='';
-  for(const m of monthsWith){
+  const season=viewedSeason();
+  const keys=monthsWith.filter(k=>seasonOf(k)===season);
+  let pills='',opts='';
+  if(season===SEASON_CURRENT_NUM)opts+=`<option value="all"${activeMonth==='all'?' selected':''}>À venir</option>`;
+  for(const m of keys){
     const n=allEvents.filter(e=>e.k===m && matchDay(e)).length;
     if(!n)continue;
     const isPastMonth=m<CUR_KEY;
-    const btn=`<button class="ev-filter-btn${activeMonth===m?' active':''}${isPastMonth?' past':''}" data-m="${m}" onclick="setFilter(${m})">${MONTHS_SHORT[m%12]} <span class="dotn">${n}</span></button>`;
-    if(m<SEASON_START_MONTH)past+=btn; else cur+=btn;
+    pills+=`<button class="ev-filter-btn${activeMonth===m?' active':''}${isPastMonth?' past':''}" data-m="${m}" onclick="setFilter(${m})">${MONTHS_SHORT[m%12]} <span class="dotn">${n}</span></button>`;
+    opts+=`<option value="${m}"${activeMonth===m?' selected':''}>${MONTHS[m%12]} ${Math.floor(m/12)} (${n})</option>`;
   }
-  // Saison précédente masquée par défaut, mais consultable via le bouton (historique conservé)
-  const toggle=past?`<button class="ev-season-toggle" onclick="togglePastSeason()">${showPastSeason?'✕ Masquer la saison '+SEASON_PAST_NUM:'⤺ Saison '+SEASON_PAST_NUM}</button>`:'';
-  const pastBlock=(showPastSeason&&past)?`<span class="ev-season-tag">Saison ${SEASON_PAST_NUM}</span>${past}`:'';
-  const curBlock=cur?`<span class="ev-season-tag now">Saison ${SEASON_CURRENT_NUM}</span>${cur}`:'';
-  f.innerHTML=`<div class="ev-filter-inner">${dayMenuHTML()}<div class="ev-filter-grid">${toggle}${pastBlock}${curBlock}</div></div>`;
+  const monthSel=`<select class="ev-dayselect ev-monthselect" id="monthFilterSelect" aria-label="Choisir le mois" onchange="setFilter(this.value==='all'?'all':+this.value)">${opts}</select>`;
+  f.innerHTML=`<div class="ev-filter-inner">${monthSel}${dayMenuHTML()}<div class="ev-filter-grid">${pills}</div></div>`;
+  // En-tête de saison : la saison en cours d'abord, l'historique à un bouton de distance
+  const head=document.getElementById('evSeasonHead');
+  if(head){
+    head.innerHTML=season===SEASON_CURRENT_NUM
+      ?`<div><span class="ev-season-head-k">Saison ${SEASON_CURRENT_NUM}</span><span class="ev-season-head-d">Sept. 2026 → juil. 2027</span></div><button class="ev-season-switch" onclick="showSeason(${SEASON_PAST_NUM})">⤺ Historique</button>`
+      :`<div><span class="ev-season-head-k">Saison ${SEASON_PAST_NUM} · historique</span><span class="ev-season-head-d">Janv. → août 2026</span></div><button class="ev-season-switch primary" onclick="showSeason(${SEASON_CURRENT_NUM})">Saison ${SEASON_CURRENT_NUM} →</button>`;
+  }
   // Centrer la pastille active horizontalement, SANS faire défiler la page verticalement
   // (scrollIntoView poussait la page vers le bas et cassait la bannière plein écran)
   const act=f.querySelector('.ev-filter-btn.active');
@@ -616,7 +640,7 @@ function setFilter(m){
 function setDay(k){
   activeDay=k;
   // Un filtre « jour » actif balaie toute la saison ; « Tous » revient au mois courant
-  activeMonth = (k==='all') ? defaultMonth() : 'all';
+  if(viewedSeason()===SEASON_CURRENT_NUM)activeMonth = (k==='all') ? defaultMonth() : 'all';  // dans l'historique, on reste sur le mois consulté
   renderFilter();renderEvents();
   scrollToFilter();
 }
