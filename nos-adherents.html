@@ -131,7 +131,7 @@ section:nth-child(even){background:var(--white);}
 .trombi-quote-dot{position:absolute;top:7px;right:8px;width:6px;height:6px;border-radius:50%;background:var(--gold);opacity:.85;}
 .trombi-avatar{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:46px;color:rgba(255,255,255,.92);letter-spacing:1px;}
 .trombi-avatar::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(11,29,48,.78) 0%,transparent 55%);}
-.trombi-name{position:relative;z-index:1;font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:1.5px;color:white;}
+.trombi-name{position:relative;z-index:1;font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:1.5px;color:white;white-space:nowrap;text-align:center;}
 .trombi-fliphint{position:absolute;top:8px;right:10px;z-index:1;font-size:11px;color:rgba(255,255,255,.7);}
 .trombi-back{transform:rotateY(180deg);background:linear-gradient(150deg,var(--navy),var(--navy-deep));border:1.5px solid rgba(182,205,224,.3);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px 12px;}
 .trombi-quote{font-family:'Open Sans',sans-serif;font-style:italic;font-size:13px;color:var(--blue-sky);line-height:1.45;}
@@ -519,7 +519,20 @@ function grad(i){const l1=48+((i*13)%22);const l2=26+((i*11)%16);const h=200+((i
     } else {
       btn.style.display='none';
     }
+    ajusterNoms();
   }
+  // Un prénom ne passe jamais sur deux lignes : on réduit un peu sa taille s'il dépasse de la carte
+  function ajusterNoms(){
+    grid.querySelectorAll('.trombi-name').forEach(el=>{
+      el.style.fontSize='';el.style.whiteSpace='';
+      const dispo=el.parentElement.clientWidth-20;
+      let s=parseFloat(getComputedStyle(el).fontSize);
+      while(el.offsetWidth>dispo && s>13){s-=.5;el.style.fontSize=s+'px';}
+      // Nom vraiment trop long (ex. surnom entre guillemets) : on garde la taille et on autorise deux lignes
+      if(el.offsetWidth>dispo){el.style.fontSize='';el.style.whiteSpace='normal';}
+    });
+  }
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(ajusterNoms);
   document.getElementById('trombiToggle').addEventListener('click',()=>{
     expanded=!expanded;
     renderTrombi(document.getElementById('trombiSearch').value);
