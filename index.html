@@ -196,10 +196,26 @@ section:nth-child(even){background:var(--white);}
 .ab-price-row:last-child{border:none;}
 .ab-price-period{font-size:12px;color:rgba(255,255,255,.6);line-height:1.4;}
 .ab-price-amount{font-family:'Bebas Neue',sans-serif;font-size:34px;color:var(--gold);letter-spacing:1px;flex-shrink:0;line-height:1;}
+/* Une seule ligne : l'intitulé et le prix, rien entre les deux */
+.ab-price-head{display:flex;align-items:center;justify-content:space-between;gap:18px;}
+.ab-price-head .ab-perks-title{margin-bottom:0;}
 /* Contact : un bouton plutôt qu'une adresse en toutes lettres */
-.join-mail{display:inline-flex;align-items:center;gap:9px;margin-top:14px;font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:2px;color:var(--blue-sky);text-decoration:none;background:rgba(182,205,224,.08);border:1.5px solid rgba(182,205,224,.28);border-radius:999px;padding:10px 20px;transition:background .2s,border-color .2s,color .2s;}
+.join-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.join-actions .join-cta,.join-actions .join-cta-ha{font-size:15px!important;letter-spacing:1.8px!important;padding:13px 20px!important;}
+/* Même bouton, en version claire pour la FAQ */
+.faq-mail{display:inline-flex;align-items:center;gap:9px;margin-top:30px;font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:2px;color:var(--navy);text-decoration:none;background:#fff;border:1.5px solid rgba(18,43,68,.18);border-radius:999px;padding:12px 24px;transition:border-color .2s,color .2s,background .2s;}
+.faq-mail:hover{border-color:#3E7CB1;color:#3E7CB1;background:rgba(62,124,177,.06);}
+.faq-mail .jm-ico{font-size:14px;line-height:1;}
+.join-mail{display:inline-flex;align-items:center;gap:7px;font-family:'Bebas Neue',sans-serif;font-size:12.5px;letter-spacing:1.5px;color:var(--blue-sky);text-decoration:none;background:rgba(182,205,224,.08);border:1.5px solid rgba(182,205,224,.28);border-radius:999px;padding:8px 14px;transition:background .2s,border-color .2s,color .2s;}
 .join-mail:hover{background:rgba(182,205,224,.18);border-color:var(--blue-sky);color:#fff;}
-.join-mail .jm-ico{font-size:15px;line-height:1;}
+.join-mail .jm-ico{font-size:13px;line-height:1;}
+@media(max-width:768px){
+  .jc-long{display:none;}
+  .join-actions .join-cta,.join-actions .join-cta-ha{font-size:14px!important;letter-spacing:1.5px!important;padding:12px 16px!important;}
+  .join-mail{font-size:11.5px;letter-spacing:1px;padding:8px 12px;gap:6px;}
+  .faq-mail{font-size:13px;letter-spacing:1.5px;padding:11px 18px;}
+}
+
 
 /* CTA pill (teaser partenaires) */
 .equipe-strip-cta{font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:2px;color:var(--navy);text-decoration:none;border:1.5px solid rgba(18,43,68,.2);border-radius:30px;padding:12px 24px;white-space:nowrap;transition:all .2s;}
@@ -728,7 +744,7 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
           <span class="ab-chevron" aria-hidden="true">›</span>
         </summary>
       <ul class="ab-perks" style="margin-top:8px;">
-        <li>Accès à toutes les séances : Tartan Bleu, Mercredi Bleu, Social Bleu</li>
+        <li>Accès aux trois séances de la semaine</li>
         <li>Dossards, goodies &amp; réductions partenaires</li>
         <li>Sorties extra : trail, interclubs, ekiden, soirées</li>
         <li>Assurance blessure &amp; aide à l'entraînement</li>
@@ -737,17 +753,17 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
       </details>
     </div>
     <div class="ab-perks-box">
-      <div>
+      <div class="ab-price-head">
         <div class="ab-perks-title">Adhésion · Saison 2026-2027</div>
-        <div class="ab-price-tiers">
-          <div class="ab-price-row"><span class="ab-price-period">Tarif unique, saison complète</span><span class="ab-price-amount">50€</span></div>
-        </div>
-              </div>
+        <div class="ab-price-amount">50€</div>
+      </div>
       <div style="border-top:1px solid rgba(182,205,224,.1);padding-top:14px;">
         <div class="join-baseline">On vous attend.</div>
-        <p style="font-size:13px;color:rgba(255,255,255,.55);line-height:1.55;margin:6px 0 14px;">Adhésion 100&nbsp;% en ligne, en deux minutes, via HelloAsso.</p>
-        <a href="https://www.helloasso.com/beta/associations/le-ciel-est-bleu-running-club/adhesions/adhesion-saison-26-27-1" target="_blank" rel="noopener" class="join-cta">Adhérer sur HelloAsso →</a>
-        <a class="join-mail" href="mailto:contact.cielbleurunningclub@gmail.com?subject=Question%20sur%20l%27adh%C3%A9sion%20CIELBLEU"><span class="jm-ico" aria-hidden="true">✉</span>Une question&nbsp;? Écris-nous</a>
+        <p style="font-size:13px;color:rgba(255,255,255,.55);line-height:1.55;margin:6px 0 14px;">Adhésion 100&nbsp;% en ligne, via HelloAsso.</p>
+        <div class="join-actions">
+          <a href="https://www.helloasso.com/beta/associations/le-ciel-est-bleu-running-club/adhesions/adhesion-saison-26-27-1" target="_blank" rel="noopener" class="join-cta">Adhérer<span class="jc-long"> sur HelloAsso</span> →</a>
+          <a class="join-mail" href="mailto:contact.cielbleurunningclub@gmail.com?subject=Question%20sur%20l%27adh%C3%A9sion%20CIELBLEU"><span class="jm-ico" aria-hidden="true">✉</span>Question&nbsp;?</a>
+        </div>
       </div>
     </div>
   </div>
@@ -780,7 +796,7 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
       <div class="faq-a">Oui, bien sûr, rien de tel pour être vraiment convaincu. Envoie-nous juste un petit message à l'avance pour nous prévenir, et on t'accueille comme il se doit.</div>
     </div>
   </div>
-  <p class="faq-contact" style="margin-top:30px;font-size:15px;color:var(--mid);line-height:1.7;">Une autre question ? Écris-nous à <a href="mailto:contact.cielbleurunningclub@gmail.com" style="color:var(--navy);font-weight:700;text-decoration:underline;text-underline-offset:3px;">contact.cielbleurunningclub@gmail.com</a>.</p>
+  <a class="faq-mail" href="mailto:contact.cielbleurunningclub@gmail.com?subject=Question%20CIELBLEU"><span class="jm-ico" aria-hidden="true">✉</span>Une autre question&nbsp;? Écris-nous</a>
 </section>
 
 <!-- CTA FINAL -->
