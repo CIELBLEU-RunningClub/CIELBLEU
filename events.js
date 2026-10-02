@@ -89,7 +89,7 @@ const tartanTpl={wd:1,color:C_TARTAN,time:'19h45',dur:90,title:'Tartan Bleu · S
   tags:[{l:'Adhérents',c:'tag-adherent'}],
   desc:"La séance piste du lundi soir, encadrée, en fractionné. Le rendez-vous vitesse des adhérents, dans la bonne humeur.",
   details:[['Lieu',L_PISTE]],location:'Paris'};
-const mercrediTpl={wd:3,color:C_MERCREDI,time:'19h20',dur:70,title:'Mercredi Bleu · Adhérents club',
+const mercrediTpl={wd:3,color:C_MERCREDI,time:'19h20',dur:70,title:'Mercredi Bleu',
   tags:[{l:'Adhérents',c:'tag-adherent'}],
   desc:"Le run des adhérents du mercredi soir, en groupes d'allure dans Paris. La séance plaisir du milieu de semaine, qui se prolonge souvent autour d'un verre au bar partenaire.",
   details:[['Lieu',L_BAR]],location:'Paris'};
@@ -152,11 +152,11 @@ const specials=[
    tags:[{l:'Adhérents',c:'tag-adherent'},{l:'Interclubs',c:'tag-partner'}],
    desc:"Rencontre interclubs sur piste avec le collectif OFFTRACK : 12 équipes, 6 coureurs, 5 épreuves, un seul classement.",
    details:[['Horaire','8h45 – 13h'],['Lieu','Espace sportif Jean-Pierre Rives · Courbevoie']],location:'Courbevoie'},
-  {m:9,d:19,time:'18h30',dur:120,title:'Testing Nike · Adhérents club',
+  {m:9,d:19,time:'18h30',dur:120,title:'Testing Nike',
    tags:[{l:'Adhérents',c:'tag-adherent'},{l:'Nike',c:'tag-partner'}],
    desc:"Séance d'essai des nouvelles paires Nike, réservée aux adhérents. Tous niveaux.",
    details:[['Horaire','À partir de 18h30'],['Lieu','Quatorze Wagram · Paris 8']],location:'Paris 8'},
-  {m:9,d:26,time:'19h00',dur:120,title:'Testing Adidas · Adhérents club',
+  {m:9,d:26,time:'19h00',dur:120,title:'Testing Adidas',
    tags:[{l:'Adhérents',c:'tag-adherent'},{l:'Adidas',c:'tag-partner'}],
    desc:"Séance d'essai d'une nouvelle paire Adidas, réservée aux adhérents. Tous niveaux.",
    details:[['Horaire','19h00'],['Lieu','Adidas Champs-Élysées · Paris 8']],location:'Paris 8'},

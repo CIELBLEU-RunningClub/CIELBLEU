@@ -4,11 +4,11 @@ PRODID:-//CIELBLEU Running//FR
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 BEGIN:VEVENT
-UID:s26@cielbleu.run
-DTSTAMP:20261002T082524Z
-DTSTART:20261125T192000
-DTEND:20261125T203000
-SUMMARY:Mercredi Bleu · Adhérents club · CIELBLEU Running
+UID:s30@cielbleu.run
+DTSTAMP:20261002T083427Z
+DTSTART:20261209T192000
+DTEND:20261209T203000
+SUMMARY:Mercredi Bleu · CIELBLEU Running
 DESCRIPTION:Le run des adhérents du mercredi soir\, en groupes d'allure da
  ns Paris. La séance plaisir du milieu de semaine\, qui se prolonge souven
  t autour d'un verre au bar partenaire.
