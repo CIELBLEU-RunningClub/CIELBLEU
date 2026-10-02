@@ -4,13 +4,13 @@ PRODID:-//CIELBLEU Running//FR
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 BEGIN:VEVENT
-UID:e51@cielbleu.run
+UID:e36@cielbleu.run
 DTSTAMP:20261002T082524Z
-DTSTART:20260722T192000
-DTEND:20260722T203000
+DTSTART:20261014T192000
+DTEND:20261014T205000
 SUMMARY:Run découverte CIELBLEU × Fitzroy · CIELBLEU Running
-DESCRIPTION:Run découverte en partenariat avec Fitzroy\, ouvert à tous. L
- e dernier rendez-vous avant la pause estivale du club.
-LOCATION:Paris
+DESCRIPTION:Run collectif de 8 km en partenariat avec Fitzroy\, ouvert à t
+ ous. On prolonge la soirée sur place.
+LOCATION:Paris 11
 END:VEVENT
 END:VCALENDAR
