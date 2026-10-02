@@ -60,8 +60,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
   .nav-hamburger{border:1.5px solid rgba(182,205,224,.45);border-radius:6px;padding:7px 12px;}
 }
 @media(max-width:768px){
-  body::before{content:"";display:block;height:44px;background:var(--navy-deep);}
-  .nav-tabs{display:flex;position:fixed;top:70px;left:0;right:0;height:44px;z-index:98;align-items:center;gap:8px;padding:0 28px 0 20px;overflow-x:auto;white-space:nowrap;background:rgba(11,29,48,.92);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid rgba(182,205,224,.1);scrollbar-width:none;-webkit-overflow-scrolling:touch;-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 36px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 36px),transparent);}
+  .nav-tabs{display:flex;position:fixed;top:70px;left:0;right:0;height:44px;z-index:98;align-items:center;gap:8px;padding:0 28px 0 20px;overflow-x:auto;white-space:nowrap;background:rgba(11,29,48,.92);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid rgba(182,205,224,.1);scrollbar-width:none;-webkit-overflow-scrolling:touch;-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 36px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 36px),transparent);transform:translateY(-100%);opacity:0;visibility:hidden;transition:transform .3s ease,opacity .3s ease,visibility 0s .3s;}
+  .nav-tabs.show{transform:none;opacity:1;visibility:visible;transition:transform .3s ease,opacity .3s ease;}
   .nav-tabs::-webkit-scrollbar{display:none;}
   .nav-tabs a{flex:0 0 auto;font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;color:rgba(255,255,255,.72);padding:7px 14px;border-radius:999px;border:1px solid rgba(182,205,224,.22);}
   .nav-tabs a.active{background:var(--blue-sky);border-color:var(--blue-sky);color:var(--navy);}
@@ -690,7 +690,7 @@ window.addEventListener('scroll',()=>{document.getElementById('back-to-top').cla
 })();
 </script>
 <script src="scroll-shoe.js?v=3"></script>
-<script>(function(){var t=document.getElementById('navTabs'),a=t&&t.querySelector('.active');if(a)t.scrollLeft=a.offsetLeft-(t.clientWidth-a.offsetWidth)/2;})();</script>
+<script>(function(){var t=document.getElementById('navTabs'),a=t&&t.querySelector('.active');var c=false;function f(){var on=window.scrollY>20;if(on&&!c&&a){c=true;t.scrollLeft=a.offsetLeft-(t.clientWidth-a.offsetWidth)/2;}t.classList.toggle('show',on);}f();addEventListener('scroll',f,{passive:true});})();</script>
 <script>function toggleNav(){document.getElementById('navMobile').classList.toggle('open');}
 document.addEventListener('click',function(e){var m=document.getElementById('navMobile');if(m&&m.classList.contains('open')&&!m.contains(e.target)&&!e.target.closest('.nav-hamburger'))m.classList.remove('open');});</script>
 <script src="analytics.js?v=2"></script>
