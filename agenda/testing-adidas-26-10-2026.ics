@@ -5,10 +5,10 @@ CALSCALE:GREGORIAN
 METHOD:PUBLISH
 BEGIN:VEVENT
 UID:e40@cielbleu.run
-DTSTAMP:20261002T082524Z
+DTSTAMP:20261002T083427Z
 DTSTART:20261026T190000
 DTEND:20261026T210000
-SUMMARY:Testing Adidas · Adhérents club · CIELBLEU Running
+SUMMARY:Testing Adidas · CIELBLEU Running
 DESCRIPTION:Séance d'essai d'une nouvelle paire Adidas\, réservée aux ad
  hérents. Tous niveaux.
 LOCATION:Paris 8

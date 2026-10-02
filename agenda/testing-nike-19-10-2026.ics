@@ -5,10 +5,10 @@ CALSCALE:GREGORIAN
 METHOD:PUBLISH
 BEGIN:VEVENT
 UID:e39@cielbleu.run
-DTSTAMP:20261002T082524Z
+DTSTAMP:20261002T083427Z
 DTSTART:20261019T183000
 DTEND:20261019T203000
-SUMMARY:Testing Nike · Adhérents club · CIELBLEU Running
+SUMMARY:Testing Nike · CIELBLEU Running
 DESCRIPTION:Séance d'essai des nouvelles paires Nike\, réservée aux adh
  érents. Tous niveaux.
 LOCATION:Paris 8
