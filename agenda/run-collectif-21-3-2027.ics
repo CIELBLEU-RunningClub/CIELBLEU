@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CIELBLEU Running//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:s173@cielbleu.run
+DTSTAMP:20261002T120000Z
+DTSTART:20270321T102000
+DTEND:20270321T120000
+SUMMARY:Run Collectif · CIELBLEU Running
+DESCRIPTION:Le run collectif du dimanche\, ouvert à tous et sans inscripti
+ on. On court ensemble\, puis on partage un moment convivial.
+LOCATION:Paris
+END:VEVENT
+END:VCALENDAR
