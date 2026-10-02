@@ -709,7 +709,7 @@ function foldICS(ligne){
   return morceaux.map((m,i)=>i===0?m:' '+m).join('\r\n');
 }
 // Nom du fichier .ics hébergé pour un événement. Sert à la fois au script de
-// génération (outils/genere-ics.md) et au bouton : les deux doivent rester identiques.
+// génération (outils/genere-ics.sh) et au bouton : les deux doivent rester identiques.
 function slugEvenement(ev){
   const t=(ev.title+'-'+ev.d+'-'+(ev.m+1)+'-'+ev.y)
     .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
