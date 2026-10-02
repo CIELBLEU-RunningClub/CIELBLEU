@@ -662,7 +662,8 @@ function scrollToFilter(){
   const list=document.getElementById('evContainer');
   const off=(window.innerWidth<=768?114:112);
   const y=list.getBoundingClientRect().top+window.scrollY-off-f.offsetHeight-20;
-  window.scrollTo({top:Math.max(0,y),behavior:'smooth'});
+  // Défilement instantané : la liste vient d'être remplacée, un défilement animé se fait couper sur iPhone
+  window.scrollTo({top:Math.max(0,y),behavior:'instant'});
 }
 
 // Filtre par défaut : mois courant s'il a des événements, sinon prochain mois avec événements
