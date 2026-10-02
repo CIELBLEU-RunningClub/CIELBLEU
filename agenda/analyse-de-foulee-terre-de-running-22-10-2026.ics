@@ -4,13 +4,13 @@ PRODID:-//CIELBLEU Running//FR
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 BEGIN:VEVENT
-UID:e39@cielbleu.run
-DTSTAMP:20260925T184833Z
+UID:e37@cielbleu.run
+DTSTAMP:20261002T082524Z
 DTSTART:20261022T190000
 DTEND:20261022T210000
 SUMMARY:Analyse de foulée × Terre de Running · CIELBLEU Running
-DESCRIPTION:Séance d'analyse de foulée avec Terre de Running pour affiner
-  sa technique et son matériel.
-LOCATION:Paris
+DESCRIPTION:Analyse de foulée sur tapis avec Terre de Running\, pour affin
+ er sa technique et son matériel. Hydratation assurée par 60POURCENT.
+LOCATION:Paris 17
 END:VEVENT
 END:VCALENDAR
