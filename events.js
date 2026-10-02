@@ -128,7 +128,7 @@ const recurring=[
 const specials=[
   // Septembre
   {m:8,d:3,time:'18h30',dur:90,title:'Run It Again League · VMA x Hoka',
-   tags:[{l:'Adhérents',c:'tag-adherent'},{l:'Hoka',c:'tag-partner'}],
+   tags:[{l:'Adhérents',c:'tag-adherent'}],
    desc:"Ligue VMA en partenariat avec Hoka pour lancer la saison. Format compétitif et convivial, réservé aux adhérents.",
    details:[['Horaire','18h30'],['Lieu','Piste · Clamart']],location:'Clamart'},
   {m:8,d:11,time:'19h30',dur:180,title:'Soirée de rentrée',
@@ -142,32 +142,32 @@ const specials=[
    article:'article-marathon-bleu.html',articleTitle:'42,195 km à 42. En relais.'},
   // Octobre
   {m:9,d:14,time:'19h20',dur:90,title:'Run découverte CIELBLEU × Fitzroy',
-   tags:[{l:'Ouvert à tous',c:'tag-open'},{l:'Fitzroy',c:'tag-partner'}],
+   tags:[{l:'Ouvert à tous',c:'tag-open'}],
    desc:"Run collectif de 8 km en partenariat avec Fitzroy, ouvert à tous. On prolonge la soirée sur place.",
    details:[['Horaire','19h20'],['Lieu','Fitzroy · Paris 11']],location:'Paris 11'},
   {m:9,d:22,time:'19h00',dur:120,title:'Analyse de foulée × Terre de Running',
-   tags:[{l:'Adhérents',c:'tag-adherent'},{l:'Terre de Running',c:'tag-partner'},{l:'60POURCENT',c:'tag-partner'}],
+   tags:[{l:'Adhérents',c:'tag-adherent'},{l:'60POURCENT',c:'tag-partner'}],
    desc:"Analyse de foulée sur tapis avec Terre de Running, pour affiner sa technique et son matériel. Hydratation assurée par 60POURCENT.",
    details:[['Horaire','19h00'],['Lieu','Terre de Running Batignolles · Paris 17']],location:'Paris 17'},
   {m:9,d:24,time:'8h45',dur:255,title:'Interclub OFFTRACK & Co',
-   tags:[{l:'Adhérents',c:'tag-adherent'},{l:'Interclubs',c:'tag-partner'}],
+   tags:[{l:'Adhérents',c:'tag-adherent'}],
    desc:"Rencontre interclubs sur piste avec le collectif OFFTRACK : 12 équipes, 6 coureurs, 5 épreuves, un seul classement.",
    details:[['Horaire','8h45 – 13h'],['Lieu','Espace sportif Jean-Pierre Rives · Courbevoie']],location:'Courbevoie'},
   {m:9,d:19,time:'18h30',dur:120,title:'Testing Nike',
-   tags:[{l:'Adhérents',c:'tag-adherent'},{l:'Nike',c:'tag-partner'}],
+   tags:[{l:'Adhérents',c:'tag-adherent'}],
    desc:"Séance d'essai des nouvelles paires Nike, réservée aux adhérents. Tous niveaux.",
    details:[['Horaire','À partir de 18h30'],['Lieu','Quatorze Wagram · Paris 8']],location:'Paris 8'},
   {m:9,d:26,time:'19h00',dur:120,title:'Testing Adidas',
-   tags:[{l:'Adhérents',c:'tag-adherent'},{l:'Adidas',c:'tag-partner'}],
+   tags:[{l:'Adhérents',c:'tag-adherent'}],
    desc:"Séance d'essai d'une nouvelle paire Adidas, réservée aux adhérents. Tous niveaux.",
    details:[['Horaire','19h00'],['Lieu','Adidas Champs-Élysées · Paris 8']],location:'Paris 8'},
   // Novembre
   {m:10,d:1,time:'9h00',dur:240,title:'EKIDEN Adidas',
-   tags:[{l:'Adhérents',c:'tag-adherent'},{l:'Adidas',c:'tag-partner'}],
+   tags:[{l:'Adhérents',c:'tag-adherent'}],
    desc:"Marathon en relais (ekiden) avec le partenaire Adidas. Une équipe CIELBLEU sur la ligne de départ.",
    details:[['Horaire','9h00 · à confirmer'],['Lieu','Paris · à confirmer']],location:'Paris'},
   {m:10,d:15,time:'10h00',dur:120,title:'KM Bleu · 10K Hoka',
-   tags:[{l:'KM Bleu',c:'tag-km'},{l:'Adhérents',c:'tag-adherent'}],
+   tags:[{l:'Adhérents',c:'tag-adherent'}],
    desc:"Le KM Bleu déploie sa fan zone et une équipe du club s'aligne sur le 10K en partenariat avec Hoka.",
    details:[['Horaire','10h00 · à confirmer'],['Lieu','Paris · à confirmer']],location:'Paris'},
   // Décembre
@@ -192,19 +192,19 @@ const namedSessions=[
 // ─────────────────────────────────────────────────────────────
 const legacySessionTpl=[
   {wd:1,biweekly:true,time:'19h30',dur:90,title:'Séance piste',color:C_TARTAN,tag:{l:'Adhérent',c:'tag-seance'},desc:"Séance de fractionné sur piste, encadrée. Le rendez-vous des adhérents qui veulent gagner en vitesse, dans la bonne humeur.",details:[['Lieu',L_PISTE]],location:'Paris'},
-  {wd:3,biweekly:false,time:'19h20',dur:70,title:'Run Adhérents',color:C_MERCREDI,tag:{l:'Adhérent',c:'tag-seance'},desc:"Run Adhérents en groupes d'allure dans Paris. Le mercredi soir version CIELBLEU.",details:[['Lieu',L_BAR]],location:'Paris'},
+  {wd:3,biweekly:false,time:'19h20',dur:70,title:'Run Adhérents',color:C_MERCREDI,tag:null,desc:"Run Adhérents en groupes d'allure dans Paris. Le mercredi soir version CIELBLEU.",details:[['Lieu',L_BAR]],location:'Paris'},
   {wd:0,biweekly:false,time:'10h20',dur:90,title:'Social Run',color:C_SOCIAL,tag:{l:'Ouvert à tous',c:'tag-social'},desc:"Le Social Run du dimanche, ouvert à tous, sans inscription. On court en groupes d'allure puis on partage un café. Le cœur du club.",details:[['Lieu',L_STRAVA]],location:'Paris'}
 ];
 const legacySpecials=[
   {m:5,d:5,title:'Naturalia × We Love Green',tags:[{l:'Ouvert à tous',c:'tag-open'},{l:'Partenariat',c:'tag-partner'}],time:'9h00',dur:120,desc:"Run solidaire en partenariat avec Naturalia et le festival We Love Green. Une course engagée, dans un cadre festif au Bois de Vincennes.",details:[['Horaire','9h00'],['Lieu','Bois de Vincennes · Paris']],location:'Paris'},
-  {m:5,d:7,title:'KM Bleu 10K Adidas + AG',tags:[{l:'KM Bleu',c:'tag-km'},{l:'Adidas',c:'tag-partner'}],time:'10h00',dur:420,desc:"Course officielle 10K en équipe CIELBLEU avec le partenariat Adidas, suivie de l'Assemblée Générale annuelle du club.",details:[['Horaire','10h00 (course) · 14h00 (AG)'],['Lieu','Paris']],location:'Paris'},
+  {m:5,d:7,title:'KM Bleu 10K Adidas + AG',tags:[{l:'Adhérents',c:'tag-adherent'}],time:'10h00',dur:420,desc:"Course officielle 10K en équipe CIELBLEU avec le partenariat Adidas, suivie de l'Assemblée Générale annuelle du club.",details:[['Horaire','10h00 (course) · 14h00 (AG)'],['Lieu','Paris']],location:'Paris'},
   {m:5,d:12,title:"Soirée Fin d'année",tags:[{l:'Adhérents',c:'tag-adherent'}],time:'20h00',dur:240,desc:"La grande fête de fin de saison 2025-2026 ! Un moment pour célébrer ensemble tout ce qu'on a vécu cette année.",details:[['Horaire','20h00'],['Lieu','Paris']],location:'Paris'},
-  {m:5,d:13,title:'Salomon × Gravenlenza',tags:[{l:'Ouvert à tous',c:'tag-open'},{l:'Salomon',c:'tag-partner'}],time:'8h30',dur:270,desc:"Événement running trail en partenariat avec Salomon. Testing de chaussures trail et run collectif en forêt.",details:[['Horaire','8h30'],['Lieu','Forêt de Fontainebleau']],location:'Forêt de Fontainebleau'},
+  {m:5,d:13,title:'Salomon × Gravenlenza',tags:[{l:'Ouvert à tous',c:'tag-open'}],time:'8h30',dur:270,desc:"Événement running trail en partenariat avec Salomon. Testing de chaussures trail et run collectif en forêt.",details:[['Horaire','8h30'],['Lieu','Forêt de Fontainebleau']],location:'Forêt de Fontainebleau'},
   {m:5,d:28,title:"L'Or Espresso × CIELBLEU · 2ème édition",tags:[{l:'KM Bleu',c:'tag-km'},{l:'Ouvert à tous',c:'tag-open'}],time:'9h45',dur:90,desc:"Run de 8 km dans Saint-Germain-des-Prés, suivi d'une dégustation gratuite des créations de L'Or Espresso. Allure 6:15/km.",details:[['Horaire','9h45'],['Lieu',"L'Or Espresso · Paris"]],location:'Paris'},
-  {m:6,d:8,title:'Run Testing ACT',tags:[{l:'Adhérents',c:'tag-adherent'},{l:'ACT',c:'tag-partner'}],time:'19h20',dur:120,desc:"Session de testing de produits ACT avec 30 membres du club. Tester du matériel en avant-première et donner son retour.",details:[['Horaire','19h20'],['Lieu','Paris']],location:'Paris'},
+  {m:6,d:8,title:'Run Testing ACT',tags:[{l:'Adhérents',c:'tag-adherent'}],time:'19h20',dur:120,desc:"Session de testing de produits ACT avec 30 membres du club. Tester du matériel en avant-première et donner son retour.",details:[['Horaire','19h20'],['Lieu','Paris']],location:'Paris'},
   {m:6,d:18,title:"Course d'orientation Bois-le-Roi",tags:[{l:'Adhérents',c:'tag-adherent'},{l:'Trail',c:'tag-trail'}],time:'10h00',dur:240,desc:"Course d'orientation en équipe dans les bois de Bois-le-Roi. Parcours de 15 à 20 km, une aventure navigante et partagée.",details:[['Horaire','10h00'],['Lieu','Bois-le-Roi']],location:'Bois-le-Roi'},
   {m:6,d:22,title:'Run découverte CIELBLEU × Fitzroy',tags:[{l:'Ouvert à tous',c:'tag-open'},{l:'Partenariat',c:'tag-partner'}],time:'19h20',dur:70,desc:"Run découverte en partenariat avec Fitzroy, ouvert à tous. Le dernier rendez-vous avant la pause estivale du club.",details:[['Horaire','19h20'],['Lieu','Paris']],location:'Paris'},
-  {m:6,d:26,title:'KM Bleu TDF',tags:[{l:'KM Bleu',c:'tag-km'},{l:'Ouvert à tous',c:'tag-open'}],time:'14h00',dur:180,desc:"Pas de run cette fois : on installe le Kilomètre Bleu pour mettre l'ambiance et pousser les cyclistes du Tour de France dans la montée. Cris, drapeaux et tambours, l'équipe orga est sur place dès 10h.",details:[['Horaire','14h00 · orga sur place dès 10h'],['Lieu','Paris 18e']],location:'Paris 18e'},
+  {m:6,d:26,title:'KM Bleu TDF',tags:[{l:'Ouvert à tous',c:'tag-open'}],time:'14h00',dur:180,desc:"Pas de run cette fois : on installe le Kilomètre Bleu pour mettre l'ambiance et pousser les cyclistes du Tour de France dans la montée. Cris, drapeaux et tambours, l'équipe orga est sur place dès 10h.",details:[['Horaire','14h00 · orga sur place dès 10h'],['Lieu','Paris 18e']],location:'Paris 18e'},
   {m:7,d:27,title:'Marathon Bleu',tags:[{l:'Ouvert à tous',c:'tag-open'}],time:'10h20',dur:90,desc:"Le Social Run du dimanche, ouvert à tous, sans inscription. On court en groupes d'allure puis on partage un café. Le cœur du club.",details:[['Horaire','10h20'],['Lieu',L_STRAVA]],location:'Paris'},
   {m:7,d:30,title:'Run collectif de rentrée',tags:[{l:'Ouvert à tous',c:'tag-open'}],time:'10h20',dur:100,desc:"Reprise collective après la pause estivale ! Toutes allures, tout le monde bienvenu. La saison commence ici.",details:[['Horaire','10h20'],['Lieu',L_STRAVA]],location:'Paris'}
 ];
@@ -257,7 +257,7 @@ legacySpecials.forEach(s=>pushEvent(Object.assign({session:false},s)));
         if(new Date(YEAR,m,d).getDay()!==tpl.wd)continue;
         if(legacyDays.has(m+'-'+d))continue;
         if(tpl.biweekly){occ++;if(occ%2===0)continue;}
-        pushEvent({m,d,session:true,wd:tpl.wd,color:tpl.color,time:tpl.time,dur:tpl.dur,title:tpl.title,tags:[tpl.tag],desc:tpl.desc,details:tpl.details,location:tpl.location});
+        pushEvent({m,d,session:true,wd:tpl.wd,color:tpl.color,time:tpl.time,dur:tpl.dur,title:tpl.title,tags:tpl.tag?[tpl.tag]:[],desc:tpl.desc,details:tpl.details,location:tpl.location});
       }
     }
   });
@@ -320,11 +320,11 @@ recurring2027.forEach(r=>r.dates.forEach(d=>pushEvent(Object.assign({y:2027,m:r.
 
 const specials2027=[
   {m:0,d:20,time:'19h20',dur:90,title:'Run découverte CIELBLEU × Fitzroy',
-   tags:[{l:'Ouvert à tous',c:'tag-open'},{l:'Fitzroy',c:'tag-partner'}],
+   tags:[{l:'Ouvert à tous',c:'tag-open'}],
    desc:"Run collectif de 8 km en partenariat avec Fitzroy, ouvert à tous. On prolonge la soirée sur place.",
    details:[['Horaire','19h20'],['Lieu','Fitzroy · Paris 11']],location:'Paris 11'},
   {m:1,d:7,time:'10h00',dur:120,title:'KM Bleu · 10K Champs-Élysées',
-   tags:[{l:'KM Bleu',c:'tag-km'},{l:'Adhérents',c:'tag-adherent'}],
+   tags:[{l:'Adhérents',c:'tag-adherent'}],
    desc:"Le KM Bleu déploie sa fan zone et une équipe du club s'aligne sur le 10K des Champs-Élysées.",
    details:[['Horaire','10h00 · à confirmer'],['Lieu','Champs-Élysées · Paris 8']],location:'Paris 8'},
   {m:2,d:7,dayLabel:'6-7',dateStr:'6 et 7 mars 2027',time:'9h00',dur:180,title:'Weekend Semi de Paris',
@@ -344,11 +344,11 @@ const specials2027=[
    desc:"Le weekend du Semi d'Annecy, du vendredi 16 au dimanche 18 avril. Réservé aux adhérents.",
    details:[['Horaire','9h00 · à confirmer'],['Lieu','Annecy']],location:'Annecy'},
   {m:4,d:12,time:'19h20',dur:90,title:'Run découverte CIELBLEU × Fitzroy',
-   tags:[{l:'Ouvert à tous',c:'tag-open'},{l:'Fitzroy',c:'tag-partner'}],
+   tags:[{l:'Ouvert à tous',c:'tag-open'}],
    desc:"Run collectif de 8 km en partenariat avec Fitzroy, ouvert à tous. On prolonge la soirée sur place.",
    details:[['Horaire','19h20'],['Lieu','Fitzroy · Paris 11']],location:'Paris 11'},
   {m:5,d:6,time:'10h00',dur:420,title:'KM Bleu · 10K Adidas + AG',
-   tags:[{l:'KM Bleu',c:'tag-km'},{l:'Adidas',c:'tag-partner'}],
+   tags:[{l:'Adhérents',c:'tag-adherent'}],
    desc:"Course officielle 10K en équipe CIELBLEU avec le partenariat Adidas, suivie de l'Assemblée Générale annuelle du club.",
    details:[['Horaire','10h00 (course) · 14h00 (AG) · à confirmer'],['Lieu','Paris']],location:'Paris'},
   {m:5,d:11,time:'19h30',dur:240,title:'CIELBLEU & Friends',
@@ -360,7 +360,7 @@ const specials2027=[
    desc:"Un run en musique le soir de la Fête de la musique, ouvert à tous.",
    details:[['Horaire','19h20 · à confirmer'],['Lieu','Paris']],location:'Paris'},
   {m:6,d:10,time:'9h30',dur:240,title:'Sortie Trail',
-   tags:[{l:'Adhérents',c:'tag-adherent'},{l:'Trail',c:'tag-trail'}],
+   tags:[{l:'Adhérents',c:'tag-adherent'}],
    desc:"Une sortie trail entre adhérents, loin du bitume, pour finir la saison en beauté.",
    details:[['Horaire','9h30 · à confirmer'],['Lieu','À confirmer']],location:'Île-de-France'},
 ];
