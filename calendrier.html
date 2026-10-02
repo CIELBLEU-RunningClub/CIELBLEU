@@ -165,6 +165,12 @@ section:nth-child(even){background:var(--white);}
 .ev-dayselect:focus{outline:none;border-color:var(--blue-sky);}
 .ev-dayselect.on{border-color:var(--navy);color:var(--navy);background-color:rgba(18,43,68,.09);}
 .ev-empty{text-align:center;color:var(--mid);padding:40px 20px;font-size:14px;}
+.ev-winter-break{display:flex;align-items:center;gap:28px;background:linear-gradient(135deg,var(--navy-deep),var(--navy));border-radius:18px;padding:26px 34px;margin:4px 0 40px;color:#fff;}
+.ev-winter-break-illus{width:120px;height:auto;flex-shrink:0;display:block;}
+.ev-winter-break-kicker{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:3px;color:var(--gold);}
+.ev-winter-break-title{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:2px;line-height:1.1;margin:4px 0 6px;}
+.ev-winter-break-sub{font-size:14px;color:rgba(255,255,255,.65);line-height:1.6;}
+@media(max-width:600px){.ev-winter-break{flex-direction:column;text-align:center;gap:14px;padding:24px 20px;}.ev-winter-break-illus{width:104px;}}
 .ev-summer-break{text-align:center;padding:48px 40px 56px;color:var(--mid);margin:36px 0 8px;border-top:1px solid rgba(18,43,68,.08);}
 .ev-summer-break-illus{width:200px;height:auto;display:block;margin:0 auto 14px;}
 .ev-summer-break-text{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:2px;color:var(--navy);margin:6px 0 8px;}
@@ -484,6 +490,28 @@ function weekRange(ws){
   return mon.getMonth()===sun.getMonth()?`${mon.getDate()}–${sun.getDate()} ${ss}`:`${mon.getDate()} ${ms} – ${sun.getDate()} ${ss}`;
 }
 
+/* Trêve hivernale : lundi 21 décembre 2026 → dimanche 3 janvier 2027 inclus */
+function winterBreakHTML(){
+  return `<div class="ev-winter-break">
+    <svg class="ev-winter-break-illus" viewBox="0 0 120 120" fill="none" aria-hidden="true">
+      <circle cx="60" cy="60" r="56" fill="rgba(182,205,224,.1)"/>
+      <path d="M60 18 78 46H68L84 70H72L90 94H30L48 70H36L52 46H42Z" fill="#b6cde0"/>
+      <path d="M60 18 71 36 60 32 49 36Z M52 46 60 43 68 46 60 50Z M36 70 48 68 60 72 72 68 84 70 72 74 60 78 48 74Z" fill="#fff"/>
+      <rect x="55" y="94" width="10" height="12" rx="2" fill="#6d879a"/>
+      <g stroke="#fff" stroke-width="1.6" stroke-linecap="round" opacity=".9">
+        <path d="M22 30v10M17 35h10M18.5 31.5l7 7M25.5 31.5l-7 7"/>
+        <path d="M98 22v8M94 26h8M95 23l6 6M101 23l-6 6"/>
+        <path d="M100 66v8M96 70h8M97 67l6 6M103 67l-6 6"/>
+      </g>
+      <circle cx="30" cy="84" r="2" fill="#fff"/><circle cx="92" cy="50" r="1.6" fill="#fff"/><circle cx="14" cy="64" r="1.6" fill="#fff"/>
+    </svg>
+    <div>
+      <div class="ev-winter-break-kicker">PAUSE DE NOËL</div>
+      <div class="ev-winter-break-title">Trêve hivernale</div>
+      <div class="ev-winter-break-sub">Du lundi 21 décembre au dimanche 3 janvier inclus, pas de séances. Joyeuses fêtes à toutes et tous, on se retrouve en janvier !</div>
+    </div>
+  </div>`;
+}
 function renderEvents(){
   const cont=document.getElementById('evContainer');
   // Mois en cours (0 = janvier). Si la saison est future : -1 (rien de passé) ; si passée : 12 (tout passé)
@@ -501,7 +529,9 @@ function renderEvents(){
     // On masque les rendez-vous déjà passés, SAUF si l'utilisateur a explicitement ouvert un mois passé
     const explicitPastMonth = (activeMonth!=='all' && m<curMonth);
     if(!explicitPastMonth) evs=evs.filter(e=>!isPast(e));
-    if(!evs.length)return;
+    // La trêve de Noël s'affiche à la suite de décembre, tant qu'elle n'est pas terminée
+    const winter=(m===11 && activeDay==='all' && (explicitPastMonth || TODAY<=new Date(2027,0,3,23,59)))?winterBreakHTML():'';
+    if(!evs.length){html+=winter;return;}
     // Vue « tous » : lignes par semaine ; vue filtrée par jour : grille simple (1 rdv/semaine)
     let body;
     if(activeDay==='all'){
@@ -519,7 +549,7 @@ function renderEvents(){
         <div class="ev-month-count">${evs.length} rendez-vous</div>
       </div>
       ${body}
-    </div>`;
+    </div>${winter}`;
   });
   const emptyLbl = activeDay==='all' ? 'Aucun événement ce mois-ci.' : 'Aucun rendez-vous de ce type sur cette période.';
   cont.innerHTML=html||`<div class="ev-empty">${emptyLbl}</div>`;
