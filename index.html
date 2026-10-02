@@ -864,7 +864,7 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
   </div>
 </footer>
 
-<script src="events.js?v=27"></script>
+<script src="events.js?v=28"></script>
 <script>
 // Compteurs animés : les stats montent en flèche une fois à l'écran
 (function(){
@@ -921,7 +921,7 @@ function toggleFaq(btn){const open=btn.parentElement.classList.toggle('open');bt
       <div class="ev-card-top" style="background:${ev.color}"></div>
       <div class="ev-card-body">
         <div class="ev-card-kind-row">${kind}</div>
-        <div class="ev-card-date"><div class="ev-card-day">${pad(ev.d)}</div><div class="ev-card-month">${MONTHS_SHORT[ev.m]}</div></div>
+        <div class="ev-card-date"><div class="ev-card-day">${ev.dayLabel}</div><div class="ev-card-month">${MONTHS_SHORT[ev.m]}</div></div>
         <div class="ev-card-title">${ev.title}</div>
         <span class="ev-card-time">${ev.time}</span>
         <div class="ev-card-tags">${tags}<span class="ev-card-more">+ détails →</span></div>

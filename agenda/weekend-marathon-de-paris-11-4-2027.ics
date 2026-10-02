@@ -8,9 +8,9 @@ UID:e180@cielbleu.run
 DTSTAMP:20261002T120000Z
 DTSTART:20270411T083000
 DTEND:20270411T123000
-SUMMARY:Marathon de Paris · CIELBLEU Running
-DESCRIPTION:Le week-end du Marathon de Paris\, les 10 et 11 avril. Une équ
- ipe CIELBLEU sur la ligne de départ.
+SUMMARY:Weekend Marathon de Paris · CIELBLEU Running
+DESCRIPTION:Le weekend du Marathon de Paris\, les 10 et 11 avril. Une équi
+ pe CIELBLEU sur la ligne de départ.
 LOCATION:Paris
 END:VEVENT
 END:VCALENDAR

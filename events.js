@@ -229,7 +229,7 @@ function pushEvent(o){
   const ev={id,y:Y,k:Y*12+o.m,m:o.m,d:o.d,date:new Date(Y,o.m,o.d),title:o.title,color:o.color||'#DA5B47',
     tags:o.tags,desc:o.desc,details,dtStart:ds,dtEnd:de,location:o.location,
     article:o.article||'',articleTitle:o.articleTitle||'',
-    session:isSession,wd:o.wd,dateStr:o.d+' '+MONTHS[o.m]+' '+Y,time:o.time};
+    session:isSession,wd:o.wd,dateStr:o.dateStr||(o.d+' '+MONTHS[o.m]+' '+Y),dayLabel:o.dayLabel||pad(o.d),time:o.time};
   EVENTS_BY_ID[id]=ev;allEvents.push(ev);
 }
 
@@ -335,9 +335,9 @@ const specials2027=[
    tags:[{l:'Adhérents',c:'tag-adherent'}],
    desc:"La soirée du club pour fêter l'arrivée du printemps tous ensemble.",
    details:[['Horaire','19h30 · à confirmer'],['Lieu','Paris']],location:'Paris'},
-  {m:3,d:11,time:'8h30',dur:240,title:'Marathon de Paris',
+  {m:3,d:11,dayLabel:'10-11',dateStr:'10 et 11 avril 2027',time:'8h30',dur:240,title:'Weekend Marathon de Paris',
    tags:[{l:'Adhérents',c:'tag-adherent'}],
-   desc:"Le week-end du Marathon de Paris, les 10 et 11 avril. Une équipe CIELBLEU sur la ligne de départ.",
+   desc:"Le weekend du Marathon de Paris, les 10 et 11 avril. Une équipe CIELBLEU sur la ligne de départ.",
    details:[['Horaire','8h30 · à confirmer'],['Lieu','Paris · à confirmer']],location:'Paris'},
   {m:3,d:18,time:'9h00',dur:240,title:'Semi d\'Annecy',
    tags:[{l:'Adhérents',c:'tag-adherent'}],
