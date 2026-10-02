@@ -173,13 +173,13 @@ section:nth-child(even){background:var(--white);}
 .rec-row.f{background:linear-gradient(160deg,#cfe0ee 0%,#a9c5dc 100%);border-color:rgba(18,43,68,.16);color:var(--navy);}
 .rec-row.f .rec-rank{color:#2C5F8C;}
 .rec-row.f .rec-event{color:rgba(18,43,68,.62);}
-.rec-row.f .rec-time{color:#1d4f7a;}
+.rec-row.f .rec-time{color:#B0731A;}
 .rec-row.f .rec-head{border-color:rgba(18,43,68,.28);}
 .rec-row.f:hover{box-shadow:0 14px 32px rgba(62,124,177,.32);}
 .rec-row.f.top{background:linear-gradient(150deg,#e6f0f9 0%,#bad3e7 70%);border-color:rgba(201,146,47,.75);}
 .rec-row.f.top .rec-rank{color:#9A6F2E;}
 .rec-row.f.top .rec-head{border-color:#c9922f;}
-.rec-row.f.top .rec-time{color:#8a5f22;}
+.rec-row.f.top .rec-time{color:#B0731A;}
 .rec-plus{margin-top:4px;align-self:flex-start;font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;color:var(--mid);background:none;border:1.5px dashed rgba(18,43,68,.2);border-radius:30px;padding:9px 18px;cursor:pointer;transition:all .2s;}
 .rec-plus:hover{border-color:#3E7CB1;border-style:solid;color:#3E7CB1;background:rgba(62,124,177,.06);}
 .rec-group.femmes .rec-plus:hover{border-color:#2C5F8C;color:#2C5F8C;}
@@ -623,6 +623,14 @@ renderExploits();
 /* photo: chemin d'un headshot (optionnel), sinon avatar avec l'initiale */
 /* Records à compléter dès que les vrais chronos seront communiqués */
 const recordCats=[
+  {key:'400m',label:'400 M',records:[
+    {who:'Jason',time:'59"31',event:'',hue:74,photo:'',sex:'H'},
+    {who:'Fabien',time:'1\'00"56',event:'',hue:75,photo:'',sex:'H'},
+    {who:'Thomas n°1',time:'1\'00"76',event:'',hue:76,photo:'',sex:'H'},
+    {who:'Mélanie',time:'1\'09"93',event:'',hue:77,photo:'',sex:'F'},
+    {who:'Mare',time:'1\'14"24',event:'',hue:78,photo:'',sex:'F'},
+    {who:'Manon n°1',time:'1\'17"78',event:'',hue:79,photo:'',sex:'F'},
+  ]},
   {key:'5k',label:'5 KM',records:[
     {who:'Thomas « El coche »',time:"17'27",event:'',hue:1,photo:'',sex:'H'},
     {who:'Théo n°1',time:"19'10",event:'',hue:2,photo:'',sex:'H'},
@@ -713,7 +721,7 @@ const recordCats=[
 ];
 const recBoard=document.getElementById('recordsGrid');
 const recTabs=document.getElementById('recTabs');
-let recActive=0;
+let recActive=1; // l'onglet 5 KM s'ouvre en premier (le 400 M est juste avant)
 function headHTML(r){
   if(r.photo)return `<div class="rec-head"><img src="${r.photo}" alt="${r.who}"></div>`;
   return `<div class="rec-head" style="background:${grad(r.hue)}">${r.who.charAt(0)}</div>`;
@@ -721,6 +729,9 @@ function headHTML(r){
 // Convertit un chrono ("4h30", "1h45", "38:20", "38'20") en secondes, pour classer du plus rapide au plus lent
 function chronoToSec(t){
   t=String(t).trim();
+  // 400 m : 59"31 ou 1'00"56 (minutes, secondes, centièmes)
+  const cs=t.match(/^(?:(\d+)')?(\d+)"(\d+)$/);
+  if(cs)return (+(cs[1]||0))*60+(+cs[2])+(+cs[3])/100;
   const h=t.match(/(\d+)\s*h\s*(\d*)/i);
   if(h)return (+h[1])*3600+(h[2]?+h[2]:0)*60;
   const ms=t.match(/(\d+)[:'](\d+)/);
