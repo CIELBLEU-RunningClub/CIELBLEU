@@ -163,7 +163,7 @@ section:nth-child(even){background:var(--white);}
 .ev-next-month-btn:hover{background:var(--navy-deep);transform:translateY(-2px);}
 .ev-monthselect{display:none;}
 @media(max-width:768px){
-  .ev-filter{top:70px;margin:0 -20px 20px;padding:10px 20px;}
+  .ev-filter{top:114px;margin:0 -20px 20px;padding:10px 20px;}  /* 70px de barre + 44px d'onglets */
   .ev-filter-inner{gap:8px;}
   .ev-filter-inner .ev-filter-grid{display:none;}
   .ev-filter-inner .ev-dayselect{flex:1 1 0;min-width:0;max-width:none;text-overflow:ellipsis;font-size:14px;padding-top:12px;padding-bottom:12px;}
@@ -627,7 +627,7 @@ function renderFilter(){
     if(!n)continue;
     const isPastMonth=m<CUR_KEY;
     pills+=`<button class="ev-filter-btn${activeMonth===m?' active':''}${isPastMonth?' past':''}" data-m="${m}" onclick="setFilter(${m})">${MONTHS_SHORT[m%12]} <span class="dotn">${n}</span></button>`;
-    opts+=`<option value="${m}"${activeMonth===m?' selected':''}>${MONTHS[m%12]} ${Math.floor(m/12)} (${n})</option>`;
+    opts+=`<option value="${m}"${activeMonth===m?' selected':''}>${MONTHS[m%12]} ${Math.floor(m/12)}</option>`;
   }
   const monthSel=`<select class="ev-dayselect ev-monthselect" id="monthFilterSelect" aria-label="Choisir le mois" onchange="setFilter(this.value==='all'?'all':+this.value)">${opts}</select>`;
   f.innerHTML=`<div class="ev-filter-inner">${monthSel}${dayMenuHTML()}<div class="ev-filter-grid">${pills}</div></div>`;
@@ -656,10 +656,13 @@ function setDay(k){
   scrollToFilter();
 }
 function scrollToFilter(){
+  // Remonte en haut de la liste : le début du mois s'affiche juste sous la barre de filtres collante.
+  // (Quand on est tout en bas, la barre est déjà collée : on vise donc le début de la liste, pas la barre.)
   const f=document.getElementById('evFilter');
-  const off=(window.innerWidth<=768?70:112);
-  const y=f.getBoundingClientRect().top+window.scrollY-off;
-  window.scrollTo({top:y,behavior:'smooth'});
+  const list=document.getElementById('evContainer');
+  const off=(window.innerWidth<=768?114:112);
+  const y=list.getBoundingClientRect().top+window.scrollY-off-f.offsetHeight-20;
+  window.scrollTo({top:Math.max(0,y),behavior:'smooth'});
 }
 
 // Filtre par défaut : mois courant s'il a des événements, sinon prochain mois avec événements
