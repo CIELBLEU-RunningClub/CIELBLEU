@@ -238,6 +238,15 @@ septembre.forEach(pushEvent);
 namedSessions.forEach(pushEvent);
 // Séances récurrentes octobre → décembre
 recurring.forEach(r=>r.dates.forEach(d=>pushEvent(Object.assign({m:r.m,d,session:true},r.tpl))));
+// 4 octobre : le Social Bleu devient « Social Rose » (run aux couleurs d'Octobre Rose).
+// On modifie l'événement en place pour ne pas décaler les identifiants des suivants.
+(function(){
+  const ev=allEvents.find(e=>e.y===2026&&e.m===9&&e.d===4&&e.session&&e.wd===0);
+  if(!ev)return;
+  ev.title='Social Rose';
+  ev.color='#E0709A';
+  ev.desc="Le Social Run du dimanche aux couleurs d'Octobre Rose, ouvert à tous et sans inscription. 8 km en groupes d'allure, puis café tous ensemble.";
+})();
 // Événements spéciaux
 specials.forEach(s=>pushEvent(Object.assign({session:false},s)));
 
