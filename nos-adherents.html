@@ -253,6 +253,13 @@ section:nth-child(even){background:var(--white);}
 .ab-details[open] .ab-perks{animation:abOuvre .35s cubic-bezier(.2,.7,.3,1) both;}
 @keyframes abOuvre{from{opacity:0;transform:translateY(-8px);}to{opacity:1;transform:none;}}
 @media(prefers-reduced-motion:reduce){.ab-chevron,.ab-details[open] .ab-perks{transition:none;animation:none;}}
+/* Ordinateur : les avantages restent toujours affichés (rien à déplier) ; sur téléphone, ils se déplient */
+@media(min-width:769px){
+  .ab-details .ab-perks{display:block!important;animation:none!important;}
+  .ab-details summary{pointer-events:none;cursor:default;}
+  .ab-details .ab-chevron,.ab-details .ab-sum-hint{display:none!important;}
+  .ab-details summary h3{margin-bottom:14px;}
+}
 .ab-price-tiers{display:flex;flex-direction:column;}
 .ab-price-row{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:6px 0;border-bottom:1px solid rgba(182,205,224,.08);}
 .ab-price-row:last-child{border:none;}
@@ -449,7 +456,7 @@ footer{background:var(--navy-deep);padding:40px 60px;}
         <div style="font-family:'Anton',sans-serif;font-size:22px;letter-spacing:1px;color:white;text-transform:uppercase;">On vous attend.</div>
         <p style="font-size:13px;color:rgba(255,255,255,.55);line-height:1.6;margin:8px 0 16px;">Adhésion 100&nbsp;% en ligne, via HelloAsso.</p>
         <div class="join-actions">
-          <a class="join-cta-ha" href="https://www.helloasso.com/beta/associations/le-ciel-est-bleu-running-club/adhesions/adhesion-saison-26-27-1" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;background:var(--gold);color:var(--navy-deep);font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:2px;padding:15px 28px;border-radius:6px;text-decoration:none;transition:background .2s;" onmouseover="this.style.background='white'" onmouseout="this.style.background='var(--gold)'">Adhérer<span class="jc-long"> sur HelloAsso</span> →</a>
+          <a class="join-cta-ha" href="https://www.helloasso.com/beta/associations/le-ciel-est-bleu-running-club/adhesions/adhesion-saison-26-27-1" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;background:var(--gold);color:var(--navy-deep);font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:2px;padding:15px 28px;border-radius:6px;text-decoration:none;transition:background .2s;" onmouseover="this.style.background='white'" onmouseout="this.style.background='var(--gold)'"><span>Adhérer<span class="jc-long"> sur HelloAsso</span></span> →</a>
           <a class="join-mail" href="mailto:contact.cielbleurunningclub@gmail.com?subject=Question%20sur%20l%27adh%C3%A9sion%20CIELBLEU"><span class="jm-ico" aria-hidden="true">✉</span>Question&nbsp;?</a>
         </div>
       </div>
@@ -870,6 +877,10 @@ if(location.hash){
 }
 </script>
 <script src="scroll-shoe.js?v=3"></script>
+<script>
+/* Avantages : toujours ouverts sur ordinateur, dépliables sur téléphone */
+(function(){var d=document.querySelector('.ab-details');if(!d)return;var mq=matchMedia('(min-width:769px)');function sync(){if(mq.matches)d.open=true;else d.open=false;}sync();(mq.addEventListener?mq.addEventListener('change',sync):mq.addListener(sync));})();
+</script>
 <script>function toggleNav(){document.getElementById('navMobile').classList.toggle('open');}
 document.addEventListener('click',function(e){var m=document.getElementById('navMobile');if(m&&m.classList.contains('open')&&!m.contains(e.target)&&!e.target.closest('.nav-hamburger'))m.classList.remove('open');});</script>
 <script src="analytics.js?v=2"></script>

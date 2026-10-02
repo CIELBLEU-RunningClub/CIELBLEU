@@ -205,6 +205,13 @@ section:nth-child(even){background:var(--white);}
 .first-link-main{background:var(--gold);border-color:var(--gold);color:var(--navy-deep);}
 .first-link-main:hover{background:#fff;border-color:#fff;color:var(--navy-deep);}
 @media(max-width:480px){.first-links{gap:6px;flex-wrap:nowrap;}.first-link{padding:11px 12px;font-size:14px;letter-spacing:1px;gap:6px;min-height:46px;}.first-link svg{width:16px;height:16px;}}
+/* Ordinateur : les avantages restent toujours affichés (rien à déplier) ; sur téléphone, ils se déplient */
+@media(min-width:769px){
+  .ab-details .ab-perks{display:block!important;animation:none!important;}
+  .ab-details summary{pointer-events:none;cursor:default;}
+  .ab-details .ab-chevron,.ab-details .ab-sum-hint{display:none!important;}
+  .ab-details summary h3{margin-bottom:14px;}
+}
 .ab-price-tiers{display:flex;flex-direction:column;}
 .ab-price-row{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:6px 0;border-bottom:1px solid rgba(182,205,224,.08);}
 .ab-price-row:last-child{border:none;}
@@ -775,7 +782,7 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
         <div class="join-baseline">On vous attend.</div>
         <p style="font-size:13px;color:rgba(255,255,255,.55);line-height:1.55;margin:6px 0 14px;">Adhésion 100&nbsp;% en ligne, via HelloAsso.</p>
         <div class="join-actions">
-          <a href="https://www.helloasso.com/beta/associations/le-ciel-est-bleu-running-club/adhesions/adhesion-saison-26-27-1" target="_blank" rel="noopener" class="join-cta">Adhérer<span class="jc-long"> sur HelloAsso</span> →</a>
+          <a href="https://www.helloasso.com/beta/associations/le-ciel-est-bleu-running-club/adhesions/adhesion-saison-26-27-1" target="_blank" rel="noopener" class="join-cta"><span>Adhérer<span class="jc-long"> sur HelloAsso</span></span> →</a>
           <a class="join-mail" href="mailto:contact.cielbleurunningclub@gmail.com?subject=Question%20sur%20l%27adh%C3%A9sion%20CIELBLEU"><span class="jm-ico" aria-hidden="true">✉</span>Question&nbsp;?</a>
         </div>
       </div>
@@ -1054,6 +1061,10 @@ window.addEventListener('scroll',()=>{
   scan();
   new MutationObserver(scan).observe(document.body,{childList:true,subtree:true});
 })();
+</script>
+<script>
+/* Avantages : toujours ouverts sur ordinateur, dépliables sur téléphone */
+(function(){var d=document.querySelector('.ab-details');if(!d)return;var mq=matchMedia('(min-width:769px)');function sync(){if(mq.matches)d.open=true;else d.open=false;}sync();(mq.addEventListener?mq.addEventListener('change',sync):mq.addListener(sync));})();
 </script>
 <script>function toggleNav(){document.getElementById('navMobile').classList.toggle('open');}
 document.addEventListener('click',function(e){var m=document.getElementById('navMobile');if(m&&m.classList.contains('open')&&!m.contains(e.target)&&!e.target.closest('.nav-hamburger'))m.classList.remove('open');});</script>
