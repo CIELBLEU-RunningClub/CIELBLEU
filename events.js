@@ -95,7 +95,7 @@ const mercrediTpl={wd:3,color:C_MERCREDI,time:'19h20',dur:70,title:'Mercredi Ble
   details:[['Lieu',L_BAR]],location:'Paris'};
 const socialTpl={wd:0,color:C_SOCIAL,time:'10h20',dur:90,title:'Social Bleu',
   tags:[{l:'Ouvert à tous',c:'tag-open'}],
-  desc:"Le Social Run du dimanche, ouvert à tous et sans inscription. 8 km en groupes d'allure, puis café tous ensemble. Le point de départ est publié sur Strava avant chaque rendez-vous.",
+  desc:"Le Social Run du dimanche, ouvert à tous et sans inscription. 8 km en groupes d'allure, puis café tous ensemble.",
   details:[['Lieu',L_STRAVA]],location:'Paris'};
 // La 1re séance piste de chaque mois (l'Open Track) est ouverte à tous, adhérents comme non-adhérents
 const openTrackTpl={wd:1,color:C_TARTAN,time:'19h45',dur:90,title:'Tartan Bleu · Open Track',
