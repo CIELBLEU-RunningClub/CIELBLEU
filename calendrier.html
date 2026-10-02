@@ -158,6 +158,9 @@ section:nth-child(even){background:var(--white);}
 .ev-season-switch{flex:0 0 auto;min-height:44px;font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:2px;color:var(--navy);background:#fff;border:1.5px solid rgba(18,43,68,.25);border-radius:30px;padding:10px 20px;cursor:pointer;white-space:nowrap;transition:all .2s;}
 .ev-season-switch:hover{border-color:var(--navy);}
 .ev-season-switch.primary{background:var(--navy);color:#fff;border-color:var(--navy);}
+.ev-next-month{display:flex;justify-content:center;margin:8px 0 48px;}
+.ev-next-month-btn{min-height:52px;width:100%;max-width:420px;font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:3px;color:#fff;background:var(--navy);border:none;border-radius:30px;padding:14px 28px;cursor:pointer;transition:background .2s,transform .2s;}
+.ev-next-month-btn:hover{background:var(--navy-deep);transform:translateY(-2px);}
 .ev-monthselect{display:none;}
 @media(max-width:768px){
   .ev-filter{top:70px;margin:0 -20px 20px;padding:10px 20px;}
@@ -580,7 +583,15 @@ function renderEvents(){
     </div>${pause}`;
   });
   const emptyLbl = activeDay==='all' ? 'Aucun événement ce mois-ci.' : 'Aucun rendez-vous de ce type sur cette période.';
-  cont.innerHTML=html||`<div class="ev-empty">${emptyLbl}</div>`;
+  cont.innerHTML=(html||`<div class="ev-empty">${emptyLbl}</div>`)+nextMonthHTML();
+}
+// Bouton « mois suivant » en bas de liste : évite de remonter à la barre de filtres
+function nextMonthHTML(){
+  if(activeMonth==='all')return '';
+  const nxt=monthsWith.find(k=>k>activeMonth && seasonOf(k)===seasonOf(activeMonth)
+    && allEvents.some(e=>e.k===k && matchDay(e)));
+  if(nxt===undefined)return '';
+  return `<div class="ev-next-month"><button class="ev-next-month-btn" onclick="setFilter(${nxt})">${MONTHS[nxt%12]} ${Math.floor(nxt/12)} →</button></div>`;
 }
 
 function dayMenuHTML(){
