@@ -41,20 +41,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .nav-mobile li a{display:block;font-size:13px;letter-spacing:2px;font-weight:600;color:rgba(255,255,255,0.7);text-decoration:none;text-transform:uppercase;padding:15px 0;border-bottom:1px solid rgba(182,205,224,0.08);}
 .nav-mobile li:last-child a{border:none;}
 
-/* ── ONGLETS DE NAVIGATION MOBILE : les pages restent visibles sans ouvrir le menu ── */
-.nav-tabs{display:none;}
+/* ── BOUTON MENU : libellé + bordure pour qu'on le repère ── */
 .nav-hamburger{gap:8px;font-size:15px;}
 .nav-hamburger .nav-menu-label{font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:2px;}
 @media(max-width:1150px){
   .nav-hamburger{border:1.5px solid rgba(182,205,224,.45);border-radius:6px;padding:7px 12px;}
-}
-@media(max-width:768px){
-  .nav-tabs{display:flex;position:fixed;top:70px;left:0;right:0;height:44px;z-index:98;align-items:center;gap:8px;padding:0 28px 0 20px;overflow-x:auto;white-space:nowrap;background:#0f2640;border-bottom:1px solid rgba(182,205,224,.1);scrollbar-width:none;will-change:transform,opacity;-webkit-overflow-scrolling:touch;-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 36px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 36px),transparent);transform:translateY(-10px);opacity:0;visibility:hidden;pointer-events:none;transition:transform .45s cubic-bezier(.22,.8,.3,1),opacity .35s ease,visibility 0s .45s;}
-  .nav-tabs.show{transform:none;opacity:1;visibility:visible;pointer-events:auto;transition:transform .45s cubic-bezier(.22,.8,.3,1),opacity .35s ease;}
-  @media(prefers-reduced-motion:reduce){.nav-tabs,.nav-tabs.show{transition:none;}}
-  .nav-tabs::-webkit-scrollbar{display:none;}
-  .nav-tabs a{flex:0 0 auto;font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;color:rgba(255,255,255,.72);padding:7px 14px;border-radius:999px;border:1px solid rgba(182,205,224,.22);}
-  .nav-tabs a.active{background:var(--blue-sky);border-color:var(--blue-sky);color:var(--navy);}
 }
 .nav-links a{white-space:nowrap;}
 /* Sous 1150px, les 6 liens + les 2 boutons ne tiennent plus dans la barre :
@@ -136,14 +127,6 @@ footer{background:var(--navy-deep);padding:36px 60px;}
   </div>
   <button class="nav-hamburger" onclick="toggleNav()" aria-label="Menu"><span class="nav-menu-label">Menu</span><span aria-hidden="true">&#9776;</span></button>
 </nav>
-<div class="nav-tabs" id="navTabs" aria-label="Pages du site">
-  <a href="./#semaine">Le club</a>
-  <a href="calendrier.html">Calendrier</a>
-  <a href="actualites.html">Actualités</a>
-  <a href="notre-equipe.html">L'équipe</a>
-  <a href="nos-adherents.html">Nos adhérents</a>
-  <a href="nos-partenaires.html">Nos partenaires</a>
-</div>
 <ul class="nav-mobile" id="navMobile">
   <li><a href="./#semaine" onclick="toggleNav()">Le club</a></li>
   <li><a href="calendrier.html" onclick="toggleNav()">Calendrier</a></li>
@@ -253,7 +236,6 @@ footer{background:var(--navy-deep);padding:36px 60px;}
 window.addEventListener('scroll',()=>{document.getElementById('back-to-top').classList.toggle('show',window.scrollY>400);},{passive:true});
 </script>
 <script src="scroll-shoe.js?v=3"></script>
-<script>(function(){var t=document.getElementById('navTabs'),a=t&&t.querySelector('.active');var c=false;function f(){var y=window.scrollY,on=t.classList.contains('show')?y>8:y>40;if(on&&!c&&a){c=true;t.scrollLeft=a.offsetLeft-(t.clientWidth-a.offsetWidth)/2;}t.classList.toggle('show',on);}f();addEventListener('scroll',f,{passive:true});})();</script>
 <script>function toggleNav(){document.getElementById('navMobile').classList.toggle('open');}
 document.addEventListener('click',function(e){var m=document.getElementById('navMobile');if(m&&m.classList.contains('open')&&!m.contains(e.target)&&!e.target.closest('.nav-hamburger'))m.classList.remove('open');});</script>
 <script src="analytics.js?v=2"></script>
