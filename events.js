@@ -5,8 +5,9 @@
 // agenda » servira l'ancienne version, ou renverra un fichier absent pour un
 // nouvel événement. Le nom de fichier vient de slugEvenement() dans
 // calendrier.html : titre + jour + mois + année, sans accents.
-// ===== SAISON 3 · 2026-2027 (septembre → décembre 2026) =====
-// Les événements de janvier 2027 et suivants seront ajoutés plus tard.
+// ===== SAISON 3 · 2026-2027 (septembre 2026 → juillet 2027) =====
+// Septembre → décembre 2026 : plus bas. Janvier → juillet 2027 : bloc « 2027 »
+// juste avant le tri final. Chaque événement porte son année (y) ; à défaut, 2026.
 const MONTHS=['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
 const MONTHS_SHORT=['Janv.','Févr.','Mars','Avr.','Mai','Juin','Juil.','Août','Sept.','Oct.','Nov.','Déc.'];
 const TODAY=new Date();
@@ -221,13 +222,14 @@ let allEvents=[];let uid=0;
 function pushEvent(o){
   const isSession=!!o.session;
   const id=(isSession?'s':'e')+(uid++);
-  const ds=dtFmt(YEAR,o.m,o.d,timeToHMS(o.time));
-  const de=dtFmt(YEAR,o.m,o.d,addMinutes(o.time,o.dur||90));
+  const Y=o.y||YEAR;
+  const ds=dtFmt(Y,o.m,o.d,timeToHMS(o.time));
+  const de=dtFmt(Y,o.m,o.d,addMinutes(o.time,o.dur||90));
   const details=isSession?[['Horaire',o.time],...o.details]:o.details;
-  const ev={id,y:YEAR,m:o.m,d:o.d,date:new Date(YEAR,o.m,o.d),title:o.title,color:o.color||'#DA5B47',
+  const ev={id,y:Y,k:Y*12+o.m,m:o.m,d:o.d,date:new Date(Y,o.m,o.d),title:o.title,color:o.color||'#DA5B47',
     tags:o.tags,desc:o.desc,details,dtStart:ds,dtEnd:de,location:o.location,
     article:o.article||'',articleTitle:o.articleTitle||'',
-    session:isSession,wd:o.wd,dateStr:o.d+' '+MONTHS[o.m]+' '+YEAR,time:o.time};
+    session:isSession,wd:o.wd,dateStr:o.d+' '+MONTHS[o.m]+' '+Y,time:o.time};
   EVENTS_BY_ID[id]=ev;allEvents.push(ev);
 }
 
@@ -261,9 +263,112 @@ legacySpecials.forEach(s=>pushEvent(Object.assign({session:false},s)));
   });
 })();
 
+// ─────────────────────────────────────────────────────────────
+// 2027 · JANVIER → JUILLET (suite de la saison 3)
+// Planning repris du calendrier partagé. Janvier est ouvert à tous (comme
+// septembre), puis Tartan Bleu et Mercredi Bleu redeviennent réservés aux
+// adhérents. 1re piste du mois = Open Track. Pas de séance du 19 au 25 avril
+// (vacances de Pâques) ni à partir du 12 juillet (pause estivale).
+// Ajoutés APRÈS l'historique pour ne pas décaler les identifiants existants.
+// ─────────────────────────────────────────────────────────────
+const janvierTartanTpl={wd:1,color:C_TARTAN,time:'19h45',dur:90,title:'Tartan Bleu · Séance piste',
+  tags:[{l:'Ouvert à tous',c:'tag-open'}],
+  desc:"La séance piste du lundi, encadrée, tous niveaux.",
+  details:[['Lieu',L_PISTE]],location:'Paris'};
+const janvierMercrediTpl={wd:3,color:C_MERCREDI,time:'19h20',dur:70,title:'Mercredi Bleu',
+  tags:[{l:'Ouvert à tous',c:'tag-open'}],
+  desc:"Le run du mercredi soir, 8 km en groupes d'allure.",
+  details:[['Lieu',L_BAR]],location:'Paris'};
+const runCollectifTpl={wd:0,color:C_SOCIAL,time:'10h20',dur:100,title:'Run Collectif',
+  tags:[{l:'Ouvert à tous',c:'tag-open'}],
+  desc:"Le run collectif du dimanche, ouvert à tous et sans inscription. On court ensemble, puis on partage un moment convivial.",
+  details:[['Lieu',L_STRAVA]],location:'Paris'};
+
+const recurring2027=[
+  // Janvier (m=0) · ouvert à tous
+  {tpl:openTrackTpl,        m:0, dates:[4]},
+  {tpl:janvierTartanTpl,    m:0, dates:[11,18,25]},
+  {tpl:janvierMercrediTpl,  m:0, dates:[6,13,27]},   // le 20 est le run Fitzroy
+  {tpl:socialTpl,           m:0, dates:[17,31]},
+  // Février (m=1)
+  {tpl:openTrackTpl,        m:1, dates:[1]},
+  {tpl:tartanTpl,           m:1, dates:[8,15,22]},
+  {tpl:mercrediTpl,         m:1, dates:[3,10,17,24]},
+  {tpl:socialTpl,           m:1, dates:[21]},
+  // Mars (m=2)
+  {tpl:openTrackTpl,        m:2, dates:[1]},
+  {tpl:tartanTpl,           m:2, dates:[15,22,29]},  // pas de piste le 8 (semaine du Semi de Paris)
+  {tpl:mercrediTpl,         m:2, dates:[3,10,17,24,31]},
+  // Avril (m=3)
+  {tpl:openTrackTpl,        m:3, dates:[5]},
+  {tpl:tartanTpl,           m:3, dates:[12,26]},
+  {tpl:mercrediTpl,         m:3, dates:[7,28]},
+  {tpl:socialTpl,           m:3, dates:[4]},
+  // Mai (m=4)
+  {tpl:openTrackTpl,        m:4, dates:[3]},
+  {tpl:tartanTpl,           m:4, dates:[10,17,24,31]},
+  {tpl:mercrediTpl,         m:4, dates:[5,19,26]},   // le 12 est le run Fitzroy
+  {tpl:socialTpl,           m:4, dates:[9,23]},
+  // Juin (m=5)
+  {tpl:tartanTpl,           m:5, dates:[14,28]},     // pas de piste le 7 (AG) ni le 21 (Run Musical)
+  {tpl:mercrediTpl,         m:5, dates:[2,9,16,23,30]},
+  {tpl:socialTpl,           m:5, dates:[27]},
+];
+recurring2027.forEach(r=>r.dates.forEach(d=>pushEvent(Object.assign({y:2027,m:r.m,d,session:true},r.tpl))));
+// Runs collectifs (remplacent le Social Bleu)
+[{m:2,d:21},{m:5,d:13},{m:6,d:4}].forEach(r=>pushEvent(Object.assign({y:2027,session:true},runCollectifTpl,r)));
+
+const specials2027=[
+  {m:0,d:20,time:'19h20',dur:90,title:'Run découverte CIELBLEU × Fitzroy',
+   tags:[{l:'Ouvert à tous',c:'tag-open'},{l:'Fitzroy',c:'tag-partner'}],
+   desc:"Run collectif de 8 km en partenariat avec Fitzroy, ouvert à tous. On prolonge la soirée sur place.",
+   details:[['Horaire','19h20'],['Lieu','Fitzroy · Paris 11']],location:'Paris 11'},
+  {m:1,d:7,time:'10h00',dur:120,title:'KM Bleu · 10K Champs-Élysées',
+   tags:[{l:'KM Bleu',c:'tag-km'},{l:'Adhérents',c:'tag-adherent'}],
+   desc:"Le KM Bleu déploie sa fan zone et une équipe du club s'aligne sur le 10K des Champs-Élysées.",
+   details:[['Horaire','10h00 · à confirmer'],['Lieu','Champs-Élysées · Paris 8']],location:'Paris 8'},
+  {m:2,d:7,time:'9h00',dur:180,title:'Semi de Paris',
+   tags:[{l:'Adhérents',c:'tag-adherent'}],
+   desc:"Le week-end du Semi de Paris, les 6 et 7 mars. Une équipe CIELBLEU sur la ligne de départ.",
+   details:[['Horaire','9h00 · à confirmer'],['Lieu','Paris · à confirmer']],location:'Paris'},
+  {m:2,d:19,time:'19h30',dur:210,title:'Soirée Printemps',
+   tags:[{l:'Adhérents',c:'tag-adherent'}],
+   desc:"La soirée du club pour fêter l'arrivée du printemps tous ensemble.",
+   details:[['Horaire','19h30 · à confirmer'],['Lieu','Paris']],location:'Paris'},
+  {m:3,d:11,time:'8h30',dur:240,title:'Marathon de Paris',
+   tags:[{l:'Adhérents',c:'tag-adherent'}],
+   desc:"Le week-end du Marathon de Paris, les 10 et 11 avril. Une équipe CIELBLEU sur la ligne de départ.",
+   details:[['Horaire','8h30 · à confirmer'],['Lieu','Paris · à confirmer']],location:'Paris'},
+  {m:3,d:18,time:'9h00',dur:240,title:'Semi d\'Annecy',
+   tags:[{l:'Adhérents',c:'tag-adherent'}],
+   desc:"Le week-end du Semi d'Annecy, du vendredi 16 au dimanche 18 avril. Réservé aux adhérents.",
+   details:[['Horaire','9h00 · à confirmer'],['Lieu','Annecy']],location:'Annecy'},
+  {m:4,d:12,time:'19h20',dur:90,title:'Run découverte CIELBLEU × Fitzroy',
+   tags:[{l:'Ouvert à tous',c:'tag-open'},{l:'Fitzroy',c:'tag-partner'}],
+   desc:"Run collectif de 8 km en partenariat avec Fitzroy, ouvert à tous. On prolonge la soirée sur place.",
+   details:[['Horaire','19h20'],['Lieu','Fitzroy · Paris 11']],location:'Paris 11'},
+  {m:5,d:6,time:'10h00',dur:420,title:'KM Bleu · 10K Adidas + AG',
+   tags:[{l:'KM Bleu',c:'tag-km'},{l:'Adidas',c:'tag-partner'}],
+   desc:"Course officielle 10K en équipe CIELBLEU avec le partenariat Adidas, suivie de l'Assemblée Générale annuelle du club.",
+   details:[['Horaire','10h00 (course) · 14h00 (AG) · à confirmer'],['Lieu','Paris']],location:'Paris'},
+  {m:5,d:11,time:'19h30',dur:240,title:'CIELBLEU & Friends',
+   tags:[{l:'Adhérents',c:'tag-adherent'}],
+   desc:"La soirée de fin de saison : on célèbre ensemble tout ce qu'on a vécu cette année.",
+   details:[['Horaire','19h30 · à confirmer'],['Lieu','Paris']],location:'Paris'},
+  {m:5,d:21,time:'19h20',dur:90,title:'Run Musical',
+   tags:[{l:'Ouvert à tous',c:'tag-open'}],
+   desc:"Un run en musique le soir de la Fête de la musique, ouvert à tous.",
+   details:[['Horaire','19h20 · à confirmer'],['Lieu','Paris']],location:'Paris'},
+  {m:6,d:10,time:'9h30',dur:240,title:'Sortie Trail',
+   tags:[{l:'Adhérents',c:'tag-adherent'},{l:'Trail',c:'tag-trail'}],
+   desc:"Une sortie trail entre adhérents, loin du bitume, pour finir la saison en beauté.",
+   details:[['Horaire','9h30 · à confirmer'],['Lieu','À confirmer']],location:'Île-de-France'},
+];
+specials2027.forEach(s=>pushEvent(Object.assign({y:2027,session:false},s)));
+
 allEvents.sort((a,b)=>a.date-b.date);
 
-// Mois disposant d'événements
-const monthsWith=[...new Set(allEvents.map(e=>e.m))].sort((a,b)=>a-b);
+// Mois disposant d'événements, sous forme de clés année*12+mois (ex. janvier 2027 = 2027*12+0)
+const monthsWith=[...new Set(allEvents.map(e=>e.k))].sort((a,b)=>a-b);
 
 function isPast(ev){const end=new Date(ev.y,ev.m,ev.d,23,59);return end<TODAY;}

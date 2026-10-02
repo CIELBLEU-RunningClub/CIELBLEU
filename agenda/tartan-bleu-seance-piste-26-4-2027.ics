@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CIELBLEU Running//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:s151@cielbleu.run
+DTSTAMP:20261002T120000Z
+DTSTART:20270426T194500
+DTEND:20270426T211500
+SUMMARY:Tartan Bleu · Séance piste · CIELBLEU Running
+DESCRIPTION:La séance piste du lundi soir\, encadrée\, en fractionné. Le
+  rendez-vous vitesse des adhérents\, dans la bonne humeur.
+LOCATION:Paris
+END:VEVENT
+END:VCALENDAR
