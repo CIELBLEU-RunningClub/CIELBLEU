@@ -166,6 +166,9 @@ section:nth-child(even){background:var(--white);}
 .rec-row.f.top .rec-rank{color:#9A6F2E;}
 .rec-row.f.top .rec-head{border-color:#c9922f;}
 .rec-row.f.top .rec-time{color:#8a5f22;}
+.rec-plus{margin-top:4px;align-self:flex-start;font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;color:var(--mid);background:none;border:1.5px dashed rgba(18,43,68,.2);border-radius:30px;padding:9px 18px;cursor:pointer;transition:all .2s;}
+.rec-plus:hover{border-color:#3E7CB1;border-style:solid;color:#3E7CB1;background:rgba(62,124,177,.06);}
+.rec-group.femmes .rec-plus:hover{border-color:#2C5F8C;color:#2C5F8C;}
 .rec-empty{text-align:center;color:var(--mid);font-size:13px;padding:32px 20px;border:1.5px dashed rgba(18,43,68,.15);border-radius:14px;}
 .rec-row{display:flex;align-items:center;gap:14px;background:linear-gradient(160deg,var(--navy),var(--navy-deep));border:1px solid rgba(182,205,224,.14);border-radius:16px;padding:11px 18px;color:white;position:relative;overflow:hidden;transition:transform .25s ease,box-shadow .25s ease;}
 .rec-row:hover{transform:translateX(5px);box-shadow:0 14px 32px rgba(11,29,48,.38);}
@@ -407,7 +410,7 @@ footer{background:var(--navy-deep);padding:40px 60px;}
 
 <a id="back-to-top" href="#" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'});" aria-label="Retour en haut">↑</a>
 
-<script src="membres.js?v=1014"></script>
+<script src="membres.js?v=1015"></script>
 <script>
 
 /* ===== DONNÉES ===== */
@@ -640,15 +643,11 @@ function chronoToSec(t){
   const n=t.match(/(\d+)/);
   return n?(+n[1])*60:Number.MAX_SAFE_INTEGER;
 }
-function renderRecords(){
-  const cat=recordCats[recActive];
-  recTabs.innerHTML=recordCats.map((c,i)=>`<button class="rec-tab${i===recActive?' active':''}" onclick="setRecord(${i})">${c.label} <span class="rec-tab-n">${c.records.length}</span></button>`).join("");
-  // Deux classements distincts : chacun son podium, chacun sa couleur
-  const groupes=[['f','Femmes','femmes'],['h','Hommes','hommes']];
-  recBoard.innerHTML=groupes.map(([g,label,cls])=>{
-    const liste=cat.records.filter(r=>(r.sex||'H').toLowerCase()===g)
-                           .sort((a,b)=>chronoToSec(a.time)-chronoToSec(b.time));
-    const lignes=liste.length?liste.map((r,i)=>`
+const REC_APERCU=5;                 // nombre de chronos visibles avant dépliage
+let recOuvert={f:false,h:false};
+
+function ligneRecord(r,i,g){
+  return `
       <div class="rec-row ${g}${i===0?' top':''}">
         <div class="rec-rank">${i===0?'🥇':i===1?'🥈':i===2?'🥉':(i+1)}</div>
         ${headHTML(r)}
@@ -657,14 +656,34 @@ function renderRecords(){
           <div class="rec-event">${r.event}</div>
         </div>
         <div class="rec-time">${r.time}</div>
-      </div>`).join(""):`<div class="rec-empty">Chronos à venir.</div>`;
+      </div>`;
+}
+function renderRecords(){
+  const cat=recordCats[recActive];
+  recTabs.innerHTML=recordCats.map((c,i)=>`<button class="rec-tab${i===recActive?' active':''}" onclick="setRecord(${i})">${c.label} <span class="rec-tab-n">${c.records.length}</span></button>`).join("");
+  // Deux classements distincts : chacun son podium, chacun sa couleur
+  const groupes=[['f','Femmes','femmes'],['h','Hommes','hommes']];
+  recBoard.innerHTML=groupes.map(([g,label,cls])=>{
+    const liste=cat.records.filter(r=>(r.sex||'H').toLowerCase()===g)
+                           .sort((a,b)=>chronoToSec(a.time)-chronoToSec(b.time));
+    if(!liste.length)return `<div class="rec-group ${cls}">
+      <div class="rec-group-title">${label} <span class="rec-group-n">0</span></div>
+      <div class="rec-empty">Chronos à venir.</div>
+    </div>`;
+    // On n'affiche que les premiers, pour éviter une page interminable
+    const ouvert=recOuvert[g];
+    const reste=liste.length-REC_APERCU;
+    const visibles=ouvert?liste:liste.slice(0,REC_APERCU);
+    const bouton=reste>0?`<button class="rec-plus" onclick="basculerRecords('${g}')">${ouvert?'Réduire la liste':'Voir les '+reste+' autre'+(reste>1?'s':'')+' →'}</button>`:'';
     return `<div class="rec-group ${cls}">
       <div class="rec-group-title">${label} <span class="rec-group-n">${liste.length}</span></div>
-      ${lignes}
+      ${visibles.map((r,i)=>ligneRecord(r,i,g)).join("")}
+      ${bouton}
     </div>`;
   }).join("");
 }
-function setRecord(i){recActive=i;renderRecords();}
+function basculerRecords(g){recOuvert[g]=!recOuvert[g];renderRecords();}
+function setRecord(i){recActive=i;recOuvert={f:false,h:false};renderRecords();}
 renderRecords();
 
 /* ===== EN IMAGES (carrousel adhérents) ===== */
