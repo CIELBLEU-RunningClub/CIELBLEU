@@ -793,6 +793,7 @@ renderRecords();
 (function(){
   const wrap=document.getElementById('amediaTrack');if(!wrap)return;
   const items=[
+    {type:'photo',src:'commu-photo-14.jpg',cap:'Nos adhérents',pos:'12% center'},
     {type:'video',src:'adherents-media-video.mp4',cap:'Ambiance CIELBLEU'},
     {type:'photo',src:'adherents-media-1.jpg',cap:'Nos adhérents'},
     {type:'photo',src:'adherents-media-2.jpg',cap:'La communauté'},
@@ -806,7 +807,7 @@ renderRecords();
   let h='';
   items.forEach(function(it){
     if(it.type==='photo'){
-      h+=`<div class="amedia-tile"><img src="${it.src}" alt="${it.cap}" class="amedia-tile-img" loading="lazy" decoding="async"></div>`;
+      h+=`<div class="amedia-tile"><img src="${it.src}" alt="${it.cap}" class="amedia-tile-img" loading="lazy" decoding="async"${it.pos?` style="object-position:${it.pos}"`:''}></div>`;
     } else {
       h+=`<div class="amedia-tile video"><video src="${it.src}" muted loop playsinline preload="none" poster="poster-${it.src.replace(/\.mp4$/i,'')}.jpg" class="amedia-tile-img"></video></div>`;
     }
