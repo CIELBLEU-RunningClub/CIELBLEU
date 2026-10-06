@@ -8,3 +8,6 @@ IMG_*.JPG
 IMG_*.jpg
 WhatsApp Image*
 *.numbers
+
+# Réglages locaux de l'outil de modification, propres à chaque ordinateur
+.claude/
