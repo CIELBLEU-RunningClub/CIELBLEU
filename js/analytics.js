@@ -5,11 +5,20 @@
   var GA_ID='G-0RG107FT7T';
   var KEY='cielbleu-consent-v1';
   var disableKey='ga-disable-'+GA_ID;
+  // Appareil du gestionnaire : ouvrir une fois le site avec ?interne=1 (désactiver : ?interne=0).
+  // Le réglage est mémorisé sur l'appareil et GA n'est alors jamais chargé.
+  var INTERNE='cielbleu-interne';
+  try{
+    var q=new URLSearchParams(location.search).get('interne');
+    if(q==='1')localStorage.setItem(INTERNE,'1');
+    else if(q==='0')localStorage.removeItem(INTERNE);
+  }catch(e){}
+  function isInterne(){try{return localStorage.getItem(INTERNE)==='1';}catch(e){return false;}}
   function getConsent(){try{return localStorage.getItem(KEY);}catch(e){return null;}}
   function setConsent(v){try{localStorage.setItem(KEY,v);}catch(e){}}
 
   function loadGA(){
-    if(window.__gaLoaded)return;window.__gaLoaded=true;
+    if(window.__gaLoaded||isInterne())return;window.__gaLoaded=true;
     var s=document.createElement('script');s.async=true;
     s.src='https://www.googletagmanager.com/gtag/js?id='+GA_ID;
     document.head.appendChild(s);
@@ -33,7 +42,7 @@
 
   // Suivi des clics (uniquement si consentement accordé)
   document.addEventListener('click',function(e){
-    if(getConsent()!=='granted'||!window.gtag)return;
+    if(isInterne()||getConsent()!=='granted'||!window.gtag)return;
     var a=e.target.closest&&e.target.closest('a');
     var card=e.target.closest&&e.target.closest('.ev-card');
     if(a){
