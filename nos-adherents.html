@@ -11,7 +11,7 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Nos adhérents & le mur des fiertés · CIELBLEU Running Club Paris">
 <meta property="og:description" content="Les meilleurs chronos des adhérents du CIELBLEU Running Club : 10 km, semi-marathon et marathon. Une communauté de plus de 150 coureurs à Paris.">
-<meta property="og:image" content="https://cielbleu-runningclub.github.io/CIELBLEU/og-cielbleu.jpg">
+<meta property="og:image" content="https://cielbleu-runningclub.github.io/CIELBLEU/images/partage/og-accueil.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:type" content="image/jpeg">
@@ -20,10 +20,10 @@
 <meta property="og:locale" content="fr_FR">
 <meta property="og:site_name" content="CIELBLEU Running Club">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/svg+xml" href="images/marque/favicon.svg">
 <link rel="manifest" href="manifest.webmanifest">
 <script>if("serviceWorker" in navigator){addEventListener("load",function(){navigator.serviceWorker.register("sw.js").catch(function(){})});}</script>
-<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="apple-touch-icon" href="images/marque/icone-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
 <style>
@@ -342,7 +342,7 @@ footer{background:var(--navy-deep);padding:40px 60px;}
 <body>
 
 <nav>
-  <a href="./" class="nav-logo"><img src="CIELBLEU.png" alt="CIELBLEU"></a>
+  <a href="./" class="nav-logo"><img src="images/marque/logo-cielbleu.png" alt="CIELBLEU"></a>
   <ul class="nav-links">
     <li><a href="./#semaine">Le club</a></li>
     <li><a href="calendrier.html">Calendrier</a></li>
@@ -370,7 +370,7 @@ footer{background:var(--navy-deep);padding:40px 60px;}
 
 <!-- HERO -->
 <header class="page-hero">
-  <img src="couverture-adherents.webp" alt="" class="page-hero-bg-img" fetchpriority="high">
+  <img src="images/couvertures/adherents.webp" alt="" class="page-hero-bg-img" fetchpriority="high">
   <div class="page-hero-eyebrow">La communauté</div>
   <h1>NOS <em>ADHÉRENTS</em></h1>
   <p>CIELBLEU, c'est avant tout une communauté : des rencontres qui comptent, des encouragements dans les derniers kilomètres et des fiertés qu'on célèbre ensemble. Voici celles et ceux qui la font vivre, avec leurs mots et leurs plus belles performances.</p>
@@ -466,7 +466,7 @@ footer{background:var(--navy-deep);padding:40px 60px;}
 
 <footer>
   <div class="footer-inner">
-    <a href="#" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'});" aria-label="Retour en haut" style="display:inline-flex;cursor:pointer;"><img src="CIELBLEU.png" alt="CIELBLEU"></a>
+    <a href="#" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'});" aria-label="Retour en haut" style="display:inline-flex;cursor:pointer;"><img src="images/marque/logo-cielbleu.png" alt="CIELBLEU"></a>
     <div class="footer-socials">
       <a href="https://www.instagram.com/cielbleu_runningclub/" target="_blank" rel="noopener">Instagram</a>
       <a href="https://www.strava.com/clubs/lecielestbleu" target="_blank" rel="noopener">Strava</a>
@@ -480,7 +480,7 @@ footer{background:var(--navy-deep);padding:40px 60px;}
 
 <a id="back-to-top" href="#" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'});" aria-label="Retour en haut">↑</a>
 
-<script src="membres.js?v=1017"></script>
+<script src="donnees/membres.js?v=1017"></script>
 <script>
 
 /* ===== DONNÉES ===== */
@@ -491,7 +491,7 @@ function grad(i){const l1=48+((i*13)%22);const l2=26+((i*11)%16);const h=200+((i
 /* ===== TROMBINOSCOPE ===== */
 (function initTrombi(){
   const grid=document.getElementById('trombiGrid');if(!grid)return;
-  if(typeof MEMBRES==="undefined"){setTimeout(initTrombi,100);return;} // attendre que membres.js charge
+  if(typeof MEMBRES==="undefined"){setTimeout(initTrombi,100);return;} // attendre que donnees/membres.js charge
   // Tap/clic pour retourner une carte : indispensable sur mobile, où il n'y a pas de survol
   grid.addEventListener('click',e=>{
     const card=e.target.closest('.trombi-card.has-quote');
@@ -571,7 +571,7 @@ function grad(i){const l1=48+((i*13)%22);const l2=26+((i*11)%16);const h=200+((i
 
 /* ===== COMPTEURS ANIMÉS (hero) ===== */
 (function(){
-  // Le nombre d'adhérents vient de membres.js, pas d'une valeur en dur
+  // Le nombre d'adhérents vient de donnees/membres.js, pas d'une valeur en dur
   const heroCount=document.querySelector('.page-hero-stats [data-count]');
   if(heroCount&&typeof MEMBRES!=="undefined"){heroCount.dataset.count=MEMBRES.length;delete heroCount.dataset.suffix;} // chiffre exact : pas de « + »
   function animate(el){
@@ -793,23 +793,23 @@ renderRecords();
 (function(){
   const wrap=document.getElementById('amediaTrack');if(!wrap)return;
   const items=[
-    {type:'photo',src:'commu-photo-14.jpg',cap:'Marathon Bleu : Julien et deux fusées',pos:'12% center'},
-    {type:'video',src:'adherents-media-video.mp4',cap:'Ambiance CIELBLEU'},
-    {type:'photo',src:'adherents-media-1.jpg',cap:'Nos adhérents'},
-    {type:'photo',src:'adherents-media-2.jpg',cap:'La communauté'},
-    {type:'video',src:'adherents-media-video2.mp4',cap:'Nos adhérents'},
-    {type:'video',src:'adherents-media-video3.mp4',cap:'CIELBLEU'},
-    {type:'photo',src:'adherents-media-3.jpg',cap:'Nos adhérents'},
-    {type:'photo',src:'adherents-media-4.jpg',cap:'La communauté'},
-    {type:'video',src:'Piste.mp4',cap:'Nos adhérents'},
-    {type:'video',src:'ekiden.mp4',cap:'Ekiden'},
+    {type:'photo',src:'images/galerie/communaute-14.jpg',cap:'Marathon Bleu : Julien et deux fusées',pos:'12% center'},
+    {type:'video',src:'videos/adherents-1.mp4',cap:'Ambiance CIELBLEU'},
+    {type:'photo',src:'images/adherents/galerie-1.jpg',cap:'Nos adhérents'},
+    {type:'photo',src:'images/adherents/galerie-2.jpg',cap:'La communauté'},
+    {type:'video',src:'videos/adherents-2.mp4',cap:'Nos adhérents'},
+    {type:'video',src:'videos/adherents-3.mp4',cap:'CIELBLEU'},
+    {type:'photo',src:'images/adherents/galerie-3.jpg',cap:'Nos adhérents'},
+    {type:'photo',src:'images/adherents/galerie-4.jpg',cap:'La communauté'},
+    {type:'video',src:'videos/piste.mp4',cap:'Nos adhérents'},
+    {type:'video',src:'videos/ekiden.mp4',cap:'Ekiden'},
   ];
   let h='';
   items.forEach(function(it){
     if(it.type==='photo'){
       h+=`<div class="amedia-tile"><img src="${it.src}" alt="${it.cap}" class="amedia-tile-img" loading="lazy" decoding="async"${it.pos?` style="object-position:${it.pos}"`:''}></div>`;
     } else {
-      h+=`<div class="amedia-tile video"><video src="${it.src}" muted loop playsinline preload="none" poster="poster-${it.src.replace(/\.mp4$/i,'')}.jpg" class="amedia-tile-img"></video></div>`;
+      h+=`<div class="amedia-tile video"><video src="${it.src}" muted loop playsinline preload="none" poster="${it.src.replace(/^videos\//,'videos/posters/').replace(/\.mp4$/i,'.jpg')}" class="amedia-tile-img"></video></div>`;
     }
   });
   wrap.innerHTML=h;
@@ -877,13 +877,13 @@ if(location.hash){
   }
 }
 </script>
-<script src="scroll-shoe.js?v=3"></script>
+<script src="js/scroll-shoe.js?v=3"></script>
 <script>
 /* Avantages : toujours ouverts sur ordinateur, dépliables sur téléphone */
 (function(){var d=document.querySelector('.ab-details');if(!d)return;var mq=matchMedia('(min-width:769px)');function sync(){if(mq.matches)d.open=true;else d.open=false;}sync();(mq.addEventListener?mq.addEventListener('change',sync):mq.addListener(sync));})();
 </script>
 <script>function toggleNav(){document.getElementById('navMobile').classList.toggle('open');}
 document.addEventListener('click',function(e){var m=document.getElementById('navMobile');if(m&&m.classList.contains('open')&&!m.contains(e.target)&&!e.target.closest('.nav-hamburger'))m.classList.remove('open');});</script>
-<script src="analytics.js?v=2"></script>
+<script src="js/analytics.js?v=2"></script>
 </body>
 </html>

@@ -23,32 +23,34 @@ Le site est un ensemble de fichiers stockés sur GitHub, sous le compte du club 
 
 | Je veux changer | Fichier |
 |---|---|
-| Un événement, une séance, une date | `events.js` (puis voir « règles d'or ») |
-| Un article d'actualité | `articles.js` + une page `article-xxx.html` |
-| Un adhérent (prénom, citation, photo) | `membres.js` |
+| Un événement, une séance, une date | `donnees/events.js` (puis voir « règles d'or ») |
+| Un article d'actualité | `donnees/articles.js` + une page `article-xxx.html` |
+| Un adhérent (prénom, citation, photo) | `donnees/membres.js` |
 | Un chrono du mur des fiertés | `nos-adherents.html`, tableau `recordCats` |
 | Un texte, un titre, un bouton | la page `.html` concernée |
 | Les partenaires | `nos-partenaires.html` |
 
-Le début de `events.js` explique comment il est organisé.
+Le début de `donnees/events.js` explique comment il est organisé.
+
+Pour savoir où ranger une photo ou une vidéo, et comment la nommer, voir [README.md](README.md) (section « Comment le site est rangé »).
 
 ## Les règles d'or
 
 1. **Toujours récupérer la dernière version avant de commencer** (voir plus haut).
-2. **Après avoir touché à `events.js`**, lance `bash outils/genere-ics.sh`. Sans ça, le bouton « Ajouter à mon agenda » donne l'ancienne version.
-3. **Fais avancer le numéro de version** du fichier modifié dans les pages qui le chargent, par exemple `events.js?v=32` devient `events.js?v=33`. Sinon les téléphones gardent l'ancienne version en mémoire. Fichiers concernés : `events.js` (`index.html`, `calendrier.html`), `membres.js` (`nos-adherents.html`, `notre-equipe.html`), `articles.js` (`actualites.html`).
-4. **Photos** : réduis-les avant de les ajouter (environ 1600 px de large, moins de 300 Ko). Pas de vidéo brute. Les originaux restent sur le Drive du club, dossier « 10. SITE INTERNET ».
+2. **Après avoir touché à `donnees/events.js`**, lance `bash outils/genere-ics.sh`. Sans ça, le bouton « Ajouter à mon agenda » donne l'ancienne version.
+3. **Fais avancer le numéro de version** du fichier modifié dans les pages qui le chargent, par exemple `donnees/events.js?v=32` devient `donnees/events.js?v=33`. Sinon les téléphones gardent l'ancienne version en mémoire. Fichiers concernés : `donnees/events.js` (`index.html`, `calendrier.html`), `donnees/membres.js` (`nos-adherents.html`, `notre-equipe.html`), `donnees/articles.js` (`actualites.html`).
+4. **Photos** : réduis-les avant de les ajouter (environ 1600 px de large, moins de 300 Ko). Pas de vidéo brute. Les originaux restent sur le Drive du club, dossier « 10. SITE INTERNET ». Range la version réduite dans le bon sous-dossier de `images/` ou `videos/`.
 5. **Style des textes** : ton chaleureux, tutoiement, phrases courtes. Aucun tiret cadratin (le long tiret). Utilise « · » ou reformule.
 6. **Une pastille ne répète pas le titre.** Si le titre contient « Adidas », pas de pastille « Adidas ».
 7. **Teste sur téléphone** avant de publier : la plupart des visiteurs sont sur iPhone.
 
 ## Cas courants
 
-**Ajouter un événement.** Dans `events.js`, ajoute une entrée dans le tableau `specials2027` (ou `specials` pour 2026), en copiant une entrée existante : mois `m` (**janvier = 0**) et jour `d`, `time`, `title`, `tags`, `desc`, `details`. Puis les règles 2 et 3.
+**Ajouter un événement.** Dans `donnees/events.js`, ajoute une entrée dans le tableau `specials2027` (ou `specials` pour 2026), en copiant une entrée existante : mois `m` (**janvier = 0**) et jour `d`, `time`, `title`, `tags`, `desc`, `details`. Puis les règles 2 et 3.
 
-**Ajouter un article.** Suis les étapes écrites en haut de `articles.js`. Pense à la règle 3 pour `articles.js`.
+**Ajouter un article.** Suis les étapes écrites en haut de `donnees/articles.js`. Pense à la règle 3 pour `donnees/articles.js`.
 
-**Ajouter un adhérent.** Une ligne dans `membres.js` : `{nom:'Prénom', citation:'', photo:''}`. Deux personnes avec le même prénom : `Prénom n°1`, `Prénom n°2`. Photo : un fichier dans `membres/`, carré, environ 320 px.
+**Ajouter un adhérent.** Une ligne dans `donnees/membres.js` : `{nom:'Prénom', citation:'', photo:''}`. Deux personnes avec le même prénom : `Prénom n°1`, `Prénom n°2`. Photo : un fichier dans `images/membres/` (créer le dossier si besoin), carré, environ 320 px, nommé `prenom.jpg`.
 
 **Ajouter un chrono.** Dans `recordCats` (`nos-adherents.html`), ajoute une ligne dans la bonne distance : `{who:'Prénom',time:"38'20",event:'',hue:200,photo:'',sex:'H'}`. `sex` vaut `H` ou `F`, `hue` est un numéro unique. Le classement se fait tout seul.
 

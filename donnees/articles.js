@@ -4,12 +4,12 @@
 // Pour ajouter un article :
 //   1. créer la page article-<id>.html (partir de article-marathon-bleu.html)
 //   2. ajouter une entrée ici, tout en haut du tableau
-//   3. faire avancer le ?v= d'articles.js dans actualites.html
+//   3. faire avancer le ?v= d'donnees/articles.js dans actualites.html
 const ARTICLES=[
   {
     id:'marathon-bleu',
     url:'article-marathon-bleu.html',
-    cover:'marathon-cover.jpg?v=2',
+    cover:'images/evenements/marathon-bleu-couverture.jpg?v=2',
     coverPos:'center 50%',
     alt:"Les adhérents du CIELBLEU réunis sur la piste bleue du stade",
     tag:'Événement',

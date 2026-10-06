@@ -1,5 +1,5 @@
 #!/bin/bash
-# Régénère les fichiers agenda/*.ics (bouton « Ajouter à mon agenda ») à partir d'events.js.
+# Régénère les fichiers agenda/*.ics (bouton « Ajouter à mon agenda ») à partir d'donnees/events.js.
 # À lancer après TOUTE modification d'un événement (date, titre, horaire, lieu, description).
 #
 #   bash outils/genere-ics.sh
@@ -27,7 +27,7 @@ allEvents.forEach(function(ev){
 });
 return JSON.stringify(res);
 `.split('__STAMP__').join(stamp);
-var fichiers=JSON.parse((new Function(lire('events.js')+'\n'+suite))());
+var fichiers=JSON.parse((new Function(lire('donnees/events.js')+'\n'+suite))());
 var fm=$.NSFileManager.defaultManager;
 var attendus={};var ecrits=0,crees=0;
 fichiers.forEach(function(f){

@@ -1,6 +1,6 @@
 // Le trombinoscope des adhérents : une ligne par membre.
 // Saison 2026-2027 · 132 adhérents.
-// Pour ajouter un headshot : photo:'membres/prenom.jpg' (les initiales s'affichent sinon).
+// Pour ajouter un headshot : photo:'images/membres/prenom.jpg' (les initiales s'affichent sinon).
 // Pour ajouter une citation : citation:'…' (le verso reste neutre si vide).
 const MEMBRES=[
   {nom:'Candice', citation:'Mieux vaut avoir des courbatures que des regrets.', photo:''},
