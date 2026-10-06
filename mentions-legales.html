@@ -9,10 +9,10 @@
 <meta name="robots" content="noindex">
 <!-- Canonical : à remplacer par le nom de domaine définitif quand il sera acheté -->
 <link rel="canonical" href="https://cielbleu-runningclub.github.io/CIELBLEU/mentions-legales.html">
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/svg+xml" href="images/marque/favicon.svg">
 <link rel="manifest" href="manifest.webmanifest">
 <script>if("serviceWorker" in navigator){addEventListener("load",function(){navigator.serviceWorker.register("sw.js").catch(function(){})});}</script>
-<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="apple-touch-icon" href="images/marque/icone-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
 <style>
@@ -112,7 +112,7 @@ footer{background:var(--navy-deep);padding:36px 60px;}
 <body>
 
 <nav>
-  <a href="./" class="nav-logo"><img src="CIELBLEU.png" alt="CIELBLEU"></a>
+  <a href="./" class="nav-logo"><img src="images/marque/logo-cielbleu.png" alt="CIELBLEU"></a>
   <ul class="nav-links">
     <li><a href="./#semaine">Le club</a></li>
     <li><a href="calendrier.html">Calendrier</a></li>
@@ -217,7 +217,7 @@ footer{background:var(--navy-deep);padding:36px 60px;}
 
 <footer>
   <div class="footer-inner">
-    <a href="#" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'});" aria-label="Retour en haut" style="display:inline-flex;cursor:pointer;"><img src="CIELBLEU.png" alt="CIELBLEU" class="footer-logo-img"></a>
+    <a href="#" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'});" aria-label="Retour en haut" style="display:inline-flex;cursor:pointer;"><img src="images/marque/logo-cielbleu.png" alt="CIELBLEU" class="footer-logo-img"></a>
     <div class="footer-socials">
       <a href="https://www.instagram.com/cielbleu_runningclub/" target="_blank" rel="noopener">Instagram</a>
       <a href="https://www.strava.com/clubs/lecielestbleu" target="_blank" rel="noopener">Strava</a>
@@ -235,9 +235,9 @@ footer{background:var(--navy-deep);padding:36px 60px;}
 
 window.addEventListener('scroll',()=>{document.getElementById('back-to-top').classList.toggle('show',window.scrollY>400);},{passive:true});
 </script>
-<script src="scroll-shoe.js?v=3"></script>
+<script src="js/scroll-shoe.js?v=3"></script>
 <script>function toggleNav(){document.getElementById('navMobile').classList.toggle('open');}
 document.addEventListener('click',function(e){var m=document.getElementById('navMobile');if(m&&m.classList.contains('open')&&!m.contains(e.target)&&!e.target.closest('.nav-hamburger'))m.classList.remove('open');});</script>
-<script src="analytics.js?v=2"></script>
+<script src="js/analytics.js?v=2"></script>
 </body>
 </html>

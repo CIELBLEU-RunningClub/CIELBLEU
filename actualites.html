@@ -11,7 +11,7 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Le journal du club">
 <meta property="og:description" content="La vie du club, les événements et les coulisses du CIELBLEU Running Club.">
-<meta property="og:image" content="https://cielbleu-runningclub.github.io/CIELBLEU/og-cielbleu.jpg">
+<meta property="og:image" content="https://cielbleu-runningclub.github.io/CIELBLEU/images/partage/og-accueil.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:type" content="image/jpeg">
@@ -20,10 +20,10 @@
 <meta property="og:locale" content="fr_FR">
 <meta property="og:site_name" content="CIELBLEU Running Club">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/svg+xml" href="images/marque/favicon.svg">
 <link rel="manifest" href="manifest.webmanifest">
 <script>if("serviceWorker" in navigator){addEventListener("load",function(){navigator.serviceWorker.register("sw.js").catch(function(){})});}</script>
-<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="apple-touch-icon" href="images/marque/icone-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
 <style>
@@ -196,7 +196,7 @@ footer{background:var(--navy-deep);padding:40px 60px;}
 <body>
 
 <nav>
-  <a href="./" class="nav-logo"><img src="CIELBLEU.png" alt="CIELBLEU" height="20"></a>
+  <a href="./" class="nav-logo"><img src="images/marque/logo-cielbleu.png" alt="CIELBLEU" height="20"></a>
   <ul class="nav-links">
     <li><a href="./#semaine">Le club</a></li>
     <li><a href="calendrier.html">Calendrier</a></li>
@@ -224,7 +224,7 @@ footer{background:var(--navy-deep);padding:40px 60px;}
 
 <!-- HERO -->
 <header class="page-hero">
-  <img src="New7.webp" alt="" class="page-hero-bg-img" fetchpriority="high">
+  <img src="images/couvertures/actualites.webp" alt="" class="page-hero-bg-img" fetchpriority="high">
   <div class="page-hero-eyebrow">Actualités</div>
   <h1>LE <em>JOURNAL</em><br>DU CLUB</h1>
   <p>Les événements qu'on prépare, ceux qu'on vient de vivre, et tout ce qui se passe entre deux séances. Ici, on raconte.</p>
@@ -252,7 +252,7 @@ footer{background:var(--navy-deep);padding:40px 60px;}
 
 <footer>
   <div class="footer-inner">
-    <a href="#" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'});" aria-label="Retour en haut" style="display:inline-flex;cursor:pointer;"><img src="CIELBLEU.png" alt="CIELBLEU"></a>
+    <a href="#" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'});" aria-label="Retour en haut" style="display:inline-flex;cursor:pointer;"><img src="images/marque/logo-cielbleu.png" alt="CIELBLEU"></a>
     <div class="footer-socials">
       <a href="https://www.instagram.com/cielbleu_runningclub/" target="_blank" rel="noopener">Instagram</a>
       <a href="https://www.strava.com/clubs/lecielestbleu" target="_blank" rel="noopener">Strava</a>
@@ -266,7 +266,7 @@ footer{background:var(--navy-deep);padding:40px 60px;}
 
 <a id="back-to-top" href="#" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'});" aria-label="Retour en haut">↑</a>
 
-<script src="articles.js?v=9"></script>
+<script src="donnees/articles.js?v=9"></script>
 <script>
 (function(){
   if(typeof ARTICLES==='undefined'||!ARTICLES.length)return;
@@ -281,9 +281,9 @@ window.addEventListener('scroll',()=>{
   document.getElementById('back-to-top').classList.toggle('show',window.scrollY>400);
 },{passive:true});
 </script>
-<script src="scroll-shoe.js?v=3"></script>
+<script src="js/scroll-shoe.js?v=3"></script>
 <script>function toggleNav(){document.getElementById('navMobile').classList.toggle('open');}
 document.addEventListener('click',function(e){var m=document.getElementById('navMobile');if(m&&m.classList.contains('open')&&!m.contains(e.target)&&!e.target.closest('.nav-hamburger'))m.classList.remove('open');});</script>
-<script src="analytics.js?v=2"></script>
+<script src="js/analytics.js?v=2"></script>
 </body>
 </html>

@@ -1,33 +1,10 @@
 .DS_Store
+
+# Originaux bruts : ils restent sur le Drive du club, on ne publie que les versions réduites
 Trombi/
-# Fichiers sources bruts (non compressés) — versions optimisées commitées séparément
-adhérents.MOV
-adhérents5.MP4
-adhérents6.MP4
-adhérents.jpeg
-adhérents2.jpg
-adhérents3.jpg
-adhérentsnew.jpg
-adhérentsnew2.JPG
-equipenew.jpg
-commu13.JPG
-commu14.JPG
-commu15.JPG
-commu16.JPG
-commu17.JPG
-IMG_6193.JPG
-IMG_61932.JPG
-communew.JPG
-un (1).png
-WhatsApp Image 2026-09-20 at 10.51.53.jpeg
-WhatsApp Image 2026-09-20 at 10.51.54.jpeg
-Latest.numbers
-IMG_0884.JPG
-Design sans titre (1).png
-Newmarathonbleu.jpg
-IMG_0467.JPG
-IMG_0515.JPG
-IMG_0608.JPG
-IMG_0832.JPG
-IMG_0881.JPG
-IMG_0932.JPG
+*.MOV
+*.MP4
+IMG_*.JPG
+IMG_*.jpg
+WhatsApp Image*
+*.numbers

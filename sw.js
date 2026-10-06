@@ -1,7 +1,7 @@
 /* Service worker CIELBLEU — stratégie « réseau d'abord » pour que l'app installée
    (icône écran d'accueil) affiche TOUJOURS la dernière version quand elle est en ligne,
    et ne serve le cache qu'en secours (hors-ligne). */
-const CACHE = 'cielbleu-v3';
+const CACHE = 'cielbleu-v4';
 
 self.addEventListener('install', (e) => {
   // Activer immédiatement la nouvelle version du SW
