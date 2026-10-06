@@ -6,17 +6,17 @@
 <meta name="theme-color" content="#0b1d30">
 <title>Calendrier de la saison · CIELBLEU Running Club Paris</title>
 <meta name="description" content="Toutes les dates du CIELBLEU Running Club à Paris : Social Run du dimanche, séances piste et quais, événements avec les marques. Ajoutez-les à votre agenda.">
-<!-- Canonical : à remplacer par le nom de domaine définitif quand il sera acheté -->
-<link rel="canonical" href="https://cielbleu-runningclub.github.io/CIELBLEU/calendrier.html">
+<!-- Canonical : nom de domaine définitif -->
+<link rel="canonical" href="https://cielbleurunningclub.com/calendrier.html">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Calendrier · CIELBLEU Running Club Paris">
 <meta property="og:description" content="Toutes les dates de la saison : Social Run du dimanche, séances et événements spéciaux.">
-<meta property="og:image" content="https://cielbleu-runningclub.github.io/CIELBLEU/images/partage/og-accueil.jpg">
+<meta property="og:image" content="https://cielbleurunningclub.com/images/partage/og-accueil.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:alt" content="CIELBLEU, coureurs en mouvement sur une piste bleue">
-<meta property="og:url" content="https://cielbleu-runningclub.github.io/CIELBLEU/calendrier.html">
+<meta property="og:url" content="https://cielbleurunningclub.com/calendrier.html">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:site_name" content="CIELBLEU Running Club">
 <meta name="twitter:card" content="summary_large_image">
@@ -683,7 +683,7 @@ function shareEvent(){
   if(!currentEventId)return;
   const ev=EVENTS_BY_ID[currentEventId];
   const text=`${ev.title} · ${ev.dateStr}\n📍 ${ev.location||'Paris'}\nAvec le CIELBLEU Running Club`;
-  const url='https://cielbleu-runningclub.github.io/CIELBLEU/calendrier.html';
+  const url='https://cielbleurunningclub.com/calendrier.html';
   if(navigator.share){
     navigator.share({title:ev.title,text,url}).catch(()=>{});
   } else if(navigator.clipboard){

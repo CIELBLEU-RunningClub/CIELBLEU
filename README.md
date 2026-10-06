@@ -1,7 +1,7 @@
 # CIELBLEU · site du running club
 
 Site statique (HTML, CSS et JavaScript, sans outil de construction), publié automatiquement par GitHub Pages à chaque enregistrement sur la branche `main`.
-En ligne : https://cielbleu-runningclub.github.io/CIELBLEU/
+En ligne : https://cielbleurunningclub.com/
 
 Pour le mettre à jour, voir **[GUIDE-ORGA.md](GUIDE-ORGA.md)**.
 
