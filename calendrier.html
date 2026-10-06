@@ -260,10 +260,10 @@ section:nth-child(even){background:var(--white);}
 .ev-modal-article .ttl{font-size:14.5px;font-weight:600;line-height:1.45;}
 /* Les lieux restent volontairement génériques : on offre un moyen simple de demander. */
 .ev-modal-contact{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin:-8px 0 22px;}
-.ev-modal-contact .lbl{font-size:12.5px;color:var(--mid);}
+.ev-modal-contact .lbl{font-size:12.5px;color:var(--mid);width:100%;}  /* le texte sur sa ligne, les deux boutons côte à côte dessous */
 .ev-modal-contact a{display:inline-flex;align-items:center;gap:6px;font-family:'Bebas Neue',sans-serif;font-size:12.5px;letter-spacing:1.5px;text-decoration:none;padding:7px 15px;border-radius:999px;border:1.5px solid rgba(18,43,68,.18);color:var(--navy);transition:border-color .2s,color .2s,background .2s;}
 .ev-modal-contact a:hover{border-color:#3E7CB1;color:#3E7CB1;background:rgba(62,124,177,.07);}
-@media(max-width:768px){.ev-modal-contact{gap:8px;}.ev-modal-contact .lbl{width:100%;}}
+@media(max-width:768px){.ev-modal-contact{gap:8px;}}
 .ev-modal-close{background:var(--navy);color:white;font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:2px;padding:12px 28px;border-radius:4px;border:none;cursor:pointer;transition:background .2s;}
 .ev-modal-close:hover{background:var(--blue-steel);}
 
