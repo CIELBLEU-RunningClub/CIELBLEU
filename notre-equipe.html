@@ -82,7 +82,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .page-hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(80deg,rgba(11,29,48,.96) 0%,rgba(11,29,48,.84) 38%,rgba(11,29,48,.56) 68%,rgba(18,43,68,.4) 100%),linear-gradient(to top,rgba(11,29,48,.92) 0%,rgba(11,29,48,.3) 32%,rgba(11,29,48,.08) 58%);}
 .page-hero-bg-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;opacity:.85;pointer-events:none;z-index:0;}
 .page-hero > *:not(.page-hero-bg-img):not(picture){position:relative;z-index:2;}
-.page-hero .page-hero-bg-img{object-position:center 55%;}
+.page-hero .page-hero-bg-img{object-position:center 50%;}
 /* Téléphone : la photo de groupe reste entière, calée en haut, et se fond dans le bleu en bas */
 @media(max-width:768px){.page-hero .page-hero-bg-img{inset:0 0 auto 0;height:auto;object-fit:contain;object-position:center top;-webkit-mask-image:linear-gradient(180deg,#000 60%,transparent 95%);mask-image:linear-gradient(180deg,#000 60%,transparent 95%);}}
 @media(max-width:768px){.page-hero::before{background:linear-gradient(180deg,rgba(11,29,48,.5) 0%,rgba(11,29,48,.28) 32%,rgba(11,29,48,.55) 70%,rgba(11,29,48,.9) 100%),linear-gradient(90deg,rgba(11,29,48,.85) 0%,rgba(11,29,48,.5) 48%,rgba(11,29,48,.18) 100%);}.page-hero-bg-img{opacity:.9;object-position:center 32%;}}
@@ -233,7 +233,7 @@ footer{background:var(--navy-deep);padding:40px 60px;}
 <header class="page-hero">
   <picture>
     <source media="(max-width:768px)" srcset="images/couvertures/equipe-mobile.webp?v=1">
-    <img src="images/couvertures/equipe.webp?v=2" alt="" class="page-hero-bg-img" fetchpriority="high">
+    <img src="images/couvertures/equipe.webp?v=3" alt="" class="page-hero-bg-img" fetchpriority="high">
   </picture>
   <div class="page-hero-eyebrow">L'organisation</div>
   <h1>UNE ÉQUIPE <em>ORGA</em><br>DE CHOC.</h1>
