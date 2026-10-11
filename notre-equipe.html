@@ -81,7 +81,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .page-hero{min-height:100vh;min-height:100svh;background:var(--navy-deep);display:flex;flex-direction:column;justify-content:center;padding:150px 60px 70px;position:relative;overflow:hidden;}
 .page-hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(80deg,rgba(11,29,48,.96) 0%,rgba(11,29,48,.84) 38%,rgba(11,29,48,.56) 68%,rgba(18,43,68,.4) 100%),linear-gradient(to top,rgba(11,29,48,.92) 0%,rgba(11,29,48,.3) 32%,rgba(11,29,48,.08) 58%);}
 .page-hero-bg-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;opacity:.85;pointer-events:none;z-index:0;}
-.page-hero > *:not(.page-hero-bg-img){position:relative;z-index:2;}
+.page-hero > *:not(.page-hero-bg-img):not(picture){position:relative;z-index:2;}
+.page-hero .page-hero-bg-img{object-position:center 55%;}
+/* Téléphone : la photo de groupe reste entière, calée en haut, et se fond dans le bleu en bas */
+@media(max-width:768px){.page-hero .page-hero-bg-img{inset:0 0 auto 0;height:auto;object-fit:contain;object-position:center top;-webkit-mask-image:linear-gradient(180deg,#000 60%,transparent 95%);mask-image:linear-gradient(180deg,#000 60%,transparent 95%);}}
 @media(max-width:768px){.page-hero::before{background:linear-gradient(180deg,rgba(11,29,48,.5) 0%,rgba(11,29,48,.28) 32%,rgba(11,29,48,.55) 70%,rgba(11,29,48,.9) 100%),linear-gradient(90deg,rgba(11,29,48,.85) 0%,rgba(11,29,48,.5) 48%,rgba(11,29,48,.18) 100%);}.page-hero-bg-img{opacity:.9;object-position:center 32%;}}
 .page-hero-eyebrow{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:5px;color:var(--blue-sky);opacity:.8;margin-bottom:14px;position:relative;z-index:1;}
 .page-hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(44px,7.6vw,92px);line-height:1;letter-spacing:.5px;color:white;position:relative;z-index:1;}
@@ -228,7 +231,10 @@ footer{background:var(--navy-deep);padding:40px 60px;}
 
 <!-- HERO -->
 <header class="page-hero">
-  <img src="images/couvertures/equipe.webp" alt="" class="page-hero-bg-img" fetchpriority="high">
+  <picture>
+    <source media="(max-width:768px)" srcset="images/couvertures/equipe-mobile.webp?v=1">
+    <img src="images/couvertures/equipe.webp?v=2" alt="" class="page-hero-bg-img" fetchpriority="high">
+  </picture>
   <div class="page-hero-eyebrow">L'organisation</div>
   <h1>UNE ÉQUIPE <em>ORGA</em><br>DE CHOC.</h1>
   <p>10 personnes bénévoles qui donnent de leur temps pour faire vivre le club. Du président à la comm', ils sont derrière chaque run, chaque événement, chaque café.</p>
@@ -279,7 +285,7 @@ footer{background:var(--navy-deep);padding:40px 60px;}
       <div class="card-back"><div class="card-back-text">Tout le monde est sympa sauf moi.</div></div>
     </div></div>
     <div class="orga-card"><div class="card-inner">
-      <div class="card-front"><img src="images/equipe/julia.png" alt="Julia" class="orga-photo" loading="lazy" decoding="async"><div class="orga-name">Julia</div><div class="orga-role">Événementiel</div><div class="orga-role2">Référente prévention &amp; sécurité</div></div>
+      <div class="card-front"><img src="images/equipe/julia.png?v=2" alt="Julia" class="orga-photo" loading="lazy" decoding="async"><div class="orga-name">Julia</div><div class="orga-role">Événementiel</div><div class="orga-role2">Référente prévention &amp; sécurité</div></div>
       <div class="card-back"><div class="card-back-text">Je suis venue par hasard en novembre 2024 et je ne suis jamais repartie.</div></div>
     </div></div>
     <div class="orga-card"><div class="card-inner">
@@ -330,7 +336,7 @@ footer{background:var(--navy-deep);padding:40px 60px;}
 /* ===== EN IMAGES (carrousel équipe) ===== */
 (function(){
   const wrap=document.getElementById('amediaTrack');if(!wrap)return;
-  const photos=['images/equipe/groupe-15.jpg','images/equipe/groupe-13.jpg','images/equipe/groupe-14.jpg','images/equipe/groupe-16.jpg','images/equipe/groupe-17.jpg','images/equipe/groupe-18.jpg'];
+  const photos=['images/equipe/groupe-15.jpg','images/equipe/groupe-19.jpg','images/equipe/groupe-13.jpg','images/equipe/groupe-20.jpg','images/equipe/groupe-14.jpg','images/equipe/groupe-21.jpg','images/equipe/groupe-16.jpg','images/equipe/groupe-22.jpg','images/equipe/groupe-17.jpg','images/equipe/groupe-18.jpg'];
   wrap.innerHTML=photos.map(src=>`<div class="amedia-tile"><img src="${src}" alt="L'équipe CIELBLEU" class="amedia-tile-img" loading="lazy" decoding="async"></div>`).join('');
 })();
 
