@@ -86,8 +86,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .page-hero-bg-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;opacity:.85;pointer-events:none;z-index:0;}
 .page-hero > *:not(.page-hero-bg-img):not(picture){position:relative;z-index:2;}
 .page-hero .page-hero-bg-img{object-position:center 68%;}
-/* Téléphone : la photo de groupe reste entière, calée en haut, et se fond dans le bleu en bas */
-@media(max-width:768px){.page-hero .page-hero-bg-img{inset:0 0 auto 0;height:auto;object-fit:contain;object-position:center top;-webkit-mask-image:linear-gradient(180deg,#000 60%,transparent 95%);mask-image:linear-gradient(180deg,#000 60%,transparent 95%);}}
+@media(max-width:768px){.page-hero .page-hero-bg-img{object-fit:cover;object-position:center top;}}
 @media(max-width:768px){.page-hero::before{background:linear-gradient(180deg,rgba(11,29,48,.5) 0%,rgba(11,29,48,.28) 32%,rgba(11,29,48,.55) 70%,rgba(11,29,48,.9) 100%),linear-gradient(90deg,rgba(11,29,48,.85) 0%,rgba(11,29,48,.5) 48%,rgba(11,29,48,.18) 100%);}.page-hero-bg-img{opacity:.9;object-position:center 32%;}}
 .page-hero-eyebrow{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:5px;color:var(--blue-sky);opacity:.8;margin-bottom:14px;position:relative;z-index:1;}
 .page-hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(44px,7.6vw,92px);line-height:1;letter-spacing:.5px;color:white;position:relative;z-index:1;}
@@ -191,8 +190,7 @@ footer{background:var(--navy-deep);padding:40px 60px;}
   .nav-links,.nav-cta,.nav-cta-group{display:none;}
   .nav-hamburger{display:flex;align-items:center;}
   
-  /* Téléphone : le haut de la page s'arrête juste après le texte (plus de grand vide bleu) */
-  .page-hero{padding:calc(100vw * .84) 20px 56px;min-height:auto;justify-content:flex-start;}
+  .page-hero{padding:110px 20px 56px;min-height:100vh;min-height:100svh;justify-content:flex-start;}  /* texte en haut sur le mur, le groupe en dessous */
   section{padding:40px 20px;scroll-margin-top:70px;}
   .orga-grid{display:grid!important;justify-content:start;grid-template-columns:none!important;grid-auto-flow:column;grid-template-rows:repeat(2,1fr);grid-auto-columns:44%;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding-bottom:12px;scrollbar-width:none;-ms-overflow-style:none;}
   .orga-grid::-webkit-scrollbar{display:none;}
@@ -241,7 +239,7 @@ footer{background:var(--navy-deep);padding:40px 60px;}
 <!-- HERO -->
 <header class="page-hero">
   <picture>
-    <source media="(max-width:768px)" srcset="images/couvertures/equipe-mobile.webp?v=7">
+    <source media="(max-width:768px)" srcset="images/couvertures/equipe-mobile.webp?v=8">
     <img src="images/couvertures/equipe.webp?v=7" alt="" class="page-hero-bg-img" fetchpriority="high">
   </picture>
   <div class="page-hero-eyebrow">L'organisation · Saison 3</div>
