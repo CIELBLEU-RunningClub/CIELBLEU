@@ -110,7 +110,7 @@ section:nth-child(even){background:var(--white);}
 @media(hover:hover){.orga-card:hover .card-inner{transform:rotateY(180deg);}}
 .card-inner.flipped{transform:rotateY(180deg);}
 .card-flip-ico{position:absolute;top:10px;right:10px;width:28px;height:28px;border-radius:50%;background:rgba(18,43,68,.1);color:var(--mid);font-size:15px;line-height:1;display:flex;align-items:center;justify-content:center;transition:background .2s,color .2s;}
-.orga-card:hover .card-flip-ico{background:var(--navy);color:#fff;}
+@media(hover:hover){.card-flip-ico{display:none;}}  /* la pastille ↻ n'est utile qu'au toucher : sur ordinateur, la carte se retourne au survol */
 .card-front,.card-back{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:14px;padding:24px 16px 20px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;text-align:center;}
 .card-front{background:var(--white);border:1.5px solid rgba(18,43,68,.08);justify-content:flex-start;padding-top:28px;}  /* photos toutes à la même hauteur, quel que soit le nombre de lignes de texte dessous */
 .card-back{background:linear-gradient(150deg,var(--navy),var(--navy-deep));border:1.5px solid rgba(182,205,224,.15);transform:rotateY(180deg);justify-content:center;}
