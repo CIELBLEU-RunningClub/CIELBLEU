@@ -103,7 +103,8 @@ section:nth-child(even){background:var(--white);}
 .s-intro{font-size:15px;color:var(--mid);max-width:620px;line-height:1.7;margin-bottom:40px;}
 
 /* ── CARTES ÉQUIPE ── */
-.orga-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:24px;margin-bottom:24px;}
+.orga-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:24px;margin-bottom:24px;}  /* 5 par rangée, la dernière rangée est centrée */
+.orga-grid .orga-card{flex:0 0 calc((100% - 96px)/5);}
 .orga-card{perspective:900px;min-height:255px;cursor:default;}
 .card-inner{position:relative;width:100%;height:100%;transition:transform .55s cubic-bezier(.3,.8,.3,1);transform-style:preserve-3d;}
 .orga-card:hover .card-inner,.card-inner.flipped{transform:rotateY(180deg);}
@@ -175,7 +176,7 @@ footer{background:var(--navy-deep);padding:40px 60px;}
   .page-hero{padding:140px 36px 60px;}
   section{padding:60px 36px;}
   footer{padding:36px;}
-  .orga-grid{grid-template-columns:repeat(3,1fr);}
+  .orga-grid .orga-card{flex-basis:calc((100% - 48px)/3);}
 }
 
 /* ── MOBILE ── */
@@ -273,11 +274,11 @@ footer{background:var(--navy-deep);padding:40px 60px;}
       <div class="card-back"><div class="card-back-text">Mieux vaut avoir des courbatures que des regrets.</div></div>
     </div></div>
     <div class="orga-card"><div class="card-inner">
-      <div class="card-front"><img src="images/equipe/floriane.png?v=6" alt="Floriane" class="orga-photo" loading="lazy" decoding="async"><div class="orga-name">Floriane</div><div class="orga-role">Responsable newsletter</div></div>
+      <div class="card-front"><img src="images/equipe/floriane.png?v=6" alt="Floriane" class="orga-photo" loading="lazy" decoding="async"><div class="orga-name">Floriane</div><div class="orga-role">Newsletter</div></div>
       <div class="card-back"><div class="card-back-text">Je voyage pour le boulot, je cours pour profiter du voyage.</div></div>
     </div></div>
     <div class="orga-card"><div class="card-inner">
-      <div class="card-front"><img src="images/equipe/thomas-evenementiel.png?v=6" alt="Thomas" class="orga-photo" loading="lazy" decoding="async"><div class="orga-name">Thomas</div><div class="orga-role">Responsable partenariats</div></div>
+      <div class="card-front"><img src="images/equipe/thomas-evenementiel.png?v=6" alt="Thomas" class="orga-photo" loading="lazy" decoding="async"><div class="orga-name">Thomas</div><div class="orga-role">Partenariats</div></div>
       <div class="card-back"><div class="card-back-text">Viva la vida.</div></div>
     </div></div>
     <div class="orga-card"><div class="card-inner">
@@ -285,7 +286,7 @@ footer{background:var(--navy-deep);padding:40px 60px;}
       <div class="card-back"><div class="card-back-text">Tout le monde est sympa sauf moi.</div></div>
     </div></div>
     <div class="orga-card"><div class="card-inner">
-      <div class="card-front"><img src="images/equipe/julia.png?v=6" alt="Julia" class="orga-photo" loading="lazy" decoding="async"><div class="orga-name">Julia</div><div class="orga-role">Responsable site internet</div><div class="orga-role2">Référente prévention &amp; sécurité</div></div>
+      <div class="card-front"><img src="images/equipe/julia.png?v=6" alt="Julia" class="orga-photo" loading="lazy" decoding="async"><div class="orga-name">Julia</div><div class="orga-role">Site internet</div><div class="orga-role2">Référente prévention &amp; sécurité</div></div>
       <div class="card-back"><div class="card-back-text">Je suis venue par hasard en novembre 2024 et je ne suis jamais repartie.</div></div>
     </div></div>
     <div class="orga-card"><div class="card-inner">
