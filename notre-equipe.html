@@ -187,9 +187,9 @@ footer{background:var(--navy-deep);padding:40px 60px;}
   
   .page-hero{padding:110px 20px 60px;min-height:100vh;min-height:100svh;}
   section{padding:40px 20px;scroll-margin-top:70px;}
-  .orga-grid{display:grid!important;grid-template-columns:none!important;grid-auto-flow:column;grid-template-rows:repeat(2,1fr);grid-auto-columns:44%;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding-bottom:12px;scrollbar-width:none;-ms-overflow-style:none;}
+  .orga-grid{display:grid!important;justify-content:start;grid-template-columns:none!important;grid-auto-flow:column;grid-template-rows:repeat(2,1fr);grid-auto-columns:44%;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding-bottom:12px;scrollbar-width:none;-ms-overflow-style:none;}
   .orga-grid::-webkit-scrollbar{display:none;}
-  .orga-card{scroll-snap-align:center;min-height:200px;}
+  .orga-card{scroll-snap-align:start;min-height:200px;}  /* le carrousel démarre à gauche : Hugo, Thomas, Julien, Candice, et un bout de la colonne suivante pour inviter à glisser */
   .card-inner{min-height:200px;}
   .orga-photo{width:84px;height:84px;}
   .orga-name{font-size:14px;}
