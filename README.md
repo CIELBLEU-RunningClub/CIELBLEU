@@ -22,6 +22,8 @@ donnees/                    Les contenus qu'on met à jour
   articles.js                 actualités
   membres.js                  trombinoscope des adhérents
 js/                         Scripts du site (mesure d'audience, animation du menu)
+css/polices.css             Déclaration des polices (Anton, Bebas Neue, Open Sans)
+fonts/                      Fichiers des polices, hébergés avec le site
 agenda/                     Un fichier .ics par événement (« Ajouter à mon agenda »), généré
 images/
   marque/                     logo, favicon, icônes de l'application
@@ -47,3 +49,9 @@ robots.txt, sitemap.xml     Référencement
 - Une vidéo `videos/nom.mp4` a son image d'aperçu `videos/posters/nom.jpg`.
 - Pas de photo brute : on réduit avant d'ajouter (environ 1600 px, moins de 300 Ko). Les originaux restent sur le Drive du club.
 - Un fichier qui n'est plus utilisé par aucune page se supprime : l'historique git le garde.
+
+## Sécurité
+
+- Chaque page contient une politique de sécurité (`Content-Security-Policy`) : le navigateur n'accepte que les fichiers du site et Google Analytics (après accord sur les cookies).
+- **N'ajoute pas de script, de police ou d'image venant d'un autre site** : ils seraient bloqués. Héberge-les dans le dossier du site. Pour autoriser un nouveau service, il faut modifier la politique dans l'en-tête des pages.
+- Les polices sont hébergées sur le site : aucune requête n'est envoyée à Google avant l'accord sur les cookies.

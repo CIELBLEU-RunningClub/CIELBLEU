@@ -2,12 +2,16 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
+<!-- Sécurité : le navigateur n'autorise que nos propres fichiers et Google Analytics (après accord sur les cookies) -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; img-src 'self' data: https://www.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; font-src 'self'; media-src 'self'; manifest-src 'self'; worker-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<script>if(window.top!==window.self){try{window.top.location=window.self.location;}catch(e){document.documentElement.style.display="none";}}</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0b1d30">
 <title>Page introuvable · CIELBLEU Running Club Paris</title>
 <meta name="robots" content="noindex">
 <link rel="icon" type="image/svg+xml" href="https://cielbleurunningclub.com/images/marque/favicon.svg">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/polices.css?v=1">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 body{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;background:#0b1d30;color:#fff;font-family:'Open Sans',sans-serif;}
