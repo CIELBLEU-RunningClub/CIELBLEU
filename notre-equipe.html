@@ -191,7 +191,9 @@ footer{background:var(--navy-deep);padding:40px 60px;}
   .nav-links,.nav-cta,.nav-cta-group{display:none;}
   .nav-hamburger{display:flex;align-items:center;}
   
-  .page-hero{padding:110px 20px 60px;min-height:100vh;min-height:100svh;}
+  /* Téléphone : le haut de la page s'arrête après le texte (plus de grand vide bleu) et se fond doucement dans la suite */
+  .page-hero{padding:calc(100vw * .84) 20px 84px;min-height:auto;justify-content:flex-start;}
+  .page-hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:64px;z-index:1;background:linear-gradient(180deg,rgba(255,255,255,0),#fff);pointer-events:none;}
   section{padding:40px 20px;scroll-margin-top:70px;}
   .orga-grid{display:grid!important;justify-content:start;grid-template-columns:none!important;grid-auto-flow:column;grid-template-rows:repeat(2,1fr);grid-auto-columns:44%;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding-bottom:12px;scrollbar-width:none;-ms-overflow-style:none;}
   .orga-grid::-webkit-scrollbar{display:none;}
