@@ -108,7 +108,7 @@ const openTrackTpl={wd:1,color:C_TARTAN,time:'19h45',dur:90,title:'Tartan Bleu �
 const recurring=[
   // Octobre (m=9) · 1re piste du mois = Open Track (ouverte à tous)
   {tpl:openTrackTpl, m:9, dates:[5]},
-  {tpl:tartanTpl,    m:9, dates:[12]},   // les 19 et 26 sont des événements partenaires
+  {tpl:tartanTpl,    m:9, dates:[12,19]},   // le 26 est un événement partenaire
   {tpl:mercrediTpl,  m:9, dates:[7,28]},
   {tpl:socialTpl,    m:9, dates:[4,18]},
   // Novembre (m=10)
@@ -153,10 +153,6 @@ const specials=[
    tags:[{l:'Adhérents',c:'tag-adherent'}],
    desc:"Rencontre interclubs sur piste avec le collectif OFFTRACK : 12 équipes, 6 coureurs, 5 épreuves, un seul classement.",
    details:[['Horaire','8h45 – 13h'],['Lieu','Espace sportif Jean-Pierre Rives · Courbevoie']],location:'Courbevoie'},
-  {m:9,d:19,time:'18h30',dur:120,title:'Testing Nike',
-   tags:[{l:'Adhérents',c:'tag-adherent'}],
-   desc:"Séance d'essai des nouvelles paires Nike, réservée aux adhérents. Tous niveaux.",
-   details:[['Horaire','À partir de 18h30'],['Lieu','Quatorze Wagram · Paris 8']],location:'Paris 8'},
   {m:9,d:26,time:'19h00',dur:120,title:'Testing Adidas',
    tags:[{l:'Adhérents',c:'tag-adherent'}],
    desc:"Séance d'essai d'une nouvelle paire Adidas, réservée aux adhérents. Tous niveaux.",
