@@ -42,7 +42,8 @@ Pour savoir où ranger une photo ou une vidéo, et comment la nommer, voir [READ
 4. **Photos** : réduis-les avant de les ajouter (environ 1600 px de large, moins de 300 Ko). Pas de vidéo brute. Les originaux restent sur le Drive du club, dossier « 10. SITE INTERNET ». Range la version réduite dans le bon sous-dossier de `images/` ou `videos/`.
 5. **Style des textes** : ton chaleureux, tutoiement, phrases courtes. Aucun tiret cadratin (le long tiret). Utilise « · » ou reformule.
 6. **Une pastille ne répète pas le titre.** Si le titre contient « Adidas », pas de pastille « Adidas ».
-7. **Teste sur téléphone** avant de publier : la plupart des visiteurs sont sur iPhone.
+7. **Rien venant d'un autre site** : pas de script, de police ou d'image hébergés ailleurs. La politique de sécurité du site les bloque. Héberge le fichier dans le site, ou demande avant.
+8. **Teste sur téléphone** avant de publier : la plupart des visiteurs sont sur iPhone.
 
 ## Cas courants
 
