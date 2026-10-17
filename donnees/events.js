@@ -243,6 +243,15 @@ recurring.forEach(r=>r.dates.forEach(d=>pushEvent(Object.assign({m:r.m,d,session
   ev.color='#E0709A';
   ev.desc="Le Social Run du dimanche aux couleurs d'Octobre Rose, ouvert à tous et sans inscription. 8 km en groupes d'allure, puis café tous ensemble.";
 })();
+// Dimanche 18 octobre : le Social Bleu est avancé de 24 h, au samedi 17 octobre.
+// L'événement garde son identifiant et son type « Social Bleu » (wd:0) ; seule la date change.
+(function(){
+  const ev=allEvents.find(e=>e.y===2026&&e.m===9&&e.d===18&&e.session&&e.wd===0);
+  if(!ev)return;
+  ev.d=17;ev.date=new Date(2026,9,17);ev.dayLabel='17';ev.dateStr='17 '+MONTHS[9]+' 2026';
+  ev.dtStart=ev.dtStart.replace('20261018','20261017');ev.dtEnd=ev.dtEnd.replace('20261018','20261017');
+  ev.desc="Le Social Run, ouvert à tous et sans inscription, exceptionnellement le samedi 17 octobre au lieu du dimanche. 8 km en groupes d'allure, puis café tous ensemble.";
+})();
 // Événements spéciaux
 specials.forEach(s=>pushEvent(Object.assign({session:false},s)));
 
