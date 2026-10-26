@@ -225,7 +225,7 @@ footer{background:var(--navy-deep);padding:40px 60px;}
   <p>Avec <strong>Adidas</strong> et sa nouvelle <strong>Adios Pro 5</strong>, CIELBLEU devient CIELROUGE. Un clin d'oeil à la collection, et surtout une belle semaine en perspective.</p>
 
   <figure class="art-figure">
-    <video src="videos/teaser-adidas.mp4" poster="videos/posters/teaser-adidas.jpg" controls playsinline preload="none" style="width:100%;height:auto;border-radius:16px;display:block;background:#0b1d30;"></video>
+    <video src="videos/teaser-adidas.mp4" poster="videos/posters/teaser-adidas.jpg" controls muted loop autoplay playsinline preload="auto" id="teaser" style="width:100%;height:auto;border-radius:16px;display:block;background:#0b1d30;"></video>
     <figcaption>Le teaser.</figcaption>
   </figure>
 
@@ -283,6 +283,16 @@ footer{background:var(--navy-deep);padding:40px 60px;}
 window.addEventListener('scroll',()=>{
   document.getElementById('back-to-top').classList.toggle('show',window.scrollY>400);
 },{passive:true});
+</script>
+<script>
+/* Le teaser se lance tout seul (muet : c'est la seule façon d'être autorisé sur téléphone), dès qu'il est visible ; le son s'active avec le bouton du lecteur */
+(function(){
+  const v=document.getElementById('teaser');if(!v)return;
+  v.muted=true;
+  const go=()=>{const p=v.play();if(p&&p.catch)p.catch(function(){});};
+  new IntersectionObserver(function(e){e.forEach(function(i){if(i.isIntersecting)go();else v.pause();});},{threshold:.35}).observe(v);
+  document.addEventListener('touchstart',go,{once:true,passive:true});
+})();
 </script>
 <script src="js/scroll-shoe.js?v=3"></script>
 <script>function toggleNav(){document.getElementById('navMobile').classList.toggle('open');}
