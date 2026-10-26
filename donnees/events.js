@@ -153,15 +153,15 @@ const specials=[
    tags:[{l:'Adhérents',c:'tag-adherent'}],
    desc:"Rencontre interclubs sur piste avec le collectif OFFTRACK : 12 équipes, 6 coureurs, 5 épreuves, un seul classement.",
    details:[['Horaire','8h45 – 13h'],['Lieu','Espace sportif Jean-Pierre Rives · Courbevoie']],location:'Courbevoie'},
-  {m:9,d:26,time:'19h00',dur:120,title:'Testing Adidas',
-   tags:[{l:'Adhérents',c:'tag-adherent'}],
-   desc:"Séance d'essai d'une nouvelle paire Adidas, réservée aux adhérents. Tous niveaux.",
-   details:[['Horaire','19h00'],['Lieu','Adidas Champs-Élysées · Paris 8']],location:'Paris 8'},
+  {m:9,d:26,time:'19h00',dur:120,title:'Testing Adidas · visite du 92',
+   tags:[{l:'Adhérents',c:'tag-adherent'},{l:'Sur inscription',c:'tag-partner'}],
+   desc:"Visite de la boutique Adidas de La Défense et testing de chaussures. Sur inscription uniquement.",
+   details:[['Horaire','Rendez-vous à 19h'],['Lieu','Boutique Adidas · La Défense'],['Inscription','Sur inscription uniquement']],location:'La Défense'},
   // Novembre
-  {m:10,d:1,time:'9h00',dur:240,title:'EKIDEN Adidas',
-   tags:[{l:'Adhérents',c:'tag-adherent'}],
-   desc:"Marathon en relais (ekiden) avec le partenaire Adidas. Une équipe CIELBLEU sur la ligne de départ.",
-   details:[['Horaire','9h00 · à confirmer'],['Lieu','Paris · à confirmer']],location:'Paris'},
+  {m:10,d:1,time:'9h00',dur:240,title:'KM Bleu × Ekiden de Paris',
+   tags:[{l:'Ouvert à tous',c:'tag-open'}],
+   desc:"Nos équipes CIELROUGE sont sur la ligne de départ de l'Ekiden de Paris pour s'affronter dans la bonne humeur. Viens les encourager et mettre le feu au parcours !",
+   details:[['Horaire','À partir de 9h'],['Lieu','Pont de Bir-Hakeim · Paris']],location:'Paris'},
   {m:10,d:15,time:'10h00',dur:120,title:'KM Bleu · 10K Hoka',
    tags:[{l:'Adhérents',c:'tag-adherent'}],
    desc:"Le KM Bleu déploie sa fan zone et une équipe du club s'aligne sur le 10K en partenariat avec Hoka.",
@@ -207,8 +207,8 @@ const legacySpecials=[
 
 const WD_NAMES=['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'];
 function pad(n){return String(n).padStart(2,'0');}
-function timeToHMS(t){const mm=String(t).match(/(\d{1,2})h(\d{0,2})/);const h=mm?+mm[1]:0;const mi=mm&&mm[2]!==''?+mm[2]:0;return pad(h)+pad(mi)+'00';}
-function addMinutes(t,dur){const mm=String(t).match(/(\d{1,2})h(\d{0,2})/);let h=mm?+mm[1]:0;let mi=mm&&mm[2]!==''?+mm[2]:0;let total=h*60+mi+dur;h=Math.floor(total/60)%24;mi=total%60;return pad(h)+pad(mi)+'00';}
+function timeToHMS(t){const mm=String(t).match(/(\d{1,2})h(\d{0,2})/);const h=mm?+mm[1]:18;const mi=mm&&mm[2]!==''?+mm[2]:0;return pad(h)+pad(mi)+'00';}
+function addMinutes(t,dur){const mm=String(t).match(/(\d{1,2})h(\d{0,2})/);let h=mm?+mm[1]:18;let mi=mm&&mm[2]!==''?+mm[2]:0;let total=h*60+mi+dur;h=Math.floor(total/60)%24;mi=total%60;return pad(h)+pad(mi)+'00';}
 function dtFmt(y,m,d,t){return ''+y+pad(m+1)+pad(d)+'T'+t;}
 
 // Construction de toutes les occurrences
@@ -225,7 +225,7 @@ function pushEvent(o){
   const ev={id,y:Y,k:Y*12+o.m,m:o.m,d:o.d,date:new Date(Y,o.m,o.d),title:o.title,color:o.color||'#DA5B47',
     tags:o.tags,desc:o.desc,details,dtStart:ds,dtEnd:de,location:o.location,
     article:o.article||'',articleTitle:o.articleTitle||'',
-    session:isSession,wd:o.wd,dateStr:o.dateStr||(o.d+' '+MONTHS[o.m]+' '+Y),dayLabel:o.dayLabel||pad(o.d),time:o.time};
+    session:isSession,wd:o.wd,kindLabel:o.kindLabel||'',dateStr:o.dateStr||(o.d+' '+MONTHS[o.m]+' '+Y),dayLabel:o.dayLabel||pad(o.d),time:o.time};
   EVENTS_BY_ID[id]=ev;allEvents.push(ev);
 }
 
@@ -251,6 +251,14 @@ recurring.forEach(r=>r.dates.forEach(d=>pushEvent(Object.assign({m:r.m,d,session
   ev.d=17;ev.date=new Date(2026,9,17);ev.dayLabel='17';ev.dateStr='17 '+MONTHS[9]+' 2026';
   ev.dtStart=ev.dtStart.replace('20261018','20261017');ev.dtEnd=ev.dtEnd.replace('20261018','20261017');
   ev.desc="Le Social Run, ouvert à tous et sans inscription, exceptionnellement le samedi 17 octobre au lieu du dimanche. 8 km en groupes d'allure, puis café tous ensemble.";
+})();
+// Mercredi Bleu du 28 octobre : retrouvailles au Cavalier Bleu (on peut y laisser ses affaires)
+(function(){
+  const ev=allEvents.find(e=>e.y===2026&&e.m===9&&e.d===28&&e.session&&e.wd===3);
+  if(!ev)return;
+  ev.details=ev.details.map(d=>d[0]==='Lieu'?['Lieu','Cavalier Bleu · Paris']:d);
+  ev.location='Cavalier Bleu, Paris';
+  ev.desc="Le run des adhérents du mercredi soir, en groupes d'allure dans Paris. On se retrouve au Cavalier Bleu, avec la possibilité de laisser ses affaires comme d'habitude.";
 })();
 // Événements spéciaux
 specials.forEach(s=>pushEvent(Object.assign({session:false},s)));
@@ -379,6 +387,14 @@ const specials2027=[
    details:[['Horaire','9h30 · à confirmer'],['Lieu','À confirmer']],location:'Île-de-France'},
 ];
 specials2027.forEach(s=>pushEvent(Object.assign({y:2027,session:false},s)));
+
+// Challenge Adidas Pro 5 (ajouté ici pour ne pas décaler les identifiants des autres événements)
+[
+  {m:9,d:30,dayLabel:'27-30',dateStr:'27 au 30 octobre 2026',kindLabel:'Mardi au vendredi',time:'En soirée',dur:120,title:'Challenge Adidas Pro 5',
+   tags:[],
+   desc:"Viens te challenger sur tapis avec des écrans immersifs et tente de remporter un pack Ekiden 2027 ! Un pack est à gagner chaque jour.",
+   details:[['Horaire','Chaque soir, du mardi au vendredi'],['Lieu','Boutique Adidas · Champs-Élysées'],['À gagner','Un pack Ekiden 2027 par jour']],location:'Paris 8'}
+].forEach(s=>pushEvent(Object.assign({y:2026,session:false},s)));
 
 allEvents.sort((a,b)=>a.date-b.date);
 

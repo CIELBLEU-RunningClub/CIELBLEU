@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CIELBLEU Running//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:e187@cielbleu.run
+DTSTAMP:20261026T191104Z
+DTSTART:20261030T180000
+DTEND:20261030T200000
+SUMMARY:Challenge Adidas Pro 5 · CIELBLEU Running
+DESCRIPTION:Viens te challenger sur tapis avec des écrans immersifs et ten
+ te de remporter un pack Ekiden 2027 ! Un pack est à gagner chaque jour.
+LOCATION:Paris 8
+END:VEVENT
+END:VCALENDAR

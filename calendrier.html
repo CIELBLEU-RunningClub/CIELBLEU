@@ -424,7 +424,7 @@ footer{background:var(--navy-deep);padding:40px 60px;}
 
 <a id="back-to-top" href="#" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'});" aria-label="Retour en haut">↑</a>
 
-<script src="donnees/events.js?v=34"></script>
+<script src="donnees/events.js?v=35"></script>
 <script>
 
 
@@ -434,7 +434,7 @@ function evCardHTML(ev){
   const wd=new Date(ev.y,ev.m,ev.d).getDay();
   const kind=ev.session
     ? `<span class="ev-kind ev-kind-seance">${WD_NAMES[wd]}</span>`
-    : `<span class="ev-kind ev-kind-seance">${WD_NAMES[wd]}</span><span class="ev-kind ev-kind-special"><span class="ev-kind-ico">★</span>Spécial</span>`;
+    : `<span class="ev-kind ev-kind-seance">${ev.kindLabel||WD_NAMES[wd]}</span><span class="ev-kind ev-kind-special"><span class="ev-kind-ico">★</span>Spécial</span>`;
   const pastLbl=past?'<span class="ev-card-past-lbl">Passé</span>':'';
   return `<div class="ev-card${ev.session?' seance wd-'+ev.wd:' special'}${past?' past':''}" onclick="openModal('${ev.id}')">
     <div class="ev-card-top" style="background:${ev.color}"></div>
