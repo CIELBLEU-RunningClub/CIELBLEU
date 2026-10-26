@@ -361,6 +361,9 @@ footer{background:var(--navy-deep);padding:32px 60px;}
 .ev-card.special .ev-card-top{height:7px;}
 .ev-card.special .ev-card-day{color:#9A6F2E;font-size:54px;}
 .ev-card.special:hover{box-shadow:0 14px 34px rgba(232,176,107,.28);}
+.ev-card.rouge{border-color:rgba(211,47,47,.55);background:linear-gradient(165deg,rgba(211,47,47,.13),var(--white) 55%);}
+.ev-card.rouge .ev-card-day{color:#B71C1C;}
+.ev-card.rouge:hover{box-shadow:0 14px 34px rgba(211,47,47,.28);}
 @keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
 /* ── Système de reveal au scroll ── */
 .reveal{opacity:0;transform:translateY(34px);transition:opacity .7s cubic-bezier(.16,.7,.3,1),transform .7s cubic-bezier(.16,.7,.3,1);will-change:opacity,transform;}
@@ -869,7 +872,7 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
   </div>
 </footer>
 
-<script src="donnees/events.js?v=35"></script>
+<script src="donnees/events.js?v=37"></script>
 <script>
 // Compteurs animés : les stats montent en flèche une fois à l'écran
 (function(){
@@ -922,7 +925,7 @@ function toggleFaq(btn){const open=btn.parentElement.classList.toggle('open');bt
     const kind=ev.session
       ? `<span class="ev-kind ev-kind-seance"><span class="ev-kind-ico">↻</span>${WD_NAMES[wd]}</span>`
       : `<span class="ev-kind ev-kind-seance"><span class="ev-kind-ico">↻</span>${ev.kindLabel||WD_NAMES[wd]}</span><span class="ev-kind ev-kind-special"><span class="ev-kind-ico">★</span>Spécial</span>`;
-    return `<div class="ev-card${ev.session?' seance wd-'+ev.wd:' special'}" onclick="location.href='calendrier.html?event='+encodeURIComponent('${ev.id}')">
+    return `<div class="ev-card${ev.session?' seance wd-'+ev.wd:' special'}${ev.theme?' '+ev.theme:''}" onclick="location.href='calendrier.html?event='+encodeURIComponent('${ev.id}')">
       <div class="ev-card-top" style="background:${ev.color}"></div>
       <div class="ev-card-body">
         <div class="ev-card-kind-row">${kind}</div>

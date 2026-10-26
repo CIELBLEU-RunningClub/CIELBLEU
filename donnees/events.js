@@ -158,7 +158,7 @@ const specials=[
    desc:"Visite de la boutique Adidas de La Défense et testing de chaussures. Sur inscription uniquement.",
    details:[['Horaire','Rendez-vous à 19h'],['Lieu','Boutique Adidas · La Défense'],['Inscription','Sur inscription uniquement']],location:'La Défense'},
   // Novembre
-  {m:10,d:1,time:'9h00',dur:240,title:'KM Bleu × Ekiden de Paris',
+  {m:10,d:1,color:'#D32F2F',theme:'rouge',time:'9h00',dur:240,title:'KM Bleu × Ekiden de Paris',
    tags:[{l:'Ouvert à tous',c:'tag-open'}],
    desc:"Nos équipes CIELROUGE sont sur la ligne de départ de l'Ekiden de Paris pour s'affronter dans la bonne humeur. Viens les encourager et mettre le feu au parcours !",
    details:[['Horaire','À partir de 9h'],['Lieu','Pont de Bir-Hakeim · Paris']],location:'Paris'},
@@ -225,7 +225,7 @@ function pushEvent(o){
   const ev={id,y:Y,k:Y*12+o.m,m:o.m,d:o.d,date:new Date(Y,o.m,o.d),title:o.title,color:o.color||'#DA5B47',
     tags:o.tags,desc:o.desc,details,dtStart:ds,dtEnd:de,location:o.location,
     article:o.article||'',articleTitle:o.articleTitle||'',
-    session:isSession,wd:o.wd,kindLabel:o.kindLabel||'',dateStr:o.dateStr||(o.d+' '+MONTHS[o.m]+' '+Y),dayLabel:o.dayLabel||pad(o.d),time:o.time};
+    session:isSession,wd:o.wd,kindLabel:o.kindLabel||'',theme:o.theme||'',dateStr:o.dateStr||(o.d+' '+MONTHS[o.m]+' '+Y),dayLabel:o.dayLabel||pad(o.d),time:o.time};
   EVENTS_BY_ID[id]=ev;allEvents.push(ev);
 }
 
@@ -251,14 +251,6 @@ recurring.forEach(r=>r.dates.forEach(d=>pushEvent(Object.assign({m:r.m,d,session
   ev.d=17;ev.date=new Date(2026,9,17);ev.dayLabel='17';ev.dateStr='17 '+MONTHS[9]+' 2026';
   ev.dtStart=ev.dtStart.replace('20261018','20261017');ev.dtEnd=ev.dtEnd.replace('20261018','20261017');
   ev.desc="Le Social Run, ouvert à tous et sans inscription, exceptionnellement le samedi 17 octobre au lieu du dimanche. 8 km en groupes d'allure, puis café tous ensemble.";
-})();
-// Mercredi Bleu du 28 octobre : retrouvailles au Cavalier Bleu (on peut y laisser ses affaires)
-(function(){
-  const ev=allEvents.find(e=>e.y===2026&&e.m===9&&e.d===28&&e.session&&e.wd===3);
-  if(!ev)return;
-  ev.details=ev.details.map(d=>d[0]==='Lieu'?['Lieu','Cavalier Bleu · Paris']:d);
-  ev.location='Cavalier Bleu, Paris';
-  ev.desc="Le run des adhérents du mercredi soir, en groupes d'allure dans Paris. On se retrouve au Cavalier Bleu, avec la possibilité de laisser ses affaires comme d'habitude.";
 })();
 // Événements spéciaux
 specials.forEach(s=>pushEvent(Object.assign({session:false},s)));
@@ -390,10 +382,10 @@ specials2027.forEach(s=>pushEvent(Object.assign({y:2027,session:false},s)));
 
 // Challenge Adidas Pro 5 (ajouté ici pour ne pas décaler les identifiants des autres événements)
 [
-  {m:9,d:30,dayLabel:'27-30',dateStr:'27 au 30 octobre 2026',kindLabel:'Mardi au vendredi',time:'En soirée',dur:120,title:'Challenge Adidas Pro 5',
+  {m:9,d:30,dayLabel:'27-30',dateStr:'27 au 30 octobre 2026',kindLabel:'Mardi au vendredi',time:'10h à 20h30',dur:630,title:'Challenge Adidas Pro 5',
    tags:[],
    desc:"Viens te challenger sur tapis avec des écrans immersifs et tente de remporter un pack Ekiden 2027 ! Un pack est à gagner chaque jour.",
-   details:[['Horaire','Chaque soir, du mardi au vendredi'],['Lieu','Boutique Adidas · Champs-Élysées'],['À gagner','Un pack Ekiden 2027 par jour']],location:'Paris 8'}
+   details:[['Horaire','Aux heures d\'ouverture de la boutique, de 10h à 20h30'],['Lieu','Boutique Adidas · Champs-Élysées'],['À gagner','Un pack Ekiden 2027 par jour']],location:'Paris 8'}
 ].forEach(s=>pushEvent(Object.assign({y:2026,session:false},s)));
 
 allEvents.sort((a,b)=>a.date-b.date);
