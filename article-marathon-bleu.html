@@ -109,6 +109,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .art-figure img{width:100%;height:auto;border-radius:16px;display:block;}
 .art-figure figcaption{font-size:12.5px;color:var(--mid);margin-top:10px;letter-spacing:.2px;}
 
+/* Chrono : le temps final défile comme un chronomètre quand il arrive à l'écran */
+.art-chrono{margin:34px 0 40px;padding:34px 24px;border-radius:18px;text-align:center;background:linear-gradient(135deg,var(--navy-deep),var(--navy));border:1.5px solid rgba(182,205,224,.15);}
+.art-chrono-time{font-family:'Anton',sans-serif;font-size:clamp(56px,13vw,104px);line-height:1;letter-spacing:2px;color:white;font-variant-numeric:tabular-nums;}
+.art-chrono-label{font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:4px;color:var(--blue-sky);margin-top:14px;text-transform:uppercase;}
+
 /* Encadré infos pratiques */
 .art-facts{background:linear-gradient(135deg,var(--navy-deep),var(--navy));border:1.5px solid rgba(182,205,224,.15);border-radius:18px;padding:32px 36px;margin:40px 0;color:white;}
 .art-facts h3{font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:4px;color:var(--blue-sky);margin-bottom:20px;text-transform:uppercase;}
@@ -224,6 +229,11 @@ footer{background:var(--navy-deep);padding:40px 60px;}
 <article class="art-body">
   <p class="lede">Un marathon, ça se court seul. Le 27 septembre, on a fait l'inverse.</p>
 
+  <div class="art-chrono" id="chrono" aria-label="Temps final : 2 heures 15 minutes 48 secondes">
+    <div class="art-chrono-time" id="chronoTime" aria-hidden="true">2h15'48</div>
+    <div class="art-chrono-label">42,195 km · 42 coureurs en relais</div>
+  </div>
+
   <p>Au stade Jules Ladoumègue, on a bouclé les <strong>42,195 km</strong> en <strong>2h15'48</strong>, à 42.</p>
 
   <h2>Comment ça marche</h2>
@@ -292,6 +302,27 @@ footer{background:var(--navy-deep);padding:40px 60px;}
 window.addEventListener('scroll',()=>{
   document.getElementById('back-to-top').classList.toggle('show',window.scrollY>400);
 },{passive:true});
+</script>
+<script>
+/* Le chrono défile de 0 jusqu'au temps final dès qu'il est visible (sans animation si l'appareil l'a désactivée) */
+(function(){
+  const el=document.getElementById('chronoTime'),box=document.getElementById('chrono');if(!el||!box)return;
+  const FINAL=2*3600+15*60+48,DUR=3200;
+  const fmt=function(s){const h=Math.floor(s/3600),m=Math.floor(s%3600/60),x=s%60;return h+'h'+String(m).padStart(2,'0')+"'"+String(x).padStart(2,'0');};
+  if(window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  el.textContent=fmt(0);
+  let done=false;
+  function run(){
+    if(done)return;done=true;
+    const t0=performance.now();
+    (function step(now){
+      const p=Math.min(1,(now-t0)/DUR),e=1-Math.pow(1-p,3);
+      el.textContent=fmt(Math.round(FINAL*e));
+      if(p<1)requestAnimationFrame(step);else el.textContent=fmt(FINAL);
+    })(t0);
+  }
+  new IntersectionObserver(function(e,o){if(e[0].isIntersecting){run();o.disconnect();}},{threshold:.6}).observe(box);
+})();
 </script>
 <script src="js/scroll-shoe.js?v=3"></script>
 <script>function toggleNav(){document.getElementById('navMobile').classList.toggle('open');}
