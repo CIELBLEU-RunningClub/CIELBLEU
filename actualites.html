@@ -119,6 +119,9 @@ section:nth-child(even){background:var(--white);}
 
 /* Grille des autres articles */
 .actu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px;margin-top:22px;}
+/* Avec peu d'articles, on les met côte à côte plutôt qu'une grande carte suivie d'une petite */
+.actu-grid.duo{grid-template-columns:repeat(2,1fr);margin-top:0;}
+.actu-grid.duo .actu-card-title{font-size:30px;}
 .actu-card{display:flex;flex-direction:column;background:var(--white);border:1.5px solid rgba(18,43,68,.1);border-radius:16px;overflow:hidden;text-decoration:none;color:inherit;transition:transform .25s ease,box-shadow .25s ease;}
 .actu-card:hover{transform:translateY(-5px);box-shadow:0 14px 34px rgba(18,43,68,.14);}
 .actu-card-media{position:relative;aspect-ratio:16/10;overflow:hidden;}
@@ -185,7 +188,7 @@ footer{background:var(--navy-deep);padding:40px 60px;}
   .actu-feat{grid-template-columns:1fr;}
   .actu-feat-media{min-height:0;aspect-ratio:16/10;}
   .actu-feat-body{padding:26px 22px 28px;}
-  .actu-grid{grid-template-columns:1fr;gap:18px;}
+  .actu-grid,.actu-grid.duo{grid-template-columns:1fr;gap:18px;}
   .actu-next{flex-direction:column;align-items:flex-start;padding:28px 22px;}
   .actu-next-links{width:100%;}
   .actu-next-btn{flex:1;text-align:center;}
@@ -274,6 +277,11 @@ footer{background:var(--navy-deep);padding:40px 60px;}
 <script>
 (function(){
   if(typeof ARTICLES==='undefined'||!ARTICLES.length)return;
+  if(ARTICLES.length<=2){
+    const g=document.getElementById('actuGrid');g.classList.add('duo');
+    g.innerHTML=ARTICLES.map(a=>articleCardHTML(a,false)).join('');
+    return;
+  }
   document.getElementById('actuFeatured').innerHTML=articleCardHTML(ARTICLES[0],true);
   document.getElementById('actuGrid').innerHTML=ARTICLES.slice(1).map(a=>articleCardHTML(a,false)).join('');
 })();
