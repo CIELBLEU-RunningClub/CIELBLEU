@@ -23,8 +23,8 @@ const ARTICLES=[
   {
     id:'marathon-bleu',
     url:'article-marathon-bleu.html',
-    cover:'images/evenements/marathon-bleu-couverture.jpg?v=2',
-    coverPos:'center 50%',
+    cover:'images/evenements/marathon-bleu-couverture-2.jpg',
+    coverPos:'center 40%',
     alt:"Les adhérents du CIELBLEU réunis sur la piste bleue du stade",
     tag:'Retour en images',
     date:'2026-10-22',
