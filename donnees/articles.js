@@ -7,6 +7,45 @@
 //   3. faire avancer le ?v= d'donnees/articles.js dans actualites.html
 const ARTICLES=[
   {
+    id:'cielrouge',
+    url:'article-cielrouge.html',
+    cover:'images/couvertures/accueil.webp?v=7',
+    coverPos:'center 50%',
+    alt:"Les coureurs du CIELBLEU sur la piste",
+    tag:'Actu',
+    date:'2026-10-26',
+    dateLabel:'26 octobre 2026',
+    read:'2 min',
+    title:"Alerte rouge : le ciel change de couleur",
+    teaser:"Avec adidas et la nouvelle Adios Pro 5, CIELBLEU passe au rouge. Au programme : un challenge sur les Champs-Élysées et l'Ekiden de Paris."
+  },
+  {
+    id:'open-track-novembre',
+    url:'article-open-track-novembre.html',
+    cover:'images/couvertures/calendrier-1600.webp',
+    coverPos:'center 50%',
+    alt:"La piste bleue du stade",
+    tag:'Séances',
+    date:'2026-10-25',
+    dateLabel:'2 novembre 2026',
+    read:'1 min',
+    title:"Novembre 2026 : l'Open Track ouvre le mois",
+    teaser:"La première piste du mois est ouverte à tous, adhérent ou non. Prochain rendez-vous : lundi 2 novembre, 19h45."
+  },
+  {
+    id:'marathon-bleu-retour',
+    url:'article-marathon-bleu-retour.html',
+    cover:'images/evenements/marathon-bleu-couverture.jpg?v=2',
+    coverPos:'center 50%',
+    alt:"Les adhérents du CIELBLEU réunis sur la piste bleue du stade",
+    tag:'Retour en images',
+    date:'2026-10-22',
+    dateLabel:'22 octobre 2026',
+    read:'1 min',
+    title:"Marathon Bleu : 42,195 km bouclés en 2h15'48",
+    teaser:"42 coureurs, 42,195 km en relais de 400 m, un seul chrono : 2h15'48. Retour sur la première édition du Marathon Bleu."
+  },
+  {
     id:'marathon-bleu',
     url:'article-marathon-bleu.html',
     cover:'images/evenements/marathon-bleu-couverture.jpg?v=2',
