@@ -219,8 +219,9 @@ function pushEvent(o){
   const isSession=!!o.session;
   const id=(isSession?'s':'e')+(uid++);
   const Y=o.y||YEAR;
-  const ds=dtFmt(Y,o.m,o.d,timeToHMS(o.time));
-  const de=dtFmt(Y,o.m,o.d,addMinutes(o.time,o.dur||90));
+  const hAgenda=o.icsTime||o.time;   // heure utilisée pour le fichier agenda quand l'horaire affiché est un texte (« Toute la journée »)
+  const ds=dtFmt(Y,o.m,o.d,timeToHMS(hAgenda));
+  const de=dtFmt(Y,o.m,o.d,addMinutes(hAgenda,o.dur||90));
   const details=isSession?[['Horaire',o.time],...o.details]:o.details;
   const ev={id,y:Y,k:Y*12+o.m,m:o.m,d:o.d,date:new Date(Y,o.m,o.d),title:o.title,color:o.color||'#DA5B47',
     tags:o.tags,desc:o.desc,details,dtStart:ds,dtEnd:de,location:o.location,
@@ -382,10 +383,10 @@ specials2027.forEach(s=>pushEvent(Object.assign({y:2027,session:false},s)));
 
 // Challenge Adidas Pro 5 (ajouté ici pour ne pas décaler les identifiants des autres événements)
 [
-  {m:9,d:30,dayLabel:'27-30',dateStr:'27 au 30 octobre 2026',kindLabel:'Mardi au vendredi',time:'10h à 20h30',dur:630,title:'Challenge Adidas Pro 5',
+  {m:9,d:30,dayLabel:'27-30',dateStr:'27 au 30 octobre 2026',kindLabel:'Mardi au vendredi',time:'Toute la journée',icsTime:'10h00',dur:630,title:'Challenge Adidas Pro 5',
    tags:[],
    desc:"Viens te challenger sur tapis avec des écrans immersifs et tente de remporter un pack Ekiden 2027 ! Un pack est à gagner chaque jour.",
-   details:[['Horaire','Aux heures d\'ouverture de la boutique, de 10h à 20h30'],['Lieu','Boutique Adidas · Champs-Élysées'],['À gagner','Un pack Ekiden 2027 par jour']],location:'Paris 8'}
+   details:[['Horaire','Toute la journée, du mardi au vendredi'],['Lieu','Boutique Adidas · Champs-Élysées'],['À gagner','Un pack Ekiden 2027 par jour']],location:'Paris 8'}
 ].forEach(s=>pushEvent(Object.assign({y:2026,session:false},s)));
 
 allEvents.sort((a,b)=>a.date-b.date);
