@@ -156,6 +156,10 @@ a.hero-stat:hover .stat-arrow{opacity:1;}
 
 section{padding:44px 60px;border-bottom:1px solid rgba(18,43,68,0.07);scroll-margin-top:112px;}
 section:nth-child(even){background:var(--white);}
+/* L'ajout de la section Actualités décalait l'alternance des fonds : on garde celle d'avant pour la galerie, l'adhésion et la FAQ */
+#actus{background:var(--white);}
+#galerie,#faq{background:transparent;}
+#adhesion{background:var(--white);}
 .s-label{font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:5px;color:var(--blue-steel);margin-bottom:12px;}
 .s-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(30px,4.2vw,44px);letter-spacing:.5px;color:var(--navy);line-height:1.08;margin-bottom:28px;}
 
@@ -564,6 +568,58 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
 .join-cta:hover{background:white;transform:translateY(-2px);}
 .join-hint{font-size:12px;color:rgba(255,255,255,.5);margin-top:12px;}
 .join-baseline{font-family:'Anton',sans-serif;font-size:20px;letter-spacing:1px;color:white;text-transform:uppercase;margin-top:4px;}
+
+/* ── ACTUALITÉS (cartes reprises de actualites.html) ── */
+/* ── ACTUALITÉS ── */
+.actu-wrap{max-width:1180px;margin:0 auto;}
+.actu-meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px;}
+.actu-tag{font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:5px 13px;border-radius:999px;background:var(--navy);color:#fff;}
+.actu-date,.actu-read{font-size:12px;color:var(--mid);letter-spacing:.3px;}
+.actu-dot{color:var(--blue-steel);opacity:.6;}
+.actu-more{font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:2px;color:#3E7CB1;margin-top:18px;display:inline-block;transition:transform .2s,color .2s;}
+
+/* Article mis en avant */
+.actu-feat{display:grid;grid-template-columns:1.08fr 1fr;background:var(--white);border:1.5px solid rgba(18,43,68,.1);border-radius:18px;overflow:hidden;text-decoration:none;color:inherit;transition:transform .25s ease,box-shadow .25s ease;}
+.actu-feat:hover{transform:translateY(-5px);box-shadow:0 18px 44px rgba(18,43,68,.16);}
+.actu-feat-media{position:relative;min-height:380px;overflow:hidden;}
+.actu-feat-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.7,.3,1),opacity .35s ease;}
+.actu-feat:hover .actu-feat-media img{transform:scale(1.045);}
+.actu-feat-body{padding:40px 44px;display:flex;flex-direction:column;justify-content:center;}
+.actu-feat-title{font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(26px,3vw,38px);line-height:1.1;letter-spacing:.3px;color:var(--navy);margin-bottom:14px;}
+.actu-feat-teaser{font-size:15.5px;color:var(--mid);line-height:1.75;}
+.actu-feat:hover .actu-more{transform:translateX(4px);color:var(--navy);}
+
+/* Grille des autres articles */
+/* Carte CIELROUGE : une lumière rouge s'allume sur la photo au survol, et au toucher sur téléphone */
+.actu-card-media::after,.actu-feat-media::after{content:'';position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .35s ease;mix-blend-mode:screen;background:radial-gradient(ellipse 80% 70% at 50% 55%,rgba(255,52,64,.75) 0%,rgba(255,52,64,.38) 45%,rgba(255,52,64,0) 100%);}
+.actu-feat-media{position:relative;}
+.glow-rouge:hover .actu-card-media::after,.glow-rouge:hover .actu-feat-media::after,.glow-rouge.touch .actu-card-media::after,.glow-rouge.touch .actu-feat-media::after{opacity:1;}
+.actu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px;}
+/* Avec peu d'articles, on les met côte à côte plutôt qu'une grande carte suivie d'une petite */
+.actu-grid.duo{grid-template-columns:repeat(2,1fr);margin-top:0;}
+.actu-grid.duo .actu-card-title{font-size:30px;}
+.actu-card{display:flex;flex-direction:column;background:var(--white);border:1.5px solid rgba(18,43,68,.1);border-radius:16px;overflow:hidden;text-decoration:none;color:inherit;transition:transform .25s ease,box-shadow .25s ease;}
+.actu-card:hover{transform:translateY(-5px);box-shadow:0 14px 34px rgba(18,43,68,.14);}
+.actu-card-media{position:relative;aspect-ratio:16/10;overflow:hidden;}
+.actu-card-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.7,.3,1),opacity .35s ease;}
+.actu-card:hover .actu-card-media img{transform:scale(1.045);}
+/* Couvertures : photo en fondu et désaturée sur un aplat bleu, pour que
+   n'importe quelle photo reste dans la palette du site. */
+.actu-feat-media,.actu-card-media{background:#1b4a72;}
+.actu-feat-media img,.actu-card-media img{opacity:.45;filter:saturate(.25) contrast(1.15);}
+.actu-feat:hover .actu-feat-media img,.actu-card:hover .actu-card-media img{opacity:.6;}
+.actu-card-body{padding:22px 24px 24px;display:flex;flex-direction:column;flex:1;}
+.actu-card-title{font-family:'Anton',sans-serif;font-weight:400;font-size:21px;line-height:1.2;letter-spacing:.3px;color:var(--navy);margin-bottom:10px;}
+.actu-card-teaser{font-size:14px;color:var(--mid);line-height:1.7;}
+.actu-card .actu-more{margin-top:auto;padding-top:16px;}
+.actu-card:hover .actu-more{transform:translateX(4px);color:var(--navy);}
+@media(max-width:768px){
+  .actu-feat{grid-template-columns:1fr;}
+  .actu-grid,.actu-grid.duo{grid-template-columns:1fr;gap:18px;}
+}
+.actu-all{text-align:center;margin-top:26px;}
+.actu-all a{font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:2px;color:#3E7CB1;text-decoration:none;padding:10px 4px;display:inline-block;transition:color .2s;}
+.actu-all a:hover{color:var(--navy);}
 </style>
 <noscript><style>.reveal,.reveal-left,.reveal-right,.reveal-zoom,.reveal-children>*,.s-label,.s-title,.gallery-item{opacity:1!important;transform:none!important;}</style></noscript>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"CIELBLEU Running Club","url":"https://cielbleurunningclub.com/","inLanguage":"fr-FR"}</script>
@@ -676,9 +732,19 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
   <div class="kmbleu-media reveal" id="kmbleuMedia"></div>
 </section>
 
+<!-- ACTUALITÉS -->
+<section id="actus">
+  <div class="s-label">04 · Actualités</div>
+  <h2 class="s-title">Ce qui fait<br>la vie du club.</h2>
+  <div class="actu-wrap">
+    <div class="actu-grid" id="actuGrid"></div>
+    <div class="actu-all"><a href="actualites.html">Toutes les actus →</a></div>
+  </div>
+</section>
+
 <!-- GALERIE -->
 <section id="galerie">
-  <div class="s-label">04 · Galerie</div>
+  <div class="s-label">05 · Galerie</div>
   <h2 class="s-title">Vous verrez,<br>on sourit beaucoup.</h2>
   <div class="gallery-swipe-hint" style="margin:0 0 14px;">← Glissez pour découvrir →</div>
   <div class="gallery-carousel-wrap">
@@ -769,7 +835,7 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
 
 <!-- ADHÉSION -->
 <section id="adhesion">
-  <div class="s-label">05 · Adhésion</div>
+  <div class="s-label">06 · Adhésion</div>
   <h2 class="s-title">Nous rejoindre.</h2>
   <div class="adhesion-block reveal">
     <div class="ab-text">
@@ -807,7 +873,7 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
 
 <!-- FAQ -->
 <section id="faq">
-  <div class="s-label">06 · FAQ</div>
+  <div class="s-label">07 · FAQ</div>
   <h2 class="s-title">Pas de question<br>bête.</h2>
   <div class="faq reveal-children">
     <div class="faq-item">
@@ -1083,6 +1149,19 @@ window.addEventListener('scroll',()=>{
 </script>
 <script>function toggleNav(){document.getElementById('navMobile').classList.toggle('open');}
 document.addEventListener('click',function(e){var m=document.getElementById('navMobile');if(m&&m.classList.contains('open')&&!m.contains(e.target)&&!e.target.closest('.nav-hamburger'))m.classList.remove('open');});</script>
+<script src="donnees/articles.js?v=16"></script>
+<script>
+(function(){
+  if(typeof ARTICLES==='undefined'||!ARTICLES.length)return;
+  const list=ARTICLES.slice(0,3),g=document.getElementById('actuGrid');
+  if(list.length<=2)g.classList.add('duo');
+  g.innerHTML=list.map(a=>articleCardHTML(a,false)).join('');
+  // Sur téléphone, le toucher allume la lumière rouge des cartes concernées (pas de survol)
+  document.addEventListener('touchstart',e=>{const k=e.target.closest('.glow-rouge');if(k)k.classList.add('touch');},{passive:true});
+  document.addEventListener('touchend',e=>{const k=e.target.closest('.glow-rouge');if(k)setTimeout(()=>k.classList.remove('touch'),900);},{passive:true});
+  document.addEventListener('click',e=>{const k=e.target.closest('a.glow-rouge');if(!k||!k.classList.contains('touch')||k.dataset.go)return;e.preventDefault();k.dataset.go=1;setTimeout(()=>{location.href=k.href;},300);});
+})();
+</script>
 <script src="js/analytics.js?v=3"></script>
 </body>
 </html>
