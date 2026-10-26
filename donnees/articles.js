@@ -10,7 +10,7 @@ const ARTICLES=[
     id:'cielrouge',
     glow:'rouge',                   // lumière rouge au survol / au toucher
     url:'article-cielrouge.html',
-    cover:'images/couvertures/accueil.webp?v=7',
+    cover:'images/evenements/alerte-rouge-miniature.jpg',
     coverPos:'center 50%',
     alt:"Les coureurs du CIELBLEU sur la piste",
     tag:'Actu',
