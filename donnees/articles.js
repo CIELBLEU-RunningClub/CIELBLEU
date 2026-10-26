@@ -18,7 +18,7 @@ const ARTICLES=[
     dateLabel:'26 octobre 2026',
     read:'2 min',
     title:"Alerte rouge : le ciel change de couleur",
-    teaser:"Avec adidas et la nouvelle Adios Pro 5, CIELBLEU passe au rouge. Au programme : un challenge sur les Champs-Élysées et l'Ekiden de Paris."
+    teaser:"Avec Adidas et la nouvelle Adios Pro 5, CIELBLEU passe au rouge. Au programme : un challenge sur les Champs-Élysées et l'Ekiden de Paris."
   },
   {
     id:'marathon-bleu',
