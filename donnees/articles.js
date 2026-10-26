@@ -28,7 +28,7 @@ const ARTICLES=[
     alt:"Les adhérents du CIELBLEU réunis sur la piste bleue du stade",
     tag:'Retour en images',
     date:'2026-10-22',
-    dateLabel:'22 octobre 2026',
+    dateLabel:'27 septembre 2026',
     read:'2 min',
     title:"Marathon Bleu : 42,195 km bouclés en 2h15'48",
     teaser:"42 coureurs, 42,195 km en relais de 400 m, un seul chrono : 2h15'48. Retour sur la première édition du Marathon Bleu."
