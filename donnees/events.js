@@ -139,7 +139,7 @@ const specials=[
    tags:[{l:'Adhérents',c:'tag-adherent'}],
    desc:"Le Marathon Bleu en relais : 42 coureurs se partagent la distance mythique sur la piste. L'événement adhérents de septembre.",
    details:[['Horaire','8h30 – 12h30'],['Lieu',L_PISTE]],location:'Paris',
-   article:'article-marathon-bleu.html',articleTitle:'42,195 km à 42. En relais.'},
+   article:'article-marathon-bleu.html',articleTitle:"Marathon Bleu : 42,195 km bouclés en 2h15'48"},
   // Octobre
   {m:9,d:14,time:'19h20',dur:90,title:'Run découverte CIELBLEU × Fitzroy',
    tags:[{l:'Ouvert à tous',c:'tag-open'}],
