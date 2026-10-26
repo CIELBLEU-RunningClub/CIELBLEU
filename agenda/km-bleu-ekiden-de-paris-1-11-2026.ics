@@ -1,0 +1,17 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CIELBLEU Running//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:e41@cielbleu.run
+DTSTAMP:20261026T191104Z
+DTSTART:20261101T090000
+DTEND:20261101T130000
+SUMMARY:KM Bleu × Ekiden de Paris · CIELBLEU Running
+DESCRIPTION:Nos équipes CIELROUGE sont sur la ligne de départ de l'Ekiden
+  de Paris pour s'affronter dans la bonne humeur. Viens les encourager et m
+ ettre le feu au parcours !
+LOCATION:Paris
+END:VEVENT
+END:VCALENDAR

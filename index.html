@@ -869,7 +869,7 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
   </div>
 </footer>
 
-<script src="donnees/events.js?v=34"></script>
+<script src="donnees/events.js?v=35"></script>
 <script>
 // Compteurs animés : les stats montent en flèche une fois à l'écran
 (function(){
@@ -921,7 +921,7 @@ function toggleFaq(btn){const open=btn.parentElement.classList.toggle('open');bt
     const wd=new Date(ev.y,ev.m,ev.d).getDay();
     const kind=ev.session
       ? `<span class="ev-kind ev-kind-seance"><span class="ev-kind-ico">↻</span>${WD_NAMES[wd]}</span>`
-      : `<span class="ev-kind ev-kind-seance"><span class="ev-kind-ico">↻</span>${WD_NAMES[wd]}</span><span class="ev-kind ev-kind-special"><span class="ev-kind-ico">★</span>Spécial</span>`;
+      : `<span class="ev-kind ev-kind-seance"><span class="ev-kind-ico">↻</span>${ev.kindLabel||WD_NAMES[wd]}</span><span class="ev-kind ev-kind-special"><span class="ev-kind-ico">★</span>Spécial</span>`;
     return `<div class="ev-card${ev.session?' seance wd-'+ev.wd:' special'}" onclick="location.href='calendrier.html?event='+encodeURIComponent('${ev.id}')">
       <div class="ev-card-top" style="background:${ev.color}"></div>
       <div class="ev-card-body">
