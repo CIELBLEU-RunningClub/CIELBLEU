@@ -617,7 +617,25 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
   .actu-feat{grid-template-columns:1fr;}
   .actu-grid,.actu-grid.duo{grid-template-columns:1fr;gap:18px;}
 }
-.actu-all{text-align:center;margin-top:26px;}
+/* Version compacte sur l'accueil : une vignette, la date et le titre, juste pour signaler les actus */
+#actus{padding-top:32px;padding-bottom:32px;}
+#actus .s-title{margin-bottom:18px;}
+.actu-grid.mini{grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:14px;}
+.actu-grid.mini .actu-card{flex-direction:row;align-items:stretch;border-radius:14px;}
+.actu-grid.mini .actu-card:hover{transform:translateY(-3px);}
+.actu-grid.mini .actu-card-media{flex:0 0 120px;aspect-ratio:auto;min-height:92px;}
+.actu-grid.mini .actu-card-body{padding:14px 18px;justify-content:center;}
+.actu-grid.mini .actu-meta{margin-bottom:8px;gap:8px;}
+.actu-grid.mini .actu-tag{font-size:10px;padding:4px 10px;}
+.actu-grid.mini .actu-read,.actu-grid.mini .actu-dot,.actu-grid.mini .actu-card-teaser,.actu-grid.mini .actu-more{display:none;}
+.actu-grid.mini .actu-card-title{font-size:19px;margin-bottom:0;}
+@media(max-width:768px){
+  #actus{padding-top:26px;padding-bottom:26px;}
+  .actu-grid.mini{grid-template-columns:1fr;gap:12px;}
+  .actu-grid.mini .actu-card-media{flex-basis:96px;}
+  .actu-grid.mini .actu-card-title{font-size:17px;}
+}
+.actu-all{text-align:center;margin-top:14px;}
 .actu-all a{font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:2px;color:#3E7CB1;text-decoration:none;padding:10px 4px;display:inline-block;transition:color .2s;}
 .actu-all a:hover{color:var(--navy);}
 </style>
@@ -735,7 +753,7 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
 <!-- ACTUALITÉS -->
 <section id="actus">
   <div class="s-label">04 · Actualités</div>
-  <h2 class="s-title">Ce qui fait<br>la vie du club.</h2>
+  <h2 class="s-title">La vie du club.</h2>
   <div class="actu-wrap">
     <div class="actu-grid" id="actuGrid"></div>
     <div class="actu-all"><a href="actualites.html">Toutes les actus →</a></div>
@@ -1154,7 +1172,7 @@ document.addEventListener('click',function(e){var m=document.getElementById('nav
 (function(){
   if(typeof ARTICLES==='undefined'||!ARTICLES.length)return;
   const list=ARTICLES.slice(0,3),g=document.getElementById('actuGrid');
-  if(list.length<=2)g.classList.add('duo');
+  g.classList.add('mini');
   g.innerHTML=list.map(a=>articleCardHTML(a,false)).join('');
   // Sur téléphone, le toucher allume la lumière rouge des cartes concernées (pas de survol)
   document.addEventListener('touchstart',e=>{const k=e.target.closest('.glow-rouge');if(k)k.classList.add('touch');},{passive:true});
