@@ -118,6 +118,10 @@ section:nth-child(even){background:var(--white);}
 .actu-feat:hover .actu-more{transform:translateX(4px);color:var(--navy);}
 
 /* Grille des autres articles */
+/* Carte CIELROUGE : une lumière rouge s'allume sur la photo au survol, et au toucher sur téléphone */
+.actu-card-media::after,.actu-feat-media::after{content:'';position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .35s ease;mix-blend-mode:screen;background:radial-gradient(ellipse 80% 70% at 50% 55%,rgba(255,52,64,.75) 0%,rgba(255,52,64,.38) 45%,rgba(255,52,64,0) 100%);}
+.actu-feat-media{position:relative;}
+.glow-rouge:hover .actu-card-media::after,.glow-rouge:hover .actu-feat-media::after,.glow-rouge.touch .actu-card-media::after,.glow-rouge.touch .actu-feat-media::after{opacity:1;}
 .actu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px;margin-top:22px;}
 /* Avec peu d'articles, on les met côte à côte plutôt qu'une grande carte suivie d'une petite */
 .actu-grid.duo{grid-template-columns:repeat(2,1fr);margin-top:0;}
@@ -277,6 +281,10 @@ footer{background:var(--navy-deep);padding:40px 60px;}
 <script>
 (function(){
   if(typeof ARTICLES==='undefined'||!ARTICLES.length)return;
+  // Sur téléphone, le toucher allume la lumière (le survol n'existe pas) : on laisse 300 ms avant d'ouvrir l'article
+  document.addEventListener('touchstart',e=>{const k=e.target.closest('.glow-rouge');if(k)k.classList.add('touch');},{passive:true});
+  document.addEventListener('touchend',e=>{const k=e.target.closest('.glow-rouge');if(k)setTimeout(()=>k.classList.remove('touch'),900);},{passive:true});
+  document.addEventListener('click',e=>{const k=e.target.closest('a.glow-rouge');if(!k||!k.classList.contains('touch')||k.dataset.go)return;e.preventDefault();k.dataset.go=1;setTimeout(()=>{location.href=k.href;},300);});
   if(ARTICLES.length<=2){
     const g=document.getElementById('actuGrid');g.classList.add('duo');
     g.innerHTML=ARTICLES.map(a=>articleCardHTML(a,false)).join('');
