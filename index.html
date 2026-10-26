@@ -108,7 +108,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .hero > *:not(.hero-bg-img):not(picture){position:relative;z-index:2;}
 /* Mode CIELROUGE : un halo de lumière rouge traverse la couverture de temps en temps (clin d'oeil à la collection rouge Adidas).
    Le bleu de base ne change pas. */
-.hero::after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;mix-blend-mode:screen;background:linear-gradient(105deg,rgba(255,50,60,0) 0%,rgba(255,50,60,0) 34%,rgba(255,52,64,.62) 50%,rgba(255,50,60,0) 66%,rgba(255,50,60,0) 100%);background-size:300% 100%;background-position:100% 0;animation:balayageRouge 11s linear .8s infinite;}
+.hero::after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;mix-blend-mode:screen;background:linear-gradient(105deg,rgba(255,50,60,0) 14%,rgba(255,50,60,.05) 26%,rgba(255,52,64,.14) 38%,rgba(255,54,66,.26) 50%,rgba(255,52,64,.14) 62%,rgba(255,50,60,.05) 74%,rgba(255,50,60,0) 86%);background-size:320% 100%;background-position:100% 0;-webkit-mask-image:radial-gradient(ellipse 90% 75% at 50% 50%,#000 25%,transparent 100%);mask-image:radial-gradient(ellipse 90% 75% at 50% 50%,#000 25%,transparent 100%);animation:balayageRouge 11s linear .8s infinite;}
 @keyframes balayageRouge{0%{background-position:100% 0;animation-timing-function:cubic-bezier(.45,.05,.25,1);}26%{background-position:0% 0;}100%{background-position:0% 0;}}
 @media(prefers-reduced-motion:reduce){.hero::after{animation:none;display:none;}}
 .hero > picture{position:static;}
