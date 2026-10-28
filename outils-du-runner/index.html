@@ -224,6 +224,12 @@ body > .nav-mobile{margin:0;}
 body > nav,body > footer,body > .nav-mobile{font-family:'Open Sans',sans-serif;line-height:normal;}
 body > .nav-mobile li a{line-height:normal;}
 .ref-role2{font-size:13px;color:var(--mid);margin-top:2px;}
+/* Séance : les deux blocs ont la même hauteur (réglages à gauche, récap à droite) */
+@media(min-width:960px){
+  #seance .session-grid{align-items:stretch;}
+  #seance .session-grid>.card--light{align-content:space-between;}
+  #seance .session-results{position:static;}
+}
 
 /* Le pied de page de l'outil garde sa mention (temps théoriques, rien n'est envoyé) : on en fait une simple note au-dessus du pied de page du site */
 footer.footer{background:var(--cream);color:var(--mid);padding:26px 60px;text-align:center;border-top:1px solid rgba(18,43,68,.08);}
