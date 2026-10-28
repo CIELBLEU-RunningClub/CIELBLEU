@@ -506,7 +506,7 @@ nav a:focus-visible,.nav-mobile a:focus-visible,footer a:focus-visible,footer bu
 
 <a id="back-to-top" href="#" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'});" aria-label="Retour en haut">↑</a>
 
-<script src="donnees/membres.js?v=1027"></script>
+<script src="donnees/membres.js?v=1028"></script>
 <script>
 
 /* ===== DONNÉES ===== */
@@ -533,7 +533,7 @@ function grad(i){const l1=48+((i*13)%22);const l2=26+((i*11)%16);const h=200+((i
     const visu=m.photo
       ? `<div class="trombi-avatar" style="background:${grad(i)}"><img class="trombi-photo" src="${m.photo}" alt="${m.nom}" loading="lazy" decoding="async"></div>`
       : m.fond
-        ? `<div class="trombi-avatar" style="background:${grad(i)}"><img class="trombi-fond" src="${m.fond}" alt="" loading="lazy" decoding="async"></div>`
+        ? `<div class="trombi-avatar" style="background:${grad(i)}"><img class="trombi-fond" src="${m.fond}" alt="" loading="lazy" decoding="async"${m.fondStyle?` style="${m.fondStyle}"`:''}></div>`
         : `<div class="trombi-avatar" style="background:${grad(i)}">${m.nom.charAt(0)}</div>`;
     // Citation affichée seulement si elle tient sur la carte (les trop longues sont ignorées)
     const raw=(m.citation||'').trim();
