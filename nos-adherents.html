@@ -1183,7 +1183,7 @@ renderRecords();
   const exemples=Object.keys(cnt).filter(k=>k.charAt(0).toUpperCase()===reine).slice(0,4).map(k=>nomAff[k]).join(', ');
   const cartes=[
     {n:cnt[top],l:nomAff[top]+' ×'+cnt[top],t:'Le prénom roi du club. Crie « '+nomAff[top]+' ! » dans la foule et '+cnt[top]+' têtes se retournent.'},
-    {n:nbPartage,l:'prénoms en double',t:nbPartage+' adhérents partagent leur prénom avec quelqu\'un d\'autre. D\'où les initiales sur les cartes.'},
+    {n:nbPartage,l:'adhérents ont un homonyme',t:'Soit '+Math.round(100*nbPartage/MEMBRES.length)+' % du club : ils partagent leur prénom avec quelqu\'un d\'autre. D\'où les initiales sur les cartes.'},
     {n:marathoniens,l:'marathoniens',t:'42,195 km au compteur, et ils en redemandent.'},
     {n:reine,l:'la lettre reine',t:lettres[reine]+' adhérents ont un prénom en '+reine+' : '+exemples+'… Le club est très '+reine+'.'}
   ];
