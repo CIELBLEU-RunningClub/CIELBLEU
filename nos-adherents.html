@@ -390,7 +390,9 @@ footer{background:var(--navy-deep);padding:40px 60px;}
   @keyframes hintNudge{0%,100%{transform:translateX(0);}50%{transform:translateX(5px);}}
   .trombi-wrap::after{content:'';position:absolute;top:0;right:0;bottom:10px;width:54px;background:linear-gradient(to left,var(--cream) 8%,rgba(246,249,252,0));pointer-events:none;z-index:2;transition:opacity .25s;}
   .trombi-wrap.fin::after{opacity:0;}
-  .trombi-arrow{display:flex;align-items:center;justify-content:center;position:absolute;top:calc(50% - 5px);right:2px;transform:translateY(-50%);z-index:3;width:46px;height:46px;border-radius:50%;border:none;background:var(--gold);color:var(--navy-deep);font-size:30px;line-height:1;padding:0 0 3px;box-shadow:0 6px 18px rgba(11,29,48,.35);cursor:pointer;transition:opacity .25s;animation:arrowNudge 1.5s ease-in-out infinite;}
+  .trombi-wrap.compris::after{opacity:0;}
+  .trombi-wrap.compris .trombi-arrow{opacity:0;pointer-events:none;}
+  .trombi-arrow{display:flex;align-items:center;justify-content:center;position:absolute;top:calc(50% - 5px);right:2px;transform:translateY(-50%);z-index:3;width:40px;height:40px;border-radius:50%;border:none;background:var(--gold);color:var(--navy-deep);font-size:26px;line-height:1;padding:0 0 3px;box-shadow:0 6px 18px rgba(11,29,48,.35);cursor:pointer;transition:opacity .25s;animation:arrowNudge 1.5s ease-in-out infinite;}
   .trombi-arrow.prev{right:auto;left:2px;animation:none;}
   .trombi-arrow.is-hidden{opacity:0;pointer-events:none;}
   @keyframes arrowNudge{0%,100%{transform:translateY(-50%) translateX(0);}50%{transform:translateY(-50%) translateX(6px);}}
@@ -1276,6 +1278,8 @@ renderRecords();
     const part=g.scrollWidth>0?Math.min(1,g.clientWidth/g.scrollWidth):1;
     pr.style.width=(part*100)+'%';
     pr.style.transform='translateX('+(r*(1/part-1)*100)+'%)';
+    // dès qu'on a fait défiler une fois, les flèches et le fondu s'effacent : on a compris
+    if(g.scrollLeft>40)w.classList.add('compris');
     pv.classList.toggle('is-hidden',g.scrollLeft<24);
     const fin=max<=0||g.scrollLeft>=max-24;
     nx.classList.toggle('is-hidden',fin);w.classList.toggle('fin',fin);
