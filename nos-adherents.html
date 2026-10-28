@@ -560,7 +560,8 @@ function grad(i){const l1=48+((i*13)%22);const l2=26+((i*11)%16);const h=200+((i
     const visible=isFiltered||expanded||mobile?shown:shown.slice(0,P);
     grid.classList.toggle('etendu',!mobile&&visible.length>P);
     grid.innerHTML = visible.length? visible.map(([m,i])=>cardHTML(m,i)).join("") : `<div class="trombi-empty">Aucun adhérent trouvé pour « ${filter} ».</div>`;
-    document.getElementById('trombiCount').textContent = `${shown.length} adhérent${shown.length>1?'s':''}`;
+    const total=isFiltered||typeof NB_ADHERENTS==='undefined'?shown.length:NB_ADHERENTS; // le total compte aussi ceux qui ne souhaitent pas apparaître
+    document.getElementById('trombiCount').textContent = `${total} adhérent${total>1?'s':''}`;
     const btn=document.getElementById('trombiToggle');
     if(!mobile && !isFiltered && shown.length>P){
       btn.style.display='flex';
