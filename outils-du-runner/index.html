@@ -234,6 +234,13 @@ body > .nav-mobile li a{line-height:normal;}
 #allures .helper--passages{margin:12px 0 0;}
 #allures .helper--passages .helper-body{padding:0 12px 12px;}
 #allures .helper--passages .helper-body>p{margin-top:8px;}
+/* Allures : les deux blocs à la même hauteur, allure cible plus discrète */
+#allures .race-headline .results-big,#allures .race-headline .stat--xl .stat-value{font-size:clamp(34px,9vw,42px);}
+#allures .race-headline .results-big small{font-size:.38em;}
+@media(min-width:960px){
+  #allures .allures-grid{align-items:stretch;}
+  #allures .converter{display:flex;flex-direction:column;justify-content:space-between;}
+}
 
 /* Le pied de page de l'outil garde sa mention (temps théoriques, rien n'est envoyé) : on en fait une simple note au-dessus du pied de page du site */
 footer.footer{background:var(--cream);color:var(--mid);padding:26px 60px;text-align:center;border-top:1px solid rgba(18,43,68,.08);}
