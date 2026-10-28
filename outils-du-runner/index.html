@@ -218,6 +218,11 @@ footer.footer{display:none;}
 .refs-more{display:inline-block;margin-top:18px;font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:2px;color:#3E7CB1;text-decoration:none;padding:8px 2px;}
 .refs-more:hover{color:var(--navy);}
 @media(max-width:768px){.refs{padding:30px 20px 34px;}.ref-card{width:100%;padding:14px 18px 14px 14px;}.ref-card img{width:72px;height:72px;}}
+/* Menu et pied de page du site : mêmes réglages que sur les autres pages (l'outil n'a pas le « reset » du site : marges, interligne, police) */
+body > nav *,body > footer *,body > .nav-mobile *{margin:0;padding:0;box-sizing:border-box;}
+body > .nav-mobile{margin:0;}
+body > nav,body > footer,body > .nav-mobile{font-family:'Open Sans',sans-serif;line-height:normal;}
+body > .nav-mobile li a{line-height:normal;}
 
 /* Le pied de page de l'outil garde sa mention (temps théoriques, rien n'est envoyé) : on en fait une simple note au-dessus du pied de page du site */
 footer.footer{background:var(--cream);color:var(--mid);padding:26px 60px;text-align:center;border-top:1px solid rgba(18,43,68,.08);}
