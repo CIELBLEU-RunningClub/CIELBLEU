@@ -265,6 +265,19 @@ body > .nav-mobile li a{line-height:normal;}
   #piste .t-route{stroke-width:3.6px;}
   #piste .t-route-shadow{stroke-width:4.8px;}
 }
+/* Allures : l'objectif de course occupe toute la largeur (réglages à gauche, résultat à droite), le convertisseur est optionnel et replié dessous */
+#allures .allures-grid{grid-template-columns:minmax(0,1fr);}
+@media(min-width:900px){
+  #allures .race{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:36px;align-items:start;}
+  #allures .race>.card-title{grid-column:1 / -1;}
+  #allures .race>fieldset,#allures .race>.field-hint{grid-column:1;}
+  #allures .race>.race-headline{grid-column:2;grid-row:2 / span 2;align-self:start;}
+  #allures .race>.helper--passages{grid-column:2;grid-row:4 / span 2;margin-top:0;align-self:start;}
+}
+#allures .helper--conv{margin:14px 0 0;}
+#allures .helper--conv .helper-body{padding:0 12px 12px;}
+#allures .helper--conv .converter{margin:0;}
+#allures .allures-grid{gap:0;}
 
 /* Le pied de page de l'outil garde sa mention (temps théoriques, rien n'est envoyé) : on en fait une simple note au-dessus du pied de page du site */
 footer.footer{background:var(--cream);color:var(--mid);padding:26px 60px;text-align:center;border-top:1px solid rgba(18,43,68,.08);}
@@ -415,7 +428,7 @@ document.addEventListener('click',function(e){
   setTimeout(function(){b.dataset.go='1';b.click();setTimeout(function(){delete b.dataset.go;},300);},550);
 },true);
 </script>
-<script type="module" crossorigin src="./assets/index-CpUjFR1R.js?v=40664ff9"></script>
+<script type="module" crossorigin src="./assets/index-CpUjFR1R.js?v=3134ffd5"></script>
 <script>
 window.addEventListener('scroll',()=>{
   document.getElementById('back-to-top').classList.toggle('show',window.scrollY>400);
