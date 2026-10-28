@@ -199,6 +199,14 @@ section:nth-child(even){background:var(--white);}
 .rec-row.f.top .rec-rank{color:#9A6F2E;}
 .rec-row.f.top .rec-head{border-color:#c9922f;}
 .rec-row.f.top .rec-time{color:#B0731A;}
+/* Suite du classement : une liste compacte qui défile dans sa boîte, pour ne pas allonger toute la page */
+.rec-scroll{display:flex;flex-direction:column;gap:7px;max-height:340px;overflow-y:auto;padding:2px 6px 28px 2px;margin-right:-6px;scrollbar-width:thin;scrollbar-color:rgba(18,43,68,.3) transparent;-webkit-mask-image:linear-gradient(to bottom,#000 calc(100% - 34px),transparent);mask-image:linear-gradient(to bottom,#000 calc(100% - 34px),transparent);-webkit-overflow-scrolling:touch;}
+.rec-scroll .rec-row{padding:7px 14px;gap:11px;border-radius:12px;flex-shrink:0;}
+.rec-scroll .rec-row:hover{transform:none;box-shadow:none;}
+.rec-scroll .rec-rank{display:none;}
+.rec-scroll .rec-head{width:34px;height:34px;font-size:15px;}
+.rec-scroll .rec-name{font-size:16px;}
+.rec-scroll .rec-time{font-size:21px;}
 .rec-plus{margin-top:4px;align-self:flex-start;font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;color:var(--mid);background:none;border:1.5px dashed rgba(18,43,68,.2);border-radius:30px;padding:9px 18px;cursor:pointer;transition:all .2s;}
 .rec-plus:hover{border-color:#3E7CB1;border-style:solid;color:#3E7CB1;background:rgba(62,124,177,.06);}
 .rec-group.femmes .rec-plus:hover{border-color:#2C5F8C;color:#2C5F8C;}
@@ -252,6 +260,7 @@ section:nth-child(even){background:var(--white);}
 .fun-num{font-family:'Anton',sans-serif;font-size:50px;line-height:1;color:var(--gold);letter-spacing:1px;}
 .fun-lab{font-family:'Bebas Neue',sans-serif;font-size:19px;letter-spacing:2px;color:var(--blue-sky);margin:4px 0 8px;}
 .fun-txt{font-size:13px;line-height:1.55;color:rgba(255,255,255,.75);}
+@media(max-width:768px){.trombi-tools{justify-content:center;gap:12px;}.trombi-search{flex:1 1 100%;max-width:none;}.trombi-count{flex:1 1 100%;text-align:center;margin-top:-4px;}.surprise-btn{margin:0 auto;}}
 @media(max-width:900px){.fun{grid-template-columns:repeat(2,1fr);gap:10px;}.fun-card:last-child:nth-child(odd){grid-column:span 2;}.fun-num{font-size:42px;}.fun-txt{font-size:12.5px;}}
 
 /* ── SURPRENDS-MOI ── */
@@ -1123,11 +1132,12 @@ function renderRecords(){
     // On n'affiche que les premiers, pour éviter une page interminable
     const ouvert=recOuvert[g];
     const reste=liste.length-REC_APERCU;
-    const visibles=ouvert?liste:liste.slice(0,REC_APERCU);
+    const podium=liste.slice(0,REC_APERCU);
     const bouton=reste>0?`<button class="rec-plus" onclick="basculerRecords('${g}')">${ouvert?'Réduire la liste':'Voir les '+reste+' autre'+(reste>1?'s':'')+' →'}</button>`:'';
     return `<div class="rec-group ${cls}">
       <div class="rec-group-title">${label} <span class="rec-group-n">${liste.length}</span></div>
-      ${visibles.map((r,i)=>ligneRecord(r,i,g)).join("")}
+      ${podium.map((r,i)=>ligneRecord(r,i,g)).join("")}
+      ${ouvert?`<div class="rec-scroll" tabindex="0" aria-label="Suite du classement ${label.toLowerCase()}">${liste.slice(REC_APERCU).map((r,i)=>ligneRecord(r,i+REC_APERCU,g)).join("")}</div>`:''}
       ${bouton}
     </div>`;
   }).join("");
