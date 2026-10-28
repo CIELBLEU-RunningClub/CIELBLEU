@@ -1050,7 +1050,7 @@ let recOuvert={f:false,h:false};
 function ligneRecord(r,i,g){
   return `
       <div class="rec-row ${g}${i===0?' top':''}">
-        <div class="rec-rank">${i===0?'🥇':i===1?'🥈':i===2?'🥉':(i+1)}</div>
+        <div class="rec-rank">${i===0?'🥇':i===1?'🥈':i===2?'🥉':''}</div>
         ${headHTML(r)}
         <div class="rec-info">
           <div class="rec-name">${r.who}</div>
