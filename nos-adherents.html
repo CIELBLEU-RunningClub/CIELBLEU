@@ -1030,6 +1030,9 @@ const recTabs=document.getElementById('recTabs');
 let recActive=2; // l'onglet 10 KM s'ouvre en premier
 function headHTML(r){
   if(r.photo)return `<div class="rec-head"><img src="${r.photo}" alt="${r.who}"></div>`;
+  // L'orga a sa photo (la même que sur la carte du trombinoscope)
+  const orga=typeof MEMBRES!=='undefined'?MEMBRES.find(m=>m.nom===r.who&&m.fond):null;
+  if(orga)return `<div class="rec-head" style="background:${grad(r.hue)}"><img src="${orga.fond}" alt="${r.who}" loading="lazy" decoding="async"></div>`;
   return `<div class="rec-head" style="background:${grad(r.hue)}">${r.who.charAt(0)}</div>`;
 }
 // Convertit un chrono ("4h30", "1h45", "38:20", "38'20") en secondes, pour classer du plus rapide au plus lent
