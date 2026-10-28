@@ -235,6 +235,7 @@ section:nth-child(even){background:var(--white);}
 .ev-card.special .ev-card-day{color:#A63A2C;font-size:38px;}
 .ev-card.special .ev-card-title{font-size:15px;}
 .ev-card.special:hover{box-shadow:0 14px 34px rgba(218,91,71,.26);}
+.ev-card.ev-flash{box-shadow:0 0 0 3px var(--gold),0 14px 34px rgba(232,176,107,.4)!important;}
 .ev-card.rouge{border-color:rgba(211,47,47,.55);background:linear-gradient(165deg,rgba(211,47,47,.13),var(--white) 55%);}
 .ev-card.rouge .ev-card-day{color:#B71C1C;}
 .ev-card.rouge:hover{box-shadow:0 14px 34px rgba(211,47,47,.28);}
@@ -781,7 +782,22 @@ window.addEventListener('scroll',()=>{document.getElementById('back-to-top').cla
 (function(){
   const wantedId=new URLSearchParams(location.search).get('event');
   // hasOwnProperty : évite qu'une clé du prototype (ex. ?event=constructor) ne casse la page
-  if(wantedId&&Object.prototype.hasOwnProperty.call(EVENTS_BY_ID,wantedId))openModal(wantedId);
+  if(wantedId&&Object.prototype.hasOwnProperty.call(EVENTS_BY_ID,wantedId)){
+    // On atterrit directement sur l'événement : le bon mois est affiché, la page défile jusqu'à sa carte (mise en évidence), puis son détail s'ouvre
+    const ev=EVENTS_BY_ID[wantedId];
+    const trouve=()=>document.querySelector('.ev-card[onclick*="openModal(\''+wantedId+'\')"]');
+    let card=trouve();
+    // Si la carte n'est pas dans la liste affichée (ex. événement passé), on affiche son mois
+    if(!card&&typeof activeMonth!=='undefined'){activeMonth=ev.k;renderFilter();renderEvents();card=trouve();}
+    if(card){
+      const f=document.getElementById('evFilter');
+      const off=(window.innerWidth<=768?70:112)+(f?f.offsetHeight:0)+24;
+      window.scrollTo({top:Math.max(0,card.getBoundingClientRect().top+window.scrollY-off),behavior:'instant'});
+      card.classList.add('ev-flash');
+      setTimeout(()=>card.classList.remove('ev-flash'),3000);
+    }
+    openModal(wantedId);
+  }
 })();
 </script>
 <script src="js/scroll-shoe.js?v=3"></script>
