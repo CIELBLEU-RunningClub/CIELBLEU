@@ -672,7 +672,6 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
 a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,[tabindex]:focus-visible{outline:2px solid #3E7CB1;outline-offset:3px;border-radius:3px;}
 nav a:focus-visible,.nav-mobile a:focus-visible,footer a:focus-visible,footer button:focus-visible{outline-color:var(--blue-sky);}
 .nav-mobile li a.active{color:white;border-left:3px solid var(--gold);padding-left:12px;}
-.read-progress{position:fixed;top:0;left:0;height:3px;width:100%;background:var(--gold);transform:scaleX(0);transform-origin:left;z-index:101;pointer-events:none;}
 /* Titres de section : sur une seule ligne et plus petits (ordinateur), retour à la ligne naturel sur téléphone */
 .s-title{font-size:clamp(22px,2.7vw,32px)!important;line-height:1.15!important;}
 .s-title{white-space:nowrap;}
@@ -712,7 +711,6 @@ nav a:focus-visible,.nav-mobile a:focus-visible,footer a:focus-visible,footer bu
 </head>
 <body>
 <a class="skip-link" href="#contenu">Aller au contenu</a>
-<div class="read-progress" id="readProgress" aria-hidden="true"></div>
 <div id="scroll-progress"></div>
 <div id="scroll-medal">🏅</div>
 <nav>
@@ -1245,14 +1243,6 @@ document.addEventListener('click',function(e){var m=document.getElementById('nav
   document.addEventListener('touchstart',e=>{const k=e.target.closest('.glow-rouge');if(k)k.classList.add('touch');},{passive:true});
   document.addEventListener('touchend',e=>{const k=e.target.closest('.glow-rouge');if(k)setTimeout(()=>k.classList.remove('touch'),900);},{passive:true});
   document.addEventListener('click',e=>{const k=e.target.closest('a.glow-rouge');if(!k||!k.classList.contains('touch')||k.dataset.go)return;e.preventDefault();k.dataset.go=1;setTimeout(()=>{location.href=k.href;},300);});
-})();
-</script>
-<script>
-/* Barre de progression de lecture */
-(function(){
-  const b=document.getElementById('readProgress');if(!b)return;
-  function u(){const h=document.documentElement.scrollHeight-innerHeight;b.style.transform='scaleX('+(h>0?Math.min(1,scrollY/h):0)+')';}
-  addEventListener('scroll',u,{passive:true});addEventListener('resize',u);u();
 })();
 </script>
 <script src="js/analytics.js?v=3"></script>
