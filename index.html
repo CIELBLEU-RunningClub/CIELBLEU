@@ -677,6 +677,35 @@ nav a:focus-visible,.nav-mobile a:focus-visible,footer a:focus-visible,footer bu
 .s-title{font-size:clamp(22px,2.7vw,32px)!important;line-height:1.15!important;}
 .s-title{white-space:nowrap;}
 @media(max-width:768px){.s-title{font-size:clamp(16px,5.4vw,26px)!important;}}
+/* Invitation à découvrir les adhérents */
+#adherents-cta{background:linear-gradient(135deg,var(--navy-deep) 0%,var(--navy) 55%,#1f5683 100%);border-bottom:none;padding:56px 60px;position:relative;overflow:hidden;}
+.adhcta{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:44px;}
+.adhcta-text{flex:1 1 52%;min-width:0;}
+.adhcta .s-label{color:var(--blue-sky);}
+.adhcta .s-title{color:#fff;margin-bottom:16px;}
+.adhcta-lede{font-size:16px;line-height:1.7;color:rgba(255,255,255,.8);max-width:520px;margin-bottom:26px;}
+.adhcta-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px;}
+.adhcta-chips span{font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:2px;color:var(--blue-sky);border:1.5px solid rgba(182,205,224,.4);border-radius:30px;padding:7px 16px;}
+.adhcta-btn{display:inline-flex;align-items:center;gap:10px;background:var(--gold);color:var(--navy-deep);font-family:'Bebas Neue',sans-serif;font-size:19px;letter-spacing:2.5px;text-decoration:none;padding:15px 30px;border-radius:40px;transition:transform .2s,box-shadow .2s;}
+.adhcta-btn:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(232,176,107,.35);}
+.adhcta-btn span{transition:transform .2s;}
+.adhcta-btn:hover span{transform:translateX(5px);}
+.adhcta-faces{flex:0 0 auto;display:flex;align-items:center;}
+.adhcta-face{width:84px;height:84px;border-radius:50%;margin-left:-24px;border:3px solid var(--navy-deep);background:linear-gradient(160deg,var(--c1),var(--c2));overflow:hidden;position:relative;flex-shrink:0;transition:transform .3s cubic-bezier(.2,.8,.2,1);}
+.adhcta-face:first-child{margin-left:0;}
+.adhcta-face img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 15%;}
+.adhcta-faces:hover .adhcta-face{transform:translateY(-6px);}
+.adhcta-faces:hover .adhcta-face:nth-child(even){transform:translateY(6px);}
+.adhcta-face.toi{background:transparent;border:2.5px dashed var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;color:var(--gold);}
+@media(max-width:768px){
+  #adherents-cta{padding:44px 20px;}
+  .adhcta{flex-direction:column-reverse;align-items:center;text-align:center;gap:28px;}
+  .adhcta-lede{margin-left:auto;margin-right:auto;}
+  .adhcta-chips{justify-content:center;}
+  .adhcta-btn{width:100%;justify-content:center;}
+  .adhcta-face{width:60px;height:60px;margin-left:-16px;border-width:2.5px;}
+  .adhcta-face.toi{font-size:15px;}
+}
 </style>
 <noscript><style>.reveal,.reveal-left,.reveal-right,.reveal-zoom,.reveal-children>*,.s-label,.s-title,.gallery-item{opacity:1!important;transform:none!important;}</style></noscript>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"CIELBLEU Running Club","url":"https://cielbleurunningclub.com/","inLanguage":"fr-FR"}</script>
@@ -873,9 +902,23 @@ nav a:focus-visible,.nav-mobile a:focus-visible,footer a:focus-visible,footer bu
   </div>
 </section>
 
+<!-- LES ADHÉRENTS -->
+<section id="adherents-cta">
+  <div class="adhcta reveal">
+    <div class="adhcta-text">
+      <div class="s-label">06 · Les adhérents</div>
+      <h2 class="s-title">Cherchez-vous, vous y êtes.</h2>
+      <p class="adhcta-lede">Un trombinoscope, des citations qui font sourire, un mur des fiertés avec les chronos de chacun. Retrouve-toi, ou découvre qui court à côté de toi.</p>
+      <div class="adhcta-chips"><span>Le trombinoscope</span><span>Les citations</span><span>Le mur des fiertés</span></div>
+      <a href="nos-adherents.html" class="adhcta-btn">Découvrir les adhérents <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="adhcta-faces" aria-hidden="true"><div class="adhcta-face" style="--c1:#4b8fc9;--c2:#1f5683"><img src="images/equipe/cartes/candice.png" alt="" loading="lazy" decoding="async"></div><div class="adhcta-face" style="--c1:#6aa6d6;--c2:#2a5f8d"><img src="images/equipe/cartes/julien-d.png" alt="" loading="lazy" decoding="async"></div><div class="adhcta-face" style="--c1:#3E7CB1;--c2:#16344f"><img src="images/equipe/cartes/manon.png" alt="" loading="lazy" decoding="async"></div><div class="adhcta-face" style="--c1:#7fb2dc;--c2:#2e6a9e"><img src="images/equipe/cartes/thomas-evenementiel.png" alt="" loading="lazy" decoding="async"></div><div class="adhcta-face" style="--c1:#4a86bd;--c2:#1b4468"><img src="images/equipe/cartes/julia.png" alt="" loading="lazy" decoding="async"></div><div class="adhcta-face toi">TOI ?</div></div>
+  </div>
+</section>
+
 <!-- ADHÉSION -->
 <section id="adhesion">
-  <div class="s-label">06 · Adhésion</div>
+  <div class="s-label">07 · Adhésion</div>
   <h2 class="s-title">Nous rejoindre.</h2>
   <div class="adhesion-block reveal">
     <div class="ab-text">
@@ -913,7 +956,7 @@ nav a:focus-visible,.nav-mobile a:focus-visible,footer a:focus-visible,footer bu
 
 <!-- FAQ -->
 <section id="faq">
-  <div class="s-label">07 · FAQ</div>
+  <div class="s-label">08 · FAQ</div>
   <h2 class="s-title">Pas de question bête.</h2>
   <div class="faq reveal-children">
     <div class="faq-item">
