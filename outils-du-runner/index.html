@@ -283,6 +283,10 @@ body > .nav-mobile li a{line-height:normal;}
 #allures .helper--conv .converter{margin:0;padding:0;background:none;border:0;}
 #allures .helper--conv .converter>.card-title{display:none;}
 #allures .race-headline .results-big{font-size:clamp(40px,4.4vw,48px);}
+/* Titres de section : une seule ligne et plus petits, comme sur le reste du site */
+#root .section-head h2{font-size:clamp(22px,2.7vw,32px);}
+#root .section-head h2{white-space:nowrap;}
+@media(max-width:768px){#root .section-head h2{font-size:clamp(16px,5.4vw,26px);}}
 
 /* Le pied de page de l'outil garde sa mention (temps théoriques, rien n'est envoyé) : on en fait une simple note au-dessus du pied de page du site */
 footer.footer{background:var(--cream);color:var(--mid);padding:26px 60px;text-align:center;border-top:1px solid rgba(18,43,68,.08);}
