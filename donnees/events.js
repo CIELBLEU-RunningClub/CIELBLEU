@@ -385,7 +385,7 @@ specials2027.forEach(s=>pushEvent(Object.assign({y:2027,session:false},s)));
 
 // Challenge Adidas Pro 5 (ajouté ici pour ne pas décaler les identifiants des autres événements)
 [
-  {m:9,d:30,dayLabel:'27-30',dateStr:'27 au 30 octobre 2026',kindLabel:'Mardi au vendredi',time:'Toute la journée',icsTime:'10h00',dur:630,title:'Challenge Adidas Pro 5',
+  {m:9,d:30,color:'#D32F2F',theme:'rouge',dayLabel:'27-30',dateStr:'27 au 30 octobre 2026',kindLabel:'Mardi au vendredi',time:'Toute la journée',icsTime:'10h00',dur:630,title:'Challenge Adidas Pro 5',
    tags:[],
    desc:"Viens te challenger sur tapis avec des écrans immersifs et tente de remporter un pack Ekiden 2027 ! Un pack est à gagner chaque jour.",
    details:[['Horaire','Toute la journée, du mardi au vendredi'],['Lieu','Boutique Adidas · Champs-Élysées'],['À gagner','Un pack Ekiden 2027 par jour']],location:'Paris 8'}
