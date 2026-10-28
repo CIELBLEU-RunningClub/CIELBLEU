@@ -244,6 +244,8 @@ section:nth-child(even){background:var(--white);}
 .mosaic-tile.in:hover{transform:translateY(-4px) rotate(-.8deg) scale(1.02);box-shadow:0 16px 36px rgba(18,43,68,.28);z-index:2;transition-delay:0s;}
 .mosaic-tile img,.mosaic-tile video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.8,.2,1);}
 .mosaic-tile:hover img,.mosaic-tile:hover video{transform:scale(1.07);}
+.mosaic-tile img[style*="--pos"]{object-position:var(--pos);}
+@media(min-width:769px){.mosaic-tile img[style*="--pos"]{object-position:var(--posd);}}
 .mosaic-cap{position:absolute;left:0;right:0;bottom:0;padding:30px 14px 12px;background:linear-gradient(to top,rgba(11,29,48,.88),transparent);color:white;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:1.5px;transform:translateY(101%);transition:transform .35s ease;pointer-events:none;}
 .mosaic-tile:hover .mosaic-cap{transform:none;}
 @media(max-width:768px){
@@ -1178,7 +1180,7 @@ renderRecords();
     {type:'photo',src:'images/galerie/communaute-8.jpg',cap:'La tribu à Nice'},
     {type:'video',src:'videos/adherents-2.mp4',cap:'Nos adhérents'},
     {type:'photo',src:'images/galerie/communaute-14.jpg',cap:'Marathon Bleu : Julien et deux fusées',pos:'12% center',k:'big'},
-    {type:'photo',src:'images/galerie/communaute-9.jpg',cap:'La communauté devant la tour Eiffel',pos:'center 100%',k:'big'},
+    {type:'photo',src:'images/galerie/communaute-9.jpg',cap:'La communauté devant la tour Eiffel',pos:'center 100%',posD:'center 78%',k:'big'},
     {type:'video',src:'videos/adherents-3.mp4',cap:'CIELBLEU'},
     {type:'photo',src:'images/adherents/galerie-2.jpg',cap:'La communauté'},
     {type:'video',src:'videos/piste.mp4',cap:'Nos adhérents'},
@@ -1190,7 +1192,7 @@ renderRecords();
     const cls='mosaic-tile'+(it.k?' '+it.k:'');
     const cap='<span class="mosaic-cap">'+it.cap+'</span>';
     const media=it.type==='photo'
-      ? '<img src="'+it.src+'" alt="'+it.cap+'" loading="lazy" decoding="async"'+(it.pos?' style="object-position:'+it.pos+'"':'')+'>'
+      ? '<img src="'+it.src+'" alt="'+it.cap+'" loading="lazy" decoding="async"'+(it.pos?' style="--pos:'+it.pos+';--posd:'+(it.posD||it.pos)+'"':'')+'>'
       : '<video src="'+it.src+'" muted loop playsinline preload="none" poster="'+it.src.replace(/^videos\//,'videos/posters/').replace(/\.mp4$/i,'.jpg')+'"></video>';
     return '<div class="'+cls+'" style="--d:'+((i%4)*0.08)+'s">'+media+cap+'</div>';
   }).join('');
