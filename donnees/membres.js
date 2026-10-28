@@ -22,7 +22,6 @@ const MEMBRES=[
   {nom:'Lucile', citation:'Le ciel est bleu en deux mots ? Ciel bleu.', photo:''},
   {nom:'Clemence', citation:'', photo:''},
   {nom:'Yoann', citation:'On m\'a dit « méfiez-vous » en arrivant l\'an dernier : ils avaient raison, je suis devenu addict au Ciel Bleu.', photo:''},
-  {nom:'Thomas « El coche »', citation:'Les relations humaines, vous savez…', photo:''},
   {nom:'Fanny n°1', citation:'', photo:''},
   {nom:'Théo n°1', citation:'Entraînement difficile, course facile.', photo:''},
   {nom:'Enzo', citation:'', photo:''},
