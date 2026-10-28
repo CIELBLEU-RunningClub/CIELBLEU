@@ -258,6 +258,14 @@ body > .nav-mobile li a{line-height:normal;}
 @media(max-width:768px){.cta-open{padding:36px 20px;}.cta-open-actions{flex-direction:column;}.cta-btn{text-align:center;}}
 /* Barre de sections (Séance, La piste, Allures) retirée */
 .anchor-nav{display:none;}
+/* La piste sur téléphone : le schéma reste visible en haut de l'écran pendant qu'on règle distance, couloir et départ en dessous */
+@media(max-width:899px){
+  #piste .track-grid{display:block;}
+  #piste .track-panel{display:block;margin-top:14px;}
+  #piste .track-figure{position:sticky;top:76px;z-index:6;padding:8px 10px 6px;box-shadow:0 10px 22px rgba(11,29,48,.14);}
+  #piste .track-svg{max-height:34vh;}
+  #piste .track-legend{display:none;}
+}
 
 /* Le pied de page de l'outil garde sa mention (temps théoriques, rien n'est envoyé) : on en fait une simple note au-dessus du pied de page du site */
 footer.footer{background:var(--cream);color:var(--mid);padding:26px 60px;text-align:center;border-top:1px solid rgba(18,43,68,.08);}
