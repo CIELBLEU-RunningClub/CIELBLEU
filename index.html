@@ -310,6 +310,10 @@ footer{background:var(--navy-deep);padding:32px 60px;}
 .semaine-tool svg{width:30px;height:30px;flex-shrink:0;}
 .semaine-tool span{font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:1.5px;line-height:1.1;display:block;}
 .semaine-tool small{display:block;font-family:'Open Sans',sans-serif;font-size:11px;letter-spacing:0;font-weight:600;opacity:.75;margin-top:2px;}
+.semaine-meta{margin-top:auto;}
+.semaine-actions{display:flex;align-items:center;justify-content:space-between;gap:10px 14px;flex-wrap:wrap;min-height:44px;}
+.semaine-actions .semaine-link{margin-top:0;}
+.semaine-card>.semaine-tool{margin:4px 0 2px;}
 .semaine-link{font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:2px;color:var(--blue-sky);text-decoration:none;margin-top:4px;}
 .semaine-link:hover{color:white;}
 .swipe-hint-m{display:none;text-align:center;margin-top:14px;font-size:12px;letter-spacing:2px;color:var(--blue-steel);text-transform:uppercase;}
@@ -729,9 +733,13 @@ nav a:focus-visible,.nav-mobile a:focus-visible,footer a:focus-visible,footer bu
       <span class="semaine-badge adherents">Adhérents</span>
       <p class="semaine-desc">La séance piste : fractionné encadré, VMA et allures spécifiques. On progresse ensemble dans la bonne humeur.</p>
       <div style="font-size:12px;color:var(--gold);margin:2px 0 2px;letter-spacing:.5px;">★ Open Track : 1ère piste du mois ouverte à tous</div>
-      <div class="semaine-meta"><span>Piste · Paris</span><span>19h45</span></div>
-      <a href="calendrier.html" class="semaine-link">Toutes les dates →</a>
       <a href="outils-du-runner/#seance" class="semaine-tool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="14" r="7.5"/><path d="M12 14V9.5M9.5 2.5h5M12 2.5v4M18.2 7.3l1.4-1.4"/></svg><span>Prépare ta séance<small>Calcule tes temps de passage</small></span></a>
+      <div class="semaine-meta"><span>Piste · Paris</span><span>19h45</span></div>
+      <div class="semaine-actions">
+        <div class="semaine-actions">
+        <a href="calendrier.html" class="semaine-link">Toutes les dates →</a>
+      </div>
+      </div>
     </div>
     <div class="semaine-card">
       <div class="semaine-day">Mercredi</div>
@@ -740,7 +748,9 @@ nav a:focus-visible,.nav-mobile a:focus-visible,footer a:focus-visible,footer bu
       <p class="semaine-desc">Le run des adhérents en milieu de semaine, en groupes d'allure dans Paris. La séance plaisir entre copains, qui se prolonge souvent autour d'un verre au bar partenaire.</p>
       <div class="semaine-allures">3 groupes d'allure<br><span class="al-pace">5:30 · 6:00 · 6:30 /km</span></div>
       <div class="semaine-meta"><span>Bar partenaire · Paris</span><span>19h20</span></div>
-      <a href="calendrier.html" class="semaine-link">Toutes les dates →</a>
+      <div class="semaine-actions">
+        <a href="calendrier.html" class="semaine-link">Toutes les dates →</a>
+      </div>
     </div>
     <div class="semaine-card dimanche">
       <div class="semaine-day">Dimanche</div>
@@ -750,7 +760,9 @@ nav a:focus-visible,.nav-mobile a:focus-visible,footer a:focus-visible,footer bu
       <div style="font-size:12px;color:var(--gold);margin:2px 0 2px;letter-spacing:.5px;">★ Un dimanche sur deux · un nouveau spot à découvrir</div>
       <div class="semaine-allures">3 groupes d'allure<br><span class="al-pace">5:30 · 6:00 · 6:30 /km</span></div>
       <div class="semaine-meta"><span>Point publié sur Strava</span><span>10h20</span></div>
-      <a href="calendrier.html" class="semaine-link">Toutes les dates →</a>
+      <div class="semaine-actions">
+        <a href="calendrier.html" class="semaine-link">Toutes les dates →</a>
+      </div>
     </div>
   </div>
 </section>
