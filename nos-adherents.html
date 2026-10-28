@@ -1187,7 +1187,7 @@ renderRecords();
   const exemples=Object.keys(cnt).filter(k=>k.charAt(0).toUpperCase()===reine).slice(0,4).map(k=>nomAff[k]).join(', ');
   const cartes=[
     {n:cnt[top],l:nomAff[top]+' ×'+cnt[top],t:'Le prénom roi du club. Crie « '+nomAff[top]+' ! » dans la foule et '+cnt[top]+' têtes se retournent.'},
-    {n:marathoniens,l:'marathoniens',t:'42,195 km au compteur, et ils en redemandent.'},
+    {n:marathoniens,l:'marathoniens',t:'Ils ont déjà passé la ligne des 42,195 km. Les autres y pensent très fort.'},
     {n:NB_NOUVEAUX,l:'nouveaux cette saison',t:'Bienvenue à elles et eux ! '+NB_FIDELES+' adhérents sont là depuis trois saisons.'},
     {n:reine,l:'la lettre reine',t:lettres[reine]+' adhérents ont un prénom en '+reine+' : '+exemples+'… Le club est très '+reine+'.'}
   ];
