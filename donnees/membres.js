@@ -3,6 +3,7 @@
 // Un prénom porté par plusieurs adhérents est suivi de l'initiale du nom de famille (Manon Z).
 // Pour ajouter un headshot : photo:'images/membres/prenom.jpg' (les initiales s'affichent sinon).
 // Pour la photo de l'orga en fond fondu sur la carte : fond:'images/equipe/prenom.png?v=6'.
+// fondStyle:'…' décale ou zoome la photo de fond si le visage est mal cadré.
 // Pour ajouter une citation : citation:'…' (le verso reste neutre si vide).
 // Le nombre affiché sur le site compte tous les adhérents, y compris ceux qui ne souhaitent pas apparaître.
 const NB_ADHERENTS=138;
@@ -40,7 +41,7 @@ const MEMBRES=[
   {nom:'Matthieu C', citation:'La confiance n\'exclut pas le contrôle.', photo:''},
   {nom:'Alban', citation:'Tout le monde est sympa sauf moi.', photo:'', fond:'images/equipe/alban.png?v=6'},
   {nom:'Justine', citation:'', photo:''},
-  {nom:'Julia', citation:'Je savais pas que c\'était impossible, alors je l\'ai fait. — Clem qui court', photo:'', fond:'images/equipe/julia.png?v=6'},
+  {nom:'Julia', citation:'Je savais pas que c\'était impossible, alors je l\'ai fait. — Clem qui court', photo:'', fond:'images/equipe/julia.png?v=6', fondStyle:'transform:translateY(-14%) scale(1.08)'},
   {nom:'Julien D', citation:'J\'ai couru le marathon de NY', photo:''},
   {nom:'Leonardo', citation:'42 km? En moto oui!', photo:''},
   {nom:'Yohan', citation:'C\'est quand même sympa quand c\'est cool', photo:''},
