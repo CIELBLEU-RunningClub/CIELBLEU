@@ -326,6 +326,10 @@ html{scroll-padding-top:170px;}
 <a id="back-to-top" href="#" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'});" aria-label="Retour en haut">↑</a>
 
 <script>
+/* Lien direct vers une section (ex. #seance) : l'outil s'affiche après le chargement, on attend qu'elle existe puis on y va */
+(function(){var h=location.hash;if(!h||h.length<2)return;var n=0,t=setInterval(function(){var el=null;try{el=document.querySelector(h);}catch(e){}if(el||++n>40){clearInterval(t);if(el)el.scrollIntoView({behavior:"instant",block:"start"});}},100);})();
+</script>
+<script>
 /* « Revoir le tracé » : si le schéma n'est pas à l'écran (sur téléphone il est au-dessus des réglages), on remonte d'abord jusqu'à lui, puis on relance l'animation */
 document.addEventListener('click',function(e){
   var b=e.target.closest&&e.target.closest('button');
