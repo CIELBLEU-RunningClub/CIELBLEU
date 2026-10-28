@@ -161,6 +161,14 @@ section:nth-child(even){background:var(--white);}
 .share-mail:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(18,43,68,.3);}
 .share-mail-ico{display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:var(--blue-sky);color:var(--navy);flex-shrink:0;}
 .share-mail-ico svg{width:22px;height:22px;}
+/* Le mur des fiertés sur fond bleu, avec la piste en filigrane */
+#records{background:linear-gradient(180deg,rgba(18,43,68,.84) 0%,rgba(38,92,138,.66) 100%),url('images/couvertures/calendrier-1600.webp') center/cover no-repeat;border-bottom:none;}
+#records .s-label{color:var(--blue-sky);}
+#records .s-title{color:#fff;}
+#records .chronos-box{box-shadow:0 20px 50px rgba(0,0,0,.28);border-color:rgba(182,205,224,.25);}
+#records .chronos-share{color:#fff;text-shadow:0 1px 10px rgba(11,29,48,.85);}
+#records .share-mail{background:var(--gold);color:var(--navy-deep);}
+#records .share-mail-ico{background:var(--navy);color:var(--gold);}
 .share-mail-arrow{transition:transform .2s;}
 .share-mail:hover .share-mail-arrow{transform:translateX(4px);}
 .chronos-title{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;color:var(--blue-steel);margin-bottom:18px;}
@@ -543,7 +551,7 @@ nav a:focus-visible,.nav-mobile a:focus-visible,footer a:focus-visible,footer bu
     </div>
   </div>
 </div>
-<script src="donnees/membres.js?v=1035"></script>
+<script src="donnees/membres.js?v=1036"></script>
 <script>
 
 /* ===== DONNÉES ===== */
@@ -1166,7 +1174,7 @@ renderRecords();
 /* ===== LE CLUB EN CHIFFRES (stats rigolotes, calculées depuis le trombinoscope) ===== */
 (function(){
   const box=document.getElementById('funStats');
-  if(!box||typeof MEMBRES==='undefined'||typeof recordCats==='undefined')return;
+  if(!box||typeof MEMBRES==='undefined'||typeof recordCats==='undefined'||typeof NB_NOUVEAUX==='undefined')return;
   const norm=s=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace('matthieu','mathieu');
   // « Thomas Nor » -> « Thomas » : on retire l'initiale (ou les 2 à 3 lettres) du nom de famille
   function prenom(nom){const t=nom.split(' ');if(t.length>1&&/^[A-ZÉ][a-zé]{0,2}$/.test(t[t.length-1]))t.pop();return t.join(' ');}
@@ -1182,6 +1190,7 @@ renderRecords();
   const cartes=[
     {n:cnt[top],l:nomAff[top]+' ×'+cnt[top],t:'Le prénom roi du club. Crie « '+nomAff[top]+' ! » dans la foule et '+cnt[top]+' têtes se retournent.'},
     {n:marathoniens,l:'marathoniens',t:'42,195 km au compteur, et ils en redemandent.'},
+    {n:NB_NOUVEAUX,l:'nouveaux cette saison',t:'Bienvenue à elles et eux ! Et à l\'autre bout, '+NB_FIDELES+' adhérents sont là depuis trois saisons.'},
     {n:reine,l:'la lettre reine',t:lettres[reine]+' adhérents ont un prénom en '+reine+' : '+exemples+'… Le club est très '+reine+'.'}
   ];
   box.innerHTML=cartes.map(c=>'<div class="fun-card"><div class="fun-num"'+(typeof c.n==='number'?' data-n="'+c.n+'"':'')+'>'+c.n+'</div><div class="fun-lab">'+c.l+'</div><p class="fun-txt">'+c.t+'</p></div>').join('');
