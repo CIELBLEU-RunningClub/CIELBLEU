@@ -90,7 +90,7 @@ const tartanTpl={wd:1,color:C_TARTAN,time:'19h45',dur:90,title:'Tartan Bleu · S
   tags:[{l:'Adhérents',c:'tag-adherent'}],
   desc:"La séance piste du lundi soir, encadrée, en fractionné. Le rendez-vous vitesse des adhérents, dans la bonne humeur.",
   details:[['Lieu',L_PISTE]],location:'Paris',
-  article:'outils-du-runner/',articleTitle:'Prépare ta séance avec les outils du runner',articleLabel:'Outil'};
+  article:'outils-du-runner/#seance',articleTitle:'Prépare ta séance avec les outils du runner',articleLabel:'Outil'};
 const mercrediTpl={wd:3,color:C_MERCREDI,time:'19h20',dur:70,title:'Mercredi Bleu',
   tags:[{l:'Adhérents',c:'tag-adherent'}],
   desc:"Le run des adhérents du mercredi soir, en groupes d'allure dans Paris. La séance plaisir du milieu de semaine, qui se prolonge souvent autour d'un verre au bar partenaire.",
@@ -104,7 +104,7 @@ const openTrackTpl={wd:1,color:C_TARTAN,time:'19h45',dur:90,title:'Tartan Bleu �
   tags:[{l:'Ouvert à tous',c:'tag-open'}],
   desc:"L'Open Track, c'est la première séance piste du mois : elle est ouverte à tous, adhérents comme non-adhérents. L'occasion de tester la piste avec le club.",
   details:[['Lieu',L_PISTE]],location:'Paris',
-  article:'outils-du-runner/',articleTitle:'Prépare ta séance avec les outils du runner',articleLabel:'Outil'};
+  article:'outils-du-runner/#seance',articleTitle:'Prépare ta séance avec les outils du runner',articleLabel:'Outil'};
 
 // {tpl, m, dates:[...]} → séances récurrentes de la saison
 const recurring=[
