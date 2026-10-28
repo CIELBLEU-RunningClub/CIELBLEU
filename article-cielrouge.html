@@ -62,27 +62,104 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 /* ── BOUTON MENU : libellé + bordure pour qu'on le repère ── */
 .nav-hamburger{gap:8px;font-size:15px;}
 .nav-hamburger .nav-menu-label{font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:2px;}
-@media(max-width:1250px){
+@media(max-width:1150px){
   .nav-hamburger{border:1.5px solid rgba(182,205,224,.45);border-radius:6px;padding:7px 12px;}
 }
 .nav-links a{white-space:nowrap;}
-/* Sous 1250px, les 6 liens + les 2 boutons ne tiennent plus dans la barre :
+/* Sous 1150px, les 6 liens + les 2 boutons ne tiennent plus dans la barre :
    le menu complet débordait hors de l'écran (« Devenir partenaire » invisible).
    On bascule sur le menu burger, qui contient déjà les deux boutons. */
-@media(max-width:1250px){
+@media(max-width:1150px){
   .nav-links,.nav-cta,.nav-cta-group{display:none;}
   .nav-hamburger{display:flex;align-items:center;}
   .nav-mobile{top:112px;}
 }
 @media(max-width:768px){.nav-mobile{top:70px;}}
 /* Entre 1151 et 1400px, on resserre un peu pour garder de l'air autour des boutons */
-@media(min-width:1251px) and (max-width:1400px){
+@media(min-width:1151px) and (max-width:1400px){
   nav{padding:0 28px;}
   .nav-links{gap:13px;}
   .nav-links a{font-size:11.5px;letter-spacing:1px;}
   .nav-cta-group{gap:8px;}
   .nav-cta{font-size:14px;letter-spacing:1.5px;padding:11px 18px;}
 }
+
+/* ── Accessibilité et repérage ── */
+.skip-link{position:absolute;left:12px;top:-80px;background:var(--gold);color:var(--navy-deep);font-weight:700;font-size:14px;padding:12px 18px;border-radius:6px;z-index:100001;text-decoration:none;transition:top .15s;}
+.skip-link:focus{top:12px;}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,[tabindex]:focus-visible{outline:2px solid #3E7CB1;outline-offset:3px;border-radius:3px;}
+nav a:focus-visible,.nav-mobile a:focus-visible,footer a:focus-visible,footer button:focus-visible{outline-color:var(--blue-sky);}
+.nav-mobile li a.active{color:white;border-left:3px solid var(--gold);padding-left:12px;}
+.read-progress{position:fixed;top:0;left:0;height:3px;width:100%;background:var(--gold);transform:scaleX(0);transform-origin:left;z-index:101;pointer-events:none;}
+/* Pied de page : les pages du site, pour ne jamais être au bout du chemin */
+.footer-nav{display:flex;flex-wrap:wrap;gap:6px 26px;justify-content:center;padding-bottom:26px;margin-bottom:26px;border-bottom:1px solid rgba(255,255,255,.08);}
+.footer-nav a{font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:2px;color:rgba(255,255,255,.6);text-decoration:none;padding:8px 2px;transition:color .2s;}
+.footer-nav a:hover{color:white;}
+@media(max-width:768px){.footer-nav{gap:2px 18px;padding-bottom:18px;margin-bottom:18px;}.footer-nav a{font-size:13px;}}
+/* ── ACTUALITÉS ── */
+.actu-wrap{max-width:1180px;margin:0 auto;}
+.actu-meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px;}
+.actu-tag{font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:5px 13px;border-radius:999px;background:var(--navy);color:#fff;}
+.actu-date,.actu-read{font-size:12px;color:var(--mid);letter-spacing:.3px;}
+.actu-dot{color:var(--blue-steel);opacity:.6;}
+.actu-more{font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:2px;color:#3E7CB1;margin-top:18px;display:inline-block;transition:transform .2s,color .2s;}
+
+/* Article mis en avant */
+.actu-feat{display:grid;grid-template-columns:1.08fr 1fr;background:var(--white);border:1.5px solid rgba(18,43,68,.1);border-radius:18px;overflow:hidden;text-decoration:none;color:inherit;transition:transform .25s ease,box-shadow .25s ease;}
+.actu-feat:hover{transform:translateY(-5px);box-shadow:0 18px 44px rgba(18,43,68,.16);}
+.actu-feat-media{position:relative;min-height:380px;overflow:hidden;}
+.actu-feat-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.7,.3,1),opacity .35s ease;}
+.actu-feat:hover .actu-feat-media img{transform:scale(1.045);}
+.actu-feat-body{padding:40px 44px;display:flex;flex-direction:column;justify-content:center;}
+.actu-feat-title{font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(26px,3vw,38px);line-height:1.1;letter-spacing:.3px;color:var(--navy);margin-bottom:14px;}
+.actu-feat-teaser{font-size:15.5px;color:var(--mid);line-height:1.75;}
+.actu-feat:hover .actu-more{transform:translateX(4px);color:var(--navy);}
+
+/* Grille des autres articles */
+/* Carte CIELROUGE : une lumière rouge s'allume sur la photo au survol, et au toucher sur téléphone */
+.actu-card-media::after,.actu-feat-media::after{content:'';position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .35s ease;mix-blend-mode:screen;background:radial-gradient(ellipse 80% 70% at 50% 55%,rgba(255,52,64,.75) 0%,rgba(255,52,64,.38) 45%,rgba(255,52,64,0) 100%);}
+.actu-feat-media{position:relative;}
+.glow-rouge:hover .actu-card-media::after,.glow-rouge:hover .actu-feat-media::after,.glow-rouge.touch .actu-card-media::after,.glow-rouge.touch .actu-feat-media::after{opacity:1;}
+.actu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px;margin-top:22px;}
+/* Avec peu d'articles, on les met côte à côte plutôt qu'une grande carte suivie d'une petite */
+.actu-grid.duo{grid-template-columns:repeat(2,1fr);margin-top:0;}
+.actu-grid.duo .actu-card-title{font-size:30px;}
+.actu-card{display:flex;flex-direction:column;background:var(--white);border:1.5px solid rgba(18,43,68,.1);border-radius:16px;overflow:hidden;text-decoration:none;color:inherit;transition:transform .25s ease,box-shadow .25s ease;}
+.actu-card:hover{transform:translateY(-5px);box-shadow:0 14px 34px rgba(18,43,68,.14);}
+.actu-card-media{position:relative;aspect-ratio:16/10;overflow:hidden;}
+.actu-card-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.7,.3,1),opacity .35s ease;}
+.actu-card:hover .actu-card-media img{transform:scale(1.045);}
+/* Couvertures : photo en fondu et désaturée sur un aplat bleu, pour que
+   n'importe quelle photo reste dans la palette du site. */
+.actu-feat-media,.actu-card-media{background:#1b4a72;}
+.actu-feat-media img,.actu-card-media img{opacity:.45;filter:saturate(.25) contrast(1.15);}
+.actu-feat:hover .actu-feat-media img,.actu-card:hover .actu-card-media img{opacity:.6;}
+.actu-card-body{padding:22px 24px 24px;display:flex;flex-direction:column;flex:1;}
+.actu-card-title{font-family:'Anton',sans-serif;font-weight:400;font-size:21px;line-height:1.2;letter-spacing:.3px;color:var(--navy);margin-bottom:10px;}
+.actu-card-teaser{font-size:14px;color:var(--mid);line-height:1.7;}
+.actu-card .actu-more{margin-top:auto;padding-top:16px;}
+.actu-card:hover .actu-more{transform:translateX(4px);color:var(--navy);}
+/* Version compacte : une vignette, la date et le titre */
+#actus{padding-top:32px;padding-bottom:32px;}
+#actus .s-title{margin-bottom:18px;}
+#actus .actu-wrap{max-width:none;margin:0;}
+.actu-grid.mini{grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:14px;}
+.actu-grid.mini .actu-card{flex-direction:row;align-items:stretch;border-radius:14px;}
+.actu-grid.mini .actu-card:hover{transform:translateY(-3px);}
+.actu-grid.mini .actu-card-media{flex:0 0 120px;aspect-ratio:auto;min-height:92px;}
+.actu-grid.mini .actu-card-body{padding:14px 18px;justify-content:center;}
+.actu-grid.mini .actu-meta{margin-bottom:8px;gap:8px;}
+.actu-grid.mini .actu-tag{font-size:10px;padding:4px 10px;}
+.actu-grid.mini .actu-read,.actu-grid.mini .actu-dot,.actu-grid.mini .actu-card-teaser,.actu-grid.mini .actu-more{display:none;}
+.actu-grid.mini .actu-card-title{font-size:19px;margin-bottom:0;}
+@media(max-width:768px){
+  .actu-grid.mini{grid-template-columns:1fr;gap:12px;}
+  .actu-grid.mini .actu-card-media{flex-basis:96px;}
+  .actu-grid.mini .actu-card-title{font-size:17px;}
+}
+.art-more{max-width:720px;margin:0 auto;padding:10px 60px 40px;}
+.art-more h2{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;color:var(--navy);margin-bottom:14px;}
+@media(max-width:768px){.art-more{padding:6px 20px 32px;}}
 
 /* ── HERO ARTICLE ── */
 .art-hero{min-height:78vh;background:var(--navy-deep);display:flex;flex-direction:column;justify-content:flex-end;padding:150px 60px 56px;position:relative;overflow:hidden;}
@@ -183,11 +260,13 @@ footer{background:var(--navy-deep);padding:40px 60px;}
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://cielbleurunningclub.com/"},{"@type":"ListItem","position":2,"name":"Actualités","item":"https://cielbleurunningclub.com/actualites.html"},{"@type":"ListItem","position":3,"name":"42,195 km à 42, en relais","item":"https://cielbleurunningclub.com/article-cielrouge.html"}]}</script>
 </head>
 <body>
+<a class="skip-link" href="#contenu">Aller au contenu</a>
+<div class="read-progress" id="readProgress" aria-hidden="true"></div>
 
 <nav>
   <a href="./" class="nav-logo"><img src="images/marque/logo-cielbleu.png" alt="CIELBLEU" height="20"></a>
   <ul class="nav-links">
-    <li><a href="./#semaine">Le club</a></li>
+    <li><a href="./#semaine">Le programme</a></li>
     <li><a href="calendrier.html">Calendrier</a></li>
     <li><a href="actualites.html" class="active">Actualités</a></li>
     <li><a href="notre-equipe.html">L'équipe</a></li>
@@ -197,24 +276,22 @@ footer{background:var(--navy-deep);padding:40px 60px;}
   </ul>
   <div class="nav-cta-group">
     <a href="./#adhesion" class="nav-cta">Devenir adhérent →</a>
-    <a href="nos-partenaires.html#contact" class="nav-cta nav-cta-alt">Devenir partenaire →</a>
   </div>
   <button class="nav-hamburger" onclick="toggleNav()" aria-label="Menu"><span class="nav-menu-label">Menu</span><span aria-hidden="true">&#9776;</span></button>
 </nav>
 <ul class="nav-mobile" id="navMobile">
-  <li><a href="./#semaine" onclick="toggleNav()">Le club</a></li>
+  <li><a href="./#semaine" onclick="toggleNav()">Le programme</a></li>
   <li><a href="calendrier.html" onclick="toggleNav()">Calendrier</a></li>
-  <li><a href="actualites.html" onclick="toggleNav()">Actualités</a></li>
+  <li><a href="actualites.html" onclick="toggleNav()" class="active">Actualités</a></li>
   <li><a href="notre-equipe.html" onclick="toggleNav()">L'équipe</a></li>
   <li><a href="nos-adherents.html" onclick="toggleNav()">Nos adhérents</a></li>
   <li><a href="nos-partenaires.html" onclick="toggleNav()">Nos partenaires</a></li>
   <li><a href="outils-du-runner/" onclick="toggleNav()">Outils</a></li>
   <li><a href="./#adhesion" onclick="toggleNav()" style="color:var(--gold)!important;">→ Devenir adhérent</a></li>
-  <li><a href="nos-partenaires.html#contact" onclick="toggleNav()" style="color:var(--blue-sky)!important;">→ Devenir partenaire</a></li>
 </ul>
 
 <!-- HERO -->
-<header class="art-hero">
+<header id="contenu" class="art-hero">
   <img src="images/couvertures/accueil.webp?v=7" alt="" class="art-hero-bg" fetchpriority="high">
   <div class="art-hero-inner">
     <div class="art-kicker">
@@ -246,6 +323,12 @@ footer{background:var(--navy-deep);padding:40px 60px;}
   <p class="art-sign">La rédac bleue</p>
 </article>
 
+<div class="art-more" aria-label="À lire aussi">
+  <h2>À lire aussi</h2>
+  <div class="actu-grid mini" id="moreArticles"></div>
+</div>
+
+
 <div class="art-foot">
   <div class="art-actions">
     <a class="art-btn primary" href="calendrier.html">Voir le calendrier →</a>
@@ -255,6 +338,17 @@ footer{background:var(--navy-deep);padding:40px 60px;}
 </div>
 
 <footer>
+  <div class="footer-nav" role="navigation" aria-label="Pages du site">
+    <a href="./">Accueil</a>
+    <a href="calendrier.html">Calendrier</a>
+    <a href="actualites.html">Actualités</a>
+    <a href="notre-equipe.html">L'équipe</a>
+    <a href="nos-adherents.html">Nos adhérents</a>
+    <a href="nos-partenaires.html">Nos partenaires</a>
+    <a href="outils-du-runner/">Outils</a>
+    <a href="./#adhesion">Devenir adhérent</a>
+    <a href="nos-partenaires.html#contact">Devenir partenaire</a>
+  </div>
   <div class="footer-inner">
     <a href="#" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'});" aria-label="Retour en haut" style="display:inline-flex;cursor:pointer;"><img src="images/marque/logo-cielbleu.png" alt="CIELBLEU"></a>
     <div class="footer-socials">
@@ -302,9 +396,29 @@ window.addEventListener('scroll',()=>{
   document.addEventListener('touchstart',go,{once:true,passive:true});
 })();
 </script>
+<script src="donnees/articles.js?v=17"></script>
+<script>
+/* « À lire aussi » : les autres articles, sans celui qu'on est en train de lire */
+(function(){
+  if(typeof ARTICLES==='undefined')return;
+  const cur=location.pathname.split('/').pop()||'';
+  const list=ARTICLES.filter(a=>a.url!==cur).slice(0,2),g=document.getElementById('moreArticles');
+  if(!g)return;
+  if(!list.length){g.parentNode.style.display='none';return;}
+  g.innerHTML=list.map(a=>articleCardHTML(a,false)).join('');
+})();
+</script>
 <script src="js/scroll-shoe.js?v=3"></script>
 <script>function toggleNav(){document.getElementById('navMobile').classList.toggle('open');}
 document.addEventListener('click',function(e){var m=document.getElementById('navMobile');if(m&&m.classList.contains('open')&&!m.contains(e.target)&&!e.target.closest('.nav-hamburger'))m.classList.remove('open');});</script>
+<script>
+/* Barre de progression de lecture */
+(function(){
+  const b=document.getElementById('readProgress');if(!b)return;
+  function u(){const h=document.documentElement.scrollHeight-innerHeight;b.style.transform='scaleX('+(h>0?Math.min(1,scrollY/h):0)+')';}
+  addEventListener('scroll',u,{passive:true});addEventListener('resize',u);u();
+})();
+</script>
 <script src="js/analytics.js?v=3"></script>
 </body>
 </html>
