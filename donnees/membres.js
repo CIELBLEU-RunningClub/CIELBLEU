@@ -41,7 +41,7 @@ const MEMBRES=[
   {nom:'Matthieu C', citation:'La confiance n\'exclut pas le contrôle.', photo:''},
   {nom:'Alban', citation:'Tout le monde est sympa sauf moi.', photo:'', fond:'images/equipe/alban.png?v=6'},
   {nom:'Justine', citation:'', photo:''},
-  {nom:'Julia', citation:'Je savais pas que c\'était impossible, alors je l\'ai fait. — Clem qui court', photo:'', fond:'images/equipe/julia.png?v=6', fondStyle:'transform:translateY(-6%)'},
+  {nom:'Julia', citation:'Je savais pas que c\'était impossible, alors je l\'ai fait. — Clem qui court', photo:'', fond:'images/equipe/julia.png?v=6'},
   {nom:'Julien D', citation:'J\'ai couru le marathon de NY', photo:'', fond:'images/equipe/julien-d.png?v=1'},
   {nom:'Leonardo', citation:'42 km? En moto oui!', photo:''},
   {nom:'Yohan', citation:'C\'est quand même sympa quand c\'est cool', photo:''},
