@@ -4,13 +4,14 @@
 // Pour ajouter un headshot : photo:'images/membres/prenom.jpg' (les initiales s'affichent sinon).
 // Pour la photo de l'orga en fond fondu sur la carte : fond:'images/equipe/prenom.png?v=6'.
 // fondStyle:'…' décale ou zoome la photo de fond si le visage est mal cadré.
+// orga:true marque l'équipe d'organisation (carte dorée avec la pastille ORGA).
 // Pour ajouter une citation : citation:'…' (le verso reste neutre si vide).
 // Le nombre affiché sur le site compte tous les adhérents, y compris ceux qui ne souhaitent pas apparaître.
 const NB_ADHERENTS=138;
 const MEMBRES=[
-  {nom:'Candice', citation:'Mieux vaut avoir des courbatures que des regrets.', photo:'', fond:'images/equipe/candice.png?v=6'},
-  {nom:'Thomas Nou', citation:'Viva la vida', photo:'', fond:'images/equipe/thomas-evenementiel.png?v=6'},
-  {nom:'Manon Z', citation:'Plus vite on commence, plus vite on termine.', photo:'', fond:'images/equipe/manon.png?v=6'},
+  {nom:'Candice', citation:'Mieux vaut avoir des courbatures que des regrets.', orga:true, photo:'', fond:'images/equipe/candice.png?v=6'},
+  {nom:'Thomas Nou', citation:'Viva la vida', orga:true, photo:'', fond:'images/equipe/thomas-evenementiel.png?v=6'},
+  {nom:'Manon Z', citation:'Plus vite on commence, plus vite on termine.', orga:true, photo:'', fond:'images/equipe/manon.png?v=6'},
   {nom:'Ethan', citation:'J\'aurais pu choisir une thérapie', photo:''},
   {nom:'Matteo D', citation:'La vie c\'est comme une boîte de chocolat, ça coûte cher, on fait semblant d\'aimer mais on se rend vite compte que c\'est écœurant !!', photo:''},
   {nom:'Quentin E', citation:'Visez la lune en gardant les pieds sur terre', photo:''},
@@ -24,25 +25,25 @@ const MEMBRES=[
   {nom:'Victor C', citation:'La chance paie parfois, le travail toujours', photo:''},
   {nom:'Thibault', citation:'', photo:''},
   {nom:'Lucile', citation:'le ciel est bleu en 2 mots ? ciel bleu.', photo:''},
-  {nom:'Julien G', citation:'Bonjour je suis coach', photo:'', fond:'images/equipe/julien-secretaire-general.png?v=6'},
+  {nom:'Julien G', citation:'Bonjour je suis coach', orga:true, photo:'', fond:'images/equipe/julien-secretaire-general.png?v=6'},
   {nom:'Yoann', citation:'Ciel Bleu ? Pour un normand, c\'est une évidence !', photo:''},
-  {nom:'Thomas G', citation:'Les relations humaines, vous savez…', photo:'', fond:'images/equipe/thomas-vice-president.png?v=6'},
-  {nom:'Hugo G', citation:'Après chaque montée, il y a une descente', photo:'', fond:'images/equipe/hugo.png?v=6'},
+  {nom:'Thomas G', citation:'Les relations humaines, vous savez…', orga:true, photo:'', fond:'images/equipe/thomas-vice-president.png?v=6'},
+  {nom:'Hugo G', citation:'Après chaque montée, il y a une descente', orga:true, photo:'', fond:'images/equipe/hugo.png?v=6'},
   {nom:'Enzo', citation:'', photo:''},
   {nom:'Maxence', citation:'', photo:''},
   {nom:'Milena', citation:'Beaucoup d\'ambition, un cardio en négociation.', photo:''},
   {nom:'Baptiste', citation:'Better done than perfect', photo:''},
   {nom:'Clémence N', citation:'Petite phrase à se répéter sans modération pendant qu\'on crache nos poumons : « on est pas des merguez »', photo:''},
   {nom:'Marie', citation:'Soufle limité, bavardages illimités.', photo:''},
-  {nom:'Floriane', citation:'', photo:'', fond:'images/equipe/floriane.png?v=6'},
+  {nom:'Floriane', citation:'', orga:true, photo:'', fond:'images/equipe/floriane.png?v=6'},
   {nom:'Flavie', citation:'', photo:''},
   {nom:'Enora', citation:'Miam miam les hérissons', photo:''},
   {nom:'Quentin U', citation:'Qu\'est-ce que signifie “apprivoiser” ? […] C\'est une chose trop oubliée. Ça signifie “créer des liens…”', photo:''},
   {nom:'Matthieu C', citation:'La confiance n\'exclut pas le contrôle.', photo:''},
-  {nom:'Alban', citation:'Tout le monde est sympa sauf moi.', photo:'', fond:'images/equipe/alban.png?v=6'},
+  {nom:'Alban', citation:'Tout le monde est sympa sauf moi.', orga:true, photo:'', fond:'images/equipe/alban.png?v=6'},
   {nom:'Justine', citation:'', photo:''},
-  {nom:'Julia', citation:'Je savais pas que c\'était impossible, alors je l\'ai fait. — Clem qui court', photo:'', fond:'images/equipe/julia.png?v=6'},
-  {nom:'Julien D', citation:'J\'ai couru le marathon de NY', photo:'', fond:'images/equipe/julien-d.png?v=1'},
+  {nom:'Julia', citation:'Je savais pas que c\'était impossible, alors je l\'ai fait. — Clem qui court', orga:true, photo:'', fond:'images/equipe/julia.png?v=6'},
+  {nom:'Julien D', citation:'J\'ai couru le marathon de NY', orga:true, photo:'', fond:'images/equipe/julien-d.png?v=1'},
   {nom:'Leonardo', citation:'42 km? En moto oui!', photo:''},
   {nom:'Yohan', citation:'C\'est quand même sympa quand c\'est cool', photo:''},
   {nom:'Adèle', citation:'Oublies que tu as aucune chance sur un malentendu ça peut marcher.', photo:''},
@@ -140,5 +141,5 @@ const MEMBRES=[
   {nom:'Théo K', citation:'Tombe toujours', photo:''},
   {nom:'Thomas C', citation:'', photo:''},
   {nom:'Thomas Nor', citation:'', photo:''},
-  {nom:'Thomas V', citation:'ThomVol Golgoth : Courir plus pour manger plus.', photo:''}
+  {nom:'Thomas V', citation:'ThomVol Golgoth : Courir plus pour manger plus.', orga:true, photo:''}
 ];
