@@ -83,7 +83,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 /* ── HERO ── */
 .page-hero{min-height:100vh;min-height:100svh;background:var(--navy-deep);display:flex;flex-direction:column;justify-content:center;padding:150px 60px 70px;position:relative;overflow:hidden;}
 .page-hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(80deg,rgba(11,29,48,.96) 0%,rgba(11,29,48,.84) 38%,rgba(11,29,48,.56) 68%,rgba(18,43,68,.4) 100%),linear-gradient(to top,rgba(11,29,48,.92) 0%,rgba(11,29,48,.3) 32%,rgba(11,29,48,.08) 58%);}
-.page-hero-bg-img.hero-groupe{object-position:center 55%;}
+.page-hero-bg-img.hero-groupe{object-position:center 42%;}
 @media(max-width:768px){.page-hero-bg-img.hero-groupe{object-position:50% 50%;}}
 .page-hero-bg-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 72%;opacity:.85;pointer-events:none;z-index:0;}
 .page-hero > *:not(.page-hero-bg-img){position:relative;z-index:2;}
@@ -389,7 +389,7 @@ nav a:focus-visible,.nav-mobile a:focus-visible,footer a:focus-visible,footer bu
 
 <!-- HERO -->
 <header id="contenu" class="page-hero">
-  <img src="images/couvertures/adherents-groupe.jpg" alt="" class="page-hero-bg-img hero-groupe" fetchpriority="high">
+  <img src="images/couvertures/adherents-groupe-2.jpg" alt="" class="page-hero-bg-img hero-groupe" fetchpriority="high">
   <div class="page-hero-eyebrow">La communauté</div>
   <h1>NOS <em>ADHÉRENTS</em></h1>
   <p>CIELBLEU, c'est avant tout une communauté : des rencontres qui comptent, des encouragements dans les derniers kilomètres et des fiertés qu'on célèbre ensemble. Voici celles et ceux qui la font vivre, avec leurs mots et leurs plus belles performances.</p>
@@ -815,14 +815,15 @@ renderRecords();
   const items=[
     {type:'photo',src:'images/galerie/communaute-14.jpg',cap:'Marathon Bleu : Julien et deux fusées',pos:'12% center'},
     {type:'video',src:'videos/adherents-1.mp4',cap:'Ambiance CIELBLEU'},
-    {type:'photo',src:'images/adherents/galerie-1.jpg',cap:'Nos adhérents'},
+    {type:'photo',src:'images/adherents/pyramide-louvre.jpg',cap:'La communauté devant le Louvre'},
     {type:'video',src:'videos/adherents-2.mp4',cap:'Nos adhérents'},
-    {type:'photo',src:'images/galerie/communaute-8.jpg',cap:'La tribu à Nice'},
+    {type:'photo',src:'images/adherents/galerie-1.jpg',cap:'Nos adhérents'},
     {type:'video',src:'videos/adherents-3.mp4',cap:'CIELBLEU'},
-    {type:'photo',src:'images/adherents/galerie-2.jpg',cap:'La communauté'},
+    {type:'photo',src:'images/galerie/communaute-8.jpg',cap:'La tribu à Nice'},
     {type:'video',src:'videos/piste.mp4',cap:'Nos adhérents'},
-    {type:'photo',src:'images/galerie/communaute-9.jpg',cap:'La communauté devant la tour Eiffel'},
+    {type:'photo',src:'images/adherents/galerie-2.jpg',cap:'La communauté'},
     {type:'video',src:'videos/ekiden.mp4',cap:'Ekiden'},
+    {type:'photo',src:'images/galerie/communaute-9.jpg',cap:'La communauté devant la tour Eiffel'},
     {type:'photo',src:'images/adherents/galerie-3.jpg',cap:'Nos adhérents'},
     {type:'photo',src:'images/adherents/galerie-4.jpg',cap:'La communauté'},
   ];
