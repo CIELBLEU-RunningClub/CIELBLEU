@@ -91,11 +91,6 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,[t
 nav a:focus-visible,.nav-mobile a:focus-visible,footer a:focus-visible,footer button:focus-visible{outline-color:var(--blue-sky);}
 .nav-mobile li a.active{color:white;border-left:3px solid var(--gold);padding-left:12px;}
 .read-progress{position:fixed;top:0;left:0;height:3px;width:100%;background:var(--gold);transform:scaleX(0);transform-origin:left;z-index:101;pointer-events:none;}
-/* Pied de page : les pages du site, pour ne jamais être au bout du chemin */
-.footer-nav{display:flex;flex-wrap:wrap;gap:6px 26px;justify-content:center;padding-bottom:26px;margin-bottom:26px;border-bottom:1px solid rgba(255,255,255,.08);}
-.footer-nav a{font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:2px;color:rgba(255,255,255,.6);text-decoration:none;padding:8px 2px;transition:color .2s;}
-.footer-nav a:hover{color:white;}
-@media(max-width:768px){.footer-nav{gap:2px 18px;padding-bottom:18px;margin-bottom:18px;}.footer-nav a{font-size:13px;}}
 /* ── ACTUALITÉS ── */
 .actu-wrap{max-width:1180px;margin:0 auto;}
 .actu-meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px;}
@@ -338,17 +333,6 @@ footer{background:var(--navy-deep);padding:40px 60px;}
 </div>
 
 <footer>
-  <div class="footer-nav" role="navigation" aria-label="Pages du site">
-    <a href="./">Accueil</a>
-    <a href="calendrier.html">Calendrier</a>
-    <a href="actualites.html">Actualités</a>
-    <a href="notre-equipe.html">L'équipe</a>
-    <a href="nos-adherents.html">Nos adhérents</a>
-    <a href="nos-partenaires.html">Nos partenaires</a>
-    <a href="outils-du-runner/">Outils</a>
-    <a href="./#adhesion">Devenir adhérent</a>
-    <a href="nos-partenaires.html#contact">Devenir partenaire</a>
-  </div>
   <div class="footer-inner">
     <a href="#" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'});" aria-label="Retour en haut" style="display:inline-flex;cursor:pointer;"><img src="images/marque/logo-cielbleu.png" alt="CIELBLEU"></a>
     <div class="footer-socials">
