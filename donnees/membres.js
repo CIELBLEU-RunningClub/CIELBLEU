@@ -1,5 +1,5 @@
 // Le trombinoscope des adhérents : une ligne par membre.
-// Saison 2026-2027 · 132 adhérents.
+// Saison 2026-2027 · 137 adhérents.
 // Pour ajouter un headshot : photo:'images/membres/prenom.jpg' (les initiales s'affichent sinon).
 // Pour ajouter une citation : citation:'…' (le verso reste neutre si vide).
 const MEMBRES=[
@@ -36,11 +36,11 @@ const MEMBRES=[
   {nom:'Baptiste', citation:'Better done than perfect.', photo:''},
   {nom:'Clémence', citation:'Petite phrase à se répéter sans modération pendant qu\'on crache nos poumons : « on n\'est pas des merguez ».', photo:''},
   {nom:'Anaïs', citation:'', photo:''},
-  {nom:'Marie', citation:'', photo:''},
+  {nom:'Marie', citation:'Soufle limité, bavardages illimités.', photo:''},
   {nom:'Floriane', citation:'', photo:''},
   {nom:'Flavie', citation:'', photo:''},
   {nom:'Mathilde n°1', citation:'Je veux aller loin, mais surtout ne jamais arrêter d\'avancer.', photo:''},
-  {nom:'Enora', citation:'', photo:''},
+  {nom:'Enora', citation:'Miam miam les hérissons', photo:''},
   {nom:'Quentin n°2', citation:'Qu\'est-ce que signifie « apprivoiser » ? C\'est une chose trop oubliée. Ça signifie « créer des liens ».', photo:''},
   {nom:'Mathieu n°1', citation:'La confiance n\'exclut pas le contrôle.', photo:''},
   {nom:'Alban', citation:'Tout le monde est sympa sauf moi.', photo:''},
@@ -60,7 +60,7 @@ const MEMBRES=[
   {nom:'Thomas n°4', citation:'Thomvol Golgoth.', photo:''},
   {nom:'Imogen', citation:'Audacieuse.', photo:''},
   {nom:'Mare', citation:'', photo:''},
-  {nom:'Lou', citation:'', photo:''},
+  {nom:'Lou', citation:'Coeur bleu', photo:''},
   {nom:'Fanny n°2', citation:'Je sais pas où je vais, mais j\'y vais en courant.', photo:''},
   {nom:'Eva', citation:'La vie c\'est ce qui arrive quand tu ne l\'avais pas prévu.', photo:''},
   {nom:'Aline', citation:'Jamais deux sans trois.', photo:''},
@@ -74,7 +74,7 @@ const MEMBRES=[
   {nom:'Yaël', citation:'Dans 500 m, y\'a la buvette.', photo:''},
   {nom:'Bastien', citation:'Courir avec le smile.', photo:''},
   {nom:'Matteo n°2', citation:'Tout ce que je sais, c\'est que je ne sais rien.', photo:''},
-  {nom:'Gauthier', citation:'', photo:''},
+  {nom:'Gauthier', citation:'Vainqueur du cross du collège en 2012', photo:''},
   {nom:'Jason', citation:'Avec un peu d\'entraînement, les JO ça se fait bien.', photo:''},
   {nom:'Théo n°2', citation:'C\'est de la zinzinnerie !', photo:''},
   {nom:'Fabien', citation:'', photo:''},
@@ -126,10 +126,15 @@ const MEMBRES=[
   {nom:'Maëlle', citation:'', photo:''},
   {nom:'Morgane n°2', citation:'', photo:''},
   {nom:'Romain', citation:'On court, mais pour aller où ? Ah, revenir au point de départ. Intéressant…', photo:''},
-  {nom:'Samuel', citation:'', photo:''},
+  {nom:'Samuel', citation:'Courir après le temps ou prendre son temps pour courir longtemps ?', photo:''},
   {nom:'Thibaut', citation:'L\'effort fait les forts, les forts font l\'effort.', photo:''},
   {nom:'Thomas n°5', citation:'', photo:''},
   {nom:'Timothée', citation:'', photo:''},
   {nom:'Victor n°2', citation:'', photo:''},
-  {nom:'Zoé', citation:'', photo:''}
+  {nom:'Zoé', citation:'', photo:''},
+  {nom:'Agathe n°3', citation:'A little chaos makes good story', photo:''},
+  {nom:'Camille n°4', citation:'', photo:''},
+  {nom:'Mathilda', citation:'Allons y concentration. Rapide. Je suis rapide …', photo:''},
+  {nom:'Lison', citation:'', photo:''},
+  {nom:'Augustin', citation:'Advienne que pourra', photo:''}
 ];
