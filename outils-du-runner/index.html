@@ -193,6 +193,15 @@ footer{background:var(--navy-deep);padding:40px 60px;}
 #allures .card-foot{margin-top:8px;font-size:12.5px;}
 #allures .converter-result{padding:10px 14px;}
 #allures .converter-result-value{font-size:32px;}
+/* La piste (ordinateur) : schéma à gauche aussi haut que les deux blocs de droite, mention en pleine largeur dessous : plus de grand vide */
+@media(min-width:900px){
+  #piste .track-grid{align-items:stretch;gap:20px 32px;}
+  #piste .track-panel{display:contents;}
+  #piste .track-figure{grid-column:1;grid-row:1 / span 2;display:flex;flex-direction:column;justify-content:center;}
+  #piste .track-panel>.card{grid-column:2;grid-row:1;align-self:start;}
+  #piste .track-panel>.venue-card{grid-column:2;grid-row:2;margin-top:0;}
+  #piste .track-panel>.disclaimer{grid-column:1 / -1;grid-row:3;margin-top:0;}
+}
 
 /* Le pied de page de l'outil garde sa mention (temps théoriques, rien n'est envoyé) : on en fait une simple note au-dessus du pied de page du site */
 footer.footer{background:var(--cream);color:var(--mid);padding:26px 60px;text-align:center;border-top:1px solid rgba(18,43,68,.08);}
