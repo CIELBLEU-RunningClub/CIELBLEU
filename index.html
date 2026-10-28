@@ -572,6 +572,20 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
 .semaine-card .semaine-day{font-size:20px;letter-spacing:3px;text-transform:uppercase;opacity:.85;}
 .semaine-allures{font-size:13px;line-height:1.5;color:var(--blue-sky);background:rgba(182,205,224,.1);border:1px solid rgba(182,205,224,.22);border-radius:8px;padding:8px 12px;margin:2px 0;}
 .semaine-allures .al-pace{white-space:nowrap;font-variant-numeric:tabular-nums;}
+/* Chaque jour a sa couleur, la même que dans le calendrier : lundi bleu piste, mercredi vert, dimanche doré */
+.semaine-card{position:relative;overflow:hidden;border:1.5px solid color-mix(in srgb,var(--ac) 45%,transparent);background:linear-gradient(165deg,color-mix(in srgb,var(--ac) 30%,var(--navy-deep)) 0%,var(--navy-deep) 62%);}
+.semaine-card.lundi{--ac:#3E7CB1;--ac-t:#8CC1EE;}
+.semaine-card.mercredi{--ac:#5FA25A;--ac-t:#A4DB9F;}
+.semaine-card.dimanche{--ac:#E8B06B;--ac-t:#F2C98F;background:linear-gradient(165deg,color-mix(in srgb,var(--ac) 30%,var(--navy-deep)) 0%,var(--navy-deep) 62%);border:1.5px solid color-mix(in srgb,var(--ac) 55%,transparent);}
+.semaine-card::before{content:'';position:absolute;left:0;right:0;top:0;height:6px;background:var(--ac);}
+.semaine-card::after{content:attr(data-abbr);position:absolute;right:-6px;bottom:-26px;font-family:'Anton',sans-serif;font-size:130px;line-height:1;color:var(--ac);opacity:.12;pointer-events:none;letter-spacing:2px;}
+.semaine-card .semaine-day{color:var(--ac-t);opacity:1;font-size:26px;letter-spacing:4px;display:flex;flex-direction:column;gap:4px;}
+.semaine-card .semaine-day small{font-family:'Open Sans',sans-serif;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.62);}
+.semaine-card .semaine-badge.adherents{border-color:color-mix(in srgb,var(--ac) 70%,transparent);color:var(--ac-t);}
+.semaine-card .semaine-badge.open{background:var(--ac);border-color:var(--ac);}
+.semaine-card .semaine-link{color:var(--ac-t);}
+.semaine-card .semaine-meta{border-top-color:color-mix(in srgb,var(--ac) 35%,transparent);}
+.semaine-card>*{position:relative;z-index:1;}
 
 /* ── ADHÉSION façon « NOUS REJOINDRE » ── */
 .ab-title{font-size:clamp(30px,4vw,46px);line-height:.98;color:white;text-transform:uppercase;margin-bottom:10px;}
@@ -725,8 +739,8 @@ nav a:focus-visible,.nav-mobile a:focus-visible,footer a:focus-visible,footer bu
   <h2 class="s-title">Trois rendez-vous chaque semaine.</h2>
   <div class="swipe-hint-m swipe-hint-top">← Glissez pour découvrir →</div>
   <div class="semaine-grid reveal-children">
-    <div class="semaine-card">
-      <div class="semaine-day">Lundi</div>
+    <div class="semaine-card lundi" data-abbr="LUN">
+      <div class="semaine-day">Lundi<small>La piste</small></div>
       <div class="offer-name">Tartan Bleu</div>
       <span class="semaine-badge adherents">Adhérents</span>
       <p class="semaine-desc">La séance piste : fractionné encadré, VMA et allures spécifiques. On progresse ensemble dans la bonne humeur.</p>
@@ -739,8 +753,8 @@ nav a:focus-visible,.nav-mobile a:focus-visible,footer a:focus-visible,footer bu
       </div>
       </div>
     </div>
-    <div class="semaine-card">
-      <div class="semaine-day">Mercredi</div>
+    <div class="semaine-card mercredi" data-abbr="MER">
+      <div class="semaine-day">Mercredi<small>Le run entre copains</small></div>
       <div class="offer-name">Mercredi Bleu</div>
       <span class="semaine-badge adherents">Adhérents</span>
       <p class="semaine-desc">Le run des adhérents en milieu de semaine, en groupes d'allure dans Paris. La séance plaisir entre copains, qui se prolonge souvent autour d'un verre au bar partenaire.</p>
@@ -750,8 +764,8 @@ nav a:focus-visible,.nav-mobile a:focus-visible,footer a:focus-visible,footer bu
         <a href="calendrier.html" class="semaine-link">Toutes les dates →</a>
       </div>
     </div>
-    <div class="semaine-card dimanche">
-      <div class="semaine-day">Dimanche</div>
+    <div class="semaine-card dimanche" data-abbr="DIM">
+      <div class="semaine-day">Dimanche<small>Le social run</small></div>
       <div class="offer-name">Social Bleu</div>
       <span class="semaine-badge open">Ouvert à tous · Gratuit</span>
       <p class="semaine-desc">Le rendez-vous du week-end, ouvert à tous sans inscription : 8 km en groupes d'allure, puis café.</p>
