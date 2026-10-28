@@ -755,7 +755,7 @@ const recordCats=[
 ];
 const recBoard=document.getElementById('recordsGrid');
 const recTabs=document.getElementById('recTabs');
-let recActive=1; // l'onglet 5 KM s'ouvre en premier (le 400 M est juste avant)
+let recActive=2; // l'onglet 10 KM s'ouvre en premier
 function headHTML(r){
   if(r.photo)return `<div class="rec-head"><img src="${r.photo}" alt="${r.who}"></div>`;
   return `<div class="rec-head" style="background:${grad(r.hue)}">${r.who.charAt(0)}</div>`;
