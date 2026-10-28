@@ -241,6 +241,21 @@ body > .nav-mobile li a{line-height:normal;}
   #allures .allures-grid{align-items:stretch;}
   #allures .converter{display:flex;flex-direction:column;justify-content:space-between;}
 }
+/* Appel final : venir tester l'Open Track (remplace la bannière « L'outil prépare la séance ») */
+.cta-open{background:linear-gradient(135deg,var(--navy-deep),var(--navy));color:white;padding:48px 60px;}
+.cta-open-inner{max-width:1124px;margin:0 auto;}
+.cta-open-label{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:5px;color:var(--blue-sky);opacity:.8;margin-bottom:10px;}
+.cta-open h2{font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(30px,5.4vw,48px);line-height:1.05;letter-spacing:.3px;color:white;}
+.cta-open h2 span{color:var(--blue-sky);display:block;}
+.cta-open p{font-size:16px;color:rgba(255,255,255,.7);line-height:1.7;max-width:560px;margin-top:14px;}
+.cta-open .cta-next{font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:2px;color:var(--gold);margin-top:10px;min-height:1.2em;}
+.cta-open-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px;}
+.cta-btn{font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:2px;padding:14px 26px;border-radius:6px;text-decoration:none;border:1.5px solid transparent;transition:background .2s,border-color .2s;white-space:nowrap;}
+.cta-btn.primary{background:var(--gold);color:var(--navy-deep);}
+.cta-btn.primary:hover{background:#efc287;}
+.cta-btn.ghost{color:var(--blue-sky);border-color:rgba(182,205,224,.5);}
+.cta-btn.ghost:hover{border-color:var(--blue-sky);background:rgba(182,205,224,.1);}
+@media(max-width:768px){.cta-open{padding:36px 20px;}.cta-open-actions{flex-direction:column;}.cta-btn{text-align:center;}}
 
 /* Le pied de page de l'outil garde sa mention (temps théoriques, rien n'est envoyé) : on en fait une simple note au-dessus du pied de page du site */
 footer.footer{background:var(--cream);color:var(--mid);padding:26px 60px;text-align:center;border-top:1px solid rgba(18,43,68,.08);}
@@ -302,6 +317,32 @@ html{scroll-padding-top:170px;}
 
 <div id="root"></div>
 
+<section class="cta-open" aria-labelledby="cta-open-title">
+  <div class="cta-open-inner">
+    <div class="cta-open-label">Open Track</div>
+    <h2 id="cta-open-title">Viens tester la première piste du mois.<span>Ouverte à tous, adhérent ou non.</span></h2>
+    <p>Chaque mois, la première séance piste est ouverte à tous. Tu viens essayer le Tartan Bleu avec le club, sans engagement. Inscription sur Strava.</p>
+    <div class="cta-next" id="ctaNext"></div>
+    <div class="cta-open-actions">
+      <a class="cta-btn primary" href="https://www.strava.com/clubs/lecielestbleu" target="_blank" rel="noopener">S'inscrire sur Strava →</a>
+      <a class="cta-btn ghost" href="../calendrier.html">Voir le calendrier →</a>
+    </div>
+  </div>
+</section>
+<script src="../donnees/events.js?v=41"></script>
+<script>
+/* Date de la prochaine Open Track, lue dans le calendrier du site */
+(function(){
+  var el=document.getElementById('ctaNext');if(!el||typeof allEvents==='undefined')return;
+  var t0=new Date();t0.setHours(0,0,0,0);
+  var next=allEvents.filter(function(e){return /Open Track/.test(e.title)&&e.date>=t0;}).sort(function(a,b){return a.date-b.date;})[0];
+  if(!next)return;
+  var d=next.date.toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long'});
+  el.textContent='Prochaine date : '+d+(next.time?' à '+next.time:'');
+})();
+</script>
+
+
 <footer>
   <div class="footer-nav" role="navigation" aria-label="Pages du site">
     <a href="../">Accueil</a>
@@ -346,7 +387,7 @@ document.addEventListener('click',function(e){
   setTimeout(function(){b.dataset.go='1';b.click();setTimeout(function(){delete b.dataset.go;},300);},550);
 },true);
 </script>
-<script type="module" crossorigin src="./assets/index-CpUjFR1R.js?v=423c6f16"></script>
+<script type="module" crossorigin src="./assets/index-CpUjFR1R.js?v=a82d6d13"></script>
 <script>
 window.addEventListener('scroll',()=>{
   document.getElementById('back-to-top').classList.toggle('show',window.scrollY>400);
