@@ -24,7 +24,7 @@
 <script>if("serviceWorker" in navigator){addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){})});}</script>
 <link rel="apple-touch-icon" href="../images/marque/icone-180.png">
 <!-- L'outil (ses polices, ses styles) est dans assets/ : il est chargé avant les styles du site pour que le menu et le pied de page gardent l'aspect du site -->
-<link rel="stylesheet" href="./assets/index-DblpIKTf.css">
+<link rel="stylesheet" href="./assets/index-DblpIKTf.css?v=df457093">
 <style>
 :root{--navy:#122b44;--navy-deep:#0b1d30;--blue-steel:#6d879a;--blue-sky:#b6cde0;--blue-pale:#d5e0e4;--cream:#F6F9FC;--white:#FFFFFF;--mid:#5B738A;--gold:#E8B06B;}
 a,button,input,select{-webkit-tap-highlight-color:rgba(182,205,224,.25);touch-action:manipulation;}
@@ -177,6 +177,22 @@ footer{background:var(--navy-deep);padding:40px 60px;}
 @media(min-width:900px){#piste .track-svg{max-height:520px;}}
 /* Les raccourcis de récupération (0:30, 1:00...) sont retirés : le champ Récup suffit */
 #seance .presets{display:none;}
+#piste .depart-hint{font-size:13px;color:var(--c-mid);margin:-4px 0 12px;line-height:1.45;}
+/* Allures : objectif de course et passages plus petits */
+#allures .clock-part input{width:60px;height:42px;font-size:22px;border-radius:10px;}
+#allures .clock-unit{line-height:42px;}
+#allures .race-headline{padding:10px 14px;}
+#allures .race-headline .results-big,#allures .race-headline .stat--xl .stat-value{font-size:clamp(44px,12vw,56px);}
+#allures .race-headline .results-label{font-size:13px;}
+#allures .race-headline .results-sub{font-size:13px;margin-top:0;}
+#allures .sub-title{margin:12px 0 6px;font-size:15px;}
+#allures .splits{grid-template-columns:repeat(auto-fill,minmax(76px,1fr));gap:5px;margin-top:4px;}
+#allures .splits li{padding:4px 8px;border-radius:9px;}
+#allures .splits li span{font-size:11px;}
+#allures .splits li strong{font-size:16px;}
+#allures .card-foot{margin-top:8px;font-size:12.5px;}
+#allures .converter-result{padding:10px 14px;}
+#allures .converter-result-value{font-size:32px;}
 
 /* Le pied de page de l'outil garde sa mention (temps théoriques, rien n'est envoyé) : on en fait une simple note au-dessus du pied de page du site */
 footer.footer{background:var(--cream);color:var(--mid);padding:26px 60px;text-align:center;border-top:1px solid rgba(18,43,68,.08);}
@@ -278,7 +294,7 @@ document.addEventListener('click',function(e){
   setTimeout(function(){b.dataset.go='1';b.click();setTimeout(function(){delete b.dataset.go;},300);},550);
 },true);
 </script>
-<script type="module" crossorigin src="./assets/index-CpUjFR1R.js"></script>
+<script type="module" crossorigin src="./assets/index-CpUjFR1R.js?v=b580f1eb"></script>
 <script>
 window.addEventListener('scroll',()=>{
   document.getElementById('back-to-top').classList.toggle('show',window.scrollY>400);
