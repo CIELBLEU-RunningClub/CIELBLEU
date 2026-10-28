@@ -115,14 +115,14 @@ section:nth-child(even){background:var(--white);}
 .partners-pitch-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(26px,3.8vw,36px);letter-spacing:.5px;color:var(--navy);line-height:1.1;margin-bottom:14px;}
 .partners-pitch-title em{font-style:italic;color:var(--blue-steel);}
 .partners-pitch p{font-size:15px;color:var(--mid);max-width:660px;line-height:1.75;margin-bottom:26px;}
-.partners-audience{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.partners-audience{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
 .pa-tile{background:linear-gradient(160deg,var(--navy),var(--navy-deep));border-radius:14px;padding:22px 20px;color:white;}
 .pa-tile .n{font-family:'Bebas Neue',sans-serif;font-size:34px;color:var(--gold);line-height:1;letter-spacing:1px;}
 .pa-tile .l{font-size:12px;color:rgba(255,255,255,.6);letter-spacing:1px;margin-top:8px;line-height:1.4;min-height:32px;}
 
 /* ── STATS & BENEFITS ── */
 .partners-offer-title{font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:3px;color:var(--blue-steel);margin:36px 0 18px;}
-.partners-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:0 0 8px;}
+.partners-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:0 0 8px;}
 .ps-item{background:var(--cream);border:1px solid rgba(18,43,68,.07);border-radius:12px;padding:18px 16px;text-align:center;}
 .ps-n{display:block;font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--navy);letter-spacing:1px;}
 .ps-l{display:block;font-size:12px;color:var(--mid);margin-top:6px;line-height:1.4;}
@@ -184,6 +184,7 @@ footer{background:var(--navy-deep);padding:40px 60px;}
   section{padding:60px 36px;}
   footer{padding:36px;}
   .partners-audience{grid-template-columns:repeat(2,1fr);}
+  .partners-audience .pa-tile:last-child:nth-child(odd){grid-column:1 / -1;}
   .partners-stats{grid-template-columns:repeat(2,1fr);}
   .partners-formats{grid-template-columns:1fr;}
 }
@@ -200,6 +201,7 @@ footer{background:var(--navy-deep);padding:40px 60px;}
   section{padding:40px 20px;scroll-margin-top:70px;}
   .partners-grid{grid-template-columns:repeat(2,1fr)!important;}
   .partners-audience{grid-template-columns:repeat(2,1fr);}
+  .partners-audience .pa-tile:last-child:nth-child(odd){grid-column:1 / -1;}
   .partners-stats{grid-template-columns:repeat(2,1fr);}
   /* Carrousels mobile : swipe horizontal */
   .partners-formats,.partners-benefits-grid{
@@ -332,17 +334,14 @@ nav a:focus-visible,.nav-mobile a:focus-visible,footer a:focus-visible,footer bu
   <div class="partners-pitch reveal">
     <p>Marque, média ou organisateur de course ? CIELBLEU, c'est une communauté engagée de plus de 150 coureurs à Paris : jeunes actifs urbains, CSP+, 27 ans de moyenne d'âge.</p>
     <div class="partners-audience">
-      <div class="pa-tile"><div class="n" data-count="3500" data-format="space">0</div><div class="l">Abonnés Instagram</div></div>
-      <div class="pa-tile"><div class="n" data-count="2400" data-format="space">0</div><div class="l">Abonnés Strava</div></div>
-      <div class="pa-tile"><div class="n" data-count="1150" data-format="space">0</div><div class="l">Abonnés TikTok</div></div>
+      <div class="pa-tile"><div class="n" data-count="3700" data-format="space" data-suffix="+">0</div><div class="l">Abonnés Instagram</div></div>
+      <div class="pa-tile"><div class="n" data-count="2500" data-format="space" data-suffix="+">0</div><div class="l">Abonnés Strava</div></div>
       <div class="pa-tile"><div class="n" data-count="500" data-suffix="K+">0</div><div class="l">Vues au total</div></div>
     </div>
   </div>
   <div class="partners-offer-title">Des contenus qui performent</div>
   <div class="partners-stats reveal-children">
     <div class="ps-item"><span class="ps-n">5K–15K</span><span class="ps-l">vues / réel en moyenne</span></div>
-    <div class="ps-item"><span class="ps-n">≤ 3 000</span><span class="ps-l">personnes touchées / story</span></div>
-    <div class="ps-item"><span class="ps-n">+125</span><span class="ps-l">abonnés gagnés / mois</span></div>
     <div class="ps-item"><span class="ps-n">67%</span><span class="ps-l">de reach non-abonnés</span></div>
   </div>
 </section>
