@@ -90,7 +90,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,[tabindex]:focus-visible{outline:2px solid #3E7CB1;outline-offset:3px;border-radius:3px;}
 nav a:focus-visible,.nav-mobile a:focus-visible,footer a:focus-visible,footer button:focus-visible{outline-color:var(--blue-sky);}
 .nav-mobile li a.active{color:white;border-left:3px solid var(--gold);padding-left:12px;}
-.read-progress{position:fixed;top:0;left:0;height:3px;width:100%;background:var(--gold);transform:scaleX(0);transform-origin:left;z-index:101;pointer-events:none;}
 /* ── ACTUALITÉS ── */
 .actu-wrap{max-width:1180px;margin:0 auto;}
 .actu-meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px;}
@@ -256,7 +255,6 @@ footer{background:var(--navy-deep);padding:40px 60px;}
 </head>
 <body>
 <a class="skip-link" href="#contenu">Aller au contenu</a>
-<div class="read-progress" id="readProgress" aria-hidden="true"></div>
 
 <nav>
   <a href="./" class="nav-logo"><img src="images/marque/logo-cielbleu.png" alt="CIELBLEU" height="20"></a>
@@ -422,14 +420,6 @@ window.addEventListener('scroll',()=>{
 <script src="js/scroll-shoe.js?v=3"></script>
 <script>function toggleNav(){document.getElementById('navMobile').classList.toggle('open');}
 document.addEventListener('click',function(e){var m=document.getElementById('navMobile');if(m&&m.classList.contains('open')&&!m.contains(e.target)&&!e.target.closest('.nav-hamburger'))m.classList.remove('open');});</script>
-<script>
-/* Barre de progression de lecture */
-(function(){
-  const b=document.getElementById('readProgress');if(!b)return;
-  function u(){const h=document.documentElement.scrollHeight-innerHeight;b.style.transform='scaleX('+(h>0?Math.min(1,scrollY/h):0)+')';}
-  addEventListener('scroll',u,{passive:true});addEventListener('resize',u);u();
-})();
-</script>
 <script src="js/analytics.js?v=3"></script>
 </body>
 </html>
