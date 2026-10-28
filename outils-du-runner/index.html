@@ -382,27 +382,37 @@ html{scroll-padding-top:130px;}
 <a id="back-to-top" href="#" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'});" aria-label="Retour en haut">↑</a>
 
 <script>
-/* Tracé animé du schéma : un seul trait doré qui fait le tour de la piste, identique sur ordinateur et sur téléphone.
-   Pas de pathLength ni d'animation CSS (mal gérés sur iPhone, ils donnaient plusieurs traits) :
-   on mesure la longueur réelle du tracé et on allonge le trait image par image. */
+/* Tracé animé du schéma : un seul trait doré qui avance en continu autour de la piste, identique partout.
+   Pas de pointillés (dasharray) ni de pathLength, qui saccadent ou se multiplient sur iPhone :
+   on redessine le trait lui-même, point après point, le long du vrai tracé. */
 (function(){
-  var DUREE=1400;
+  var DUREE=1700;
   function fix(p){
     if(p.getAttribute('data-fx'))return;p.setAttribute('data-fx','1');
-    var L=0;try{L=p.getTotalLength();}catch(e){}
-    if(!L)return;
+    var d0=p.getAttribute('d'),L=0;try{L=p.getTotalLength();}catch(e){}
+    if(!L||!d0)return;
     p.removeAttribute('pathLength');
-    p.style.animation='none';p.style.strokeDashoffset='0';
-    var gap=L+10;
-    if(window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches){p.style.strokeDasharray=L+' '+gap;return;}
-    p.style.strokeDasharray='0.01 '+gap;
+    p.style.animation='none';p.style.strokeDasharray='none';p.style.strokeDashoffset='0';
+    if(window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+    var N=Math.max(80,Math.ceil(L/1.2)),pas=L/N,pts=[],i,q;
+    for(i=0;i<=N;i++){q=p.getPointAtLength(L*i/N);pts.push([q.x,q.y]);}
+    function chemin(n){
+      var s='M'+pts[0][0].toFixed(2)+' '+pts[0][1].toFixed(2),j,dx,dy;
+      for(j=1;j<=n;j++){
+        dx=pts[j][0]-pts[j-1][0];dy=pts[j][1]-pts[j-1][1];
+        s+=((dx*dx+dy*dy)>(pas*pas*16+4)?' M':' L')+pts[j][0].toFixed(2)+' '+pts[j][1].toFixed(2);
+      }
+      return s;
+    }
+    p.setAttribute('d',chemin(1));
     var t0=null;
     function step(ts){
       if(!p.isConnected)return;
       if(t0===null)t0=ts;
-      var k=Math.min(1,(ts-t0)/DUREE),e=1-Math.pow(1-k,3);
-      p.style.strokeDasharray=Math.max(0.01,e*L)+' '+gap;
-      if(k<1)requestAnimationFrame(step);
+      var k=Math.min(1,(ts-t0)/DUREE);
+      if(k>=1){p.setAttribute('d',d0);return;}
+      p.setAttribute('d',chemin(Math.max(1,Math.round(k*N))));
+      requestAnimationFrame(step);
     }
     requestAnimationFrame(step);
   }
