@@ -218,7 +218,7 @@ section:nth-child(even){background:var(--white);}
 
 /* ── EN IMAGES (mosaïque) ── */
 .mosaic{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:170px;grid-auto-flow:dense;gap:12px;}
-.mosaic-tile{position:relative;overflow:hidden;border-radius:18px;border:1.5px solid rgba(18,43,68,.08);grid-row:span 2;background:var(--navy);opacity:0;transform:translateY(22px) scale(.96);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.8,.2,1),box-shadow .3s;transition-delay:var(--d,0s);}
+.mosaic-tile{position:relative;overflow:hidden;border-radius:18px;grid-row:span 2;background:#e3ebf2;opacity:0;transform:translateY(22px) scale(.96);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.8,.2,1),box-shadow .3s;transition-delay:var(--d,0s);}
 .mosaic-tile.big{grid-column:span 2;}
 .mosaic-tile.in{opacity:1;transform:none;}
 .mosaic-tile.in:hover{transform:translateY(-4px) rotate(-.8deg) scale(1.02);box-shadow:0 16px 36px rgba(18,43,68,.28);z-index:2;transition-delay:0s;}
@@ -234,7 +234,7 @@ section:nth-child(even){background:var(--white);}
 @media(prefers-reduced-motion:reduce){.mosaic-tile{opacity:1;transform:none;transition:none;}}
 
 /* ── LE CLUB EN CHIFFRES (stats rigolotes) ── */
-.fun{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:6px 0 34px;}
+.fun{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:6px 0 34px;}
 .fun-card{background:var(--navy);border-radius:16px;padding:20px 18px 18px;color:white;position:relative;overflow:hidden;border:1.5px solid rgba(182,205,224,.18);}
 .fun-card:nth-child(2){background:linear-gradient(155deg,#1e4a6e,var(--navy));}
 .fun-card:nth-child(3){background:linear-gradient(155deg,#2a5f8d,var(--navy-deep));}
@@ -242,7 +242,7 @@ section:nth-child(even){background:var(--white);}
 .fun-num{font-family:'Anton',sans-serif;font-size:50px;line-height:1;color:var(--gold);letter-spacing:1px;}
 .fun-lab{font-family:'Bebas Neue',sans-serif;font-size:19px;letter-spacing:2px;color:var(--blue-sky);margin:4px 0 8px;}
 .fun-txt{font-size:13px;line-height:1.55;color:rgba(255,255,255,.75);}
-@media(max-width:900px){.fun{grid-template-columns:repeat(2,1fr);gap:10px;}.fun-num{font-size:42px;}.fun-txt{font-size:12.5px;}}
+@media(max-width:900px){.fun{grid-template-columns:repeat(2,1fr);gap:10px;}.fun-card:last-child:nth-child(odd){grid-column:span 2;}.fun-num{font-size:42px;}.fun-txt{font-size:12.5px;}}
 
 /* ── SURPRENDS-MOI ── */
 .surprise-btn{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:var(--navy-deep);border:none;border-radius:30px;padding:13px 22px;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:2px;cursor:pointer;transition:transform .2s,box-shadow .2s;}
@@ -1169,8 +1169,6 @@ renderRecords();
   const cnt={},nomAff={};
   MEMBRES.forEach(m=>{const p=prenom(m.nom),k=norm(p);cnt[k]=(cnt[k]||0)+1;if(!nomAff[k])nomAff[k]=p;});
   const top=Object.keys(cnt).sort((a,b)=>cnt[b]-cnt[a])[0];
-  const partages=Object.keys(cnt).filter(k=>cnt[k]>1);
-  const nbPartage=partages.reduce((n,k)=>n+cnt[k],0);
   const marathon=recordCats.find(c=>c.key==='marathon');
   const marathoniens=new Set(marathon.records.filter(r=>r.event!=='Marathon du Médoc').map(r=>r.who)).size;
   const lettres={};
@@ -1179,7 +1177,6 @@ renderRecords();
   const exemples=Object.keys(cnt).filter(k=>k.charAt(0).toUpperCase()===reine).slice(0,4).map(k=>nomAff[k]).join(', ');
   const cartes=[
     {n:cnt[top],l:nomAff[top]+' ×'+cnt[top],t:'Le prénom roi du club. Crie « '+nomAff[top]+' ! » dans la foule et '+cnt[top]+' têtes se retournent.'},
-    {n:nbPartage,l:'adhérents ont un homonyme',t:'Soit '+Math.round(100*nbPartage/MEMBRES.length)+' % du club : ils partagent leur prénom avec quelqu\'un d\'autre. D\'où les initiales sur les cartes.'},
     {n:marathoniens,l:'marathoniens',t:'42,195 km au compteur, et ils en redemandent.'},
     {n:reine,l:'la lettre reine',t:lettres[reine]+' adhérents ont un prénom en '+reine+' : '+exemples+'… Le club est très '+reine+'.'}
   ];
