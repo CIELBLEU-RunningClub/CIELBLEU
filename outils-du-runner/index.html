@@ -204,6 +204,20 @@ footer{background:var(--navy-deep);padding:40px 60px;}
 }
 /* Mention de bas de page de l outil retirée (demande du club) */
 footer.footer{display:none;}
+/* Référents piste, en fin de page */
+.refs{background:var(--cream);padding:40px 60px 44px;border-top:1px solid rgba(18,43,68,.08);}
+.refs-inner{max-width:1124px;margin:0 auto;}
+.refs-label{font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:5px;color:var(--blue-steel);margin-bottom:10px;}
+.refs h2{font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(26px,5vw,34px);letter-spacing:.3px;color:var(--navy);line-height:1.1;margin-bottom:22px;}
+.refs-list{display:flex;gap:18px;flex-wrap:wrap;}
+.ref-card{display:flex;align-items:center;gap:18px;background:var(--white);border:1px solid rgba(18,43,68,.1);border-radius:16px;padding:16px 26px 16px 16px;min-width:min(100%,330px);}
+.ref-card img{width:84px;height:84px;border-radius:50%;object-fit:cover;flex-shrink:0;}
+.ref-name{font-family:'Anton',sans-serif;font-size:22px;letter-spacing:.3px;color:var(--navy);line-height:1.15;}
+.ref-nick{font-size:14px;color:var(--mid);font-style:italic;}
+.ref-role{font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:2px;color:#3E7CB1;margin-top:4px;}
+.refs-more{display:inline-block;margin-top:18px;font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:2px;color:#3E7CB1;text-decoration:none;padding:8px 2px;}
+.refs-more:hover{color:var(--navy);}
+@media(max-width:768px){.refs{padding:30px 20px 34px;}.ref-card{width:100%;padding:14px 18px 14px 14px;}.ref-card img{width:72px;height:72px;}}
 
 /* Le pied de page de l'outil garde sa mention (temps théoriques, rien n'est envoyé) : on en fait une simple note au-dessus du pied de page du site */
 footer.footer{background:var(--cream);color:var(--mid);padding:26px 60px;text-align:center;border-top:1px solid rgba(18,43,68,.08);}
@@ -264,6 +278,25 @@ html{scroll-padding-top:170px;}
 </header>
 
 <div id="root"></div>
+
+<section class="refs" aria-labelledby="refs-title">
+  <div class="refs-inner">
+    <div class="refs-label">Sur la piste</div>
+    <h2 id="refs-title">Tes référents piste.</h2>
+    <div class="refs-list">
+      <div class="ref-card">
+        <img src="../images/equipe/thomas-vice-president.png?v=6" alt="Thomas" width="84" height="84" loading="lazy" decoding="async">
+        <div><div class="ref-name">Thomas</div><div class="ref-nick">« El coche »</div><div class="ref-role">Vice-Président</div></div>
+      </div>
+      <div class="ref-card">
+        <img src="../images/equipe/julien-secretaire-general.png?v=6" alt="Julien Guzman" width="84" height="84" loading="lazy" decoding="async">
+        <div><div class="ref-name">Julien Guzman</div><div class="ref-role">Coach sportif diplômé</div></div>
+      </div>
+    </div>
+    <a class="refs-more" href="../notre-equipe.html">Toute l'équipe →</a>
+  </div>
+</section>
+
 
 <footer>
   <div class="footer-nav" role="navigation" aria-label="Pages du site">
