@@ -62,21 +62,21 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 /* ── BOUTON MENU : libellé + bordure pour qu'on le repère ── */
 .nav-hamburger{gap:8px;font-size:15px;}
 .nav-hamburger .nav-menu-label{font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:2px;}
-@media(max-width:1150px){
+@media(max-width:1250px){
   .nav-hamburger{border:1.5px solid rgba(182,205,224,.45);border-radius:6px;padding:7px 12px;}
 }
 .nav-links a{white-space:nowrap;}
-/* Sous 1150px, les 6 liens + les 2 boutons ne tiennent plus dans la barre :
+/* Sous 1250px, les 6 liens + les 2 boutons ne tiennent plus dans la barre :
    le menu complet débordait hors de l'écran (« Devenir partenaire » invisible).
    On bascule sur le menu burger, qui contient déjà les deux boutons. */
-@media(max-width:1150px){
+@media(max-width:1250px){
   .nav-links,.nav-cta,.nav-cta-group{display:none;}
   .nav-hamburger{display:flex;align-items:center;}
   .nav-mobile{top:112px;}
 }
 @media(max-width:768px){.nav-mobile{top:70px;}}
 /* Entre 1151 et 1400px, on resserre un peu pour garder de l'air autour des boutons */
-@media(min-width:1151px) and (max-width:1400px){
+@media(min-width:1251px) and (max-width:1400px){
   nav{padding:0 28px;}
   .nav-links{gap:13px;}
   .nav-links a{font-size:11.5px;letter-spacing:1px;}
@@ -193,6 +193,7 @@ footer{background:var(--navy-deep);padding:40px 60px;}
     <li><a href="notre-equipe.html">L'équipe</a></li>
     <li><a href="nos-adherents.html">Nos adhérents</a></li>
     <li><a href="nos-partenaires.html">Nos partenaires</a></li>
+    <li><a href="outils-du-runner/">Outils</a></li>
   </ul>
   <div class="nav-cta-group">
     <a href="./#adhesion" class="nav-cta">Devenir adhérent →</a>
@@ -207,6 +208,7 @@ footer{background:var(--navy-deep);padding:40px 60px;}
   <li><a href="notre-equipe.html" onclick="toggleNav()">L'équipe</a></li>
   <li><a href="nos-adherents.html" onclick="toggleNav()">Nos adhérents</a></li>
   <li><a href="nos-partenaires.html" onclick="toggleNav()">Nos partenaires</a></li>
+  <li><a href="outils-du-runner/" onclick="toggleNav()">Outils</a></li>
   <li><a href="./#adhesion" onclick="toggleNav()" style="color:var(--gold)!important;">→ Devenir adhérent</a></li>
   <li><a href="nos-partenaires.html#contact" onclick="toggleNav()" style="color:var(--blue-sky)!important;">→ Devenir partenaire</a></li>
 </ul>

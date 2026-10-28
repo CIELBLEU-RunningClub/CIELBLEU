@@ -38,6 +38,7 @@ images/
 videos/                     Vidéos du site
   posters/                    image affichée avant la lecture, même nom que la vidéo
 outils/                     Scripts utiles à l'orga (génération de l'agenda)
+outils-du-runner/           Page « Les outils du runner » (calculateur de séance piste, allures, piste Jules Ladoumègue). Application déjà compilée, à ne pas modifier à la main : le code source est dans le dossier « Code source » fourni par Julien
 sw.js, manifest.webmanifest Application installable sur l'écran d'accueil
 robots.txt, sitemap.xml     Référencement
 ```
