@@ -345,7 +345,7 @@ nav a:focus-visible,.nav-mobile a:focus-visible,footer a:focus-visible,footer bu
 
 <a id="back-to-top" href="#" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'});" aria-label="Retour en haut">↑</a>
 
-<script src="donnees/membres.js?v=1022"></script>
+<script src="donnees/membres.js?v=1023"></script>
 <script>
 
 /* ===== EN IMAGES (carrousel équipe) ===== */
@@ -362,7 +362,7 @@ document.querySelectorAll('.reveal,.reveal-children').forEach(el=>obs.observe(el
 (function(){
   // Le nombre d'adhérents vient de donnees/membres.js : chiffre exact, sans « + »
   const ca=document.getElementById('countAdherents');
-  if(ca&&typeof MEMBRES!=="undefined")ca.dataset.count=MEMBRES.length;
+  if(ca&&typeof MEMBRES!=="undefined")ca.dataset.count=(typeof NB_ADHERENTS!=='undefined'?NB_ADHERENTS:MEMBRES.length);
   function animate(el){
     const target=parseInt(el.dataset.count,10);
     const suffix=el.dataset.suffix||'';
