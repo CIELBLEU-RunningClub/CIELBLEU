@@ -261,6 +261,11 @@ body > .nav-mobile li a{line-height:normal;}
   #piste .track-svg{max-height:34vh;}
   #piste .track-legend{display:none;}
 }
+/* Schéma réduit sur téléphone : le tracé doré est plus épais pour rester bien visible */
+@media(max-width:899px){
+  #piste .t-route{stroke-width:3.6px;}
+  #piste .t-route-shadow{stroke-width:4.8px;}
+}
 
 /* Le pied de page de l'outil garde sa mention (temps théoriques, rien n'est envoyé) : on en fait une simple note au-dessus du pied de page du site */
 footer.footer{background:var(--cream);color:var(--mid);padding:26px 60px;text-align:center;border-top:1px solid rgba(18,43,68,.08);}
@@ -364,6 +369,26 @@ html{scroll-padding-top:130px;}
 
 <a id="back-to-top" href="#" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'});" aria-label="Retour en haut">↑</a>
 
+<script>
+/* Tracé animé du schéma : on n'utilise plus pathLength (mal géré sur iPhone, le trait s'affichait en pointillés) ;
+   on mesure la vraie longueur du tracé et on anime le trait avec cette valeur, sur tous les navigateurs */
+(function(){
+  function fix(p){
+    if(p.getAttribute('data-fx'))return;p.setAttribute('data-fx','1');
+    var L=0;try{L=p.getTotalLength();}catch(e){}
+    if(!L)return;
+    p.removeAttribute('pathLength');
+    p.style.animation='none';
+    p.style.strokeDasharray=L+' '+(L+2);
+    if(p.animate&&!(window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches)){
+      p.animate([{strokeDashoffset:L},{strokeDashoffset:0}],{duration:1400,easing:'cubic-bezier(.4,0,.2,1)',fill:'both'});
+    }else{p.style.strokeDashoffset='0';}
+  }
+  function scan(){var l=document.querySelectorAll('#piste .t-route');for(var i=0;i<l.length;i++)fix(l[i]);}
+  new MutationObserver(scan).observe(document.documentElement,{childList:true,subtree:true});
+  scan();
+})();
+</script>
 <script>
 /* Lien direct vers une section (ex. #seance) : l'outil s'affiche après le chargement, on attend qu'elle existe puis on y va */
 (function(){var h=location.hash;if(!h||h.length<2)return;var n=0,t=setInterval(function(){var el=null;try{el=document.querySelector(h);}catch(e){}if(el||++n>40){clearInterval(t);if(el)el.scrollIntoView({behavior:"instant",block:"start"});}},100);})();
