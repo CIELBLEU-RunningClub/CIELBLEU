@@ -112,6 +112,8 @@ section:nth-child(even){background:var(--white);}
 .trombi-search svg{position:absolute;left:15px;top:50%;transform:translateY(-50%);color:var(--mid);}
 .trombi-count{font-size:13px;color:var(--mid);letter-spacing:1px;}
 .trombi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:16px;}
+.trombi-wrap{position:relative;}
+.trombi-arrow,.trombi-progress{display:none;}
 .trombi-hint{display:none;text-align:center;margin:0 0 12px;font-size:12px;letter-spacing:2px;color:var(--blue-steel);text-transform:uppercase;}
 .trombi-card{aspect-ratio:3/4;position:relative;perspective:900px;transition:transform .2s,box-shadow .2s;}
 .trombi-card:hover{transform:translateY(-4px);}
@@ -381,6 +383,19 @@ footer{background:var(--navy-deep);padding:40px 60px;}
   .trombi-grid::-webkit-scrollbar{display:none;}
   .trombi-card{scroll-snap-align:center;}
   .trombi-hint{display:block;}
+  .trombi-grid{grid-auto-columns:28.5%!important;}
+  .trombi-hint{font-size:13px;color:var(--navy);font-weight:600;}
+  .trombi-hint-arrow{display:inline-block;color:var(--gold);font-size:17px;animation:hintNudge 1.4s ease-in-out infinite;}
+  .trombi-hint-arrow:first-child{animation-direction:reverse;}
+  @keyframes hintNudge{0%,100%{transform:translateX(0);}50%{transform:translateX(5px);}}
+  .trombi-wrap::after{content:'';position:absolute;top:0;right:0;bottom:10px;width:54px;background:linear-gradient(to left,var(--cream) 8%,rgba(246,249,252,0));pointer-events:none;z-index:2;transition:opacity .25s;}
+  .trombi-wrap.fin::after{opacity:0;}
+  .trombi-arrow{display:flex;align-items:center;justify-content:center;position:absolute;top:calc(50% - 5px);right:2px;transform:translateY(-50%);z-index:3;width:46px;height:46px;border-radius:50%;border:none;background:var(--gold);color:var(--navy-deep);font-size:30px;line-height:1;padding:0 0 3px;box-shadow:0 6px 18px rgba(11,29,48,.35);cursor:pointer;transition:opacity .25s;animation:arrowNudge 1.5s ease-in-out infinite;}
+  .trombi-arrow.prev{right:auto;left:2px;animation:none;}
+  .trombi-arrow.is-hidden{opacity:0;pointer-events:none;}
+  @keyframes arrowNudge{0%,100%{transform:translateY(-50%) translateX(0);}50%{transform:translateY(-50%) translateX(6px);}}
+  .trombi-progress{display:block;height:5px;border-radius:5px;background:rgba(18,43,68,.12);margin:12px auto 0;max-width:240px;overflow:hidden;}
+  .trombi-progress span{display:block;height:100%;width:30%;border-radius:5px;background:var(--gold);transform:translateX(0);}
   .trombi-search input{font-size:16px;}
   footer{padding:28px 20px;}
   .footer-inner{flex-direction:column;align-items:center;text-align:center;gap:16px;}
@@ -461,8 +476,13 @@ nav a:focus-visible,.nav-mobile a:focus-visible,footer a:focus-visible,footer bu
     <div class="trombi-count" id="trombiCount"></div>
     <button type="button" class="surprise-btn" id="surpriseBtn"><span aria-hidden="true">🎲</span> Surprends-moi</button>
   </div>
-  <div class="trombi-hint">← Glissez pour découvrir →</div>
-  <div class="trombi-grid" id="trombiGrid"></div>
+  <div class="trombi-hint"><span class="trombi-hint-arrow" aria-hidden="true">←</span> Glisse pour voir tout le monde <span class="trombi-hint-arrow" aria-hidden="true">→</span></div>
+  <div class="trombi-wrap" id="trombiWrap">
+    <button type="button" class="trombi-arrow prev is-hidden" id="trombiPrev" aria-label="Adhérents précédents">‹</button>
+    <div class="trombi-grid" id="trombiGrid"></div>
+    <button type="button" class="trombi-arrow next" id="trombiNext" aria-label="Adhérents suivants">›</button>
+  </div>
+  <div class="trombi-progress" id="trombiProgress" aria-hidden="true"><span></span></div>
   <div style="text-align:center;margin-top:32px;">
     <button id="trombiToggle" style="display:none;align-items:center;gap:8px;background:transparent;border:1.5px solid rgba(18,43,68,.2);color:var(--navy);font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:2px;padding:13px 28px;border-radius:30px;cursor:pointer;transition:all .2s;" onmouseover="this.style.borderColor='var(--blue-sky)';this.style.color='var(--blue-sky)'" onmouseout="this.style.borderColor='rgba(18,43,68,.2)';this.style.color='var(--navy)'"></button>
   </div>
@@ -1242,6 +1262,31 @@ renderRecords();
   // toucher le fond ferme (touchstart pour iPhone, click pour le reste)
   ['click','touchstart'].forEach(ev=>ov.addEventListener(ev,e=>{if(e.target===ov){if(ev==='touchstart')e.preventDefault();fermer();}},{passive:false}));
   document.addEventListener('keydown',e=>{if(e.key==='Escape'&&ov.classList.contains('show'))fermer();});
+})();
+
+/* ===== TROMBINOSCOPE : flèches et barre de progression (carrousel mobile) ===== */
+(function(){
+  const g=document.getElementById('trombiGrid'),w=document.getElementById('trombiWrap'),
+        pv=document.getElementById('trombiPrev'),nx=document.getElementById('trombiNext'),
+        pr=document.querySelector('#trombiProgress span');
+  if(!g||!w||!pr)return;
+  function maj(){
+    const max=g.scrollWidth-g.clientWidth;
+    const r=max>0?Math.min(1,Math.max(0,g.scrollLeft/max)):0;
+    const part=g.scrollWidth>0?Math.min(1,g.clientWidth/g.scrollWidth):1;
+    pr.style.width=(part*100)+'%';
+    pr.style.transform='translateX('+(r*(1/part-1)*100)+'%)';
+    pv.classList.toggle('is-hidden',g.scrollLeft<24);
+    const fin=max<=0||g.scrollLeft>=max-24;
+    nx.classList.toggle('is-hidden',fin);w.classList.toggle('fin',fin);
+  }
+  function pas(sens){g.scrollBy({left:sens*Math.round(g.clientWidth*0.8),behavior:'smooth'});}
+  nx.addEventListener('click',function(){pas(1);});
+  pv.addEventListener('click',function(){pas(-1);});
+  g.addEventListener('scroll',maj,{passive:true});
+  addEventListener('resize',maj);
+  new MutationObserver(maj).observe(g,{childList:true});
+  maj();
 })();
 
 /* ===== SON SUR LES VIDÉOS (muté par défaut, clic pour activer) ===== */
