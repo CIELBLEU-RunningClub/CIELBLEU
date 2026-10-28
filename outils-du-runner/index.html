@@ -121,6 +121,61 @@ footer{background:var(--navy-deep);padding:40px 60px;}
 .session-results{top:188px;}
 .topbar{display:none;}
 .pedago-grid{grid-template-columns:1fr;}
+/* ── Outils : version compacte (moins de défilement, récap plus lisible) ── */
+#root .section{padding:34px 0;}
+@media(min-width:900px){#root .section{padding:36px 0;}}
+#root .section-head{margin-bottom:16px;max-width:none;}
+#root .section-head .eyebrow{margin-bottom:6px;font-size:13px;}
+#root .section-head h2{font-size:clamp(26px,6vw,34px);}
+#root .section-head h2 br{display:none;}
+#root .section-head h2 .accent{margin-left:.25em;}
+#root .section-intro{margin-top:6px;font-size:15px;}
+#root .card{padding:16px;}
+@media(min-width:720px){#root .card{padding:18px 20px;}}
+#root .card-title{font-size:19px;margin-bottom:10px;}
+#root .field{margin-bottom:10px;}
+#root .field-label{margin-bottom:5px;font-size:14px;}
+#root .field-hint,#root .field-error{min-height:0;margin-top:3px;font-size:12.5px;}
+#root .stepper,#root .field-pair .stepper{grid-template-columns:42px minmax(0,1fr) 42px;gap:6px;}
+#root .stepper-btn{height:42px;font-size:22px;border-radius:10px;}
+#root .stepper-input{height:42px;border-radius:10px;padding:0 10px;}
+#root .stepper-input input{font-size:22px;}
+#root .range{height:22px;margin:6px 0 0;}
+#root .choices{margin:0 0 10px;}
+#root .choice span{min-height:38px;min-width:46px;font-size:16px;padding:4px 12px;}
+#root .choices--segmented .choice span{min-height:36px;font-size:15px;padding:4px 10px;}
+#root .helper{margin:0 0 8px;}
+#root .helper summary{min-height:38px;padding:6px 12px;font-size:13.5px;}
+#root .presets{margin:-2px 0 8px;}
+#root .preset{min-height:32px;}
+#root .btn{min-height:42px;font-size:16px;padding:8px 16px;}
+#root .btn--small{min-height:38px;}
+/* Séance : les deux premiers champs côte à côte, les aides côte à côte dessous */
+@media(min-width:640px){
+  #seance .session-grid>.card--light{display:grid;grid-template-columns:1fr 1fr;column-gap:16px;align-content:start;}
+  #seance .session-grid>.card--light>*{grid-column:1/-1;order:3;}
+  #seance .session-grid>.card--light>.field:not(.field-pair){grid-column:auto;order:1;}
+  #seance .session-grid>.card--light>details.helper{grid-column:auto;order:2;align-self:start;}
+}
+/* Récap : un temps cible en grand, puis vitesse et allure, puis les passages sur une seule ligne */
+#root .session-results{padding-top:16px;}
+#root .results-kicker{margin-bottom:2px;font-size:14px;}
+#root .results-label{font-size:15px;}
+#root .results-big{font-size:clamp(64px,17vw,84px);}
+#root .results-row{margin:10px 0 12px;padding:10px 0;}
+#root .results-row strong{font-size:24px;}
+#root .splits{grid-template-columns:repeat(4,1fr);gap:6px;margin-top:6px;}
+#root .splits li{flex-direction:column;align-items:flex-start;gap:0;padding:7px 10px;}
+#root .splits li span{font-size:12.5px;opacity:.8;}
+#root .splits li strong{font-size:21px;}
+@media(max-width:380px){#root .splits{grid-template-columns:1fr 1fr;}}
+#root .results-total{margin-top:10px;font-size:13.5px;}
+#root .results-note{margin-top:8px;font-size:12.5px;}
+#root .actions{margin-top:12px;gap:8px;}
+/* Allures et piste */
+#root .race-headline{padding:12px 16px;}
+@media(min-width:900px){#piste .track-svg{max-height:520px;}}
+
 /* Le pied de page de l'outil garde sa mention (temps théoriques, rien n'est envoyé) : on en fait une simple note au-dessus du pied de page du site */
 footer.footer{background:var(--cream);color:var(--mid);padding:26px 60px;text-align:center;border-top:1px solid rgba(18,43,68,.08);}
 footer.footer p{font-size:13px;line-height:1.7;max-width:640px;margin:0 auto;color:var(--mid);}
@@ -208,6 +263,19 @@ html{scroll-padding-top:170px;}
 
 <a id="back-to-top" href="#" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'});" aria-label="Retour en haut">↑</a>
 
+<script>
+/* « Revoir le tracé » : si le schéma n'est pas à l'écran (sur téléphone il est au-dessus des réglages), on remonte d'abord jusqu'à lui, puis on relance l'animation */
+document.addEventListener('click',function(e){
+  var b=e.target.closest&&e.target.closest('button');
+  if(!b||!/Revoir le tracé/.test(b.textContent)||b.dataset.go)return;
+  var f=document.querySelector('#piste .track-figure');if(!f)return;
+  var r=f.getBoundingClientRect(),top=window.innerWidth<=768?130:170;
+  if(r.top>=top-20&&r.bottom<=window.innerHeight)return;
+  e.preventDefault();e.stopPropagation();
+  f.scrollIntoView({behavior:'smooth',block:'start'});
+  setTimeout(function(){b.dataset.go='1';b.click();setTimeout(function(){delete b.dataset.go;},300);},550);
+},true);
+</script>
 <script type="module" crossorigin src="./assets/index-CpUjFR1R.js"></script>
 <script>
 window.addEventListener('scroll',()=>{
