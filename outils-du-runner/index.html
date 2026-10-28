@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0b1d30">
 <title>Les outils du runner · Piste et allures · CIELBLEU</title>
-<meta name="description" content="Calculateur de séance piste à partir de la VMA, allures d'objectif de course, convertisseur vitesse / allure et guide de la piste Jules Ladoumègue. Les outils du CIELBLEU Running Club pour préparer le lundi.">
+<meta name="description" content="Calculateur de séance piste à partir de la VMA, allures d'objectif de course, convertisseur vitesse / allure et guide de la piste. Les outils du CIELBLEU Running Club pour préparer le lundi.">
 <link rel="canonical" href="https://cielbleurunningclub.com/outils-du-runner/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Les outils du runner · Piste et allures">
@@ -192,10 +192,9 @@ footer{background:var(--navy-deep);padding:40px 60px;}
 @media(min-width:900px){
   #piste .track-grid{align-items:stretch;gap:20px 32px;}
   #piste .track-panel{display:contents;}
-  #piste .track-figure{grid-column:1;grid-row:1 / span 2;display:flex;flex-direction:column;justify-content:center;}
-  #piste .track-panel>.card{grid-column:2;grid-row:1;align-self:start;}
-  #piste .track-panel>.venue-card{grid-column:2;grid-row:2;margin-top:0;}
-  #piste .track-panel>.disclaimer{grid-column:1 / -1;grid-row:3;margin-top:0;}
+  #piste .track-figure{grid-column:1;grid-row:1;display:flex;flex-direction:column;justify-content:center;}
+  #piste .track-panel>.card{grid-column:2;grid-row:1;align-self:stretch;display:flex;flex-direction:column;justify-content:space-between;}
+  #piste .track-panel>.disclaimer{grid-column:1 / -1;grid-row:2;margin-top:0;}
 }
 /* Mention de bas de page de l outil retirée (demande du club) */
 footer.footer{display:none;}
@@ -370,19 +369,29 @@ html{scroll-padding-top:130px;}
 <a id="back-to-top" href="#" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'});" aria-label="Retour en haut">↑</a>
 
 <script>
-/* Tracé animé du schéma : on n'utilise plus pathLength (mal géré sur iPhone, le trait s'affichait en pointillés) ;
-   on mesure la vraie longueur du tracé et on anime le trait avec cette valeur, sur tous les navigateurs */
+/* Tracé animé du schéma : un seul trait doré qui fait le tour de la piste, identique sur ordinateur et sur téléphone.
+   Pas de pathLength ni d'animation CSS (mal gérés sur iPhone, ils donnaient plusieurs traits) :
+   on mesure la longueur réelle du tracé et on allonge le trait image par image. */
 (function(){
+  var DUREE=1400;
   function fix(p){
     if(p.getAttribute('data-fx'))return;p.setAttribute('data-fx','1');
     var L=0;try{L=p.getTotalLength();}catch(e){}
     if(!L)return;
     p.removeAttribute('pathLength');
-    p.style.animation='none';
-    p.style.strokeDasharray=L+' '+(L+2);
-    if(p.animate&&!(window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches)){
-      p.animate([{strokeDashoffset:L},{strokeDashoffset:0}],{duration:1400,easing:'cubic-bezier(.4,0,.2,1)',fill:'both'});
-    }else{p.style.strokeDashoffset='0';}
+    p.style.animation='none';p.style.strokeDashoffset='0';
+    var gap=L+10;
+    if(window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches){p.style.strokeDasharray=L+' '+gap;return;}
+    p.style.strokeDasharray='0.01 '+gap;
+    var t0=null;
+    function step(ts){
+      if(!p.isConnected)return;
+      if(t0===null)t0=ts;
+      var k=Math.min(1,(ts-t0)/DUREE),e=1-Math.pow(1-k,3);
+      p.style.strokeDasharray=Math.max(0.01,e*L)+' '+gap;
+      if(k<1)requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
   }
   function scan(){var l=document.querySelectorAll('#piste .t-route');for(var i=0;i<l.length;i++)fix(l[i]);}
   new MutationObserver(scan).observe(document.documentElement,{childList:true,subtree:true});
@@ -406,7 +415,7 @@ document.addEventListener('click',function(e){
   setTimeout(function(){b.dataset.go='1';b.click();setTimeout(function(){delete b.dataset.go;},300);},550);
 },true);
 </script>
-<script type="module" crossorigin src="./assets/index-CpUjFR1R.js?v=a82d6d13"></script>
+<script type="module" crossorigin src="./assets/index-CpUjFR1R.js?v=40664ff9"></script>
 <script>
 window.addEventListener('scroll',()=>{
   document.getElementById('back-to-top').classList.toggle('show',window.scrollY>400);
