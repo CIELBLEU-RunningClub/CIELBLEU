@@ -1,8 +1,11 @@
 // Le trombinoscope des adhérents : une ligne par membre.
-// Saison 2026-2027 · 128 adhérents.
+// Saison 2026-2027 · 137 adhérents.
 // Pour ajouter un headshot : photo:'images/membres/prenom.jpg' (les initiales s'affichent sinon).
 // Pour ajouter une citation : citation:'…' (le verso reste neutre si vide).
 const MEMBRES=[
+  {nom:'Candice', citation:'Mieux vaut avoir des courbatures que des regrets.', photo:''},
+  {nom:'Thomas n°1', citation:'Viva la vida.', photo:''},
+  {nom:'Manon n°1', citation:'Plus vite on commence, plus vite on termine.', photo:''},
   {nom:'Clarisse n°1', citation:'', photo:''},
   {nom:'Thomas n°2', citation:'', photo:''},
   {nom:'Ethan', citation:'Passionné de course à pied et de rencontres avec d\'autres coureurs.', photo:''},
@@ -21,7 +24,10 @@ const MEMBRES=[
   {nom:'Thibault', citation:'', photo:''},
   {nom:'Lucile', citation:'Le ciel est bleu en deux mots ? Ciel bleu.', photo:''},
   {nom:'Clemence', citation:'', photo:''},
+  {nom:'Julien n°2', citation:'Bonjour, je suis coach.', photo:''},
   {nom:'Yoann', citation:'On m\'a dit « méfiez-vous » en arrivant l\'an dernier : ils avaient raison, je suis devenu addict au Ciel Bleu.', photo:''},
+  {nom:'Thomas « El coche »', citation:'Les relations humaines, vous savez…', photo:''},
+  {nom:'Hugo n°1', citation:'Après chaque montée, il y a une descente.', photo:''},
   {nom:'Fanny n°1', citation:'', photo:''},
   {nom:'Théo n°1', citation:'Entraînement difficile, course facile.', photo:''},
   {nom:'Enzo', citation:'', photo:''},
@@ -31,12 +37,15 @@ const MEMBRES=[
   {nom:'Clémence', citation:'Petite phrase à se répéter sans modération pendant qu\'on crache nos poumons : « on n\'est pas des merguez ».', photo:''},
   {nom:'Anaïs', citation:'', photo:''},
   {nom:'Marie', citation:'Soufle limité, bavardages illimités.', photo:''},
+  {nom:'Floriane', citation:'', photo:''},
   {nom:'Flavie', citation:'', photo:''},
   {nom:'Mathilde n°1', citation:'Je veux aller loin, mais surtout ne jamais arrêter d\'avancer.', photo:''},
   {nom:'Enora', citation:'Miam miam les hérissons', photo:''},
   {nom:'Quentin n°2', citation:'Qu\'est-ce que signifie « apprivoiser » ? C\'est une chose trop oubliée. Ça signifie « créer des liens ».', photo:''},
   {nom:'Mathieu n°1', citation:'La confiance n\'exclut pas le contrôle.', photo:''},
+  {nom:'Alban', citation:'Tout le monde est sympa sauf moi.', photo:''},
   {nom:'Justine', citation:'', photo:''},
+  {nom:'Julia', citation:'Je suis fan de Clem qui court.', photo:''},
   {nom:'Matheo', citation:'', photo:''},
   {nom:'Julien n°3', citation:'J\'ai couru le marathon de New York.', photo:''},
   {nom:'Leonardo', citation:'42 km ? En moto oui !', photo:''},
