@@ -659,6 +659,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,[t
 nav a:focus-visible,.nav-mobile a:focus-visible,footer a:focus-visible,footer button:focus-visible{outline-color:var(--blue-sky);}
 .nav-mobile li a.active{color:white;border-left:3px solid var(--gold);padding-left:12px;}
 .read-progress{position:fixed;top:0;left:0;height:3px;width:100%;background:var(--gold);transform:scaleX(0);transform-origin:left;z-index:101;pointer-events:none;}
+/* Titres de section : sur une seule ligne et plus petits (ordinateur), retour à la ligne naturel sur téléphone */
+.s-title{font-size:clamp(22px,2.7vw,32px)!important;line-height:1.15!important;}
+.s-title{white-space:nowrap;}
+@media(max-width:768px){.s-title{font-size:clamp(16px,5.4vw,26px)!important;}}
 </style>
 <noscript><style>.reveal,.reveal-left,.reveal-right,.reveal-zoom,.reveal-children>*,.s-label,.s-title,.gallery-item{opacity:1!important;transform:none!important;}</style></noscript>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"CIELBLEU Running Club","url":"https://cielbleurunningclub.com/","inLanguage":"fr-FR"}</script>
@@ -718,7 +722,7 @@ nav a:focus-visible,.nav-mobile a:focus-visible,footer a:focus-visible,footer bu
 <!-- LE PROGRAMME -->
 <section id="semaine">
   <div class="s-label">01 · Le programme</div>
-  <h2 class="s-title">Trois rendez-vous<br>chaque semaine.</h2>
+  <h2 class="s-title">Trois rendez-vous chaque semaine.</h2>
   <div class="swipe-hint-m swipe-hint-top">← Glissez pour découvrir →</div>
   <div class="semaine-grid reveal-children">
     <div class="semaine-card">
@@ -776,7 +780,7 @@ nav a:focus-visible,.nav-mobile a:focus-visible,footer a:focus-visible,footer bu
 <section id="km-bleu" class="kmbleu">
   <img src="images/couvertures/km-bleu.webp" alt="" class="kmbleu-bg-img" loading="lazy" decoding="async">
   <div class="s-label">03 · Kilomètre Bleu</div>
-  <h2 class="s-title">Le meilleur public<br>de Paris.</h2>
+  <h2 class="s-title">Le meilleur public de Paris.</h2>
   <p class="kmbleu-sub reveal">Sur chaque grande course, CIELBLEU installe sa fan zone Kilomètre Bleu. Cris, drapeaux, tambours et enceintes pour propulser les coureurs.</p>
   <div class="kmbleu-hint" style="margin:0 0 14px;">← Glissez pour découvrir →</div>
   <div class="kmbleu-media reveal" id="kmbleuMedia"></div>
@@ -795,7 +799,7 @@ nav a:focus-visible,.nav-mobile a:focus-visible,footer a:focus-visible,footer bu
 <!-- GALERIE -->
 <section id="galerie">
   <div class="s-label">05 · Galerie</div>
-  <h2 class="s-title">Vous verrez,<br>on sourit beaucoup.</h2>
+  <h2 class="s-title">Vous verrez, on sourit beaucoup.</h2>
   <div class="gallery-swipe-hint" style="margin:0 0 14px;">← Glissez pour découvrir →</div>
   <div class="gallery-carousel-wrap">
   <button class="gallery-nav prev" onclick="scrollGallery(-1)" aria-label="Photos précédentes">‹</button>
@@ -896,7 +900,7 @@ nav a:focus-visible,.nav-mobile a:focus-visible,footer a:focus-visible,footer bu
 <!-- FAQ -->
 <section id="faq">
   <div class="s-label">07 · FAQ</div>
-  <h2 class="s-title">Pas de question<br>bête.</h2>
+  <h2 class="s-title">Pas de question bête.</h2>
   <div class="faq reveal-children">
     <div class="faq-item">
       <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
