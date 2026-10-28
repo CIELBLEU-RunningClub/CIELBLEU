@@ -216,24 +216,49 @@ section:nth-child(even){background:var(--white);}
   .rec-time{font-size:27px;}
 }
 
-/* ── EN IMAGES (carrousel adhérents) ── */
-.amedia-wrap{position:relative;}
-.amedia-nav{position:absolute;top:50%;transform:translateY(-50%);background:var(--white);color:var(--navy);border:1.5px solid rgba(18,43,68,.15);border-radius:50%;width:46px;height:46px;cursor:pointer;font-size:22px;display:flex;align-items:center;justify-content:center;transition:all .2s;z-index:3;box-shadow:0 2px 14px rgba(18,43,68,.15);}
-.amedia-nav:hover{background:var(--navy);color:white;border-color:var(--navy);}
-.amedia-nav.prev{left:-20px;}
-.amedia-nav.next{right:-20px;}
-.amedia-track{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding-bottom:8px;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
-.amedia-track::-webkit-scrollbar{display:none;}
-.amedia-tile{flex:0 0 300px;height:380px;border-radius:16px;overflow:hidden;scroll-snap-align:start;position:relative;border:1.5px solid rgba(18,43,68,.08);}
-.amedia-tile.video{flex:0 0 240px;}
-.amedia-tile-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
-.amedia-hint{display:none;text-align:center;margin-top:14px;font-size:12px;letter-spacing:2px;color:var(--blue-steel);text-transform:uppercase;}
+/* ── EN IMAGES (mosaïque) ── */
+.mosaic{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:170px;grid-auto-flow:dense;gap:12px;}
+.mosaic-tile{position:relative;overflow:hidden;border-radius:18px;border:1.5px solid rgba(18,43,68,.08);grid-row:span 2;background:var(--navy);opacity:0;transform:translateY(22px) scale(.96);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.8,.2,1),box-shadow .3s;transition-delay:var(--d,0s);}
+.mosaic-tile.big{grid-column:span 2;}
+.mosaic-tile.in{opacity:1;transform:none;}
+.mosaic-tile.in:hover{transform:translateY(-4px) rotate(-.8deg) scale(1.02);box-shadow:0 16px 36px rgba(18,43,68,.28);z-index:2;transition-delay:0s;}
+.mosaic-tile img,.mosaic-tile video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.8,.2,1);}
+.mosaic-tile:hover img,.mosaic-tile:hover video{transform:scale(1.07);}
+.mosaic-cap{position:absolute;left:0;right:0;bottom:0;padding:30px 14px 12px;background:linear-gradient(to top,rgba(11,29,48,.88),transparent);color:white;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:1.5px;transform:translateY(101%);transition:transform .35s ease;pointer-events:none;}
+.mosaic-tile:hover .mosaic-cap{transform:none;}
 @media(max-width:768px){
-  .amedia-tile{flex:0 0 78%;height:auto;aspect-ratio:3/4;}
-  .amedia-tile.video{flex:0 0 70%;}
-  .amedia-hint{display:block;}
-  .amedia-nav{display:none;}
+  .mosaic{grid-template-columns:repeat(2,1fr);grid-auto-rows:132px;gap:8px;}
+  .mosaic-tile{border-radius:14px;}
+  .mosaic-cap{display:none;}
 }
+@media(prefers-reduced-motion:reduce){.mosaic-tile{opacity:1;transform:none;transition:none;}}
+
+/* ── LE CLUB EN CHIFFRES (stats rigolotes) ── */
+.fun{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:6px 0 34px;}
+.fun-card{background:var(--navy);border-radius:16px;padding:20px 18px 18px;color:white;position:relative;overflow:hidden;border:1.5px solid rgba(182,205,224,.18);}
+.fun-card:nth-child(2){background:linear-gradient(155deg,#1e4a6e,var(--navy));}
+.fun-card:nth-child(3){background:linear-gradient(155deg,#2a5f8d,var(--navy-deep));}
+.fun-card:nth-child(4){background:linear-gradient(155deg,var(--navy),#3E7CB1 160%);}
+.fun-num{font-family:'Anton',sans-serif;font-size:50px;line-height:1;color:var(--gold);letter-spacing:1px;}
+.fun-lab{font-family:'Bebas Neue',sans-serif;font-size:19px;letter-spacing:2px;color:var(--blue-sky);margin:4px 0 8px;}
+.fun-txt{font-size:13px;line-height:1.55;color:rgba(255,255,255,.75);}
+@media(max-width:900px){.fun{grid-template-columns:repeat(2,1fr);gap:10px;}.fun-num{font-size:42px;}.fun-txt{font-size:12.5px;}}
+
+/* ── SURPRENDS-MOI ── */
+.surprise-btn{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:var(--navy-deep);border:none;border-radius:30px;padding:13px 22px;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:2px;cursor:pointer;transition:transform .2s,box-shadow .2s;}
+.surprise-btn:hover{transform:translateY(-2px) rotate(-1.5deg);box-shadow:0 10px 24px rgba(232,176,107,.4);}
+.surprise{position:fixed;inset:0;z-index:100000;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(11,29,48,.82);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);}
+.surprise.show{display:flex;}
+.surprise-card{width:min(420px,100%);background:linear-gradient(155deg,var(--navy),var(--navy-deep));border:2px solid rgba(232,176,107,.7);border-radius:22px;padding:34px 26px 24px;text-align:center;color:white;box-shadow:0 30px 80px rgba(0,0,0,.5);}
+.surprise-card.pop{animation:surprisePop .55s cubic-bezier(.2,.9,.3,1.3);}
+@keyframes surprisePop{0%{opacity:0;transform:rotateY(90deg) scale(.8);}100%{opacity:1;transform:none;}}
+.surprise-avatar{width:96px;height:96px;border-radius:50%;margin:0 auto 18px;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:44px;color:white;overflow:hidden;position:relative;border:3px solid var(--gold);}
+.surprise-avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.surprise-quote{font-family:'Open Sans',sans-serif;font-style:italic;font-size:20px;line-height:1.5;color:var(--blue-sky);margin-bottom:16px;text-wrap:balance;}
+.surprise-name{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:3px;color:var(--gold);margin-bottom:22px;}
+.surprise-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
+.surprise-actions button{font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:2px;padding:12px 22px;border-radius:30px;cursor:pointer;border:1.5px solid rgba(182,205,224,.5);background:transparent;color:var(--blue-sky);}
+.surprise-actions button.primary{background:var(--gold);border-color:var(--gold);color:var(--navy-deep);}
 
 /* ── ADHÉSION ── */
 .adhesion-block{background:var(--navy);border-radius:20px;padding:34px 40px;display:grid;grid-template-columns:minmax(0,max-content) minmax(340px,440px);justify-content:start;column-gap:64px;row-gap:26px;align-items:center;width:fit-content;max-width:100%;}
@@ -409,12 +434,14 @@ nav a:focus-visible,.nav-mobile a:focus-visible,footer a:focus-visible,footer bu
 <section id="trombi">
   <div class="s-label">01 · Le trombinoscope</div>
   <h2 class="s-title">Cherchez-vous, vous y êtes.</h2>
+  <div class="fun" id="funStats" aria-label="Le club en quelques chiffres rigolos"></div>
   <div class="trombi-tools">
     <div class="trombi-search">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg>
       <input type="text" id="trombiSearch" placeholder="Rechercher un prénom…">
     </div>
     <div class="trombi-count" id="trombiCount"></div>
+    <button type="button" class="surprise-btn" id="surpriseBtn"><span aria-hidden="true">🎲</span> Surprends-moi</button>
   </div>
   <div class="trombi-hint">← Glissez pour découvrir →</div>
   <div class="trombi-grid" id="trombiGrid"></div>
@@ -447,12 +474,7 @@ nav a:focus-visible,.nav-mobile a:focus-visible,footer a:focus-visible,footer bu
   <div class="s-label">03 · Galerie</div>
   <h2 class="s-title">En images.</h2>
   <p class="s-intro">Promis, on ne les a pas payés pour dire ça.</p>
-  <div class="amedia-hint" style="margin:0 0 14px;">← Glissez pour découvrir →</div>
-  <div class="amedia-wrap">
-    <button class="amedia-nav prev" onclick="scrollAmedia(-1)" aria-label="Images précédentes">‹</button>
-    <button class="amedia-nav next" onclick="scrollAmedia(1)" aria-label="Images suivantes">›</button>
-    <div class="amedia-track" id="amediaTrack"></div>
-  </div>
+  <div class="mosaic" id="mosaic"></div>
 </section>
 
 <!-- ADHÉSION -->
@@ -509,6 +531,18 @@ nav a:focus-visible,.nav-mobile a:focus-visible,footer a:focus-visible,footer bu
 
 <a id="back-to-top" href="#" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'});" aria-label="Retour en haut">↑</a>
 
+
+<div class="surprise" id="surprise" role="dialog" aria-modal="true" aria-label="Une citation au hasard">
+  <div class="surprise-card" id="surpriseCard">
+    <div class="surprise-avatar" id="surpriseAvatar"></div>
+    <p class="surprise-quote" id="surpriseQuote"></p>
+    <div class="surprise-name" id="surpriseName"></div>
+    <div class="surprise-actions">
+      <button type="button" class="primary" id="surpriseAgain">Une autre 🎲</button>
+      <button type="button" id="surpriseClose">Fermer</button>
+    </div>
+  </div>
+</div>
 <script src="donnees/membres.js?v=1035"></script>
 <script>
 
@@ -1092,38 +1126,106 @@ function basculerRecords(g){recOuvert[g]=!recOuvert[g];renderRecords();}
 function setRecord(i){recActive=i;recOuvert={f:false,h:false};renderRecords();}
 renderRecords();
 
-/* ===== EN IMAGES (carrousel adhérents) ===== */
+/* ===== EN IMAGES (mosaïque adhérents) ===== */
 (function(){
-  const wrap=document.getElementById('amediaTrack');if(!wrap)return;
+  const wrap=document.getElementById('mosaic');if(!wrap)return;
+  // Trois grandes tuiles (2x2) et dix tuiles hautes (1x2) : la grille se remplit sans trou, sur 2 ou 4 colonnes
   const items=[
-    {type:'photo',src:'images/adherents/pyramide-louvre.jpg',cap:'La communauté devant le Louvre'},
+    {type:'photo',src:'images/adherents/pyramide-louvre.jpg',cap:'La communauté devant le Louvre',k:'big'},
     {type:'video',src:'videos/adherents-1.mp4',cap:'Ambiance CIELBLEU'},
-    {type:'photo',src:'images/galerie/communaute-14.jpg',cap:'Marathon Bleu : Julien et deux fusées',pos:'12% center'},
-    {type:'video',src:'videos/adherents-2.mp4',cap:'Nos adhérents'},
     {type:'photo',src:'images/adherents/galerie-1.jpg',cap:'Nos adhérents'},
-    {type:'video',src:'videos/adherents-3.mp4',cap:'CIELBLEU'},
     {type:'photo',src:'images/galerie/communaute-8.jpg',cap:'La tribu à Nice'},
-    {type:'video',src:'videos/piste.mp4',cap:'Nos adhérents'},
+    {type:'video',src:'videos/adherents-2.mp4',cap:'Nos adhérents'},
+    {type:'photo',src:'images/galerie/communaute-14.jpg',cap:'Marathon Bleu : Julien et deux fusées',pos:'12% center',k:'big'},
+    {type:'photo',src:'images/galerie/communaute-9.jpg',cap:'La communauté devant la tour Eiffel',pos:'center 35%',k:'big'},
+    {type:'video',src:'videos/adherents-3.mp4',cap:'CIELBLEU'},
     {type:'photo',src:'images/adherents/galerie-2.jpg',cap:'La communauté'},
-    {type:'video',src:'videos/ekiden.mp4',cap:'Ekiden'},
-    {type:'photo',src:'images/galerie/communaute-9.jpg',cap:'La communauté devant la tour Eiffel'},
+    {type:'video',src:'videos/piste.mp4',cap:'Nos adhérents'},
     {type:'photo',src:'images/adherents/galerie-3.jpg',cap:'Nos adhérents'},
+    {type:'video',src:'videos/ekiden.mp4',cap:'Ekiden'},
     {type:'photo',src:'images/adherents/galerie-4.jpg',cap:'La communauté'},
   ];
-  let h='';
-  items.forEach(function(it){
-    if(it.type==='photo'){
-      h+=`<div class="amedia-tile"><img src="${it.src}" alt="${it.cap}" class="amedia-tile-img" loading="lazy" decoding="async"${it.pos?` style="object-position:${it.pos}"`:''}></div>`;
-    } else {
-      h+=`<div class="amedia-tile video"><video src="${it.src}" muted loop playsinline preload="none" poster="${it.src.replace(/^videos\//,'videos/posters/').replace(/\.mp4$/i,'.jpg')}" class="amedia-tile-img"></video></div>`;
-    }
-  });
-  wrap.innerHTML=h;
+  wrap.innerHTML=items.map(function(it,i){
+    const cls='mosaic-tile'+(it.k?' '+it.k:'');
+    const cap='<span class="mosaic-cap">'+it.cap+'</span>';
+    const media=it.type==='photo'
+      ? '<img src="'+it.src+'" alt="'+it.cap+'" loading="lazy" decoding="async"'+(it.pos?' style="object-position:'+it.pos+'"':'')+'>'
+      : '<video src="'+it.src+'" muted loop playsinline preload="none" poster="'+it.src.replace(/^videos\//,'videos/posters/').replace(/\.mp4$/i,'.jpg')+'"></video>';
+    return '<div class="'+cls+'" style="--d:'+((i%4)*0.08)+'s">'+media+cap+'</div>';
+  }).join('');
+  const tiles=wrap.querySelectorAll('.mosaic-tile');
+  if(!('IntersectionObserver' in window)){tiles.forEach(function(t){t.classList.add('in');});return;}
+  const o=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');o.unobserve(e.target);}});},{threshold:0.1,rootMargin:'0px 0px -5% 0px'});
+  tiles.forEach(function(t){o.observe(t);});
 })();
-function scrollAmedia(dir){
-  const track=document.getElementById('amediaTrack');if(!track)return;
-  track.scrollBy({left:dir*Math.round(track.clientWidth*0.8),behavior:'smooth'});
-}
+
+/* ===== LE CLUB EN CHIFFRES (stats rigolotes, calculées depuis le trombinoscope) ===== */
+(function(){
+  const box=document.getElementById('funStats');
+  if(!box||typeof MEMBRES==='undefined'||typeof recordCats==='undefined')return;
+  const norm=s=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace('matthieu','mathieu');
+  // « Thomas Nor » -> « Thomas » : on retire l'initiale (ou les 2 à 3 lettres) du nom de famille
+  function prenom(nom){const t=nom.split(' ');if(t.length>1&&/^[A-ZÉ][a-zé]{0,2}$/.test(t[t.length-1]))t.pop();return t.join(' ');}
+  const cnt={},nomAff={};
+  MEMBRES.forEach(m=>{const p=prenom(m.nom),k=norm(p);cnt[k]=(cnt[k]||0)+1;if(!nomAff[k])nomAff[k]=p;});
+  const top=Object.keys(cnt).sort((a,b)=>cnt[b]-cnt[a])[0];
+  const partages=Object.keys(cnt).filter(k=>cnt[k]>1);
+  const nbPartage=partages.reduce((n,k)=>n+cnt[k],0);
+  const marathon=recordCats.find(c=>c.key==='marathon');
+  const marathoniens=new Set(marathon.records.filter(r=>r.event!=='Marathon du Médoc').map(r=>r.who)).size;
+  const lettres={};
+  Object.keys(cnt).forEach(k=>{const l=k.charAt(0).toUpperCase();lettres[l]=(lettres[l]||0)+cnt[k];});
+  const reine=Object.keys(lettres).sort((a,b)=>lettres[b]-lettres[a])[0];
+  const exemples=Object.keys(cnt).filter(k=>k.charAt(0).toUpperCase()===reine).slice(0,4).map(k=>nomAff[k]).join(', ');
+  const cartes=[
+    {n:cnt[top],l:nomAff[top]+' ×'+cnt[top],t:'Le prénom roi du club. Crie « '+nomAff[top]+' ! » dans la foule et '+cnt[top]+' têtes se retournent.'},
+    {n:nbPartage,l:'prénoms en double',t:nbPartage+' adhérents partagent leur prénom avec quelqu\'un d\'autre. D\'où les initiales sur les cartes.'},
+    {n:marathoniens,l:'marathoniens',t:'42,195 km au compteur, et ils en redemandent.'},
+    {n:reine,l:'la lettre reine',t:lettres[reine]+' adhérents ont un prénom en '+reine+' : '+exemples+'… Le club est très '+reine+'.'}
+  ];
+  box.innerHTML=cartes.map(c=>'<div class="fun-card"><div class="fun-num"'+(typeof c.n==='number'?' data-n="'+c.n+'"':'')+'>'+c.n+'</div><div class="fun-lab">'+c.l+'</div><p class="fun-txt">'+c.t+'</p></div>').join('');
+  // les nombres défilent une fois à l'écran
+  const nums=box.querySelectorAll('.fun-num[data-n]');
+  if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  nums.forEach(n=>{n.textContent='0';});
+  const o=new IntersectionObserver(es=>es.forEach(e=>{
+    if(!e.isIntersecting)return;o.unobserve(e.target);
+    const el=e.target,to=+el.dataset.n,t0=performance.now();
+    (function step(now){const p=Math.min((now-t0)/1100,1);el.textContent=Math.round(to*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(step);})(t0);
+  }),{threshold:0.4});
+  nums.forEach(n=>o.observe(n));
+})();
+
+/* ===== SURPRENDS-MOI : une citation au hasard ===== */
+(function(){
+  const btn=document.getElementById('surpriseBtn'),ov=document.getElementById('surprise');
+  if(!btn||!ov||typeof MEMBRES==='undefined')return;
+  const card=document.getElementById('surpriseCard'),av=document.getElementById('surpriseAvatar'),
+        q=document.getElementById('surpriseQuote'),nm=document.getElementById('surpriseName');
+  const pool=MEMBRES.map((m,i)=>[m,i]).filter(([m])=>(m.citation||'').trim()&&m.citation.trim().length<=140);
+  let sac=[],dernier=-1;
+  function tirer(){
+    if(!sac.length){sac=pool.map((_,i)=>i);for(let i=sac.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[sac[i],sac[j]]=[sac[j],sac[i]];}
+      if(sac[sac.length-1]===dernier&&sac.length>1)sac.unshift(sac.pop());}
+    dernier=sac.pop();return pool[dernier];
+  }
+  function afficher(){
+    const [m,i]=tirer();
+    av.style.background=grad(i);
+    av.innerHTML=m.fond?'<img src="'+m.fond+'" alt="">':m.nom.charAt(0);
+    q.textContent='« '+m.citation.trim()+' »';
+    nm.textContent=m.nom;
+    card.classList.remove('pop');void card.offsetWidth;card.classList.add('pop');
+  }
+  function ouvrir(){afficher();ov.classList.add('show');document.body.style.overflow='hidden';document.getElementById('surpriseAgain').focus();}
+  function fermer(){ov.classList.remove('show');document.body.style.overflow='';btn.focus();}
+  btn.addEventListener('click',ouvrir);
+  document.getElementById('surpriseAgain').addEventListener('click',afficher);
+  document.getElementById('surpriseClose').addEventListener('click',fermer);
+  // toucher le fond ferme (touchstart pour iPhone, click pour le reste)
+  ['click','touchstart'].forEach(ev=>ov.addEventListener(ev,e=>{if(e.target===ov){if(ev==='touchstart')e.preventDefault();fermer();}},{passive:false}));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&ov.classList.contains('show'))fermer();});
+})();
 
 /* ===== SON SUR LES VIDÉOS (muté par défaut, clic pour activer) ===== */
 (function(){
