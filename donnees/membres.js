@@ -2,13 +2,14 @@
 // Saison 2026-2027 · 138 adhérents (liste de référence « Liste des adhérents - 26/27 »).
 // Un prénom porté par plusieurs adhérents est suivi de l'initiale du nom de famille (Manon Z).
 // Pour ajouter un headshot : photo:'images/membres/prenom.jpg' (les initiales s'affichent sinon).
+// Pour la photo de l'orga en fond fondu sur la carte : fond:'images/equipe/prenom.png'.
 // Pour ajouter une citation : citation:'…' (le verso reste neutre si vide).
 // Le nombre affiché sur le site compte tous les adhérents, y compris ceux qui ne souhaitent pas apparaître.
 const NB_ADHERENTS=138;
 const MEMBRES=[
-  {nom:'Candice', citation:'Mieux vaut avoir des courbatures que des regrets.', photo:''},
-  {nom:'Thomas Nou', citation:'Viva la vida', photo:''},
-  {nom:'Manon Z', citation:'Plus vite on commence, plus vite on termine.', photo:''},
+  {nom:'Candice', citation:'Mieux vaut avoir des courbatures que des regrets.', photo:'', fond:'images/equipe/candice.png'},
+  {nom:'Thomas Nou', citation:'Viva la vida', photo:'', fond:'images/equipe/thomas-evenementiel.png'},
+  {nom:'Manon Z', citation:'Plus vite on commence, plus vite on termine.', photo:'', fond:'images/equipe/manon.png'},
   {nom:'Ethan', citation:'J\'aurais pu choisir une thérapie', photo:''},
   {nom:'Matteo D', citation:'La vie c\'est comme une boîte de chocolat, ça coûte cher, on fait semblant d\'aimer mais on se rend vite compte que c\'est écœurant !!', photo:''},
   {nom:'Quentin E', citation:'Visez la lune en gardant les pieds sur terre', photo:''},
@@ -22,24 +23,24 @@ const MEMBRES=[
   {nom:'Victor C', citation:'La chance paie parfois, le travail toujours', photo:''},
   {nom:'Thibault', citation:'', photo:''},
   {nom:'Lucile', citation:'le ciel est bleu en 2 mots ? ciel bleu.', photo:''},
-  {nom:'Julien G', citation:'Bonjour je suis coach', photo:''},
+  {nom:'Julien G', citation:'Bonjour je suis coach', photo:'', fond:'images/equipe/julien-secretaire-general.png'},
   {nom:'Yoann', citation:'Ciel Bleu ? Pour un normand, c\'est une évidence !', photo:''},
-  {nom:'Thomas G', citation:'Les relations humaines, vous savez…', photo:''},
-  {nom:'Hugo G', citation:'Après chaque montée, il y a une descente', photo:''},
+  {nom:'Thomas G', citation:'Les relations humaines, vous savez…', photo:'', fond:'images/equipe/thomas-vice-president.png'},
+  {nom:'Hugo G', citation:'Après chaque montée, il y a une descente', photo:'', fond:'images/equipe/hugo.png'},
   {nom:'Enzo', citation:'', photo:''},
   {nom:'Maxence', citation:'', photo:''},
   {nom:'Milena', citation:'Beaucoup d\'ambition, un cardio en négociation.', photo:''},
   {nom:'Baptiste', citation:'Better done than perfect', photo:''},
   {nom:'Clémence N', citation:'Petite phrase à se répéter sans modération pendant qu\'on crache nos poumons : « on est pas des merguez »', photo:''},
   {nom:'Marie', citation:'Soufle limité, bavardages illimités.', photo:''},
-  {nom:'Floriane', citation:'', photo:''},
+  {nom:'Floriane', citation:'', photo:'', fond:'images/equipe/floriane.png'},
   {nom:'Flavie', citation:'', photo:''},
   {nom:'Enora', citation:'Miam miam les hérissons', photo:''},
   {nom:'Quentin U', citation:'Qu\'est-ce que signifie “apprivoiser” ? […] C\'est une chose trop oubliée. Ça signifie “créer des liens…”', photo:''},
   {nom:'Matthieu C', citation:'La confiance n\'exclut pas le contrôle.', photo:''},
-  {nom:'Alban', citation:'Tout le monde est sympa sauf moi.', photo:''},
+  {nom:'Alban', citation:'Tout le monde est sympa sauf moi.', photo:'', fond:'images/equipe/alban.png'},
   {nom:'Justine', citation:'', photo:''},
-  {nom:'Julia', citation:'Je savais pas que c\'était impossible, alors je l\'ai fait. — Clem qui court', photo:''},
+  {nom:'Julia', citation:'Je savais pas que c\'était impossible, alors je l\'ai fait. — Clem qui court', photo:'', fond:'images/equipe/julia.png'},
   {nom:'Julien D', citation:'J\'ai couru le marathon de NY', photo:''},
   {nom:'Leonardo', citation:'42 km? En moto oui!', photo:''},
   {nom:'Yohan', citation:'C\'est quand même sympa quand c\'est cool', photo:''},
