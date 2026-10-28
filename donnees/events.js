@@ -89,7 +89,8 @@ const septembre=[
 const tartanTpl={wd:1,color:C_TARTAN,time:'19h45',dur:90,title:'Tartan Bleu · Séance piste',
   tags:[{l:'Adhérents',c:'tag-adherent'}],
   desc:"La séance piste du lundi soir, encadrée, en fractionné. Le rendez-vous vitesse des adhérents, dans la bonne humeur.",
-  details:[['Lieu',L_PISTE]],location:'Paris'};
+  details:[['Lieu',L_PISTE]],location:'Paris',
+  article:'outils-du-runner/',articleTitle:'Prépare ta séance avec les outils du runner',articleLabel:'Outil'};
 const mercrediTpl={wd:3,color:C_MERCREDI,time:'19h20',dur:70,title:'Mercredi Bleu',
   tags:[{l:'Adhérents',c:'tag-adherent'}],
   desc:"Le run des adhérents du mercredi soir, en groupes d'allure dans Paris. La séance plaisir du milieu de semaine, qui se prolonge souvent autour d'un verre au bar partenaire.",
@@ -102,7 +103,8 @@ const socialTpl={wd:0,color:C_SOCIAL,time:'10h20',dur:90,title:'Social Bleu',
 const openTrackTpl={wd:1,color:C_TARTAN,time:'19h45',dur:90,title:'Tartan Bleu · Open Track',
   tags:[{l:'Ouvert à tous',c:'tag-open'}],
   desc:"L'Open Track, c'est la première séance piste du mois : elle est ouverte à tous, adhérents comme non-adhérents. L'occasion de tester la piste avec le club.",
-  details:[['Lieu',L_PISTE]],location:'Paris'};
+  details:[['Lieu',L_PISTE]],location:'Paris',
+  article:'outils-du-runner/',articleTitle:'Prépare ta séance avec les outils du runner',articleLabel:'Outil'};
 
 // {tpl, m, dates:[...]} → séances récurrentes de la saison
 const recurring=[
@@ -225,7 +227,7 @@ function pushEvent(o){
   const details=isSession?[['Horaire',o.time],...o.details]:o.details;
   const ev={id,y:Y,k:Y*12+o.m,m:o.m,d:o.d,date:new Date(Y,o.m,o.d),title:o.title,color:o.color||'#DA5B47',
     tags:o.tags,desc:o.desc,details,dtStart:ds,dtEnd:de,location:o.location,
-    article:o.article||'',articleTitle:o.articleTitle||'',
+    article:o.article||'',articleTitle:o.articleTitle||'',articleLabel:o.articleLabel||'',
     session:isSession,wd:o.wd,kindLabel:o.kindLabel||'',theme:o.theme||'',dateStr:o.dateStr||(o.d+' '+MONTHS[o.m]+' '+Y),dayLabel:o.dayLabel||pad(o.d),time:o.time};
   EVENTS_BY_ID[id]=ev;allEvents.push(ev);
 }

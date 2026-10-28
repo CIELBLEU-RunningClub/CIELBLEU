@@ -80,21 +80,21 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 /* ── BOUTON MENU : libellé + bordure pour qu'on le repère ── */
 .nav-hamburger{gap:8px;font-size:15px;}
 .nav-hamburger .nav-menu-label{font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:2px;}
-@media(max-width:1250px){
+@media(max-width:1150px){
   .nav-hamburger{border:1.5px solid rgba(182,205,224,.45);border-radius:6px;padding:7px 12px;}
 }
 .nav-links a{white-space:nowrap;}
-/* Sous 1250px, les 6 liens + les 2 boutons ne tiennent plus dans la barre :
+/* Sous 1150px, les 6 liens + les 2 boutons ne tiennent plus dans la barre :
    le menu complet débordait hors de l'écran (« Devenir partenaire » invisible).
    On bascule sur le menu burger, qui contient déjà les deux boutons. */
-@media(max-width:1250px){
+@media(max-width:1150px){
   .nav-links,.nav-cta,.nav-cta-group{display:none;}
   .nav-hamburger{display:flex;align-items:center;}
   .nav-mobile{top:112px;}
 }
 @media(max-width:768px){.nav-mobile{top:70px;}}
 /* Entre 1151 et 1400px, on resserre un peu pour garder de l'air autour des boutons */
-@media(min-width:1251px) and (max-width:1400px){
+@media(min-width:1151px) and (max-width:1400px){
   nav{padding:0 28px;}
   .nav-links{gap:13px;}
   .nav-links a{font-size:11.5px;letter-spacing:1px;}
@@ -641,17 +641,31 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
 .actu-all{text-align:center;margin-top:14px;}
 .actu-all a{font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:2px;color:#3E7CB1;text-decoration:none;padding:10px 4px;display:inline-block;transition:color .2s;}
 .actu-all a:hover{color:var(--navy);}
+/* ── Accessibilité et repérage ── */
+.skip-link{position:absolute;left:12px;top:-80px;background:var(--gold);color:var(--navy-deep);font-weight:700;font-size:14px;padding:12px 18px;border-radius:6px;z-index:100001;text-decoration:none;transition:top .15s;}
+.skip-link:focus{top:12px;}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,[tabindex]:focus-visible{outline:2px solid #3E7CB1;outline-offset:3px;border-radius:3px;}
+nav a:focus-visible,.nav-mobile a:focus-visible,footer a:focus-visible,footer button:focus-visible{outline-color:var(--blue-sky);}
+.nav-mobile li a.active{color:white;border-left:3px solid var(--gold);padding-left:12px;}
+.read-progress{position:fixed;top:0;left:0;height:3px;width:100%;background:var(--gold);transform:scaleX(0);transform-origin:left;z-index:101;pointer-events:none;}
+/* Pied de page : les pages du site, pour ne jamais être au bout du chemin */
+.footer-nav{display:flex;flex-wrap:wrap;gap:6px 26px;justify-content:center;padding-bottom:26px;margin-bottom:26px;border-bottom:1px solid rgba(255,255,255,.08);}
+.footer-nav a{font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:2px;color:rgba(255,255,255,.6);text-decoration:none;padding:8px 2px;transition:color .2s;}
+.footer-nav a:hover{color:white;}
+@media(max-width:768px){.footer-nav{gap:2px 18px;padding-bottom:18px;margin-bottom:18px;}.footer-nav a{font-size:13px;}}
 </style>
 <noscript><style>.reveal,.reveal-left,.reveal-right,.reveal-zoom,.reveal-children>*,.s-label,.s-title,.gallery-item{opacity:1!important;transform:none!important;}</style></noscript>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"CIELBLEU Running Club","url":"https://cielbleurunningclub.com/","inLanguage":"fr-FR"}</script>
 </head>
 <body>
+<a class="skip-link" href="#contenu">Aller au contenu</a>
+<div class="read-progress" id="readProgress" aria-hidden="true"></div>
 <div id="scroll-progress"></div>
 <div id="scroll-medal">🏅</div>
 <nav>
   <a href="./" class="nav-logo"><img src="images/marque/logo-cielbleu.png" alt="CIELBLEU" height="20"></a>
   <ul class="nav-links">
-    <li><a href="#semaine">Le club</a></li>
+    <li><a href="#semaine">Le programme</a></li>
     <li><a href="calendrier.html">Calendrier</a></li>
     <li><a href="actualites.html">Actualités</a></li>
     <li><a href="notre-equipe.html">L'équipe</a></li>
@@ -661,12 +675,11 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
   </ul>
   <div class="nav-cta-group">
     <a href="#adhesion" class="nav-cta">Devenir adhérent →</a>
-    <a href="nos-partenaires.html#contact" class="nav-cta nav-cta-alt">Devenir partenaire →</a>
   </div>
   <button class="nav-hamburger" onclick="toggleNav()" aria-label="Menu"><span class="nav-menu-label">Menu</span><span aria-hidden="true">&#9776;</span></button>
 </nav>
 <ul class="nav-mobile" id="navMobile">
-  <li><a href="#semaine" onclick="toggleNav()">Le club</a></li>
+  <li><a href="#semaine" onclick="toggleNav()">Le programme</a></li>
   <li><a href="calendrier.html" onclick="toggleNav()">Calendrier</a></li>
   <li><a href="actualites.html" onclick="toggleNav()">Actualités</a></li>
   <li><a href="notre-equipe.html" onclick="toggleNav()">L'équipe</a></li>
@@ -674,10 +687,9 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
   <li><a href="nos-partenaires.html" onclick="toggleNav()">Nos partenaires</a></li>
   <li><a href="outils-du-runner/" onclick="toggleNav()">Outils</a></li>
   <li><a href="#adhesion" onclick="toggleNav()" style="color:var(--gold)!important;">→ Devenir adhérent</a></li>
-  <li><a href="nos-partenaires.html#contact" onclick="toggleNav()" style="color:var(--blue-sky)!important;">→ Devenir partenaire</a></li>
 </ul>
 
-<div class="hero">
+<div class="hero" id="contenu">
   <img src="images/couvertures/accueil.webp?v=7" sizes="100vw" alt="" class="hero-bg-img" fetchpriority="high">
   <div class="hero-eyebrow">Running Club · Paris</div>
   <h1>Méfiez-vous,<br><em>le ciel est bleu.</em></h1>
@@ -711,6 +723,7 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
       <div style="font-size:12px;color:var(--gold);margin:2px 0 2px;letter-spacing:.5px;">★ Open Track : 1ère piste du mois ouverte à tous</div>
       <div class="semaine-meta"><span>Piste · Paris</span><span>19h45</span></div>
       <a href="calendrier.html" class="semaine-link">Toutes les dates →</a>
+      <a href="outils-du-runner/" class="semaine-link">Prépare ta séance →</a>
     </div>
     <div class="semaine-card">
       <div class="semaine-day">Mercredi</div>
@@ -953,6 +966,17 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
 </div>
 
 <footer>
+  <div class="footer-nav" role="navigation" aria-label="Pages du site">
+    <a href="./">Accueil</a>
+    <a href="calendrier.html">Calendrier</a>
+    <a href="actualites.html">Actualités</a>
+    <a href="notre-equipe.html">L'équipe</a>
+    <a href="nos-adherents.html">Nos adhérents</a>
+    <a href="nos-partenaires.html">Nos partenaires</a>
+    <a href="outils-du-runner/">Outils</a>
+    <a href="./#adhesion">Devenir adhérent</a>
+    <a href="nos-partenaires.html#contact">Devenir partenaire</a>
+  </div>
   <div class="footer-inner">
     <a href="#" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'});" aria-label="Retour en haut" style="display:inline-flex;cursor:pointer;"><img src="images/marque/logo-cielbleu.png" alt="CIELBLEU" class="footer-logo-img"></a>
     <div class="footer-socials">
@@ -966,7 +990,7 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
   </div>
 </footer>
 
-<script src="donnees/events.js?v=39"></script>
+<script src="donnees/events.js?v=40"></script>
 <script>
 // Compteurs animés : les stats montent en flèche une fois à l'écran
 (function(){
@@ -1109,8 +1133,10 @@ if(mobileCta){
   let pastHero=false;
   let overFooter=false;
   function updateMobileCta(){
-    mobileCta.classList.toggle('visible',pastHero&&!overFooter);
+    // la barre attend que le choix sur les cookies soit fait (le bandeau occupe le même endroit)
+    mobileCta.classList.toggle('visible',pastHero&&!overFooter&&!document.getElementById('cc-banner'));
   }
+  new MutationObserver(updateMobileCta).observe(document.body,{childList:true});
   window.addEventListener('scroll',()=>{
     pastHero=window.scrollY>heroEl.offsetHeight-100;
     updateMobileCta();
@@ -1183,6 +1209,14 @@ document.addEventListener('click',function(e){var m=document.getElementById('nav
   document.addEventListener('touchstart',e=>{const k=e.target.closest('.glow-rouge');if(k)k.classList.add('touch');},{passive:true});
   document.addEventListener('touchend',e=>{const k=e.target.closest('.glow-rouge');if(k)setTimeout(()=>k.classList.remove('touch'),900);},{passive:true});
   document.addEventListener('click',e=>{const k=e.target.closest('a.glow-rouge');if(!k||!k.classList.contains('touch')||k.dataset.go)return;e.preventDefault();k.dataset.go=1;setTimeout(()=>{location.href=k.href;},300);});
+})();
+</script>
+<script>
+/* Barre de progression de lecture */
+(function(){
+  const b=document.getElementById('readProgress');if(!b)return;
+  function u(){const h=document.documentElement.scrollHeight-innerHeight;b.style.transform='scaleX('+(h>0?Math.min(1,scrollY/h):0)+')';}
+  addEventListener('scroll',u,{passive:true});addEventListener('resize',u);u();
 })();
 </script>
 <script src="js/analytics.js?v=3"></script>
