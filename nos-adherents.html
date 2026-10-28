@@ -553,7 +553,7 @@ nav a:focus-visible,.nav-mobile a:focus-visible,footer a:focus-visible,footer bu
     </div>
   </div>
 </div>
-<script src="donnees/membres.js?v=1037"></script>
+<script src="donnees/membres.js?v=1038"></script>
 <script>
 
 /* ===== DONNÉES ===== */
@@ -1192,7 +1192,7 @@ renderRecords();
   const cartes=[
     {n:cnt[top],l:nomAff[top]+' ×'+cnt[top],t:'Le prénom roi du club. Crie « '+nomAff[top]+' ! » dans la foule et '+cnt[top]+' têtes se retournent.'},
     {n:marathoniens,l:'marathoniens',t:'42,195 km au compteur, et ils en redemandent.'},
-    {n:NB_NOUVEAUX,l:'nouveaux cette saison',t:'Bienvenue à elles et eux !'},
+    {n:NB_NOUVEAUX,l:'nouveaux cette saison',t:'Bienvenue à elles et eux ! '+NB_FIDELES+' adhérents sont là depuis trois saisons.'},
     {n:reine,l:'la lettre reine',t:lettres[reine]+' adhérents ont un prénom en '+reine+' : '+exemples+'… Le club est très '+reine+'.'}
   ];
   box.innerHTML=cartes.map(c=>'<div class="fun-card"><div class="fun-num"'+(typeof c.n==='number'?' data-n="'+c.n+'"':'')+'>'+c.n+'</div><div class="fun-lab">'+c.l+'</div><p class="fun-txt">'+c.t+'</p></div>').join('');
