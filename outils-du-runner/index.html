@@ -90,7 +90,20 @@ footer{background:var(--navy-deep);padding:40px 60px;}
 
 
 /* Raccord outil / site : le menu du site est fixe (112 px, 70 px sur mobile), on décale ce qui était collé en haut */
-.hero{padding-top:calc(48px + 112px);}
+/* Bandeau principal : le même que les autres pages. Celui de l'outil (grand titre) est remplacé. */
+.page-hero{min-height:100vh;min-height:100svh;background:var(--navy-deep);display:flex;flex-direction:column;justify-content:center;padding:150px 60px 70px;position:relative;overflow:hidden;}
+.page-hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(80deg,rgba(11,29,48,.96) 0%,rgba(11,29,48,.84) 38%,rgba(11,29,48,.56) 68%,rgba(18,43,68,.4) 100%),linear-gradient(to top,rgba(11,29,48,.92) 0%,rgba(11,29,48,.3) 32%,rgba(11,29,48,.08) 58%);}
+.page-hero-bg-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 28%;opacity:.85;pointer-events:none;z-index:0;}
+.page-hero > *:not(.page-hero-bg-img){position:relative;z-index:2;}
+@media(max-width:768px){.page-hero::before{background:linear-gradient(180deg,rgba(11,29,48,.5) 0%,rgba(11,29,48,.28) 32%,rgba(11,29,48,.55) 70%,rgba(11,29,48,.9) 100%),linear-gradient(90deg,rgba(11,29,48,.85) 0%,rgba(11,29,48,.5) 48%,rgba(11,29,48,.18) 100%);}.page-hero-bg-img{opacity:.9;object-position:center 30%;}}
+.page-hero-eyebrow{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:5px;color:var(--blue-sky);opacity:.8;margin-bottom:14px;position:relative;z-index:1;}
+.page-hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(44px,7.6vw,92px);line-height:1;letter-spacing:.5px;color:white;position:relative;z-index:1;}
+.page-hero h1 em{color:var(--blue-sky);font-style:normal;}
+.page-hero p{font-size:16px;color:rgba(255,255,255,.65);font-weight:300;max-width:560px;line-height:1.7;margin-top:18px;position:relative;z-index:1;}
+.page-hero h1,.s-title{font-family:'Anton',sans-serif;font-weight:400;letter-spacing:.3px;}
+.hero{display:none;}
+@media(min-width:769px) and (max-width:1024px){.page-hero{padding:140px 36px 60px;}}
+@media(max-width:768px){.page-hero{padding:110px 20px 60px;}}
 .anchor-nav{top:112px;}
 .session-results{top:188px;}
 .topbar{display:none;}
@@ -103,7 +116,6 @@ html{scroll-padding-top:170px;}
   nav{padding:0 20px;height:70px;}
   .nav-links,.nav-cta,.nav-cta-group{display:none;}
   .nav-hamburger{display:flex;align-items:center;}
-  .hero{padding-top:calc(48px + 70px);}
   .anchor-nav{top:70px;}
   .session-results{top:146px;}
   html{scroll-padding-top:130px;}
@@ -145,6 +157,14 @@ html{scroll-padding-top:170px;}
   <li><a href="../nos-partenaires.html#contact" onclick="toggleNav()" style="color:var(--blue-sky)!important;">→ Devenir partenaire</a></li>
 </ul>
 
+
+<!-- HERO -->
+<header class="page-hero">
+  <img src="../images/evenements/marathon-bleu-piste.jpg" alt="" class="page-hero-bg-img" fetchpriority="high">
+  <div class="page-hero-eyebrow">Outils</div>
+  <h1>LES <em>OUTILS</em><br>DU RUNNER</h1>
+  <p>Tes temps de passage avant d'aller sur la piste : séance à partir de ta VMA, allures de course, convertisseur et guide de la piste.</p>
+</header>
 
 <div id="root"></div>
 
