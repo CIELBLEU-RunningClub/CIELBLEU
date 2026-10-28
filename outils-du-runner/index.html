@@ -256,11 +256,13 @@ body > .nav-mobile li a{line-height:normal;}
 .cta-btn.ghost{color:var(--blue-sky);border-color:rgba(182,205,224,.5);}
 .cta-btn.ghost:hover{border-color:var(--blue-sky);background:rgba(182,205,224,.1);}
 @media(max-width:768px){.cta-open{padding:36px 20px;}.cta-open-actions{flex-direction:column;}.cta-btn{text-align:center;}}
+/* Barre de sections (Séance, La piste, Allures) retirée */
+.anchor-nav{display:none;}
 
 /* Le pied de page de l'outil garde sa mention (temps théoriques, rien n'est envoyé) : on en fait une simple note au-dessus du pied de page du site */
 footer.footer{background:var(--cream);color:var(--mid);padding:26px 60px;text-align:center;border-top:1px solid rgba(18,43,68,.08);}
 footer.footer p{font-size:13px;line-height:1.7;max-width:640px;margin:0 auto;color:var(--mid);}
-html{scroll-padding-top:170px;}
+html{scroll-padding-top:130px;}
 @media(min-width:769px) and (max-width:1024px){nav{padding:0 36px;}.nav-links{gap:16px;}footer{padding:36px;}}
 @media(max-width:768px){
   nav{padding:0 20px;height:70px;}
@@ -268,7 +270,7 @@ html{scroll-padding-top:170px;}
   .nav-hamburger{display:flex;align-items:center;}
   .anchor-nav{top:70px;}
   .session-results{top:146px;}
-  html{scroll-padding-top:130px;}
+  html{scroll-padding-top:90px;}
   footer{padding:28px 20px;}
   footer.footer{padding:22px 20px;}
   .footer-inner{flex-direction:column;align-items:center;text-align:center;gap:16px;}
@@ -380,7 +382,7 @@ document.addEventListener('click',function(e){
   var b=e.target.closest&&e.target.closest('button');
   if(!b||!/Revoir le tracé/.test(b.textContent)||b.dataset.go)return;
   var f=document.querySelector('#piste .track-figure');if(!f)return;
-  var r=f.getBoundingClientRect(),top=window.innerWidth<=768?130:170;
+  var r=f.getBoundingClientRect(),top=window.innerWidth<=768?90:130;
   if(r.top>=top-20&&r.bottom<=window.innerHeight)return;
   e.preventDefault();e.stopPropagation();
   f.scrollIntoView({behavior:'smooth',block:'start'});
