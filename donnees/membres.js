@@ -130,7 +130,7 @@ const MEMBRES=[
   {nom:'Clemence D', citation:'', photo:''},
   {nom:'Fanny H', citation:'', photo:''},
   {nom:'Guillaume M', citation:'Je cours donc tu suis', photo:''},
-  {nom:'Hugo C', citation:'Un chrono d\'exception ne demande pas des jambes surhumaines, juste une discipline plus têtue que la douleur', photo:''},
+  {nom:'Hugo Ca', citation:'Un chrono d\'exception ne demande pas des jambes surhumaines, juste une discipline plus têtue que la douleur', photo:''},
   {nom:'Hugo P', citation:'Human is limited', photo:''},
   {nom:'Hugo S', citation:'', photo:''},
   {nom:'Maelle G', citation:'', photo:''},
