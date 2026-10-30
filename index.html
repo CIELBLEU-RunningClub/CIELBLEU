@@ -295,7 +295,7 @@ footer{background:var(--navy-deep);padding:32px 60px;}
 .semaine-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
 .semaine-card{background:var(--navy);border-radius:16px;padding:26px 26px;color:white;display:flex;flex-direction:column;gap:10px;transition:transform .3s ease,box-shadow .3s ease;}
 .semaine-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(18,43,68,.35);}
-.semaine-card.dimanche{background:linear-gradient(150deg,#6d879a,var(--navy));border:1.5px solid rgba(232,176,107,.5);}
+.semaine-card.dimanche{border:1.5px solid rgba(232,176,107,.5);}
 .semaine-day{font-family:'Bebas Neue',sans-serif;font-size:40px;letter-spacing:2px;color:var(--blue-sky);line-height:1;}
 .semaine-card.dimanche .semaine-day{color:var(--gold);}
 .semaine-name{font-family:'Bebas Neue',sans-serif;font-size:24px;line-height:1.2;letter-spacing:.5px;color:white;}
@@ -577,10 +577,10 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
 .semaine-allures{font-size:13px;line-height:1.5;color:var(--blue-sky);background:rgba(182,205,224,.1);border:1px solid rgba(182,205,224,.22);border-radius:8px;padding:8px 12px;margin:2px 0;}
 .semaine-allures .al-pace{white-space:nowrap;font-variant-numeric:tabular-nums;}
 /* Chaque jour a sa nuance de la palette du club : lundi bleu ciel, mercredi bleu acier, dimanche bleu pâle */
-.semaine-card{position:relative;overflow:hidden;border:1.5px solid color-mix(in srgb,var(--ac) 45%,transparent);background:linear-gradient(165deg,color-mix(in srgb,var(--ac) 30%,var(--navy-deep)) 0%,var(--navy-deep) 62%);}
+.semaine-card{position:relative;overflow:hidden;border:1.5px solid color-mix(in srgb,var(--ac) 35%,transparent);background:var(--navy);}
 .semaine-card.lundi{--ac:#b6cde0;--ac-t:#b6cde0;}
 .semaine-card.mercredi{--ac:#6d879a;--ac-t:#9fb3c2;}
-.semaine-card.dimanche{--ac:#d5e0e4;--ac-t:#d5e0e4;background:linear-gradient(165deg,color-mix(in srgb,var(--ac) 30%,var(--navy-deep)) 0%,var(--navy-deep) 62%);border:1.5px solid color-mix(in srgb,var(--ac) 55%,transparent);}
+.semaine-card.dimanche{--ac:#d5e0e4;--ac-t:#d5e0e4;background:var(--navy);border:1.5px solid color-mix(in srgb,var(--ac) 35%,transparent);}
 .semaine-card::before{content:'';position:absolute;left:0;right:0;top:0;height:6px;background:var(--ac);}
 .semaine-card .semaine-day{color:var(--ac-t);opacity:1;font-size:26px;letter-spacing:4px;display:flex;flex-direction:column;gap:4px;}
 .semaine-card .semaine-day small{font-family:'Open Sans',sans-serif;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.62);}
@@ -683,7 +683,7 @@ nav a:focus-visible,.nav-mobile a:focus-visible,footer a:focus-visible,footer bu
 /* Carte « découvrir les adhérents » à côté du bandeau d'adhésion */
 .adh-row{display:flex;align-items:stretch;gap:24px;}
 .adh-row .adhesion-block{flex:0 1 auto;}
-.adhside{flex:1 1 280px;min-width:260px;background:linear-gradient(155deg,#6d879a 0%,var(--navy) 70%);border-radius:20px;padding:30px 28px;color:#fff;display:flex;flex-direction:column;justify-content:center;gap:14px;position:relative;overflow:hidden;}
+.adhside{flex:1 1 280px;min-width:260px;background:var(--navy);border-radius:20px;padding:30px 28px;color:#fff;display:flex;flex-direction:column;justify-content:center;gap:14px;position:relative;overflow:hidden;}
 .adhside-faces{display:flex;align-items:center;margin-bottom:4px;}
 .adhside-face{width:56px;height:56px;border-radius:50%;margin-left:-16px;border:2.5px solid var(--navy);background:linear-gradient(160deg,var(--c1),var(--c2));overflow:hidden;position:relative;flex-shrink:0;transition:transform .3s cubic-bezier(.2,.8,.2,1);}
 .adhside-face:first-child{margin-left:0;}
