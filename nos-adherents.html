@@ -698,7 +698,8 @@ function grad(i){const l1=48+((i*13)%22);const l2=26+((i*11)%16);const h=200+((i
   }
   function renderTrombi(filter=""){
     const f=filter.trim().toLowerCase();
-    const shown=MEMBRES.map((m,i)=>[m,i]).filter(([m])=>m.nom.toLowerCase().includes(f));
+    // les cartes avec photo d'abord, celles sans photo à la fin (l'ordre reste le même dans chaque groupe)
+    const shown=MEMBRES.map((m,i)=>[m,i]).filter(([m])=>m.nom.toLowerCase().includes(f)).sort((a,b)=>(!a[0].photo)-(!b[0].photo));
     const isFiltered=f.length>0;
     const P=page();
     // Mobile : toutes les cartes sont dans le carrousel (les 12 premières à l'écran, le reste à droite), sans bouton
