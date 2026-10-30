@@ -1297,6 +1297,8 @@ renderRecords();
   const btn=document.getElementById('surpriseBtn'),ov=document.getElementById('surprise');
   if(!btn||!ov||typeof MEMBRES==='undefined')return;
   const TOUR=5;
+  // Statistiques du quiz dans Google Analytics : seulement si le visiteur a accepté les cookies
+  function suivi(nom,params){try{if(localStorage.getItem('cielbleu-consent-v1')==='granted'&&window.gtag)gtag('event',nom,params||{});}catch(e){}}
   const card=document.getElementById('surpriseCard'),av=document.getElementById('surpriseAvatar'),
         q=document.getElementById('surpriseQuote'),ask=document.getElementById('quizAsk'),
         opts=document.getElementById('quizOptions'),fb=document.getElementById('quizFeedback'),
@@ -1396,6 +1398,7 @@ renderRecords();
   function resultat(){
     card.classList.remove('repondu');card.classList.add('resultat');
     const n=niveau();
+    suivi('quiz_medaille',{medaille:n.nom,score:bons});
     sc.textContent='Résultat : '+bons+'/'+TOUR+' · '+n.nom;
     dessiner();
     document.getElementById('quizSave').focus();
@@ -1405,6 +1408,7 @@ renderRecords();
       if(!blob)return;
       const fichier=new File([blob],'medaille-quiz-cielbleu.png',{type:'image/png'});
       // sur téléphone : le menu de partage (« Enregistrer l'image ») ; sinon un téléchargement
+      suivi('quiz_enregistrer_medaille',{medaille:niveau().nom});
       if(navigator.canShare&&navigator.canShare({files:[fichier]})){
         try{await navigator.share({files:[fichier],title:'Ma médaille du quiz CIELBLEU'});return;}catch(e){if(e&&e.name==='AbortError')return;}
       }
@@ -1413,7 +1417,7 @@ renderRecords();
       setTimeout(()=>URL.revokeObjectURL(u),4000);
     },'image/png');
   }
-  function nouveau(){card.classList.remove('intro');num=0;bons=0;rep=0;suiv.textContent='Question suivante →';question();}
+  function nouveau(){suivi('quiz_debut');card.classList.remove('intro');num=0;bons=0;rep=0;suiv.textContent='Question suivante →';question();}
   // à l'ouverture : l'écran d'accueil qui explique le principe (5 questions, une médaille)
   function ouvrir(){card.classList.remove('repondu','resultat','q-photo');card.classList.add('intro');ov.classList.add('show');document.body.style.overflow='hidden';document.getElementById('quizGo').focus();}
   function fermer(){ov.classList.remove('show');document.body.style.overflow='';btn.focus();}
