@@ -28,7 +28,7 @@ const MEMBRES=[
   {nom:'Thibault', citation:'Work hard play harder', photo:'images/membres/thibault.jpg?v=1'},
   {nom:'Lucile', citation:'le ciel est bleu en 2 mots ? ciel bleu.', photo:''},
   {nom:'Yoann', citation:'Ciel Bleu ? Pour un normand, c\'est une évidence !', photo:'images/membres/yoann.jpg?v=1'},
-  {nom:'Enzo', citation:'Lent mais résistant', photo:''},
+  {nom:'Enzo', citation:'Lent mais résistant', photo:'images/membres/enzo.jpg?v=1'},
   {nom:'Maxence', citation:'', photo:'images/membres/maxence.jpg?v=1'},
   {nom:'Milena', citation:'Beaucoup d\'ambition, un cardio en négociation.', photo:'images/membres/milena.jpg?v=1'},
   {nom:'Baptiste', citation:'Better done than perfect', photo:'images/membres/baptiste.jpg?v=1'},
