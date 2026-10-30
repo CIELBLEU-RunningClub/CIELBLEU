@@ -145,6 +145,15 @@ section:nth-child(even){background:var(--white);}
 .histoire-suite{font-size:15px;color:rgba(255,255,255,.6);line-height:1.7;max-width:640px;position:relative;z-index:1;padding-left:25px;}
 @media(max-width:768px){.premiere-wrap{padding:32px 24px;}.premiere-wrap::after{font-size:140px;top:-20px;right:16px;}.histoire-quote{padding-left:16px;}.histoire-suite{padding-left:19px;}}
 /* ── EN IMAGES (carrousel équipe) ── */
+/* ── EN IMAGES (mosaïque, apparition au défilement) ── */
+.mosaic{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:170px;grid-auto-flow:dense;gap:12px;}
+.mosaic-tile{position:relative;overflow:hidden;border-radius:18px;grid-row:span 2;background:#e3ebf2;opacity:0;transform:translateY(22px) scale(.96);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.8,.2,1),box-shadow .3s;transition-delay:var(--d,0s);}
+.mosaic-tile.big{grid-column:span 2;}
+.mosaic-tile.in{opacity:1;transform:none;}
+@media(hover:hover){.mosaic-tile.in:hover{transform:translateY(-4px) rotate(-.8deg) scale(1.02);box-shadow:0 16px 36px rgba(18,43,68,.28);z-index:2;transition-delay:0s;}.mosaic-tile:hover img{transform:scale(1.07);}}
+.mosaic-tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.8,.2,1);}
+@media(max-width:768px){.mosaic{grid-template-columns:repeat(2,1fr);grid-auto-rows:132px;gap:8px;}.mosaic-tile{border-radius:14px;}}
+@media(prefers-reduced-motion:reduce){.mosaic-tile{opacity:1;transform:none;transition:none;}}
 .amedia-track{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding-bottom:8px;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
 .amedia-track::-webkit-scrollbar{display:none;}
 .amedia-tile{flex:0 0 300px;height:380px;border-radius:16px;overflow:hidden;scroll-snap-align:start;position:relative;border:1.5px solid rgba(18,43,68,.08);}
@@ -343,8 +352,7 @@ nav a:focus-visible,.nav-mobile a:focus-visible,footer a:focus-visible,footer bu
 <section id="en-images">
   <div class="s-label">03 · En images</div>
   <h2 class="s-title">Sur le terrain.</h2>
-  <div class="amedia-hint" style="margin:0 0 14px;">← Glissez pour découvrir →</div>
-  <div class="amedia-track" id="amediaTrack"></div>
+  <div class="mosaic" id="mosaic"></div>
 </section>
 
 <footer>
@@ -366,11 +374,16 @@ nav a:focus-visible,.nav-mobile a:focus-visible,footer a:focus-visible,footer bu
 <script src="donnees/membres.js?v=1054"></script>
 <script>
 
-/* ===== EN IMAGES (carrousel équipe) ===== */
+/* ===== EN IMAGES (mosaïque équipe, comme la galerie des adhérents) ===== */
 (function(){
-  const wrap=document.getElementById('amediaTrack');if(!wrap)return;
-  const photos=['images/equipe/groupe-20.jpg','images/equipe/groupe-15.jpg','images/equipe/groupe-19.jpg','images/equipe/groupe-14.jpg','images/equipe/groupe-21.jpg','images/equipe/groupe-16.jpg','images/equipe/groupe-22.jpg','images/equipe/groupe-17.jpg','images/equipe/groupe-18.jpg'];
-  wrap.innerHTML=photos.map(src=>`<div class="amedia-tile"><img src="${src}" alt="L'équipe CIELBLEU" class="amedia-tile-img" loading="lazy" decoding="async"></div>`).join('');
+  const wrap=document.getElementById('mosaic');if(!wrap)return;
+  // Trois grandes tuiles (2x2) et six hautes (1x2), par blocs de deux rangées : la grille se remplit sans trou
+  const photos=[['groupe-22','big','center 60%'],['groupe-15'],['groupe-17'],['groupe-18'],['groupe-19'],['groupe-20','big','center 55%'],['groupe-14','big','center 60%'],['groupe-16'],['groupe-21']];
+  wrap.innerHTML=photos.map(([f,k,pos],i)=>'<div class="mosaic-tile'+(k?' '+k:'')+'" style="--d:'+((i%4)*0.08)+'s"><img src="images/equipe/'+f+'.jpg" alt="L\'équipe CIELBLEU sur le terrain" loading="lazy" decoding="async"'+(pos?' style="object-position:'+pos+'"':'')+'></div>').join('');
+  const tiles=wrap.querySelectorAll('.mosaic-tile');
+  if(!('IntersectionObserver' in window)){tiles.forEach(t=>t.classList.add('in'));return;}
+  const o=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');o.unobserve(e.target);}}),{threshold:0.1,rootMargin:'0px 0px -5% 0px'});
+  tiles.forEach(t=>o.observe(t));
 })();
 
 const obs=new IntersectionObserver(e=>e.forEach(i=>{if(i.isIntersecting){i.target.classList.add('visible');obs.unobserve(i.target);}}),{threshold:0.12,rootMargin:'0px 0px -8% 0px'});
