@@ -1079,13 +1079,14 @@ function toggleFaq(btn){const open=btn.parentElement.classList.toggle('open');bt
 (function(){
   const wrap=document.getElementById('kmbleuMedia');if(!wrap)return;
   const items=[
+    // les photos de pancartes (fanzone) alternent avec la course, jamais deux à la suite
     {type:'photo',src:'images/galerie/communaute-17.jpg',cap:'La haie d\'honneur'},
-    {type:'video',src:'videos/km-bleu-6.mp4',cap:'Coup de boost sur le Km Bleu'},
     {type:'photo',src:'images/evenements/fanzone-1.jpg',cap:'Fanzone'},
-    {type:'video',src:'videos/km-bleu-7.mp4',cap:'Nice 2026'},
-    {type:'photo',src:'images/evenements/km-bleu-1.jpg',cap:'10k Hoka 2025'},
-    {type:'photo',src:'images/evenements/fanzone-2.jpg',cap:'Fanzone'},
+    {type:'video',src:'videos/km-bleu-6.mp4',cap:'Coup de boost sur le Km Bleu'},
     {type:'photo',src:'images/evenements/fanzone-3.jpg',cap:'Fanzone'},
+    {type:'video',src:'videos/km-bleu-7.mp4',cap:'Nice 2026'},
+    {type:'photo',src:'images/evenements/fanzone-2.jpg',cap:'Fanzone'},
+    {type:'photo',src:'images/evenements/km-bleu-1.jpg',cap:'10k Hoka 2025'},
     {type:'photo',src:'images/evenements/fanzone-4.jpg',cap:'Fanzone'},
   ];
   let h='';
