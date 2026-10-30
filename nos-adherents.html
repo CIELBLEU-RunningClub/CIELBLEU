@@ -1261,10 +1261,10 @@ renderRecords();
   const reine=Object.keys(lettres).sort((a,b)=>lettres[b]-lettres[a])[0];
   const exemples=Object.keys(cnt).filter(k=>k.charAt(0).toUpperCase()===reine).slice(0,4).map(k=>nomAff[k]).join(', ');
   const cartes=[
-    {n:cnt[top],l:nomAff[top]+' ×'+cnt[top],t:'Le prénom roi du club. Crie « '+nomAff[top]+' ! » dans la foule et '+cnt[top]+' têtes se retournent.'},
-    {n:marathoniens,l:'marathoniens',t:'Ils ont déjà passé la ligne des 42,195 km. Les autres y pensent très fort.'},
     {n:NB_NOUVEAUX,l:'nouveaux cette saison',t:'Bienvenue à elles et eux ! '+(typeof NB_DEUXIEME!=='undefined'?NB_DEUXIEME+' adhérents en sont à leur deuxième saison et ':'')+NB_FIDELES+' sont là depuis trois saisons.'},
     {n:reine,l:'la lettre reine',t:lettres[reine]+' adhérents ont un prénom en '+reine+' : '+exemples+'… Le club est très '+reine+'.'}
+    {n:cnt[top],l:nomAff[top]+' ×'+cnt[top],t:'Le prénom roi du club. Crie « '+nomAff[top]+' ! » dans la foule et '+cnt[top]+' têtes se retournent.'},
+    {n:marathoniens,l:'marathoniens',t:'Ils ont déjà passé la ligne des 42,195 km. Les autres y pensent très fort.'},
   ];
   box.innerHTML=cartes.map(c=>'<div class="fun-card"><div class="fun-num"'+(typeof c.n==='number'?' data-n="'+c.n+'"':'')+'>'+c.n+'</div><div class="fun-lab">'+c.l+'</div><p class="fun-txt">'+c.t+'</p></div>').join('');
   // les nombres défilent une fois à l'écran
