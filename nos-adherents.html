@@ -140,7 +140,7 @@ section:nth-child(even){background:var(--white);}
 .trombi-back .qn{margin-top:10px;font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:1.5px;color:rgba(255,255,255,.55);}
 .trombi-empty{grid-column:1/-1;text-align:center;color:var(--mid);padding:30px;font-size:14px;}
 
-.trombi-photo{position:relative;z-index:0;width:56%;aspect-ratio:1/1;border-radius:50%;object-fit:cover;border:3px solid rgba(255,255,255,.45);box-shadow:0 4px 14px rgba(11,29,48,.3);}
+.trombi-photo{position:absolute;inset:0;z-index:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;}
 
 /* ── EXPLOITS & FIERTÉS ── */
 .exploits-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin-bottom:40px;}
@@ -604,7 +604,7 @@ nav a:focus-visible,.nav-mobile a:focus-visible,footer a:focus-visible,footer bu
     </div>
   </div>
 </div>
-<script src="donnees/membres.js?v=1040"></script>
+<script src="donnees/membres.js?v=1041"></script>
 <script>
 
 /* ===== DONNÉES ===== */
@@ -1129,8 +1129,9 @@ let recActive=2; // l'onglet 10 KM s'ouvre en premier
 function headHTML(r){
   if(r.photo)return `<div class="rec-head"><img src="${r.photo}" alt="${r.who}"></div>`;
   // L'orga a sa photo (la même que sur la carte du trombinoscope)
-  const orga=typeof MEMBRES!=='undefined'?MEMBRES.find(m=>m.nom===r.who&&m.fond):null;
-  if(orga)return `<div class="rec-head" style="background:${grad(r.hue)}"><img src="${orga.fond}" alt="${r.who}" loading="lazy" decoding="async"></div>`;
+  // la photo de la carte quand elle existe (sinon le portrait détouré de l'orga)
+  const mb=typeof MEMBRES!=='undefined'?MEMBRES.find(m=>m.nom===r.who&&(m.photo||m.fond)):null;
+  if(mb)return `<div class="rec-head" style="background:${grad(r.hue)}"><img src="${mb.photo||mb.fond}" alt="${r.who}" loading="lazy" decoding="async" style="object-position:center 25%"></div>`;
   return `<div class="rec-head" style="background:${grad(r.hue)}">${r.who.charAt(0)}</div>`;
 }
 // Convertit un chrono ("4h30", "1h45", "38:20", "38'20") en secondes, pour classer du plus rapide au plus lent
@@ -1268,7 +1269,7 @@ renderRecords();
         sc=document.getElementById('quizScore'),suiv=document.getElementById('surpriseAgain');
   const tous=MEMBRES.map((m,i)=>[m,i]);
   const citations=tous.filter(([m])=>(m.citation||'').trim()&&m.citation.trim().length<=140);
-  const photos=tous.filter(([m])=>m.fond);
+  const photos=tous.filter(([m])=>m.photo||m.fond);   // toutes les photos des cartes
   const sexe={};
   if(typeof recordCats!=='undefined')recordCats.forEach(c=>c.records.forEach(r=>{if(r.sex)sexe[r.who]=r.sex;}));   // pour l'instant : les photos déjà sur les cartes (l'orga)
   if(citations.length<4)return;
@@ -1286,7 +1287,7 @@ renderRecords();
     fb.innerHTML='';
     if(type==='photo'){
       av.className='surprise-avatar grand';av.style.background=grad(i);
-      av.innerHTML='<img src="'+m.fond+'" alt="Photo d\'un adhérent à reconnaître">';
+      av.innerHTML='<img src="'+(m.photo||m.fond)+'" alt="Photo d\'un adhérent à reconnaître" style="object-position:center 25%">';
       q.textContent='';ask.textContent='Qui est-ce ?';
     }else{
       av.className='surprise-avatar mystere';av.style.background='transparent';av.textContent='?';
@@ -1313,7 +1314,7 @@ renderRecords();
     if(!juste)b.classList.add('ko');
     if(type==='citation'){
       av.className='surprise-avatar';av.style.background=grad(i);
-      av.innerHTML=m.fond?'<img src="'+m.fond+'" alt="">':m.nom.charAt(0);
+      av.innerHTML=(m.photo||m.fond)?'<img src="'+(m.photo||m.fond)+'" alt="" style="object-position:center 25%">':m.nom.charAt(0);
     }else if((m.citation||'').trim()){
       q.textContent='« '+m.citation.trim()+' »';   // en bonus, sa citation
     }
