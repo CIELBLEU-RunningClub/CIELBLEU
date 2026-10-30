@@ -298,6 +298,14 @@ section:nth-child(even){background:var(--white);}
 .surprise-card .surprise-actions #surpriseAgain{display:none;}
 .surprise-card.repondu .surprise-actions #surpriseAgain{display:inline-block;}
 .surprise-card.repondu .quiz-ask{display:none;}
+.quiz-intro{display:none;}
+.surprise-card.intro .quiz-intro{display:block;}
+.surprise-card.intro .quiz-score,.surprise-card.intro .surprise-avatar,.surprise-card.intro .surprise-quote,.surprise-card.intro .quiz-ask,.surprise-card.intro .quiz-options,.surprise-card.intro .quiz-feedback,.surprise-card.intro .quiz-result,.surprise-card.intro #surpriseAgain{display:none!important;}
+.quiz-intro-ico{font-size:52px;line-height:1;margin-bottom:10px;}
+.quiz-intro h3{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:2px;color:#fff;font-weight:400;margin-bottom:10px;}
+.quiz-intro p{font-size:15px;line-height:1.6;color:rgba(255,255,255,.82);margin-bottom:10px;}
+.quiz-intro .quiz-intro-prix{color:var(--gold);font-weight:600;margin-bottom:20px;}
+.quiz-go{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:2px;padding:13px 30px;border-radius:30px;border:none;background:var(--gold);color:var(--navy-deep);cursor:pointer;margin-bottom:12px;}
 .quiz-result{display:none;}
 .surprise-card.resultat .quiz-result{display:block;}
 .surprise-card.resultat .surprise-avatar,.surprise-card.resultat .surprise-quote,.surprise-card.resultat .quiz-ask,.surprise-card.resultat .quiz-options,.surprise-card.resultat .quiz-feedback,.surprise-card.resultat #surpriseAgain{display:none!important;}
@@ -603,6 +611,12 @@ nav a:focus-visible,.nav-mobile a:focus-visible,footer a:focus-visible,footer bu
 
 <div class="surprise" id="surprise" role="dialog" aria-modal="true" aria-label="Le quiz des adhérents">
   <div class="surprise-card" id="surpriseCard">
+    <div class="quiz-intro" id="quizIntro">
+      <div class="quiz-intro-ico" aria-hidden="true">🏅</div>
+      <h3>Le quiz des adhérents</h3>
+      <p style="margin-bottom:20px;">5 questions pour voir si tu connais bien le club</p>
+      <button type="button" class="quiz-go" id="quizGo">C'est parti →</button>
+    </div>
     <div class="quiz-score" id="quizScore"></div>
     <div class="surprise-avatar" id="surpriseAvatar"></div>
     <p class="surprise-quote" id="surpriseQuote"></p>
@@ -1399,13 +1413,15 @@ renderRecords();
       setTimeout(()=>URL.revokeObjectURL(u),4000);
     },'image/png');
   }
-  function nouveau(){num=0;bons=0;rep=0;suiv.textContent='Question suivante →';question();}
-  function ouvrir(){nouveau();ov.classList.add('show');document.body.style.overflow='hidden';}
+  function nouveau(){card.classList.remove('intro');num=0;bons=0;rep=0;suiv.textContent='Question suivante →';question();}
+  // à l'ouverture : l'écran d'accueil qui explique le principe (5 questions, une médaille)
+  function ouvrir(){card.classList.remove('repondu','resultat','q-photo');card.classList.add('intro');ov.classList.add('show');document.body.style.overflow='hidden';document.getElementById('quizGo').focus();}
   function fermer(){ov.classList.remove('show');document.body.style.overflow='';btn.focus();}
   btn.addEventListener('click',ouvrir);
   suiv.addEventListener('click',()=>{if(rep>=TOUR)resultat();else question();});
   document.getElementById('quizSave').addEventListener('click',enregistrer);
   document.getElementById('quizRestart').addEventListener('click',nouveau);
+  document.getElementById('quizGo').addEventListener('click',nouveau);
   document.getElementById('surpriseClose').addEventListener('click',fermer);
   // toucher le fond ferme (touchstart pour iPhone, click pour le reste)
   ['click','touchstart'].forEach(ev=>ov.addEventListener(ev,e=>{if(e.target===ov){if(ev==='touchstart')e.preventDefault();fermer();}},{passive:false}));
