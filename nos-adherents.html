@@ -295,6 +295,14 @@ section:nth-child(even){background:var(--white);}
 .surprise-card .surprise-actions #surpriseAgain{display:none;}
 .surprise-card.repondu .surprise-actions #surpriseAgain{display:inline-block;}
 .surprise-card.repondu .quiz-ask{display:none;}
+.quiz-result{display:none;}
+.surprise-card.resultat .quiz-result{display:block;}
+.surprise-card.resultat .surprise-avatar,.surprise-card.resultat .surprise-quote,.surprise-card.resultat .quiz-ask,.surprise-card.resultat .quiz-options,.surprise-card.resultat .quiz-feedback,.surprise-card.resultat #surpriseAgain{display:none!important;}
+.quiz-result canvas{display:block;width:100%;max-width:300px;height:auto;margin:0 auto 16px;border-radius:14px;box-shadow:0 12px 30px rgba(0,0,0,.35);}
+.quiz-result-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:12px;}
+.quiz-result-actions button{font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:2px;padding:12px 20px;border-radius:30px;cursor:pointer;border:1.5px solid rgba(182,205,224,.5);background:transparent;color:var(--blue-sky);}
+.quiz-result-actions button.primary{background:var(--gold);border-color:var(--gold);color:var(--navy-deep);}
+@media(max-width:768px){.quiz-result canvas{max-width:230px;}}
 .surprise-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
 .surprise-actions button{font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:2px;padding:12px 22px;border-radius:30px;cursor:pointer;border:1.5px solid rgba(182,205,224,.5);background:transparent;color:var(--blue-sky);}
 .surprise-actions button.primary{background:var(--gold);border-color:var(--gold);color:var(--navy-deep);}
@@ -598,6 +606,13 @@ nav a:focus-visible,.nav-mobile a:focus-visible,footer a:focus-visible,footer bu
     <p class="quiz-ask" id="quizAsk">Qui a dit ça ?</p>
     <div class="quiz-options" id="quizOptions"></div>
     <div class="quiz-feedback" id="quizFeedback" aria-live="polite"></div>
+    <div class="quiz-result" id="quizResult">
+      <canvas id="quizMedal" width="1080" height="1350" aria-label="Ta médaille du quiz"></canvas>
+      <div class="quiz-result-actions">
+        <button type="button" class="primary" id="quizSave">Enregistrer l'image</button>
+        <button type="button" id="quizRestart">Nouveau quiz</button>
+      </div>
+    </div>
     <div class="surprise-actions">
       <button type="button" class="primary" id="surpriseAgain">Question suivante →</button>
       <button type="button" id="surpriseClose">Fermer</button>
@@ -1256,19 +1271,21 @@ renderRecords();
   nums.forEach(n=>o.observe(n));
 })();
 
-/* ===== QUIZ : une citation ou une photo, quatre prénoms ===== */
+/* ===== QUIZ : une citation ou une photo, quatre prénoms, 5 questions puis une médaille ===== */
 (function(){
   const btn=document.getElementById('surpriseBtn'),ov=document.getElementById('surprise');
   if(!btn||!ov||typeof MEMBRES==='undefined')return;
+  const TOUR=5;
   const card=document.getElementById('surpriseCard'),av=document.getElementById('surpriseAvatar'),
         q=document.getElementById('surpriseQuote'),ask=document.getElementById('quizAsk'),
         opts=document.getElementById('quizOptions'),fb=document.getElementById('quizFeedback'),
-        sc=document.getElementById('quizScore'),suiv=document.getElementById('surpriseAgain');
+        sc=document.getElementById('quizScore'),suiv=document.getElementById('surpriseAgain'),
+        cv=document.getElementById('quizMedal');
   const tous=MEMBRES.map((m,i)=>[m,i]);
   const citations=tous.filter(([m])=>(m.citation||'').trim()&&m.citation.trim().length<=140);
   const photos=tous.filter(([m])=>m.photo||m.fond);   // toutes les photos des cartes
   const sexe={};
-  if(typeof recordCats!=='undefined')recordCats.forEach(c=>c.records.forEach(r=>{if(r.sex)sexe[r.who]=r.sex;}));   // pour l'instant : les photos déjà sur les cartes (l'orga)
+  if(typeof recordCats!=='undefined')recordCats.forEach(c=>c.records.forEach(r=>{if(r.sex)sexe[r.who]=r.sex;}));
   if(citations.length<4)return;
   const melange=a=>{for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
   // un ordre différent à chaque visite ; on ne repasse pas une question avant d'avoir vu toutes les autres
@@ -1280,7 +1297,7 @@ renderRecords();
     // une question sur deux avec une photo, tant qu'il y a des photos
     const type=photos.length>=1&&num%2===0?'photo':'citation';
     const [m,i]=tirer(type);
-    card.classList.remove('repondu');card.classList.toggle('q-photo',type==='photo');
+    card.classList.remove('repondu','resultat');card.classList.toggle('q-photo',type==='photo');
     fb.innerHTML='';
     if(type==='photo'){
       av.className='surprise-avatar grand';av.style.background=grad(i);
@@ -1301,7 +1318,7 @@ renderRecords();
       b.addEventListener('click',()=>repondre(b,o===m,m,i,type));
       opts.appendChild(b);
     });
-    sc.textContent='Question '+num+(rep?' · Score '+bons+'/'+rep:'');
+    sc.textContent='Question '+num+'/'+TOUR+(rep?' · Score '+bons+'/'+rep:'');
     card.classList.remove('pop');void card.offsetWidth;card.classList.add('pop');
     opts.firstChild.focus();
   }
@@ -1316,13 +1333,72 @@ renderRecords();
       q.textContent='« '+m.citation.trim()+' »';   // en bonus, sa citation
     }
     fb.innerHTML=(juste?'Bien vu ! ':'Raté ! ')+'C\'était <strong>'+m.nom+'</strong>.';
-    sc.textContent='Question '+num+' · Score '+bons+'/'+rep;
+    sc.textContent='Question '+num+'/'+TOUR+' · Score '+bons+'/'+rep;
+    suiv.textContent=rep>=TOUR?'Voir ma médaille 🏅':'Question suivante →';
     card.classList.add('repondu');suiv.focus();
   }
-  function ouvrir(){question();ov.classList.add('show');document.body.style.overflow='hidden';}
+
+  /* ----- La médaille : dessinée dans un canvas pour pouvoir l'enregistrer en image ----- */
+  const NIVEAUX=[
+    {min:5,nom:"Médaille d'or",mot:'Tu connais le club par cœur.',c:['#fff1b8','#e8b06b','#9a6f2e']},
+    {min:4,nom:"Médaille d'argent",mot:'Presque parfait, bravo !',c:['#ffffff','#c9d3dc','#7d8b97']},
+    {min:3,nom:'Médaille de bronze',mot:'Sur le podium !',c:['#ffd2a8','#c07a45','#7a4522']},
+    {min:0,nom:'Médaille en chocolat',mot:'Viens courir avec nous pour faire connaissance !',c:['#b98a64','#6b4426','#3b2312']},
+  ];
+  function niveau(){return NIVEAUX.find(n=>bons>=n.min);}
+  async function dessiner(){
+    const n=niveau(),x=cv.getContext('2d'),W=cv.width,H=cv.height;
+    try{await Promise.all([document.fonts.load('120px Anton'),document.fonts.load('60px "Bebas Neue"'),document.fonts.load('italic 40px "Open Sans"')]);}catch(e){}
+    // fond bleu nuit
+    let g=x.createLinearGradient(0,0,W,H);g.addColorStop(0,'#1f5683');g.addColorStop(.55,'#122b44');g.addColorStop(1,'#0b1d30');
+    x.fillStyle=g;x.fillRect(0,0,W,H);
+    x.textAlign='center';x.textBaseline='alphabetic';
+    x.fillStyle='#b6cde0';x.font='56px "Bebas Neue"';x.fillText('LE QUIZ DES ADHÉRENTS',W/2,150);
+    // ruban
+    const cx=W/2,cy=640,R=230;
+    x.save();
+    x.fillStyle='#2F6FD0';x.beginPath();x.moveTo(cx-170,230);x.lineTo(cx-40,230);x.lineTo(cx+60,cy-150);x.lineTo(cx-60,cy-150);x.closePath();x.fill();
+    x.fillStyle='#b6cde0';x.beginPath();x.moveTo(cx+170,230);x.lineTo(cx+40,230);x.lineTo(cx-60,cy-150);x.lineTo(cx+60,cy-150);x.closePath();x.fill();
+    x.restore();
+    // médaille
+    g=x.createRadialGradient(cx-70,cy-80,20,cx,cy,R);g.addColorStop(0,n.c[0]);g.addColorStop(.55,n.c[1]);g.addColorStop(1,n.c[2]);
+    x.fillStyle=g;x.beginPath();x.arc(cx,cy,R,0,Math.PI*2);x.fill();
+    x.lineWidth=14;x.strokeStyle='rgba(255,255,255,.35)';x.beginPath();x.arc(cx,cy,R-26,0,Math.PI*2);x.stroke();
+    x.fillStyle='rgba(11,29,48,.85)';x.font='190px Anton';x.fillText(bons+'/'+TOUR,cx,cy+68);
+    // textes
+    x.fillStyle='#e8b06b';x.font='92px "Bebas Neue"';x.fillText(n.nom.toUpperCase(),W/2,1000);
+    x.fillStyle='#ffffff';x.font='italic 44px "Open Sans"';x.fillText(n.mot,W/2,1075);
+    x.fillStyle='rgba(255,255,255,.55)';x.font='40px "Bebas Neue"';
+    x.fillText('CIELBLEU RUNNING CLUB · '+new Date().toLocaleDateString('fr-FR'),W/2,1250);
+    x.fillText('cielbleurunningclub.com',W/2,1300);
+  }
+  function resultat(){
+    card.classList.remove('repondu');card.classList.add('resultat');
+    const n=niveau();
+    sc.textContent='Résultat : '+bons+'/'+TOUR+' · '+n.nom;
+    dessiner();
+    document.getElementById('quizSave').focus();
+  }
+  function enregistrer(){
+    cv.toBlob(async blob=>{
+      if(!blob)return;
+      const fichier=new File([blob],'medaille-quiz-cielbleu.png',{type:'image/png'});
+      // sur téléphone : le menu de partage (« Enregistrer l'image ») ; sinon un téléchargement
+      if(navigator.canShare&&navigator.canShare({files:[fichier]})){
+        try{await navigator.share({files:[fichier],title:'Ma médaille du quiz CIELBLEU'});return;}catch(e){if(e&&e.name==='AbortError')return;}
+      }
+      const u=URL.createObjectURL(blob),a=document.createElement('a');
+      a.href=u;a.download='medaille-quiz-cielbleu.png';document.body.appendChild(a);a.click();a.remove();
+      setTimeout(()=>URL.revokeObjectURL(u),4000);
+    },'image/png');
+  }
+  function nouveau(){num=0;bons=0;rep=0;suiv.textContent='Question suivante →';question();}
+  function ouvrir(){nouveau();ov.classList.add('show');document.body.style.overflow='hidden';}
   function fermer(){ov.classList.remove('show');document.body.style.overflow='';btn.focus();}
   btn.addEventListener('click',ouvrir);
-  suiv.addEventListener('click',question);
+  suiv.addEventListener('click',()=>{if(rep>=TOUR)resultat();else question();});
+  document.getElementById('quizSave').addEventListener('click',enregistrer);
+  document.getElementById('quizRestart').addEventListener('click',nouveau);
   document.getElementById('surpriseClose').addEventListener('click',fermer);
   // toucher le fond ferme (touchstart pour iPhone, click pour le reste)
   ['click','touchstart'].forEach(ev=>ov.addEventListener(ev,e=>{if(e.target===ov){if(ev==='touchstart')e.preventDefault();fermer();}},{passive:false}));
