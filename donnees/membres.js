@@ -31,7 +31,6 @@ const MEMBRES=[
   {nom:'Maxence', citation:'', photo:''},
   {nom:'Milena', citation:'Beaucoup d\'ambition, un cardio en négociation.', photo:''},
   {nom:'Baptiste', citation:'Better done than perfect', photo:''},
-  {nom:'Ludivine', citation:'', photo:''},
   {nom:'Thomas Nou', citation:'Viva la vida', orga:true, photo:'', fond:'images/equipe/cartes/thomas-evenementiel.png?v=1'},
   {nom:'Clémence N', citation:'Petite phrase à se répéter sans modération pendant qu\'on crache nos poumons : « on est pas des merguez »', photo:''},
   {nom:'Marie', citation:'Soufle limité, bavardages illimités.', photo:''},
