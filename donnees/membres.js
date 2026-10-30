@@ -8,8 +8,9 @@
 // Pour ajouter une citation : citation:'…' (le verso reste neutre si vide).
 // Le nombre affiché sur le site compte tous les adhérents, y compris ceux qui ne souhaitent pas apparaître.
 const NB_ADHERENTS=138;
-// D'après la colonne NB SAISONS de la liste de référence : 1 = arrivé cette saison, 3 = présent depuis trois saisons.
+// D'après la colonne NB SAISONS de la liste de référence : 1 = arrivé cette saison, 2 = deuxième saison, 3 = présent depuis trois saisons (63 + 32 + 43 = 138).
 const NB_NOUVEAUX=63;
+const NB_DEUXIEME=32;
 const NB_FIDELES=43;
 const MEMBRES=[
   {nom:'Ethan', citation:'J\'aurais pu choisir une thérapie', photo:'images/membres/ethan.jpg?v=1'},
