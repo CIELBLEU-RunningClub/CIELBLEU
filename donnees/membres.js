@@ -14,7 +14,7 @@ const NB_DEUXIEME=32;
 const NB_FIDELES=43;
 const MEMBRES=[
   {nom:'Ethan', citation:'J\'aurais pu choisir une thérapie', photo:'images/membres/ethan.jpg?v=1'},
-  {nom:'Matteo D', citation:'La vie c\'est comme une boîte de chocolat, ça coûte cher, on fait semblant d\'aimer mais c\'est écœurant', photo:'images/membres/matteo-d.jpg?v=1'},
+  {nom:'Matteo D', citation:'La vie c\'est une boîte de chocolat : ça coûte cher, on fait semblant d\'aimer, c\'est écœurant', photo:'images/membres/matteo-d.jpg?v=1'},
   {nom:'Quentin E', citation:'Visez la lune en gardant les pieds sur terre', photo:''},
   {nom:'Romane Ga', citation:'Vive le Sud Ouest', photo:''},
   {nom:'Elisa', citation:'', photo:'images/membres/elisa.jpg?v=1'},
@@ -136,7 +136,7 @@ const MEMBRES=[
   {nom:'Hugo S', citation:'Essaie, t\'auras toujours une chance', photo:'images/membres/hugo-s.jpg?v=1'},
   {nom:'Maelle G', citation:'Lentement mais sûrement !', photo:''},
   {nom:'Maëlle S', citation:'', photo:'images/membres/maelle-s.jpg?v=1'},
-  {nom:'Matheo L', citation:'', photo:'images/membres/matheo-l.jpg?v=1'},
+  {nom:'Matheo L', citation:'Oh le bâton il a 80 de bpm', photo:'images/membres/matheo-l.jpg?v=1'},
   {nom:'Mathilde S', citation:'Ça r\'cule po', photo:'images/membres/mathilde-s.jpg?v=1'},
   {nom:'Thomas V', citation:'ThomVol Golgoth : Courir plus pour manger plus.', photo:'images/membres/thomas-v.jpg?v=1'},
   {nom:'Julien D', citation:'J\'ai couru le marathon de NY', orga:true, photo:'images/membres/julien-d.jpg?v=1', fond:'images/equipe/cartes/julien-d.png?v=1'},

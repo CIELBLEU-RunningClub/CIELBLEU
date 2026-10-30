@@ -639,7 +639,7 @@ nav a:focus-visible,.nav-mobile a:focus-visible,footer a:focus-visible,footer bu
     </div>
   </div>
 </div>
-<script src="donnees/membres.js?v=1049"></script>
+<script src="donnees/membres.js?v=1051"></script>
 <script>
 
 /* ===== DONNÉES ===== */
@@ -687,6 +687,15 @@ function grad(i){const l1=48+((i*13)%22);const l2=26+((i*11)%16);const h=200+((i
       </div>
     </div>`;
   }
+  // La citation doit tenir au dos de la carte, même sur les petites cartes du téléphone :
+  // on réduit la taille du texte jusqu'à ce qu'il rentre (sans descendre sous 9 px)
+  function ajusterCitations(){
+    grid.querySelectorAll('.trombi-back').forEach(b=>{
+      const q=b.querySelector('.trombi-quote');if(!q)return;
+      q.style.fontSize='';let fs=parseFloat(getComputedStyle(q).fontSize);
+      while(b.scrollHeight>b.clientHeight+1&&fs>9){fs-=.5;q.style.fontSize=fs+'px';}
+    });
+  }
   function renderTrombi(filter=""){
     const f=filter.trim().toLowerCase();
     const shown=MEMBRES.map((m,i)=>[m,i]).filter(([m])=>m.nom.toLowerCase().includes(f));
@@ -697,6 +706,7 @@ function grad(i){const l1=48+((i*13)%22);const l2=26+((i*11)%16);const h=200+((i
     const visible=isFiltered||expanded||mobile?shown:shown.slice(0,P);
     grid.classList.toggle('etendu',!mobile&&visible.length>P);
     grid.innerHTML = visible.length? visible.map(([m,i])=>cardHTML(m,i)).join("") : `<div class="trombi-empty">Aucun adhérent trouvé pour « ${filter} ».</div>`;
+    ajusterCitations();
     const total=isFiltered||typeof NB_ADHERENTS==='undefined'?shown.length:NB_ADHERENTS; // le total compte aussi ceux qui ne souhaitent pas apparaître
     document.getElementById('trombiCount').textContent = `${total} adhérent${total>1?'s':''}`;
     const btn=document.getElementById('trombiToggle');
@@ -818,6 +828,24 @@ const recordCats=[
   {who:'Théo K',time:'1\'03"61',event:'',hue:372,photo:'',sex:'H'},
   {who:'Théo L',time:'1\'03"37',event:'',hue:373,photo:'',sex:'H'},
   {who:'Yohan',time:'1\'07"22',event:'',hue:374,photo:'',sex:'H'},
+  {who:'Agathe V',time:'1\'20"66',event:'',hue:375,photo:'',sex:'F'},
+  {who:'Alban',time:'1\'02"81',event:'',hue:376,photo:'',sex:'H'},
+  {who:'Alycia',time:'1\'26"31',event:'',hue:377,photo:'',sex:'F'},
+  {who:'Brieuc',time:'58"50',event:'',hue:378,photo:'',sex:'H'},
+  {who:'Candice',time:'1\'17"93',event:'',hue:379,photo:'',sex:'F'},
+  {who:'Clémence N',time:'1\'23"68',event:'',hue:380,photo:'',sex:'F'},
+  {who:'Enora',time:'1\'21"58',event:'',hue:381,photo:'',sex:'F'},
+  {who:'Enzo',time:'1\'08"59',event:'',hue:382,photo:'',sex:'H'},
+  {who:'Gaëlle',time:'1\'22"44',event:'',hue:383,photo:'',sex:'F'},
+  {who:'Hugo S',time:'1\'00"69',event:'',hue:384,photo:'',sex:'H'},
+  {who:'Julia',time:'1\'30"25',event:'',hue:385,photo:'',sex:'F'},
+  {who:'Margot',time:'1\'19"29',event:'',hue:386,photo:'',sex:'F'},
+  {who:'Matheo L',time:'1\'14"28',event:'',hue:387,photo:'',sex:'H'},
+  {who:'Mathilde V',time:'1\'19"61',event:'',hue:388,photo:'',sex:'F'},
+  {who:'Romane Go',time:'1\'19"64',event:'',hue:389,photo:'',sex:'F'},
+  {who:'Thibault',time:'1\'03"51',event:'',hue:390,photo:'',sex:'H'},
+  {who:'Thomas V',time:'1\'11"43',event:'',hue:391,photo:'',sex:'H'},
+  {who:'Yoann',time:'1\'18"54',event:'',hue:392,photo:'',sex:'H'},
   ]},
   {key:'5k',label:'5 KM',records:[
     {who:'Jeremy',time:"16'30",event:'',hue:7,photo:'',sex:'H'},
@@ -1024,7 +1052,7 @@ const recordCats=[
     {who:'Lola',time:'1h00',event:'',hue:208,photo:'',sex:'F'},
     {who:'Mathilde V',time:"1h02'30",event:'',hue:209,photo:'',sex:'F'},
     {who:'Jeanne A',time:'1h03',event:'',hue:210,photo:'',sex:'F'},
-    {who:'Ameline',time:'1h04',event:'',hue:211,photo:'',sex:'F'},
+    {who:'Ameline',time:'58\'48',event:'',hue:211,photo:'',sex:'F'},
     {who:'Lorenzo',time:'1h04',event:'',hue:212,photo:'',sex:'H'},
   {who:'Zoé',time:'1h00',event:'',hue:354,photo:'',sex:'F'},
   ]},
@@ -1086,7 +1114,7 @@ const recordCats=[
     {who:'Brieuc',time:'1h47',event:'',hue:268,photo:'',sex:'H'},
     {who:'Matthieu C',time:'1h47',event:'',hue:269,photo:'',sex:'H'},
     {who:'Enzo',time:'1h48',event:'',hue:270,photo:'',sex:'H'},
-    {who:'Manon H',time:'1h49',event:'',hue:271,photo:'',sex:'F'},
+    {who:'Manon H',time:'1h45',event:'',hue:271,photo:'',sex:'F'},
     {who:'Yoann',time:'1h49',event:'',hue:272,photo:'',sex:'H'},
     {who:'Alain',time:'1h50',event:'',hue:273,photo:'',sex:'H'},
     {who:'Aline',time:'1h50',event:'',hue:274,photo:'',sex:'F'},
