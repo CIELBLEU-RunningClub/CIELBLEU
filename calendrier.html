@@ -187,8 +187,8 @@ section:nth-child(even){background:var(--white);}
 .ev-type-btn{display:inline-flex;align-items:center;gap:9px;font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;color:var(--mid);background:var(--white);border:1.5px solid rgba(18,43,68,.12);border-radius:30px;padding:10px 20px;cursor:pointer;transition:all .2s;}
 .ev-type-btn:hover{border-color:var(--blue-sky);color:var(--navy);}
 .ev-type-dot{width:11px;height:11px;border-radius:50%;flex-shrink:0;}
-.ev-type-btn[data-t="all"] .ev-type-dot{background:linear-gradient(90deg,#3E7CB1 50%,#DA5B47 50%);}
-.ev-type-btn[data-t="seance"] .ev-type-dot{background:#3E7CB1;}
+.ev-type-btn[data-t="all"] .ev-type-dot{background:linear-gradient(90deg,#2F6FD0 50%,#DA5B47 50%);}
+.ev-type-btn[data-t="seance"] .ev-type-dot{background:#2F6FD0;}
 .ev-type-btn[data-t="special"] .ev-type-dot{background:#DA5B47;}
 .ev-type-btn .ev-type-n{font-size:11px;opacity:.6;}
 .ev-type-btn.active{color:var(--navy);border-color:var(--navy);background:rgba(18,43,68,.05);}
@@ -199,15 +199,15 @@ section:nth-child(even){background:var(--white);}
 .ev-day-btn{display:inline-flex;align-items:center;gap:9px;font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;color:var(--mid);background:var(--white);border:1.5px solid rgba(18,43,68,.12);border-radius:30px;padding:10px 20px;cursor:pointer;transition:all .2s;}
 .ev-day-btn:hover{border-color:var(--blue-sky);color:var(--navy);}
 .ev-day-dot{width:11px;height:11px;border-radius:50%;flex-shrink:0;}
-.ev-day-btn[data-d="all"] .ev-day-dot{background:linear-gradient(90deg,#3E7CB1 33%,#5FA25A 33%,#5FA25A 66%,#E8B06B 66%);}
-.ev-day-btn[data-d="1"] .ev-day-dot{background:#3E7CB1;}
-.ev-day-btn[data-d="3"] .ev-day-dot{background:#5FA25A;}
-.ev-day-btn[data-d="0"] .ev-day-dot{background:#E8B06B;}
+.ev-day-btn[data-d="all"] .ev-day-dot{background:linear-gradient(90deg,#2F6FD0 33%,#2C9DB5 33%,#2C9DB5 66%,#8FB8DA 66%);}
+.ev-day-btn[data-d="1"] .ev-day-dot{background:#2F6FD0;}
+.ev-day-btn[data-d="3"] .ev-day-dot{background:#2C9DB5;}
+.ev-day-btn[data-d="0"] .ev-day-dot{background:#8FB8DA;}
 .ev-day-btn .ev-day-n{font-size:11px;opacity:.6;}
 .ev-day-btn.active{color:var(--navy);border-color:var(--navy);background:rgba(18,43,68,.05);}
-.ev-day-btn.active[data-d="1"]{color:#2C5F8C;border-color:#3E7CB1;background:rgba(62,124,177,.12);}
-.ev-day-btn.active[data-d="3"]{color:#3C7A38;border-color:#5FA25A;background:rgba(95,162,90,.12);}
-.ev-day-btn.active[data-d="0"]{color:#9A6F2E;border-color:var(--gold);background:rgba(232,176,107,.12);}
+.ev-day-btn.active[data-d="1"]{color:#1E4F9C;border-color:#2F6FD0;background:rgba(47,111,208,.12);}
+.ev-day-btn.active[data-d="3"]{color:#1A6B7D;border-color:#2C9DB5;background:rgba(44,157,181,.12);}
+.ev-day-btn.active[data-d="0"]{color:#3B6E99;border-color:#8FB8DA;background:rgba(143,184,218,.16);}
 /* Badge type d'événement sur la carte */
 .ev-card-kind-row{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
 .ev-kind{display:inline-flex;align-items:center;gap:6px;font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:2px;padding:4px 11px 4px 8px;border-radius:20px;}
@@ -215,17 +215,20 @@ section:nth-child(even){background:var(--white);}
 .ev-kind-seance{background:rgba(109,135,154,.14);color:var(--blue-steel);}
 .ev-kind-special{background:rgba(218,91,71,.16);color:#A63A2C;}
 /* Carte séance (compacte, teinte bleue, bord pointillé = récurrent) */
-.ev-card.seance{background:rgba(62,124,177,.06);border:1.5px solid rgba(62,124,177,.35);}
+.ev-card.seance{background:rgba(47,111,208,.06);border:1.5px solid rgba(47,111,208,.35);}
 .ev-card.seance .ev-card-day{font-size:38px;color:#2C5F8C;}
 .ev-card.seance .ev-card-body{padding:16px 18px;}
 .ev-card.seance .ev-card-title{font-size:15px;color:var(--navy);}
-.ev-card.seance:hover{box-shadow:0 10px 26px rgba(62,124,177,.18);}
-.ev-card.seance.wd-3{background:rgba(95,162,90,.08);border-color:rgba(95,162,90,.45);}
-.ev-card.seance.wd-3 .ev-card-day{color:#3C7A38;}
-.ev-card.seance.wd-3:hover{box-shadow:0 10px 26px rgba(95,162,90,.22);}
-.ev-card.seance.wd-0{background:rgba(232,176,107,.08);border-color:rgba(232,176,107,.45);}
-.ev-card.seance.wd-0 .ev-card-day{color:#9A6F2E;}
-.ev-card.seance.wd-0:hover{box-shadow:0 10px 26px rgba(232,176,107,.25);}
+.ev-card.seance:hover{box-shadow:0 10px 26px rgba(47,111,208,.18);}
+.ev-card.seance.wd-1{background:rgba(47,111,208,.06);border-color:rgba(47,111,208,.4);}
+.ev-card.seance.wd-1 .ev-card-day{color:#1E4F9C;}
+.ev-card.seance.wd-1:hover{box-shadow:0 10px 26px rgba(47,111,208,.2);}
+.ev-card.seance.wd-3{background:rgba(44,157,181,.08);border-color:rgba(44,157,181,.45);}
+.ev-card.seance.wd-3 .ev-card-day{color:#1A6B7D;}
+.ev-card.seance.wd-3:hover{box-shadow:0 10px 26px rgba(44,157,181,.22);}
+.ev-card.seance.wd-0{background:rgba(143,184,218,.12);border-color:rgba(143,184,218,.6);}
+.ev-card.seance.wd-0 .ev-card-day{color:#3B6E99;}
+.ev-card.seance.wd-0:hover{box-shadow:0 10px 26px rgba(143,184,218,.3);}
 .tag-seance{background:rgba(109,135,154,.16);color:var(--blue-steel);}
 .tag-social{background:rgba(232,176,107,.18);color:#9A6F2E;}
 .tag-km{background:rgba(18,43,68,.85);color:#fff;}
@@ -439,7 +442,7 @@ nav a:focus-visible,.nav-mobile a:focus-visible,footer a:focus-visible,footer bu
 
 <a id="back-to-top" href="#" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'});" aria-label="Retour en haut">↑</a>
 
-<script src="donnees/events.js?v=42"></script>
+<script src="donnees/events.js?v=43"></script>
 <script>
 
 
@@ -471,9 +474,9 @@ let activeMonth='all';
 let activeDay='all';
 const DAY_FILTERS=[
   {k:'all',     label:'Tous les rendez-vous',    color:''},
-  {k:'1',       label:'Lundi · Tartan Bleu',      color:'#3E7CB1'},
-  {k:'3',       label:'Mercredi · Mercredi Bleu', color:'#5FA25A'},
-  {k:'0',       label:'Dimanche · Social Bleu',   color:'#E8B06B'},
+  {k:'1',       label:'Lundi · Tartan Bleu',      color:'#2F6FD0'},
+  {k:'3',       label:'Mercredi · Mercredi Bleu', color:'#2C9DB5'},
+  {k:'0',       label:'Dimanche · Social Bleu',   color:'#8FB8DA'},
   {k:'special', label:'Événements spéciaux',      color:'#DA5B47'},
 ];
 function matchDay(e){
