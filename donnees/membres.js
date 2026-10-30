@@ -125,7 +125,7 @@ const MEMBRES=[
   {nom:'Anaïs P', citation:'Vers l\'infini et au delà.', photo:'images/membres/anais-p.jpg?v=1'},
   {nom:'Camille N', citation:'Ma Garmin a mal dormi cette nuit', photo:'images/membres/camille-n.jpg?v=1'},
   {nom:'Camille P', citation:'', photo:''},
-  {nom:'Clarisse C', citation:'Je cours plus vite derrière les kudos que derrière les mecs', photo:'images/membres/clarisse-c.jpg?v=1'},
+  {nom:'Clarisse C', citation:'Je cours plus vite derrière les kudos que derrière les mecs', photo:'images/membres/clarisse-c.jpg?v=2'},
   {nom:'Julia', citation:'Je savais pas que c\'était impossible, alors je l\'ai fait. — Clem qui court', orga:true, photo:'images/membres/julia.jpg?v=1', fond:'images/equipe/cartes/julia.png?v=1'},
   {nom:'Clarisse J', citation:'Mon cardio est parisien, mon mental est breton', photo:''},
   {nom:'Clemence D', citation:'', photo:''},
