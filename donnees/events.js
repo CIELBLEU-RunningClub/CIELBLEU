@@ -15,9 +15,9 @@ const SEASON_YEAR=2026;
 const YEAR=SEASON_YEAR; // la saison est câblée sur 2026 tant que 2027 n'est pas préparé
 
 // Couleurs par type de séance (bien distinctes : bleu / vert / ambre)
-const C_TARTAN='#2F6FD0';   // lundi · piste (bleu roi)
-const C_MERCREDI='#2C9DB5'; // mercredi (bleu turquoise)
-const C_SOCIAL='#8FB8DA';   // dimanche · social run (bleu ciel)
+const C_TARTAN='#122b44';   // lundi · piste (bleu marine du club)
+const C_MERCREDI='#6d879a'; // mercredi (bleu acier du club)
+const C_SOCIAL='#b6cde0';   // dimanche · social run (bleu ciel du club)
 
 // Lieux : volontairement génériques. On ne publie jamais l'adresse exacte,
 // elle est communiquée sur Instagram et Strava.

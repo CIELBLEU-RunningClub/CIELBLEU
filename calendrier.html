@@ -188,8 +188,8 @@ section:nth-child(even){background:var(--white);}
 .ev-type-btn{display:inline-flex;align-items:center;gap:9px;font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;color:var(--mid);background:var(--white);border:1.5px solid rgba(18,43,68,.12);border-radius:30px;padding:10px 20px;cursor:pointer;transition:all .2s;}
 .ev-type-btn:hover{border-color:var(--blue-sky);color:var(--navy);}
 .ev-type-dot{width:11px;height:11px;border-radius:50%;flex-shrink:0;}
-.ev-type-btn[data-t="all"] .ev-type-dot{background:linear-gradient(90deg,#2F6FD0 50%,#DA5B47 50%);}
-.ev-type-btn[data-t="seance"] .ev-type-dot{background:#2F6FD0;}
+.ev-type-btn[data-t="all"] .ev-type-dot{background:linear-gradient(90deg,#122b44 50%,#DA5B47 50%);}
+.ev-type-btn[data-t="seance"] .ev-type-dot{background:#122b44;}
 .ev-type-btn[data-t="special"] .ev-type-dot{background:#DA5B47;}
 .ev-type-btn .ev-type-n{font-size:11px;opacity:.6;}
 .ev-type-btn.active{color:var(--navy);border-color:var(--navy);background:rgba(18,43,68,.05);}
@@ -200,15 +200,15 @@ section:nth-child(even){background:var(--white);}
 .ev-day-btn{display:inline-flex;align-items:center;gap:9px;font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;color:var(--mid);background:var(--white);border:1.5px solid rgba(18,43,68,.12);border-radius:30px;padding:10px 20px;cursor:pointer;transition:all .2s;}
 .ev-day-btn:hover{border-color:var(--blue-sky);color:var(--navy);}
 .ev-day-dot{width:11px;height:11px;border-radius:50%;flex-shrink:0;}
-.ev-day-btn[data-d="all"] .ev-day-dot{background:linear-gradient(90deg,#2F6FD0 33%,#2C9DB5 33%,#2C9DB5 66%,#8FB8DA 66%);}
-.ev-day-btn[data-d="1"] .ev-day-dot{background:#2F6FD0;}
-.ev-day-btn[data-d="3"] .ev-day-dot{background:#2C9DB5;}
-.ev-day-btn[data-d="0"] .ev-day-dot{background:#8FB8DA;}
+.ev-day-btn[data-d="all"] .ev-day-dot{background:linear-gradient(90deg,#122b44 33%,#6d879a 33%,#6d879a 66%,#b6cde0 66%);}
+.ev-day-btn[data-d="1"] .ev-day-dot{background:#122b44;}
+.ev-day-btn[data-d="3"] .ev-day-dot{background:#6d879a;}
+.ev-day-btn[data-d="0"] .ev-day-dot{background:#b6cde0;}
 .ev-day-btn .ev-day-n{font-size:11px;opacity:.6;}
 .ev-day-btn.active{color:var(--navy);border-color:var(--navy);background:rgba(18,43,68,.05);}
-.ev-day-btn.active[data-d="1"]{color:#1E4F9C;border-color:#2F6FD0;background:rgba(47,111,208,.12);}
-.ev-day-btn.active[data-d="3"]{color:#1A6B7D;border-color:#2C9DB5;background:rgba(44,157,181,.12);}
-.ev-day-btn.active[data-d="0"]{color:#3B6E99;border-color:#8FB8DA;background:rgba(143,184,218,.16);}
+.ev-day-btn.active[data-d="1"]{color:#122b44;border-color:#122b44;background:rgba(18,43,68,.12);}
+.ev-day-btn.active[data-d="3"]{color:#6d879a;border-color:#6d879a;background:rgba(109,135,154,.12);}
+.ev-day-btn.active[data-d="0"]{color:#6d879a;border-color:#b6cde0;background:rgba(182,205,224,.16);}
 /* Badge type d'événement sur la carte */
 .ev-card-kind-row{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
 .ev-kind{display:inline-flex;align-items:center;gap:6px;font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:2px;padding:4px 11px 4px 8px;border-radius:20px;}
@@ -216,20 +216,20 @@ section:nth-child(even){background:var(--white);}
 .ev-kind-seance{background:rgba(109,135,154,.14);color:var(--blue-steel);}
 .ev-kind-special{background:rgba(218,91,71,.16);color:#A63A2C;}
 /* Carte séance (compacte, teinte bleue, bord pointillé = récurrent) */
-.ev-card.seance{background:rgba(47,111,208,.06);border:1.5px solid rgba(47,111,208,.35);}
-.ev-card.seance .ev-card-day{font-size:38px;color:#2C5F8C;}
+.ev-card.seance{background:rgba(18,43,68,.06);border:1.5px solid rgba(18,43,68,.35);}
+.ev-card.seance .ev-card-day{font-size:38px;color:#122b44;}
 .ev-card.seance .ev-card-body{padding:16px 18px;}
 .ev-card.seance .ev-card-title{font-size:15px;color:var(--navy);}
-.ev-card.seance:hover{box-shadow:0 10px 26px rgba(47,111,208,.18);}
-.ev-card.seance.wd-1{background:rgba(47,111,208,.06);border-color:rgba(47,111,208,.4);}
-.ev-card.seance.wd-1 .ev-card-day{color:#1E4F9C;}
-.ev-card.seance.wd-1:hover{box-shadow:0 10px 26px rgba(47,111,208,.2);}
-.ev-card.seance.wd-3{background:rgba(44,157,181,.08);border-color:rgba(44,157,181,.45);}
-.ev-card.seance.wd-3 .ev-card-day{color:#1A6B7D;}
-.ev-card.seance.wd-3:hover{box-shadow:0 10px 26px rgba(44,157,181,.22);}
-.ev-card.seance.wd-0{background:rgba(143,184,218,.12);border-color:rgba(143,184,218,.6);}
-.ev-card.seance.wd-0 .ev-card-day{color:#3B6E99;}
-.ev-card.seance.wd-0:hover{box-shadow:0 10px 26px rgba(143,184,218,.3);}
+.ev-card.seance:hover{box-shadow:0 10px 26px rgba(18,43,68,.18);}
+.ev-card.seance.wd-1{background:rgba(18,43,68,.06);border-color:rgba(18,43,68,.4);}
+.ev-card.seance.wd-1 .ev-card-day{color:#122b44;}
+.ev-card.seance.wd-1:hover{box-shadow:0 10px 26px rgba(18,43,68,.2);}
+.ev-card.seance.wd-3{background:rgba(109,135,154,.08);border-color:rgba(109,135,154,.45);}
+.ev-card.seance.wd-3 .ev-card-day{color:#6d879a;}
+.ev-card.seance.wd-3:hover{box-shadow:0 10px 26px rgba(109,135,154,.22);}
+.ev-card.seance.wd-0{background:rgba(182,205,224,.12);border-color:rgba(182,205,224,.6);}
+.ev-card.seance.wd-0 .ev-card-day{color:#6d879a;}
+.ev-card.seance.wd-0:hover{box-shadow:0 10px 26px rgba(182,205,224,.3);}
 .tag-seance{background:rgba(109,135,154,.16);color:var(--blue-steel);}
 .tag-social{background:rgba(232,176,107,.18);color:#9A6F2E;}
 .tag-km{background:rgba(18,43,68,.85);color:#fff;}
@@ -261,19 +261,19 @@ section:nth-child(even){background:var(--white);}
 .ev-modal-detail{display:flex;gap:12px;font-size:13px;}
 .ev-modal-detail-label{color:var(--blue-steel);font-weight:600;min-width:72px;text-transform:uppercase;letter-spacing:1px;font-size:11px;}
 .ev-modal-detail-val{color:var(--navy);}
-.ev-modal-detail-val a{color:#3E7CB1;font-weight:600;text-decoration:underline;text-underline-offset:2px;}
+.ev-modal-detail-val a{color:#6d879a;font-weight:600;text-decoration:underline;text-underline-offset:2px;}
 .ev-modal-detail-val a:hover{color:var(--navy);}
 /* Lien vers l'article de la page Actualités, quand l'événement en a un */
-.ev-modal-article{display:block;margin:-8px 0 22px;background:rgba(62,124,177,.08);border:1.5px solid rgba(62,124,177,.28);border-radius:12px;padding:14px 18px;text-decoration:none;color:var(--navy);transition:background .2s,border-color .2s;}
+.ev-modal-article{display:block;margin:-8px 0 22px;background:rgba(109,135,154,.08);border:1.5px solid rgba(109,135,154,.28);border-radius:12px;padding:14px 18px;text-decoration:none;color:var(--navy);transition:background .2s,border-color .2s;}
 .ev-modal-article[hidden]{display:none;}
-.ev-modal-article:hover{background:rgba(62,124,177,.15);border-color:#3E7CB1;}
-.ev-modal-article .lbl{display:block;font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#3E7CB1;margin-bottom:5px;}
+.ev-modal-article:hover{background:rgba(109,135,154,.15);border-color:#6d879a;}
+.ev-modal-article .lbl{display:block;font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#6d879a;margin-bottom:5px;}
 .ev-modal-article .ttl{font-size:14.5px;font-weight:600;line-height:1.45;}
 /* Les lieux restent volontairement génériques : on offre un moyen simple de demander. */
 .ev-modal-contact{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin:-8px 0 22px;}
 .ev-modal-contact .lbl{font-size:12.5px;color:var(--mid);width:100%;}  /* le texte sur sa ligne, les deux boutons côte à côte dessous */
 .ev-modal-contact a{display:inline-flex;align-items:center;gap:6px;font-family:'Bebas Neue',sans-serif;font-size:12.5px;letter-spacing:1.5px;text-decoration:none;padding:7px 15px;border-radius:999px;border:1.5px solid rgba(18,43,68,.18);color:var(--navy);transition:border-color .2s,color .2s,background .2s;}
-.ev-modal-contact a:hover{border-color:#3E7CB1;color:#3E7CB1;background:rgba(62,124,177,.07);}
+.ev-modal-contact a:hover{border-color:#6d879a;color:#6d879a;background:rgba(109,135,154,.07);}
 @media(max-width:768px){.ev-modal-contact{gap:8px;}}
 .ev-modal-close{background:var(--navy);color:white;font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:2px;padding:12px 28px;border-radius:4px;border:none;cursor:pointer;transition:background .2s;}
 .ev-modal-close:hover{background:var(--blue-steel);}
@@ -341,7 +341,7 @@ footer{background:var(--navy-deep);padding:40px 60px;}
 /* ── Accessibilité et repérage ── */
 .skip-link{position:absolute;left:12px;top:-80px;background:var(--gold);color:var(--navy-deep);font-weight:700;font-size:14px;padding:12px 18px;border-radius:6px;z-index:100001;text-decoration:none;transition:top .15s;}
 .skip-link:focus{top:12px;}
-a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,[tabindex]:focus-visible{outline:2px solid #3E7CB1;outline-offset:3px;border-radius:3px;}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,[tabindex]:focus-visible{outline:2px solid #6d879a;outline-offset:3px;border-radius:3px;}
 nav a:focus-visible,.nav-mobile a:focus-visible,footer a:focus-visible,footer button:focus-visible{outline-color:var(--blue-sky);}
 .nav-mobile li a.active{color:white;border-left:3px solid var(--gold);padding-left:12px;}
 /* Titres de section : sur une seule ligne et plus petits (ordinateur), retour à la ligne naturel sur téléphone */
@@ -443,7 +443,7 @@ nav a:focus-visible,.nav-mobile a:focus-visible,footer a:focus-visible,footer bu
 
 <a id="back-to-top" href="#" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'});" aria-label="Retour en haut">↑</a>
 
-<script src="donnees/events.js?v=43"></script>
+<script src="donnees/events.js?v=44"></script>
 <script>
 
 
@@ -475,9 +475,9 @@ let activeMonth='all';
 let activeDay='all';
 const DAY_FILTERS=[
   {k:'all',     label:'Tous les rendez-vous',    color:''},
-  {k:'1',       label:'Lundi · Tartan Bleu',      color:'#2F6FD0'},
-  {k:'3',       label:'Mercredi · Mercredi Bleu', color:'#2C9DB5'},
-  {k:'0',       label:'Dimanche · Social Bleu',   color:'#8FB8DA'},
+  {k:'1',       label:'Lundi · Tartan Bleu',      color:'#122b44'},
+  {k:'3',       label:'Mercredi · Mercredi Bleu', color:'#6d879a'},
+  {k:'0',       label:'Dimanche · Social Bleu',   color:'#b6cde0'},
   {k:'special', label:'Événements spéciaux',      color:'#DA5B47'},
 ];
 function matchDay(e){

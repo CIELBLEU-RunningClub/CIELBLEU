@@ -239,7 +239,7 @@ section:nth-child(even){background:var(--white);}
 .join-actions .join-cta,.join-actions .join-cta-ha{font-size:15px!important;letter-spacing:1.8px!important;padding:13px 20px!important;}
 /* Même bouton, en version claire pour la FAQ */
 .faq-mail{display:inline-flex;align-items:center;gap:9px;margin-top:30px;font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:2px;color:var(--navy);text-decoration:none;background:#fff;border:1.5px solid rgba(18,43,68,.18);border-radius:999px;padding:12px 24px;transition:border-color .2s,color .2s,background .2s;}
-.faq-mail:hover{border-color:#3E7CB1;color:#3E7CB1;background:rgba(62,124,177,.06);}
+.faq-mail:hover{border-color:#6d879a;color:#6d879a;background:rgba(109,135,154,.06);}
 .faq-mail .jm-ico{font-size:14px;line-height:1;}
 .join-mail{display:inline-flex;align-items:center;gap:7px;font-family:'Bebas Neue',sans-serif;font-size:12.5px;letter-spacing:1.5px;color:var(--blue-sky);text-decoration:none;background:rgba(182,205,224,.08);border:1.5px solid rgba(182,205,224,.28);border-radius:999px;padding:8px 14px;transition:background .2s,border-color .2s,color .2s;}
 .join-mail:hover{background:rgba(182,205,224,.18);border-color:var(--blue-sky);color:#fff;}
@@ -295,7 +295,7 @@ footer{background:var(--navy-deep);padding:32px 60px;}
 .semaine-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
 .semaine-card{background:var(--navy);border-radius:16px;padding:26px 26px;color:white;display:flex;flex-direction:column;gap:10px;transition:transform .3s ease,box-shadow .3s ease;}
 .semaine-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(18,43,68,.35);}
-.semaine-card.dimanche{background:linear-gradient(150deg,#1e4a6e,var(--navy));border:1.5px solid rgba(232,176,107,.5);}
+.semaine-card.dimanche{background:linear-gradient(150deg,#6d879a,var(--navy));border:1.5px solid rgba(232,176,107,.5);}
 .semaine-day{font-family:'Bebas Neue',sans-serif;font-size:40px;letter-spacing:2px;color:var(--blue-sky);line-height:1;}
 .semaine-card.dimanche .semaine-day{color:var(--gold);}
 .semaine-name{font-family:'Bebas Neue',sans-serif;font-size:24px;line-height:1.2;letter-spacing:.5px;color:white;}
@@ -367,15 +367,15 @@ footer{background:var(--navy-deep);padding:32px 60px;}
 .ev-card.seance .ev-card-body{padding:16px 18px;}
 .ev-card.seance .ev-card-title{font-size:15px;color:var(--navy);}
 .ev-card.seance:hover{box-shadow:0 10px 26px rgba(109,135,154,.18);}
-.ev-card.seance.wd-1{background:rgba(47,111,208,.06);border-color:rgba(47,111,208,.4);}
-.ev-card.seance.wd-1 .ev-card-day{color:#1E4F9C;}
-.ev-card.seance.wd-1:hover{box-shadow:0 10px 26px rgba(47,111,208,.2);}
-.ev-card.seance.wd-3{background:rgba(44,157,181,.08);border-color:rgba(44,157,181,.45);}
-.ev-card.seance.wd-3 .ev-card-day{color:#1A6B7D;}
-.ev-card.seance.wd-3:hover{box-shadow:0 10px 26px rgba(44,157,181,.22);}
-.ev-card.seance.wd-0{background:rgba(143,184,218,.12);border-color:rgba(143,184,218,.6);}
-.ev-card.seance.wd-0 .ev-card-day{color:#3B6E99;}
-.ev-card.seance.wd-0:hover{box-shadow:0 10px 26px rgba(143,184,218,.3);}
+.ev-card.seance.wd-1{background:rgba(18,43,68,.06);border-color:rgba(18,43,68,.4);}
+.ev-card.seance.wd-1 .ev-card-day{color:#122b44;}
+.ev-card.seance.wd-1:hover{box-shadow:0 10px 26px rgba(18,43,68,.2);}
+.ev-card.seance.wd-3{background:rgba(109,135,154,.08);border-color:rgba(109,135,154,.45);}
+.ev-card.seance.wd-3 .ev-card-day{color:#6d879a;}
+.ev-card.seance.wd-3:hover{box-shadow:0 10px 26px rgba(109,135,154,.22);}
+.ev-card.seance.wd-0{background:rgba(182,205,224,.12);border-color:rgba(182,205,224,.6);}
+.ev-card.seance.wd-0 .ev-card-day{color:#6d879a;}
+.ev-card.seance.wd-0:hover{box-shadow:0 10px 26px rgba(182,205,224,.3);}
 .tag-seance{background:rgba(109,135,154,.16);color:var(--blue-steel);}
 .tag-social{background:rgba(232,176,107,.18);color:#9A6F2E;}
 .tag-km{background:rgba(18,43,68,.85);color:#fff;}
@@ -576,11 +576,11 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
 .semaine-card .semaine-day{font-size:20px;letter-spacing:3px;text-transform:uppercase;opacity:.85;}
 .semaine-allures{font-size:13px;line-height:1.5;color:var(--blue-sky);background:rgba(182,205,224,.1);border:1px solid rgba(182,205,224,.22);border-radius:8px;padding:8px 12px;margin:2px 0;}
 .semaine-allures .al-pace{white-space:nowrap;font-variant-numeric:tabular-nums;}
-/* Chaque jour a sa nuance de bleu : lundi bleu roi (piste), mercredi turquoise, dimanche bleu ciel */
+/* Chaque jour a sa nuance de la palette du club : lundi bleu ciel, mercredi bleu acier, dimanche bleu pâle */
 .semaine-card{position:relative;overflow:hidden;border:1.5px solid color-mix(in srgb,var(--ac) 45%,transparent);background:linear-gradient(165deg,color-mix(in srgb,var(--ac) 30%,var(--navy-deep)) 0%,var(--navy-deep) 62%);}
-.semaine-card.lundi{--ac:#2F6FD0;--ac-t:#8DB8F5;}
-.semaine-card.mercredi{--ac:#2C9DB5;--ac-t:#8ADBEA;}
-.semaine-card.dimanche{--ac:#8FB8DA;--ac-t:#C9E0F2;background:linear-gradient(165deg,color-mix(in srgb,var(--ac) 30%,var(--navy-deep)) 0%,var(--navy-deep) 62%);border:1.5px solid color-mix(in srgb,var(--ac) 55%,transparent);}
+.semaine-card.lundi{--ac:#b6cde0;--ac-t:#b6cde0;}
+.semaine-card.mercredi{--ac:#6d879a;--ac-t:#9fb3c2;}
+.semaine-card.dimanche{--ac:#d5e0e4;--ac-t:#d5e0e4;background:linear-gradient(165deg,color-mix(in srgb,var(--ac) 30%,var(--navy-deep)) 0%,var(--navy-deep) 62%);border:1.5px solid color-mix(in srgb,var(--ac) 55%,transparent);}
 .semaine-card::before{content:'';position:absolute;left:0;right:0;top:0;height:6px;background:var(--ac);}
 .semaine-card .semaine-day{color:var(--ac-t);opacity:1;font-size:26px;letter-spacing:4px;display:flex;flex-direction:column;gap:4px;}
 .semaine-card .semaine-day small{font-family:'Open Sans',sans-serif;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.62);}
@@ -605,7 +605,7 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
 .actu-tag{font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:5px 13px;border-radius:999px;background:var(--navy);color:#fff;}
 .actu-date,.actu-read{font-size:12px;color:var(--mid);letter-spacing:.3px;}
 .actu-dot{color:var(--blue-steel);opacity:.6;}
-.actu-more{font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:2px;color:#3E7CB1;margin-top:18px;display:inline-block;transition:transform .2s,color .2s;}
+.actu-more{font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:2px;color:#6d879a;margin-top:18px;display:inline-block;transition:transform .2s,color .2s;}
 
 /* Article mis en avant */
 .actu-feat{display:grid;grid-template-columns:1.08fr 1fr;background:var(--white);border:1.5px solid rgba(18,43,68,.1);border-radius:18px;overflow:hidden;text-decoration:none;color:inherit;transition:transform .25s ease,box-shadow .25s ease;}
@@ -668,12 +668,12 @@ section.kmbleu{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy)
   .actu-grid.mini .actu-card-title{font-size:17px;}
 }
 .actu-all{text-align:center;margin-top:14px;}
-.actu-all a{font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:2px;color:#3E7CB1;text-decoration:none;padding:10px 4px;display:inline-block;transition:color .2s;}
+.actu-all a{font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:2px;color:#6d879a;text-decoration:none;padding:10px 4px;display:inline-block;transition:color .2s;}
 .actu-all a:hover{color:var(--navy);}
 /* ── Accessibilité et repérage ── */
 .skip-link{position:absolute;left:12px;top:-80px;background:var(--gold);color:var(--navy-deep);font-weight:700;font-size:14px;padding:12px 18px;border-radius:6px;z-index:100001;text-decoration:none;transition:top .15s;}
 .skip-link:focus{top:12px;}
-a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,[tabindex]:focus-visible{outline:2px solid #3E7CB1;outline-offset:3px;border-radius:3px;}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,[tabindex]:focus-visible{outline:2px solid #6d879a;outline-offset:3px;border-radius:3px;}
 nav a:focus-visible,.nav-mobile a:focus-visible,footer a:focus-visible,footer button:focus-visible{outline-color:var(--blue-sky);}
 .nav-mobile li a.active{color:white;border-left:3px solid var(--gold);padding-left:12px;}
 /* Titres de section : sur une seule ligne et plus petits (ordinateur), retour à la ligne naturel sur téléphone */
@@ -683,7 +683,7 @@ nav a:focus-visible,.nav-mobile a:focus-visible,footer a:focus-visible,footer bu
 /* Carte « découvrir les adhérents » à côté du bandeau d'adhésion */
 .adh-row{display:flex;align-items:stretch;gap:24px;}
 .adh-row .adhesion-block{flex:0 1 auto;}
-.adhside{flex:1 1 280px;min-width:260px;background:linear-gradient(155deg,#1f5683 0%,var(--navy) 70%);border-radius:20px;padding:30px 28px;color:#fff;display:flex;flex-direction:column;justify-content:center;gap:14px;position:relative;overflow:hidden;}
+.adhside{flex:1 1 280px;min-width:260px;background:linear-gradient(155deg,#6d879a 0%,var(--navy) 70%);border-radius:20px;padding:30px 28px;color:#fff;display:flex;flex-direction:column;justify-content:center;gap:14px;position:relative;overflow:hidden;}
 .adhside-faces{display:flex;align-items:center;margin-bottom:4px;}
 .adhside-face{width:56px;height:56px;border-radius:50%;margin-left:-16px;border:2.5px solid var(--navy);background:linear-gradient(160deg,var(--c1),var(--c2));overflow:hidden;position:relative;flex-shrink:0;transition:transform .3s cubic-bezier(.2,.8,.2,1);}
 .adhside-face:first-child{margin-left:0;}
@@ -932,7 +932,7 @@ nav a:focus-visible,.nav-mobile a:focus-visible,footer a:focus-visible,footer bu
     </div>
   </div>
     <aside class="adhside reveal" aria-label="Découvrir les adhérents">
-      <div class="adhside-faces" aria-hidden="true"><div class="adhside-face" style="--c1:#4b8fc9;--c2:#1f5683"><img src="images/equipe/cartes/candice.png" alt="" loading="lazy" decoding="async"></div><div class="adhside-face" style="--c1:#6aa6d6;--c2:#2a5f8d"><img src="images/equipe/cartes/julien-d.png" alt="" loading="lazy" decoding="async"></div><div class="adhside-face" style="--c1:#3E7CB1;--c2:#16344f"><img src="images/equipe/cartes/manon.png" alt="" loading="lazy" decoding="async"></div><div class="adhside-face" style="--c1:#7fb2dc;--c2:#2e6a9e"><img src="images/equipe/cartes/thomas-evenementiel.png" alt="" loading="lazy" decoding="async"></div><div class="adhside-face" style="--c1:#4a86bd;--c2:#1b4468"><img src="images/equipe/cartes/julia.png" alt="" loading="lazy" decoding="async"></div><div class="adhside-face toi">TOI ?</div></div>
+      <div class="adhside-faces" aria-hidden="true"><div class="adhside-face" style="--c1:#6d879a;--c2:#122b44"><img src="images/equipe/cartes/candice.png" alt="" loading="lazy" decoding="async"></div><div class="adhside-face" style="--c1:#b6cde0;--c2:#6d879a"><img src="images/equipe/cartes/julien-d.png" alt="" loading="lazy" decoding="async"></div><div class="adhside-face" style="--c1:#6d879a;--c2:#0b1d30"><img src="images/equipe/cartes/manon.png" alt="" loading="lazy" decoding="async"></div><div class="adhside-face" style="--c1:#b6cde0;--c2:#6d879a"><img src="images/equipe/cartes/thomas-evenementiel.png" alt="" loading="lazy" decoding="async"></div><div class="adhside-face" style="--c1:#6d879a;--c2:#122b44"><img src="images/equipe/cartes/julia.png" alt="" loading="lazy" decoding="async"></div><div class="adhside-face toi">TOI ?</div></div>
       <h3>Rencontre la communauté bleue.</h3>
       <p>Trombinoscope, citations, chronos : découvre avec qui tu vas courir.</p>
       <a href="nos-adherents.html" class="adhside-btn">Découvrir les adhérents <span aria-hidden="true">→</span></a>
@@ -1012,7 +1012,7 @@ nav a:focus-visible,.nav-mobile a:focus-visible,footer a:focus-visible,footer bu
   </div>
 </footer>
 
-<script src="donnees/events.js?v=43"></script>
+<script src="donnees/events.js?v=44"></script>
 <script>
 // Compteurs animés : les stats montent en flèche une fois à l'écran
 (function(){
