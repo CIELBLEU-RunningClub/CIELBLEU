@@ -281,6 +281,8 @@ section:nth-child(even){background:var(--white);}
 .surprise-name{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:3px;color:var(--gold);margin-bottom:22px;}
 .quiz-score{font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:2.5px;color:var(--blue-sky);opacity:.8;margin-bottom:14px;}
 .surprise-avatar.mystere{border-style:dashed;color:var(--gold);}
+.surprise-avatar.grand{width:150px;height:150px;}
+.surprise-card.q-photo .surprise-quote:empty{display:none;}
 .quiz-ask{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:2px;color:#fff;margin-bottom:12px;}
 .quiz-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;}
 .quiz-opt{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:1.5px;padding:13px 10px;border-radius:14px;border:1.5px solid rgba(182,205,224,.35);background:rgba(182,205,224,.08);color:#fff;cursor:pointer;transition:background .2s,border-color .2s,transform .15s;}
@@ -492,7 +494,7 @@ nav a:focus-visible,.nav-mobile a:focus-visible,footer a:focus-visible,footer bu
       <input type="text" id="trombiSearch" placeholder="Rechercher un prénom…">
     </div>
     <div class="trombi-count" id="trombiCount"></div>
-    <button type="button" class="surprise-btn" id="surpriseBtn"><span aria-hidden="true">🎯</span> Quiz : qui a dit ça ?</button>
+    <button type="button" class="surprise-btn" id="surpriseBtn"><span aria-hidden="true">🎯</span> Le quiz des adhérents</button>
   </div>
   <div class="trombi-hint"><span class="trombi-hint-arrow" aria-hidden="true">←</span> Glisse pour voir tout le monde <span class="trombi-hint-arrow" aria-hidden="true">→</span></div>
   <div class="trombi-wrap" id="trombiWrap">
@@ -588,7 +590,7 @@ nav a:focus-visible,.nav-mobile a:focus-visible,footer a:focus-visible,footer bu
 <a id="back-to-top" href="#" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'});" aria-label="Retour en haut">↑</a>
 
 
-<div class="surprise" id="surprise" role="dialog" aria-modal="true" aria-label="Quiz : qui a dit ça ?">
+<div class="surprise" id="surprise" role="dialog" aria-modal="true" aria-label="Le quiz des adhérents">
   <div class="surprise-card" id="surpriseCard">
     <div class="quiz-score" id="quizScore"></div>
     <div class="surprise-avatar" id="surpriseAvatar"></div>
@@ -1254,45 +1256,65 @@ renderRecords();
   nums.forEach(n=>o.observe(n));
 })();
 
-/* ===== QUIZ : qui a dit ça ? Une citation, quatre prénoms ===== */
+/* ===== QUIZ : une citation ou une photo, quatre prénoms ===== */
 (function(){
   const btn=document.getElementById('surpriseBtn'),ov=document.getElementById('surprise');
   if(!btn||!ov||typeof MEMBRES==='undefined')return;
   const card=document.getElementById('surpriseCard'),av=document.getElementById('surpriseAvatar'),
-        q=document.getElementById('surpriseQuote'),opts=document.getElementById('quizOptions'),
-        fb=document.getElementById('quizFeedback'),sc=document.getElementById('quizScore'),
-        suiv=document.getElementById('surpriseAgain');
+        q=document.getElementById('surpriseQuote'),ask=document.getElementById('quizAsk'),
+        opts=document.getElementById('quizOptions'),fb=document.getElementById('quizFeedback'),
+        sc=document.getElementById('quizScore'),suiv=document.getElementById('surpriseAgain');
   const tous=MEMBRES.map((m,i)=>[m,i]);
-  const pool=tous.filter(([m])=>(m.citation||'').trim()&&m.citation.trim().length<=140);
-  if(pool.length<4)return;
+  const citations=tous.filter(([m])=>(m.citation||'').trim()&&m.citation.trim().length<=140);
+  const photos=tous.filter(([m])=>m.fond);
+  const sexe={};
+  if(typeof recordCats!=='undefined')recordCats.forEach(c=>c.records.forEach(r=>{if(r.sex)sexe[r.who]=r.sex;}));   // pour l'instant : les photos déjà sur les cartes (l'orga)
+  if(citations.length<4)return;
   const melange=a=>{for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
-  // un ordre différent à chaque visite, sans repasser deux fois la même citation avant d'avoir tout vu
-  let sac=[],num=0,bons=0,rep=0;
-  function tirer(){if(!sac.length)sac=melange(pool.slice());return sac.pop();}
+  // un ordre différent à chaque visite ; on ne repasse pas une question avant d'avoir vu toutes les autres
+  const sacs={citation:[],photo:[]};
+  function tirer(type){const src=type==='photo'?photos:citations;if(!sacs[type].length)sacs[type]=melange(src.slice());return sacs[type].pop();}
+  let num=0,bons=0,rep=0;
   function question(){
-    const [m,i]=tirer();num++;
-    card.classList.remove('repondu');
-    av.className='surprise-avatar mystere';av.style.background='transparent';av.textContent='?';
-    q.textContent='« '+m.citation.trim()+' »';
+    num++;
+    // une question sur deux avec une photo, tant qu'il y a des photos
+    const type=photos.length>=1&&num%2===0?'photo':'citation';
+    const [m,i]=tirer(type);
+    card.classList.remove('repondu');card.classList.toggle('q-photo',type==='photo');
     fb.innerHTML='';
-    const autres=melange(tous.filter(([o])=>o.nom!==m.nom)).slice(0,3);
-    const choix=melange([[m,i]].concat(autres));
+    if(type==='photo'){
+      av.className='surprise-avatar grand';av.style.background=grad(i);
+      av.innerHTML='<img src="'+m.fond+'" alt="Photo d\'un adhérent à reconnaître">';
+      q.textContent='';ask.textContent='Qui est-ce ?';
+    }else{
+      av.className='surprise-avatar mystere';av.style.background='transparent';av.textContent='?';
+      q.textContent='« '+m.citation.trim()+' »';ask.textContent='Qui a dit ça ?';
+    }
+    // les faux choix sont du même genre quand on le connaît (via les chronos), pour ne pas donner la réponse
+    let cand=tous.filter(([o])=>o.nom!==m.nom);
+    const memeGenre=cand.filter(([o])=>sexe[o.nom]&&sexe[o.nom]===sexe[m.nom]);
+    if(sexe[m.nom]&&memeGenre.length>=3)cand=memeGenre;
+    const autres=melange(cand).slice(0,3);
     opts.innerHTML='';
-    choix.forEach(([o])=>{
+    melange([[m,i]].concat(autres)).forEach(([o])=>{
       const b=document.createElement('button');b.type='button';b.className='quiz-opt';b.textContent=o.nom;
-      b.addEventListener('click',()=>repondre(b,o===m,m,i));
+      b.addEventListener('click',()=>repondre(b,o===m,m,i,type));
       opts.appendChild(b);
     });
     sc.textContent='Question '+num+(rep?' · Score '+bons+'/'+rep:'');
     card.classList.remove('pop');void card.offsetWidth;card.classList.add('pop');
     opts.firstChild.focus();
   }
-  function repondre(b,juste,m,i){
+  function repondre(b,juste,m,i,type){
     rep++;if(juste)bons++;
     opts.querySelectorAll('.quiz-opt').forEach(x=>{x.disabled=true;if(x.textContent===m.nom)x.classList.add('ok');});
     if(!juste)b.classList.add('ko');
-    av.className='surprise-avatar';av.style.background=grad(i);
-    av.innerHTML=m.fond?'<img src="'+m.fond+'" alt="">':m.nom.charAt(0);
+    if(type==='citation'){
+      av.className='surprise-avatar';av.style.background=grad(i);
+      av.innerHTML=m.fond?'<img src="'+m.fond+'" alt="">':m.nom.charAt(0);
+    }else if((m.citation||'').trim()){
+      q.textContent='« '+m.citation.trim()+' »';   // en bonus, sa citation
+    }
     fb.innerHTML=(juste?'Bien vu ! ':'Raté ! ')+'C\'était <strong>'+m.nom+'</strong>.';
     sc.textContent='Question '+num+' · Score '+bons+'/'+rep;
     card.classList.add('repondu');suiv.focus();
