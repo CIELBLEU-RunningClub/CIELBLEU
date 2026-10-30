@@ -1185,6 +1185,8 @@ function chronoToSec(t){
   return n?(+n[1])*60:Number.MAX_SAFE_INTEGER;
 }
 const REC_APERCU=3;                 // le podium seul, le reste sur demande
+const REC_MAX=20;                   // on n'affiche que les 20 meilleurs par distance et par sexe
+const nbAffiches=c=>['f','h'].reduce((n,g)=>n+Math.min(REC_MAX,c.records.filter(r=>(r.sex||'H').toLowerCase()===g).length),0);
 let recOuvert={f:false,h:false};
 
 function ligneRecord(r,i,g){
@@ -1201,12 +1203,13 @@ function ligneRecord(r,i,g){
 }
 function renderRecords(){
   const cat=recordCats[recActive];
-  recTabs.innerHTML=recordCats.map((c,i)=>`<button class="rec-tab${i===recActive?' active':''}" onclick="setRecord(${i})">${c.label} <span class="rec-tab-n">${c.records.length}</span></button>`).join("");
+  recTabs.innerHTML=recordCats.map((c,i)=>`<button class="rec-tab${i===recActive?' active':''}" onclick="setRecord(${i})">${c.label} <span class="rec-tab-n">${nbAffiches(c)}</span></button>`).join("");
   // Deux classements distincts : chacun son podium, chacun sa couleur
   const groupes=[['f','Femmes','femmes'],['h','Hommes','hommes']];
   recBoard.innerHTML=groupes.map(([g,label,cls])=>{
     const liste=cat.records.filter(r=>(r.sex||'H').toLowerCase()===g)
-                           .sort((a,b)=>chronoToSec(a.time)-chronoToSec(b.time));
+                           .sort((a,b)=>chronoToSec(a.time)-chronoToSec(b.time))
+                           .slice(0,REC_MAX);
     if(!liste.length)return `<div class="rec-group ${cls}">
       <div class="rec-group-title">${label} <span class="rec-group-n">0</span></div>
       <div class="rec-empty">Chronos à venir.</div>
