@@ -138,7 +138,6 @@ const MEMBRES=[
   {nom:'Maelle G', citation:'', photo:''},
   {nom:'Maëlle S', citation:'', photo:'images/membres/maelle-s.jpg?v=1'},
   {nom:'Matheo L', citation:'', photo:'images/membres/matheo-l.jpg?v=1'},
-  {nom:'Mathéo V', citation:'', photo:''},
   {nom:'Mathilde S', citation:'', photo:''},
   {nom:'Thomas V', citation:'ThomVol Golgoth : Courir plus pour manger plus.', photo:'images/membres/thomas-v.jpg?v=1'},
   {nom:'Julien D', citation:'J\'ai couru le marathon de NY', orga:true, photo:'images/membres/julien-d.jpg?v=1', fond:'images/equipe/cartes/julien-d.png?v=1'},
