@@ -251,6 +251,8 @@ section:nth-child(even){background:var(--white);}
 .mosaic-tile:hover .mosaic-cap{transform:none;}
 @media(max-width:768px){
   .mosaic{grid-template-columns:repeat(2,1fr);grid-auto-rows:132px;gap:8px;}
+  .mosaic-tile{order:var(--mo,0);}
+  .mosaic-tile.big.mob-tall{grid-column:span 1;}
   .mosaic-tile{border-radius:14px;}
   .mosaic-cap{display:none;}
 }
@@ -1211,27 +1213,28 @@ renderRecords();
 (function(){
   const wrap=document.getElementById('mosaic');if(!wrap)return;
   // Cinq grandes tuiles (2x2) et six tuiles hautes (1x2), par blocs de deux rangées
-  // (2 grandes, ou 1 grande + 2 hautes) : la grille se remplit sans trou, sur 2 ou 4 colonnes
+  // (2 grandes, ou 1 grande + 2 hautes) : la grille se remplit sans trou, sur 2 ou 4 colonnes.
+  // Sur téléphone (mo = ordre, mt = tuile haute) : une vidéo et une photo par rangée, en damier
   const items=[
-    {type:'photo',src:'images/adherents/pyramide-louvre.jpg',cap:'La communauté devant le Louvre',k:'big'},
-    {type:'photo',src:'images/galerie/communaute-14.jpg',cap:'Marathon Bleu : Julien et deux fusées',pos:'12% center',k:'big'},
-    {type:'photo',src:'images/galerie/communaute-9.jpg',cap:'La communauté devant la tour Eiffel',pos:'center 100%',posD:'center 78%',k:'big'},
-    {type:'video',src:'videos/adherents-2.mp4',cap:'Nos adhérents'},
-    {type:'photo',src:'images/adherents/galerie-1.jpg',cap:'Nos adhérents'},
-    {type:'video',src:'videos/piste.mp4',cap:'Nos adhérents'},
-    {type:'photo',src:'images/adherents/galerie-3.jpg',cap:'Nos adhérents'},
-    {type:'photo',src:'images/galerie/communaute-8.jpg',cap:'La tribu à Nice',k:'big'},
-    {type:'photo',src:'images/adherents/galerie-2.jpg',cap:'La communauté',k:'big'},
-    {type:'video',src:'videos/adherents-3.mp4',cap:'CIELBLEU'},
-    {type:'video',src:'videos/adherents-4.mp4',cap:'Sur la piste'},
+    {type:'photo',src:'images/adherents/pyramide-louvre.jpg',cap:'La communauté devant le Louvre',k:'big',mo:1},
+    {type:'photo',src:'images/galerie/communaute-14.jpg',cap:'Marathon Bleu : Julien et deux fusées',pos:'12% center',k:'big',mo:6},
+    {type:'photo',src:'images/galerie/communaute-9.jpg',cap:'La communauté devant la tour Eiffel',pos:'center 100%',posD:'center 78%',k:'big',mo:11},
+    {type:'video',src:'videos/adherents-2.mp4',cap:'Nos adhérents',mo:2},
+    {type:'photo',src:'images/adherents/galerie-1.jpg',cap:'Nos adhérents',mo:3},
+    {type:'video',src:'videos/piste.mp4',cap:'Nos adhérents',mo:5},
+    {type:'photo',src:'images/adherents/galerie-3.jpg',cap:'Nos adhérents',mo:9},
+    {type:'photo',src:'images/galerie/communaute-8.jpg',cap:'La tribu à Nice',k:'big',mo:8,mt:1},
+    {type:'photo',src:'images/adherents/galerie-2.jpg',cap:'La communauté',k:'big',mo:4,mt:1},
+    {type:'video',src:'videos/adherents-3.mp4',cap:'CIELBLEU',mo:7},
+    {type:'video',src:'videos/adherents-4.mp4',cap:'Sur la piste',mo:10},
   ];
   wrap.innerHTML=items.map(function(it,i){
-    const cls='mosaic-tile'+(it.k?' '+it.k:'');
+    const cls='mosaic-tile'+(it.k?' '+it.k:'')+(it.mt?' mob-tall':'');
     const cap='<span class="mosaic-cap">'+it.cap+'</span>';
     const media=it.type==='photo'
       ? '<img src="'+it.src+'" alt="'+it.cap+'" loading="lazy" decoding="async"'+(it.pos?' style="--pos:'+it.pos+';--posd:'+(it.posD||it.pos)+'"':'')+'>'
       : '<video src="'+it.src+'" muted loop playsinline preload="none" poster="'+it.src.replace(/^videos\//,'videos/posters/').replace(/\.mp4$/i,'.jpg')+'"></video>';
-    return '<div class="'+cls+'" style="--d:'+((i%4)*0.08)+'s">'+media+cap+'</div>';
+    return '<div class="'+cls+'" style="--d:'+((i%4)*0.08)+'s;--mo:'+(it.mo||0)+'">'+media+cap+'</div>';
   }).join('');
   const tiles=wrap.querySelectorAll('.mosaic-tile');
   if(!('IntersectionObserver' in window)){tiles.forEach(function(t){t.classList.add('in');});return;}
