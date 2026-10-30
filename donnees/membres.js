@@ -26,7 +26,7 @@ const MEMBRES=[
   {nom:'Sarah', citation:'La Caille : espèce rare et bruyante à foulée rapide', photo:'images/membres/sarah.jpg?v=1'},
   {nom:'Victor C', citation:'La chance paie parfois, le travail toujours', photo:''},
   {nom:'Thibault', citation:'Work hard play harder', photo:'images/membres/thibault.jpg?v=1'},
-  {nom:'Lucile', citation:'le ciel est bleu en 2 mots ? ciel bleu.', photo:''},
+  {nom:'Lucile', citation:'le ciel est bleu en 2 mots ? ciel bleu.', photo:'images/membres/lucile.jpg?v=1'},
   {nom:'Yoann', citation:'Ciel Bleu ? Pour un normand, c\'est une évidence !', photo:'images/membres/yoann.jpg?v=1'},
   {nom:'Enzo', citation:'Lent mais résistant', photo:'images/membres/enzo.jpg?v=1'},
   {nom:'Maxence', citation:'', photo:'images/membres/maxence.jpg?v=1'},
