@@ -98,7 +98,7 @@ const MEMBRES=[
   {nom:'Guillaume D', citation:'Pepito pianisto', photo:'images/membres/guillaume-d.jpg?v=1'},
   {nom:'Jeanne C', citation:'Courir plus pour manger plus.', photo:'images/membres/jeanne-c.jpg?v=1'},
   {nom:'Jeanne A', citation:'Ne jamais me dire que je n\'en suis pas capable sinon je devrais vous donner tord', photo:'images/membres/jeanne-a.jpg?v=1'},
-  {nom:'Jeanne M', citation:'', photo:'images/membres/jeanne-m.jpg?v=1'},
+  {nom:'Jeanne M', citation:'Le sport c\'est la santé, la raclette c\'est la vie !', photo:'images/membres/jeanne-m.jpg?v=1'},
   {nom:'Floriane', citation:'', orga:true, photo:'images/membres/floriane.jpg?v=1', fond:'images/equipe/cartes/floriane.png?v=1'},
   {nom:'Jeremy', citation:'', photo:'images/membres/jeremy.jpg?v=1'},
   {nom:'Lola', citation:'Objectif semi, reporté à une date indéterminée car mon tibia ne m\'avait pas prévenu qu\'il avait d\'autres projets', photo:'images/membres/lola.jpg?v=1'},
