@@ -92,7 +92,7 @@ const MEMBRES=[
   {nom:'Charlotte', citation:'Jamais dans la demi-mesure', photo:'images/membres/charlotte.jpg?v=1'},
   {nom:'Célia', citation:'', photo:''},
   {nom:'Dac-Huy', citation:'Manger/Sport/Voyage', photo:''},
-  {nom:'Emma', citation:'Le positif attire le positif.', photo:''},
+  {nom:'Emma', citation:'Le positif attire le positif.', photo:'images/membres/emma.jpg?v=1'},
   {nom:'Gaultier', citation:'Chante Déesse la colère d\'Achille, fils de Pélée', photo:'images/membres/gaultier.jpg?v=1'},
   {nom:'Gaëlle', citation:'', photo:''},
   {nom:'Guillaume D', citation:'Pepito pianisto', photo:'images/membres/guillaume-d.jpg?v=1'},
