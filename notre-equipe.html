@@ -9,12 +9,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0b1d30">
 <title>L'équipe · CIELBLEU Running Club Paris</title>
-<meta name="description" content="9 coureurs font vivre le club CIELBLEU Running Club à Paris : président, coachs, événementiel, communication. Découvrez l'équipe orga de la saison 3 derrière chaque run.">
+<meta name="description" content="9 coureurs à Paris et 1 en Australie font vivre le club CIELBLEU Running Club à Paris : président, coachs, événementiel, communication. Découvrez l'équipe orga de la saison 3 derrière chaque run.">
 <!-- Canonical : nom de domaine définitif -->
 <link rel="canonical" href="https://cielbleurunningclub.com/notre-equipe.html">
 <meta property="og:type" content="website">
 <meta property="og:title" content="L'équipe · CIELBLEU Running Club Paris">
-<meta property="og:description" content="9 coureurs font vivre le club CIELBLEU Running Club à Paris : président, coachs, événementiel, communication. Découvrez l'équipe orga de la saison 3 derrière chaque run.">
+<meta property="og:description" content="9 coureurs à Paris et 1 en Australie font vivre le club CIELBLEU Running Club à Paris : président, coachs, événementiel, communication. Découvrez l'équipe orga de la saison 3 derrière chaque run.">
 <meta property="og:image" content="https://cielbleurunningclub.com/images/partage/og-accueil.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -106,8 +106,8 @@ section:nth-child(even){background:var(--white);}
 .s-intro{font-size:15px;color:var(--mid);max-width:620px;line-height:1.7;margin-bottom:40px;}
 
 /* ── CARTES ÉQUIPE ── */
-.orga-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:24px;margin-bottom:24px;}  /* 5 par rangée, la dernière rangée est centrée */
-.orga-grid .orga-card{flex:0 0 calc((100% - 96px)/5);}
+.orga-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:24px;margin-bottom:24px;max-width:1040px;margin-left:auto;margin-right:auto;}
+.orga-grid .orga-card{flex:0 0 calc((100% - 72px)/4);}  /* 11 cartes : 4 + 4 + 3, la dernière rangée centrée */
 .orga-card{perspective:900px;min-height:255px;cursor:default;}
 .card-inner{position:relative;width:100%;height:100%;transition:transform .55s cubic-bezier(.3,.8,.3,1);transform-style:preserve-3d;}
 @media(hover:hover){.orga-card:hover .card-inner{transform:rotateY(180deg);}}
@@ -124,6 +124,16 @@ section:nth-child(even){background:var(--white);}
 .orga-role2{font-size:9.5px;color:#9A6F2E;text-transform:uppercase;letter-spacing:.6px;font-weight:700;line-height:1.25;margin-top:5px;}
 .orga-nick{font-family:'Open Sans',sans-serif;font-style:italic;font-size:11.5px;color:var(--blue-steel);line-height:1.2;margin:-1px 0 5px;text-wrap:balance;}
 @media(max-width:768px){.orga-role{font-size:9px;letter-spacing:0.5px;}.orga-role2{font-size:8px;letter-spacing:.3px;margin-top:4px;}.orga-nick{font-size:10px;margin:-1px 0 4px;}}
+/* Membre de l'orga à distance : liseré doré en pointillés et pastille « Depuis l'Australie » */
+.orga-card.distance .card-front{border:1.5px dashed rgba(232,176,107,.9);background:linear-gradient(180deg,#fffaf2 0%,var(--white) 60%);}
+.orga-loin{position:absolute;top:10px;left:50%;transform:translateX(-50%);white-space:nowrap;font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:1.5px;background:var(--gold);color:var(--navy-deep);padding:3px 10px 2px;border-radius:999px;}
+@media(max-width:768px){.orga-loin{font-size:10px;padding:2px 7px 1px;top:7px;}}
+/* Carte mystère : le prochain membre de l'orga, en teaser (même style que les autres cartes, juste un « ? ») */
+.mystere-photo{display:flex;align-items:center;justify-content:center;background:#eef3f8;border:2px dashed rgba(18,43,68,.25);font-family:'Anton',sans-serif;font-size:52px;color:var(--blue-steel);animation:mystere 2.4s ease-in-out infinite;}
+@keyframes mystere{0%,100%{transform:scale(1);}50%{transform:scale(1.05);}}
+@media(prefers-reduced-motion:reduce){.mystere-photo{animation:none;}}
+.orga-card.mystere .orga-name{letter-spacing:4px;}
+@media(max-width:768px){.mystere-photo{font-size:38px;}}
 .orga-section-label{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:4px;color:var(--blue-steel);margin-bottom:18px;display:flex;align-items:center;gap:14px;}
 .orga-section-label::after{content:'';flex:1;height:1px;background:rgba(18,43,68,.1);}
 
@@ -256,7 +266,7 @@ nav a:focus-visible,.nav-mobile a:focus-visible,footer a:focus-visible,footer bu
   </picture>
   <div class="page-hero-eyebrow">L'organisation · Saison 3</div>
   <h1>UNE ÉQUIPE <em>ORGA</em><br>DE CHOC.</h1>
-  <p>9 coureurs, une seule envie : faire vivre le club. Du président à la comm', ils sont derrière chaque run, chaque événement, chaque café.</p>
+  <p>9 coureurs à Paris, 1 en Australie, et bientôt un nouveau visage. Une seule envie : faire vivre le club. Du président à la comm', ils sont derrière chaque run, chaque événement, chaque café.</p>
 </header>
 
 <!-- NOTRE HISTOIRE -->
@@ -272,7 +282,7 @@ nav a:focus-visible,.nav-mobile a:focus-visible,footer a:focus-visible,footer bu
 <!-- ÉQUIPE -->
 <section id="equipe">
   <div class="s-label">02 · L'équipe de la saison 3</div>
-  <h2 class="s-title">9 coureurs.</h2>
+  <h2 class="s-title">9 coureurs à Paris, 1 en Australie.</h2>
   <div class="amedia-hint" style="margin:0 0 14px;">← Glissez pour découvrir →</div>
   <div class="orga-grid reveal-children">
     <div class="orga-card"><div class="card-inner">
@@ -310,6 +320,14 @@ nav a:focus-visible,.nav-mobile a:focus-visible,footer a:focus-visible,footer bu
     <div class="orga-card"><div class="card-inner">
       <div class="card-front"><img src="images/equipe/manon.png?v=6" alt="Manon" class="orga-photo" loading="lazy" decoding="async"><div class="orga-name">Manon</div><div class="orga-role">Communication</div></div>
       <div class="card-back"><div class="card-back-text">Je cours après ce qui est instagrammable.</div></div>
+    </div></div>
+    <div class="orga-card distance"><div class="card-inner">
+      <div class="card-front"><span class="orga-loin">🇦🇺 Depuis l'Australie</span><img src="images/equipe/julien-d.png?v=1" alt="Julien" class="orga-photo" loading="lazy" decoding="async"><div class="orga-name">Julien</div><div class="orga-role">Communication</div><div class="orga-role2">En PVT pour la saison 3</div></div>
+      <div class="card-back"><div class="card-back-text">J'ai couru le marathon de NY.</div></div>
+    </div></div>
+    <div class="orga-card mystere"><div class="card-inner">
+      <div class="card-front"><div class="orga-photo mystere-photo" aria-hidden="true">?</div><div class="orga-name">???</div><div class="orga-role">Nouveau dans l'orga</div><div class="orga-role2">Annonce très bientôt</div></div>
+      <div class="card-back"><div class="card-back-text">Indice : il ou elle court déjà avec nous… Restez connectés 👀</div></div>
     </div></div>
   </div>
 
