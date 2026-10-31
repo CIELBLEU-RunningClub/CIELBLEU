@@ -78,6 +78,6 @@ Ce qui est en place sur le site (rien à faire au quotidien) :
 Ce qui dépend de nous :
 1. **Double authentification** sur le compte GitHub du club, sur la boîte Gmail du club et chez le registraire du nom de domaine. Le code de double authentification se range dans le gestionnaire de mots de passe du club, pas sur un seul téléphone.
 2. Mot de passe long et unique pour chacun de ces comptes ; on le change quand quelqu'un quitte l'orga.
-3. Chez le registraire : verrou de transfert activé et renouvellement automatique du domaine.
-4. Sur GitHub (Settings > Pages) : « Enforce HTTPS » coché, et le domaine vérifié dans les réglages du compte, pour que personne d'autre ne puisse le rattacher à son propre site.
+3. Chez OVH, en place depuis le 31 oct. 2026 : verrou de transfert, renouvellement automatique, DNSSEC, SPF, CAA (seul Let's Encrypt peut délivrer le certificat HTTPS) et DMARC (les faux e-mails au nom du domaine vont en spam).
+4. Sur GitHub : « Enforce HTTPS » coché, et domaine vérifié dans les réglages du compte depuis le 31 oct. 2026. **Ne jamais supprimer chez OVH l'entrée TXT `_github-pages-challenge-CIELBLEU-RunningClub`** : sans elle, le domaine redevient non vérifié.
 5. Ne jamais mettre dans le dépôt une donnée personnelle : la liste des adhérents, les e-mails, les téléphones ou un adhérent qui a refusé d'apparaître. Le dépôt est public et tout ce qui y entre reste visible dans l'historique.
