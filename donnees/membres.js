@@ -132,7 +132,7 @@ const MEMBRES=[
   {nom:'Fanny H', citation:'', photo:''},
   {nom:'Guillaume M', citation:'Je cours donc tu suis', photo:''},
   {nom:'Hugo Ca', citation:'Un chrono d\'exception ne demande pas des jambes surhumaines, juste une discipline plus têtue que la douleur', photo:''},
-  {nom:'Hugo P', citation:'Human is limited', photo:'images/membres/hugo-p.jpg?v=1'},
+  {nom:'Hugo P', citation:'Human is limited', photo:'images/membres/hugo-p.jpg?v=2'},
   {nom:'Hugo S', citation:'Essaie, t\'auras toujours une chance', photo:'images/membres/hugo-s.jpg?v=1'},
   {nom:'Maelle G', citation:'Lentement mais sûrement !', photo:'images/membres/maelle-g.jpg?v=1'},
   {nom:'Maëlle S', citation:'', photo:'images/membres/maelle-s.jpg?v=1'},
