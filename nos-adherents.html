@@ -110,7 +110,11 @@ section:nth-child(even){background:var(--white);}
 .trombi-search{flex:1;min-width:220px;max-width:360px;position:relative;}
 .trombi-search input{width:100%;padding:13px 16px 13px 42px;border:1.5px solid rgba(18,43,68,.15);border-radius:30px;font-size:14px;font-family:'Open Sans',sans-serif;color:var(--navy);background:var(--cream);transition:border-color .2s;}
 .trombi-search input:focus{outline:none;border-color:var(--blue-sky);}
-.trombi-search svg{position:absolute;left:15px;top:50%;transform:translateY(-50%);color:var(--mid);}
+.trombi-search input{padding-right:44px;}
+.trombi-clear{position:absolute;right:8px;top:50%;transform:translateY(-50%);width:30px;height:30px;border:none;border-radius:50%;background:rgba(18,43,68,.08);color:var(--navy);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;transition:background .2s;}
+.trombi-clear:hover{background:rgba(18,43,68,.16);}
+.trombi-clear[hidden]{display:none;}
+.trombi-search>svg{position:absolute;left:15px;top:50%;transform:translateY(-50%);color:var(--mid);}
 .trombi-count{font-size:13px;color:var(--mid);letter-spacing:1px;}
 .trombi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:16px;}
 .trombi-wrap{position:relative;}
@@ -511,6 +515,7 @@ nav a:focus-visible,.nav-mobile a:focus-visible,footer a:focus-visible,footer bu
     <div class="trombi-search">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg>
       <input type="text" id="trombiSearch" placeholder="Rechercher un prénom…">
+      <button type="button" class="trombi-clear" id="trombiClear" aria-label="Effacer la recherche" hidden><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></button>
     </div>
     <div class="trombi-count" id="trombiCount"></div>
     <button type="button" class="surprise-btn" id="surpriseBtn"><span aria-hidden="true">🎯</span> Le quiz des adhérents</button>
@@ -737,7 +742,10 @@ function grad(i){const g=GRADS[i%GRADS.length];return `linear-gradient(150deg,${
     expanded=!expanded;
     renderTrombi(document.getElementById('trombiSearch').value);
   });
-  document.getElementById('trombiSearch').addEventListener('input',e=>renderTrombi(e.target.value));
+  const champ=document.getElementById('trombiSearch'),croix=document.getElementById('trombiClear');
+  champ.addEventListener('input',e=>{croix.hidden=!e.target.value;renderTrombi(e.target.value);});
+  // la croix vide la recherche en un clic
+  croix.addEventListener('click',()=>{champ.value='';croix.hidden=true;renderTrombi('');champ.focus();});
   addEventListener('resize',()=>renderTrombi(document.getElementById('trombiSearch').value),{passive:true});
   renderTrombi();
 })();
