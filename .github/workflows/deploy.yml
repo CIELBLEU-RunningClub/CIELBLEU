@@ -23,20 +23,28 @@ jobs:
       url: ${{ steps.deploy.outputs.page_url }}
     steps:
       - name: Récupération du code
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
 
       - name: Configuration Pages
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5.0.0
+
+      # Seuls les fichiers du site partent en ligne : les notes internes (*.md),
+      # les scripts de l'orga (outils/) et la configuration GitHub restent dans le dépôt
+      - name: Sélection des fichiers publics
+        run: |
+          mkdir _site
+          rsync -a --exclude '.git' --exclude '.github' --exclude '_site' --exclude '/outils/' \
+            --exclude '*.md' --exclude '.gitignore' --exclude '.DS_Store' ./ _site/
 
       - name: Préparation de l'artefact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3.0.1
         with:
-          path: .
+          path: _site
 
       - name: Déploiement (tentative 1)
         id: deploy
         continue-on-error: true
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4.0.5
 
       - name: Pause avant nouvelle tentative
         if: steps.deploy.outcome == 'failure'
@@ -46,7 +54,7 @@ jobs:
         id: retry1
         if: steps.deploy.outcome == 'failure'
         continue-on-error: true
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4.0.5
 
       - name: Pause avant dernière tentative
         if: steps.deploy.outcome == 'failure' && steps.retry1.outcome == 'failure'
@@ -55,4 +63,4 @@ jobs:
       - name: Déploiement (tentative 3)
         id: retry2
         if: steps.deploy.outcome == 'failure' && steps.retry1.outcome == 'failure'
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4.0.5
