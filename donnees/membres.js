@@ -5,7 +5,7 @@
 // Pour la photo de l'orga en fond fondu sur la carte : fond:'images/equipe/cartes/prenom.png?v=1'.
 // fondStyle:'…' décale ou zoome la photo de fond si le visage est mal cadré.
 // orga:true marque l'équipe d'organisation (carte dorée avec la pastille ORGA).
-// Pour ajouter une citation : citation:'…' (le verso reste neutre si vide).
+// Pour ajouter une citation : citation:'…' (le verso reste neutre si vide). \n force un retour à la ligne.
 // Le nombre affiché sur le site compte tous les adhérents, y compris ceux qui ne souhaitent pas apparaître.
 const NB_ADHERENTS=138;
 // D'après la colonne NB SAISONS de la liste de référence : 1 = arrivé cette saison, 2 = deuxième saison, 3 = présent depuis trois saisons (63 + 32 + 43 = 138).
@@ -91,7 +91,7 @@ const MEMBRES=[
   {nom:'Camille H', citation:'Sérieuse sans jamais se prendre au sérieux', photo:''},
   {nom:'Charlotte', citation:'Jamais dans la demi-mesure', photo:'images/membres/charlotte.jpg?v=1'},
   {nom:'Célia', citation:'', photo:''},
-  {nom:'Dac-Huy', citation:'Manger/Sport/Voyage', photo:''},
+  {nom:'Dac-Huy', citation:'Manger\nSport\nVoyage', photo:''},
   {nom:'Emma', citation:'Le positif attire le positif.', photo:'images/membres/emma.jpg?v=1'},
   {nom:'Gaultier', citation:'Chante Déesse la colère d\'Achille, fils de Pélée', photo:'images/membres/gaultier.jpg?v=1'},
   {nom:'Gaëlle', citation:'Travaille sur l\'ouverture d\'une antenne CIELBLEU à Barcelone', photo:''},
