@@ -44,7 +44,7 @@ jobs:
       - name: Déploiement (tentative 1)
         id: deploy
         continue-on-error: true
-        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4.0.5
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
 
       - name: Pause avant nouvelle tentative
         if: steps.deploy.outcome == 'failure'
@@ -54,7 +54,7 @@ jobs:
         id: retry1
         if: steps.deploy.outcome == 'failure'
         continue-on-error: true
-        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4.0.5
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
 
       - name: Pause avant dernière tentative
         if: steps.deploy.outcome == 'failure' && steps.retry1.outcome == 'failure'
@@ -63,4 +63,4 @@ jobs:
       - name: Déploiement (tentative 3)
         id: retry2
         if: steps.deploy.outcome == 'failure' && steps.retry1.outcome == 'failure'
-        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4.0.5
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
