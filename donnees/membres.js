@@ -31,7 +31,7 @@ const MEMBRES=[
   {nom:'Enzo', citation:'Lent mais résistant', photo:'images/membres/enzo.jpg?v=1'},
   {nom:'Maxence', citation:'J\'ai réussi à participer à l\'EKIDEN !!', photo:'images/membres/maxence.jpg?v=1'},
   {nom:'Milena', citation:'Beaucoup d\'ambition, un cardio en négociation.', photo:'images/membres/milena.jpg?v=1'},
-  {nom:'Baptiste', citation:'', photo:'images/membres/baptiste.jpg?v=1'},
+  {nom:'Baptiste', citation:'On attend la citation de Baptiste parce que l\'autre n\'était pas drôle', photo:'images/membres/baptiste.jpg?v=1'},
   {nom:'Thomas Nou', citation:'Viva la vida', orga:true, photo:'images/membres/thomas-nou.jpg?v=1', fond:'images/equipe/cartes/thomas-evenementiel.png?v=1'},
   {nom:'Clémence N', citation:'Petite phrase à se répéter sans modération pendant qu\'on crache nos poumons : « on est pas des merguez »', photo:'images/membres/clemence-n.jpg?v=1'},
   {nom:'Marie', citation:'Soufle limité, bavardages illimités', photo:'images/membres/marie.jpg?v=1'},
