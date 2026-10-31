@@ -567,9 +567,9 @@ function renderEvents(){
   let html='';
   monthsToShow.forEach((m)=>{
     let evs=allEvents.filter(e=>e.k===m && matchDay(e));
-    // On masque les rendez-vous déjà passés, SAUF si l'utilisateur a explicitement ouvert un mois passé
+    // Vue « à venir » : on masque les rendez-vous déjà passés. Un mois choisi montre tout, les passés en grisé.
     const explicitPastMonth = (activeMonth!=='all' && m<curMonth);
-    if(!explicitPastMonth) evs=evs.filter(e=>!isPast(e));
+    if(activeMonth==='all') evs=evs.filter(e=>!isPast(e));
     // Chaque trêve s'affiche à la suite du dernier mois travaillé, tant qu'elle n'est pas terminée
     const pauseKind=(m===2026*12+11)?'winter':(m===2027*12+6)?'summer':'';
     const pauseEnd=pauseKind==='winter'?new Date(2027,0,3,23,59):new Date(2027,7,31,23,59);
