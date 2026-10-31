@@ -121,7 +121,7 @@ const MEMBRES=[
   {nom:'Adrien D', citation:'À fond les ballons', photo:'images/membres/adrien-d.jpg?v=1'},
   {nom:'Agathe A', citation:'Certains prennent un guide pour visiter une ville, moi je prends mes baskets et mon sens de l\'orientation', photo:'images/membres/agathe-a.jpg?v=1'},
   {nom:'Agathe V', citation:'Je ne suis pas lente, je fais de l\'endurance... très longue.', photo:'images/membres/agathe-v.jpg?v=1'},
-  {nom:'Anais B', citation:'Le seul fractionné qu\'on aime c\'est entrée, plat, dessert', photo:''},
+  {nom:'Anais B', citation:'Le seul fractionné qu\'on aime c\'est entrée, plat, dessert', photo:'images/membres/anais-b.jpg?v=1'},
   {nom:'Anaïs P', citation:'Vers l\'infini et au delà !', photo:'images/membres/anais-p.jpg?v=1'},
   {nom:'Camille N', citation:'Ma Garmin a mal dormi cette nuit', photo:'images/membres/camille-n.jpg?v=1'},
   {nom:'Camille P', citation:'', photo:''},
