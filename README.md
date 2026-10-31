@@ -3,7 +3,7 @@
 Site statique (HTML, CSS et JavaScript, sans outil de construction), publié automatiquement par GitHub Pages à chaque enregistrement sur la branche `main`.
 En ligne : https://cielbleurunningclub.com/
 
-Pour le mettre à jour, voir **[GUIDE-ORGA.md](GUIDE-ORGA.md)**.
+Pour le mettre à jour, voir **[GUIDE-ORGA.md](GUIDE-ORGA.md)**. En cas de pépin, voir **[REPRISE-EN-MAIN.md](REPRISE-EN-MAIN.md)**.
 
 ## Comment le site est rangé
 

@@ -4,6 +4,8 @@ Le site est un ensemble de fichiers stockés sur GitHub, sous le compte du club 
 
 2 ou 3 personnes de confiance partagent ce compte. Il n'y a **pas de relecture avant publication** : ce que tu enregistres est en ligne. Les règles ci-dessous remplacent la relecture.
 
+> En cas de pépin (ordinateur perdu, Claude indisponible, compte bloqué, site en panne) : voir **[REPRISE-EN-MAIN.md](REPRISE-EN-MAIN.md)**.
+
 ## Premiers pas (une seule fois, sur ton ordinateur)
 
 1. Récupère les identifiants du compte du club dans le gestionnaire de mots de passe du club. Ne les envoie jamais par message.
