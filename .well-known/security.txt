@@ -1,0 +1,5 @@
+# Signaler une faille de sécurité sur le site CIELBLEU Running Club
+Contact: mailto:contact.cielbleurunningclub@gmail.com
+Expires: 2027-10-31T23:00:00.000Z
+Preferred-Languages: fr, en
+Canonical: https://cielbleurunningclub.com/.well-known/security.txt

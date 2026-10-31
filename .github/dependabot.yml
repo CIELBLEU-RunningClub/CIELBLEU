@@ -1,0 +1,8 @@
+# Prévient (par une demande de mise à jour sur GitHub) quand un outil de déploiement
+# a une nouvelle version, notamment une correction de sécurité
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
