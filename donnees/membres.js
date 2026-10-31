@@ -73,7 +73,7 @@ const MEMBRES=[
   {nom:'Guillaume B', citation:'Boire c\'est la victoire', photo:'images/membres/guillaume-b.jpg?v=1'},
   {nom:'Lino', citation:'Pour combien on accélère ?', photo:'images/membres/lino.jpg?v=1'},
   {nom:'Thomas G', citation:'Les relations humaines, vous savez…', orga:true, photo:'images/membres/thomas-g.jpg?v=1', fond:'images/equipe/cartes/thomas-vice-president.png?v=1'},
-  {nom:'Corentin', citation:'Toujours regarder à droite au passage piéton', photo:'images/membres/corentin.jpg?v=1'},
+  {nom:'Corentin', citation:'Toujours regarder à droite au passage piéton', photo:'images/membres/corentin.jpg?v=2'},
   {nom:'Théo B', citation:'Qui ne tente rien n\'a rien', photo:'images/membres/theo-b.jpg?v=1'},
   {nom:'Axel', citation:'', photo:''},
   {nom:'Alain', citation:'', photo:'images/membres/alain.jpg?v=1'},
