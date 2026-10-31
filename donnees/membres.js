@@ -23,7 +23,7 @@ const MEMBRES=[
   {nom:'Alvin', citation:'Je vais tout arracher, tout gagner, c\'est une fierté de représenter ce club.', photo:'images/membres/alvin.jpg?v=1'},
   {nom:'Julien B', citation:'Yuli : le dealer de good mood 🌞', photo:'images/membres/julien-b.jpg?v=1'},
   {nom:'Mélanie', citation:'Plus je cours vite, plus vite je suis arrivée', photo:'images/membres/melanie.jpg?v=1'},
-  {nom:'Sarah', citation:'La Caille : espèce rare et bruyante à foulée rapide', photo:'images/membres/sarah.jpg?v=1'},
+  {nom:'Sarah', citation:'La Caille : espèce rare et bruyante à foulée rapide', photo:'images/membres/sarah.jpg?v=2'},
   {nom:'Victor C', citation:'La chance paie parfois, le travail toujours', photo:''},
   {nom:'Thibault', citation:'Work hard play harder', photo:'images/membres/thibault.jpg?v=1'},
   {nom:'Lucile', citation:'le ciel est bleu en 2 mots ? ciel bleu.', photo:'images/membres/lucile.jpg?v=1'},
