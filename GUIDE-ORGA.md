@@ -64,3 +64,20 @@ Dis à Claude : « Annule ma dernière modification et publie. » Il crée une n
 - Le mot de passe et les codes de secours se trouvent **uniquement** dans le gestionnaire de mots de passe du club et dans le Drive, jamais dans un message.
 - Si quelqu'un quitte l'orga, on change le mot de passe du compte du club et on prévient les autres.
 - Ne pas se connecter au compte du club depuis un ordinateur partagé ou public.
+
+## Sécurité
+
+Ce qui est en place sur le site (rien à faire au quotidien) :
+- HTTPS obligatoire, et une politique de sécurité (CSP) sur chaque page : seul Google Analytics peut charger un script extérieur, après accord du visiteur.
+- Le site ne peut pas être affiché dans la page d'un autre site (protection contre le « clickjacking »).
+- Seuls les fichiers du site sont publiés : ce guide, le README et le dossier `outils/` restent dans le dépôt.
+- Les outils de déploiement sont figés sur une version précise, et Dependabot ouvre une demande sur GitHub quand une mise à jour sort.
+- `robots.txt` refuse les robots qui aspirent les contenus pour entraîner des IA.
+- `.well-known/security.txt` indique où signaler une faille (adresse contact du club).
+
+Ce qui dépend de nous :
+1. **Double authentification** sur le compte GitHub du club, sur la boîte Gmail du club et chez le registraire du nom de domaine. Le code de double authentification se range dans le gestionnaire de mots de passe du club, pas sur un seul téléphone.
+2. Mot de passe long et unique pour chacun de ces comptes ; on le change quand quelqu'un quitte l'orga.
+3. Chez le registraire : verrou de transfert activé et renouvellement automatique du domaine.
+4. Sur GitHub (Settings > Pages) : « Enforce HTTPS » coché, et le domaine vérifié dans les réglages du compte, pour que personne d'autre ne puisse le rattacher à son propre site.
+5. Ne jamais mettre dans le dépôt une donnée personnelle : la liste des adhérents, les e-mails, les téléphones ou un adhérent qui a refusé d'apparaître. Le dépôt est public et tout ce qui y entre reste visible dans l'historique.
