@@ -1438,16 +1438,42 @@ renderRecords();
   const sexe={};
   if(typeof recordCats!=='undefined')recordCats.forEach(c=>c.records.forEach(r=>{if(r.sex)sexe[r.who]=r.sex;}));
   if(citations.length<4)return;
+  // Anecdotes : une par partie (3e question). « qui » doit être le nom affiché sur la carte.
+  // Pour en ajouter : une ligne {texte:'…', qui:'Prénom'} (jamais un adhérent qui a refusé d'apparaître)
+  const ANECDOTES=[
+    {texte:'Elle monte sur le podium du club sur toutes les distances, du 400 m au marathon.',qui:'Mélanie'},
+    {texte:'Il a bouclé un marathon en 3h41… et un autre en 6h au marathon du Médoc, entre deux ravitos au vin 🍷',qui:'Guillaume B'},
+    {texte:'Il a couru 80 km d\'un coup : près de 13 heures de course.',qui:'Mathieu S'},
+    {texte:'Il a terminé le marathon du Mont-Blanc.',qui:'Kalome'},
+    {texte:'Nager, pédaler, courir : il a bouclé un Ironman 70.3.',qui:'Yoann'},
+    {texte:'Il a couru le marathon de New York, et il fait la communication du club… depuis l\'Australie.',qui:'Julien D'},
+    {couteau:true}
+  ];
+  // Le « couteau suisse » : un chrono sur chacune des cinq distances, du 400 m au marathon
+  const DIST5=['400m','5k','10k','semi','marathon'];
+  const distancesDe={};
+  if(typeof recordCats!=='undefined')recordCats.forEach(c=>c.records.forEach(r=>{(distancesDe[r.who]=distancesDe[r.who]||new Set()).add(c.key);}));
+  const couteau=n=>!!distancesDe[n]&&DIST5.every(k=>distancesDe[n].has(k));
+  const anecdotes=ANECDOTES.map(a=>{
+    if(a.couteau)return tous.some(([m])=>couteau(m.nom))?a:null;
+    const t=tous.find(([m])=>m.nom===a.qui);return t?{texte:a.texte,qui:t}:null;
+  }).filter(Boolean);
   const melange=a=>{for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
   // un ordre différent à chaque visite ; on ne repasse pas une question avant d'avoir vu toutes les autres
-  const sacs={citation:[],photo:[]};
-  function tirer(type){const src=type==='photo'?photos:citations;if(!sacs[type].length)sacs[type]=melange(src.slice());return sacs[type].pop();}
+  const sacs={citation:[],photo:[],anecdote:[]};
+  function tirer(type){const src=type==='photo'?photos:type==='anecdote'?anecdotes:citations;if(!sacs[type].length)sacs[type]=melange(src.slice());return sacs[type].pop();}
   let num=0,bons=0,rep=0;
   function question(){
     num++;
     // une question sur deux avec une photo, tant qu'il y a des photos
-    const type=photos.length>=1&&num%2===0?'photo':'citation';
-    const [m,i]=tirer(type);
+    // citation, photo, anecdote, citation, photo
+    const type=num===3&&anecdotes.length?'anecdote':photos.length>=1&&num%2===0?'photo':'citation';
+    let m,i,anec=null;
+    if(type==='anecdote'){
+      anec=tirer('anecdote');
+      if(anec.couteau){const l=tous.filter(([o])=>couteau(o.nom));[m,i]=l[Math.floor(Math.random()*l.length)];}
+      else [m,i]=anec.qui;
+    }else [m,i]=tirer(type);
     card.classList.remove('repondu','resultat');card.classList.toggle('q-photo',type==='photo');
     fb.innerHTML='';
     if(type==='photo'){
@@ -1456,10 +1482,11 @@ renderRecords();
       q.textContent='';ask.textContent='Qui est-ce ?';
     }else{
       av.className='surprise-avatar mystere';av.style.background='transparent';av.textContent='?';
-      q.textContent='« '+m.citation.trim()+' »';ask.textContent='Qui a dit ça ?';
+      if(anec){q.textContent=anec.couteau?'Le couteau suisse : un chrono sur toutes les distances, du 400 m au marathon.':anec.texte;ask.textContent='Qui est-ce ?';}
+      else{q.textContent='« '+m.citation.trim()+' »';ask.textContent='Qui a dit ça ?';}
     }
     // les faux choix sont du même genre quand on le connaît (via les chronos), pour ne pas donner la réponse
-    let cand=tous.filter(([o])=>o.nom!==m.nom);
+    let cand=tous.filter(([o])=>o.nom!==m.nom&&!(anec&&anec.couteau&&couteau(o.nom)));
     const memeGenre=cand.filter(([o])=>sexe[o.nom]&&sexe[o.nom]===sexe[m.nom]);
     if(sexe[m.nom]&&memeGenre.length>=3)cand=memeGenre;
     const autres=melange(cand).slice(0,3);
@@ -1477,7 +1504,7 @@ renderRecords();
     rep++;if(juste)bons++;
     opts.querySelectorAll('.quiz-opt').forEach(x=>{x.disabled=true;if(x.textContent===m.nom)x.classList.add('ok');});
     if(!juste)b.classList.add('ko');
-    if(type==='citation'){
+    if(type==='citation'||type==='anecdote'){
       av.className='surprise-avatar';av.style.background=grad(i);
       av.innerHTML=(m.photo||m.fond)?'<img src="'+(m.photo||m.fond)+'" alt="" style="object-position:center 25%">':m.nom.charAt(0);
     }else if((m.citation||'').trim()){
