@@ -8,12 +8,12 @@
 <script>if(window.top!==window.self){try{window.top.location=window.self.location;}catch(e){document.documentElement.style.display="none";}}</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0b1d30">
-<title>Nos adhérents & le mur des fiertés · CIELBLEU Running Club Paris</title>
+<title>Nos adhérents ont du talent · CIELBLEU Running Club Paris</title>
 <meta name="description" content="Les meilleurs chronos des adhérents du CIELBLEU Running Club : 10 km, semi-marathon et marathon. Une communauté de plus de 150 coureurs à Paris.">
 <!-- Canonical : nom de domaine définitif -->
 <link rel="canonical" href="https://cielbleurunningclub.com/nos-adherents.html">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Nos adhérents & le mur des fiertés · CIELBLEU Running Club Paris">
+<meta property="og:title" content="Nos adhérents ont du talent · CIELBLEU Running Club Paris">
 <meta property="og:description" content="Les meilleurs chronos des adhérents du CIELBLEU Running Club : 10 km, semi-marathon et marathon. Une communauté de plus de 150 coureurs à Paris.">
 <meta property="og:image" content="https://cielbleurunningclub.com/images/partage/og-accueil.jpg">
 <meta property="og:image:width" content="1200">
@@ -145,6 +145,26 @@ section:nth-child(even){background:var(--white);}
 .trombi-fliphint{position:absolute;top:8px;right:10px;z-index:1;font-size:11px;color:rgba(255,255,255,.7);}
 .trombi-back{transform:rotateY(180deg);background:linear-gradient(150deg,var(--navy),var(--navy-deep));border:1.5px solid rgba(182,205,224,.3);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px 12px;}
 .trombi-quote{font-family:'Open Sans',sans-serif;font-style:italic;font-size:13px;color:var(--blue-sky);line-height:1.45;white-space:pre-line;}
+.trombi-chronos{width:100%;display:flex;flex-direction:column;gap:3px;}
+.trombi-back.double .trombi-chronos,.trombi-back.double.montre-chronos .trombi-quote{display:none;}
+.trombi-back.double.montre-chronos .trombi-chronos{display:flex;}
+.tb-bascule{position:absolute;left:50%;bottom:9px;transform:translateX(-50%);border:1px solid rgba(232,176,107,.55);background:rgba(232,176,107,.12);color:var(--gold);font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:1.2px;line-height:1;padding:5px 9px 4px;border-radius:999px;cursor:pointer;white-space:nowrap;}
+.tb-bascule:hover{background:rgba(232,176,107,.25);}
+.trombi-back.double{padding-bottom:30px;}
+.trombi-chronos .tc{line-height:1.35;}
+.trombi-chronos .tc-t{font-size:12.5px;}
+.trombi-chronos .tc-d{font-size:12px;}
+.tc{display:flex;align-items:baseline;gap:4px;line-height:1.25;}
+.tc-d{font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:1px;color:rgba(255,255,255,.55);flex:1;text-align:left;}
+.tc-t{font-family:'Open Sans',sans-serif;font-weight:700;font-size:11.5px;color:#fff;}
+@media(max-width:768px){
+  .trombi-back.double{padding:8px 7px 24px;}
+  .trombi-chronos{gap:1px;}
+  .trombi-chronos .tc{line-height:1.2;gap:3px;}
+  .trombi-chronos .tc-d{font-size:9.5px;letter-spacing:.6px;}
+  .trombi-chronos .tc-t{font-size:10.5px;}
+  .tb-bascule{font-size:9px;padding:4px 7px 3px;bottom:6px;letter-spacing:.8px;}
+}
 .trombi-back .qn{margin-top:10px;font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:1.5px;color:rgba(255,255,255,.55);}
 .trombi-empty{grid-column:1/-1;text-align:center;color:var(--mid);padding:30px;font-size:14px;}
 
@@ -171,7 +191,7 @@ section:nth-child(even){background:var(--white);}
 .share-mail:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(18,43,68,.3);}
 .share-mail-ico{display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:var(--blue-sky);color:var(--navy);flex-shrink:0;}
 .share-mail-ico svg{width:22px;height:22px;}
-/* Le mur des fiertés sur fond bleu, avec la piste en filigrane */
+/* « Nos adhérents ont du talent » sur fond bleu, avec la piste en filigrane */
 #records{background:linear-gradient(rgba(18,43,68,.82),rgba(18,43,68,.82)),url('images/couvertures/accueil.webp') center/cover no-repeat;border-bottom:none;}
 #records .s-label{color:var(--blue-sky);text-align:center;}
 #records .s-title{text-align:center;}
@@ -459,7 +479,7 @@ nav a:focus-visible,.nav-mobile a:focus-visible,footer a:focus-visible,footer bu
 .s-title{font-size:clamp(22px,2.7vw,32px)!important;line-height:1.15!important;}
 .s-title{white-space:nowrap;}
 @media(max-width:768px){.s-title{font-size:clamp(16px,5.4vw,26px)!important;}}
-/* Mur des fiertés (téléphone) : les catégories sont rangées en grille régulière de deux colonnes */
+/* Top 20 des chronos (téléphone) : les catégories sont rangées en grille régulière de deux colonnes */
 @media(max-width:768px){
   .rec-tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;}
   .rec-tab{justify-content:space-between;padding:12px 14px;font-size:12.5px;letter-spacing:1px;white-space:nowrap;min-width:0;}
@@ -532,17 +552,17 @@ nav a:focus-visible,.nav-mobile a:focus-visible,footer a:focus-visible,footer bu
   </div>
 </section>
 
-<!-- MUR DES FIERTÉS -->
+<!-- NOS ADHÉRENTS ONT DU TALENT : top 20 des chronos par distance -->
 <section id="records">
-  <div class="s-label">02 · Mur des fiertés</div>
-  <h2 class="s-title">Le mur des fiertés.</h2>
+  <div class="s-label">02 · Top 20 par distance</div>
+  <h2 class="s-title">Nos adhérents ont du talent.</h2>
 
   <div class="chronos-box reveal">
     <div class="rec-tabs" id="recTabs"></div>
     <div class="rec-board" id="recordsGrid"></div>
   </div>
   <div class="chronos-share">
-    <p>Un chrono, un premier dossard, un défi un peu fou&nbsp;? On l'ajoute au mur.</p>
+    <p>Un chrono, un premier dossard, un défi un peu fou&nbsp;? On l'ajoute ici.</p>
     <a class="share-mail" href="mailto:contact.cielbleurunningclub@gmail.com?subject=Ma%20fierté%20CIELBLEU">
       <span class="share-mail-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m3.5 7 8.5 6 8.5-6"/></svg></span>
       <span>Partage ta fierté</span>
@@ -652,12 +672,35 @@ const GRADS=[['#6d879a','#122b44'],['#b6cde0','#6d879a'],['#6d879a','#0b1d30'],[
 function grad(i){const g=GRADS[i%GRADS.length];return `linear-gradient(150deg,${g[0]},${g[1]})`;}
 
 /* ===== TROMBINOSCOPE ===== */
+// Chronos de chaque adhérent, pour le verso de sa carte (« Nos adhérents ont du talent » n'affiche que le top 20)
+const TOP_MUR=20;
+let CHRONOS_PAR_NOM=null;
+function chronosDe(nom){
+  if(!CHRONOS_PAR_NOM){
+    try{recordCats;}catch(e){return [];}   // recordCats n'est pas encore lu : les cartes seront redessinées juste après
+    CHRONOS_PAR_NOM={};
+    const LIB={'400m':'400 m','5k':'5 km','10k':'10 km','semi':'Semi','marathon':'Marathon','trail':'Trail','triathlon':'Triathlon'};
+    recordCats.forEach(c=>['F','H'].forEach(sx=>{
+      c.records.filter(r=>(r.sex||'H')===sx).sort((a,b)=>chronoToSec(a.time)-chronoToSec(b.time))
+        .forEach(r=>(CHRONOS_PAR_NOM[r.who]=CHRONOS_PAR_NOM[r.who]||[]).push({label:LIB[c.key]||c.label,time:r.time}));
+    }));
+  }
+  return CHRONOS_PAR_NOM[nom]||[];
+}
 (function initTrombi(){
   const grid=document.getElementById('trombiGrid');if(!grid)return;
   if(typeof MEMBRES==="undefined"){setTimeout(initTrombi,100);return;} // attendre que donnees/membres.js charge
   // Tap/clic pour retourner une carte : indispensable sur mobile, où il n'y a pas de survol
   const survol=matchMedia('(hover:hover) and (pointer:fine)');
   grid.addEventListener('click',e=>{
+    // Bouton du verso : passe de la citation aux chronos (et inversement) sans retourner la carte
+    const bt=e.target.closest('.tb-bascule');
+    if(bt){
+      const b=bt.closest('.trombi-back'),on=b.classList.toggle('montre-chronos');
+      bt.textContent=on?'❝ Sa citation':'⏱ Ses chronos';
+      bt.setAttribute('aria-label',on?'Voir sa citation':'Voir ses chronos');
+      e.stopPropagation();return;
+    }
     const card=e.target.closest('.trombi-card.has-quote');
     if(!card||survol.matches)return;   // sur ordinateur, le survol suffit
     const inner=card.querySelector('.trombi-inner');
@@ -676,16 +719,23 @@ function grad(i){const g=GRADS[i%GRADS.length];return `linear-gradient(150deg,${
     // Citation affichée seulement si elle tient sur la carte (les trop longues sont ignorées)
     const raw=(m.citation||'').trim();
     const q=raw.length<=MAX_CITATION?raw:'';
-    const back=q?`<div class="trombi-face trombi-back">
-        <p class="trombi-quote">${q}</p>
+    const ch=chronosDe(m.nom);
+    const chHTML=ch.length?`<div class="trombi-chronos">${ch.map(c=>`<div class="tc"><span class="tc-d">${c.label}</span><span class="tc-t">${c.time}</span></div>`).join('')}</div>`:'';
+    const verso=q||ch.length;
+    // Citation et chronos ne s'affichent pas ensemble : un bouton passe de l'une aux autres
+    const deux=q&&ch.length;
+    const back=verso?`<div class="trombi-face trombi-back${deux?' double':''}">
+        ${q?`<p class="trombi-quote">${q}</p>`:''}
+        ${chHTML}
+        ${deux?'<button type="button" class="tb-bascule" aria-label="Voir ses chronos">⏱ Ses chronos</button>':''}
       </div>`:'';
-    return `<div class="trombi-card${q?' has-quote':''}${m.orga?' orga':''}">
+    return `<div class="trombi-card${verso?' has-quote':''}${m.orga?' orga':''}">
       <div class="trombi-inner">
         <div class="trombi-face trombi-front">
           ${visu}
           ${m.orga?'<span class="trombi-orga">Orga</span>':''}
           <span class="trombi-name">${m.nom}</span>
-          ${q?'<span class="trombi-quote-dot" aria-hidden="true"></span>':''}
+          ${verso?'<span class="trombi-quote-dot" aria-hidden="true"></span>':''}
         </div>
         ${back}
       </div>
@@ -1272,12 +1322,13 @@ function ligneRecord(r,i,g){
 }
 function renderRecords(){
   const cat=recordCats[recActive];
-  recTabs.innerHTML=recordCats.map((c,i)=>`<button class="rec-tab${i===recActive?' active':''}" onclick="setRecord(${i})">${c.label} <span class="rec-tab-n">${c.records.length}</span></button>`).join("");
+  recTabs.innerHTML=recordCats.map((c,i)=>`<button class="rec-tab${i===recActive?' active':''}" onclick="setRecord(${i})">${c.label} <span class="rec-tab-n">${["f","h"].reduce((n,g)=>n+Math.min(TOP_MUR,c.records.filter(r=>(r.sex||"H").toLowerCase()===g).length),0)}</span></button>`).join("");
   // Deux classements distincts : chacun son podium, chacun sa couleur
   const groupes=[['f','Femmes','femmes'],['h','Hommes','hommes']];
   recBoard.innerHTML=groupes.map(([g,label,cls])=>{
+    // Seuls les 20 meilleurs par distance et par sexe : les autres chronos sont au dos des cartes
     const liste=cat.records.filter(r=>(r.sex||'H').toLowerCase()===g)
-                           .sort((a,b)=>chronoToSec(a.time)-chronoToSec(b.time));
+                           .sort((a,b)=>chronoToSec(a.time)-chronoToSec(b.time)).slice(0,TOP_MUR);
     if(!liste.length)return `<div class="rec-group ${cls}">
       <div class="rec-group-title">${label} <span class="rec-group-n">0</span></div>
       <div class="rec-empty">Chronos à venir.</div>
@@ -1298,6 +1349,8 @@ function renderRecords(){
 function basculerRecords(g){recOuvert[g]=!recOuvert[g];renderRecords();}
 function setRecord(i){recActive=i;recOuvert={f:false,h:false};renderRecords();}
 renderRecords();
+// Les cartes ont été dessinées avant la lecture des chronos : on les redessine avec leur verso complet
+{const champ=document.getElementById('trombiSearch');if(champ)champ.dispatchEvent(new Event('input'));}
 
 /* ===== EN IMAGES (mosaïque adhérents) ===== */
 (function(){

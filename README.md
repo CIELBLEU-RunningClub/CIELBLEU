@@ -13,7 +13,7 @@ calendrier.html             Calendrier de la saison
 actualites.html             Liste des actualités
 article-marathon-bleu.html  Un article (un fichier par article)
 notre-equipe.html           L'équipe
-nos-adherents.html          Adhérents, mur des fiertés, adhésion
+nos-adherents.html          Adhérents, « Nos adhérents ont du talent » (top 20 des chronos), adhésion
 nos-partenaires.html        Partenaires
 mentions-legales.html       Mentions légales et cookies
 

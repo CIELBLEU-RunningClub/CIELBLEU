@@ -28,7 +28,7 @@ Le site est un ensemble de fichiers stockés sur GitHub, sous le compte du club 
 | Un événement, une séance, une date | `donnees/events.js` (puis voir « règles d'or ») |
 | Un article d'actualité | `donnees/articles.js` + une page `article-xxx.html` |
 | Un adhérent (prénom, citation, photo) | `donnees/membres.js` |
-| Un chrono du mur des fiertés | `nos-adherents.html`, tableau `recordCats` |
+| Un chrono (top 20 « Nos adhérents ont du talent » et dos des cartes) | `nos-adherents.html`, tableau `recordCats` |
 | Un texte, un titre, un bouton | la page `.html` concernée |
 | Les partenaires | `nos-partenaires.html` |
 
@@ -84,7 +84,7 @@ Bilan complet fait le 31 octobre 2026. Cette section est la référence : la met
 
 ### Les données personnelles
 - Le dépôt est **public** : tout ce qui y entre reste visible dans l'historique, même supprimé ensuite. Jamais de liste d'adhérents, d'adresse, d'e-mail, de téléphone, ni de nom de famille d'adhérent, ni le prénom d'un adhérent qui a refusé d'apparaître, **y compris dans les messages d'enregistrement** (écrire « un adhérent retiré », sans prénom).
-- Les adhérents qui ont refusé d'apparaître ne figurent ni sur les cartes, ni sur le mur des fiertés, ni dans le quiz, mais restent comptés dans le total (`NB_ADHERENTS`).
+- Les adhérents qui ont refusé d'apparaître ne figurent ni sur les cartes, ni dans les chronos, ni dans le quiz, mais restent comptés dans le total (`NB_ADHERENTS`).
 - L'historique a été nettoyé le 31 oct. 2026 : les cartes et chronos d'adhérents qui avaient refusé, et les métadonnées de toutes les photos, en ont été retirés. Un ancien clone du dépôt réintroduirait ces données : toujours **cloner à neuf** depuis GitHub.
 - **Photos** : avant d'ajouter une photo au site, retirer ses métadonnées (auteur, appareil, position GPS). Demander à Claude de le faire au moment du recadrage.
 - La liste des adhérents reste **uniquement sur le Drive de l'orga**, en accès restreint. Quand on la télécharge pour une mise à jour, on la met à la corbeille juste après.
