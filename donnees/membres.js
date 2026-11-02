@@ -54,7 +54,7 @@ const MEMBRES=[
   {nom:'Fanny V', citation:'Je sais pas où je vais, mais j\'y vais en courant', photo:'images/membres/fanny-v.jpg?v=1'},
   {nom:'Eva', citation:'La vie c\'est ce qui arrive quand tu ne l\'avais pas prévu', photo:'images/membres/eva.jpg?v=1'},
   {nom:'Aline', citation:'Jamais deux sans trois', photo:'images/membres/aline.jpg?v=1'},
-  {nom:'Maéva', citation:'A la motiv par le groupe', photo:''},
+  {nom:'Maéva', citation:'A la motiv par le groupe', photo:'images/membres/maeva.jpg?v=1'},
   {nom:'Sabrina', citation:'I\'m not superstitious, but I\'m a little stitious', photo:'images/membres/sabrina.jpg?v=1'},
   {nom:'Romane Go', citation:'Mon carburant pour courir vite? Le matcha', photo:'images/membres/romane-go.jpg?v=1'},
   {nom:'Anna', citation:'', photo:'images/membres/anna.jpg?v=1'},
