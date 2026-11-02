@@ -1407,7 +1407,24 @@ renderRecords();
     {n:cnt[top],l:nomAff[top]+' ×'+cnt[top],t:'Le prénom roi du club. Crie « '+nomAff[top]+' ! » dans la foule et '+cnt[top]+' têtes se retournent.'},
     {n:marathoniens,l:'marathoniens',t:'Ils ont déjà passé la ligne des 42,195 km. Les autres y pensent très fort.'},
   ];
-  box.innerHTML=cartes.map(c=>'<div class="fun-card"><div class="fun-num"'+(typeof c.n==='number'?' data-n="'+c.n+'"':'')+'>'+c.n+'</div><div class="fun-lab">'+c.l+'</div><p class="fun-txt">'+c.t+'</p></div>').join('');
+  // Compteur collectif : tous les chronos du site mis bout à bout (top 20 et dos des cartes), recalculé à chaque ajout
+  {
+    const DIST={'400m':0.4,'5k':5,'10k':10,'semi':21.0975,'marathon':42.195,'triathlon':113};
+    let km=0,sec=0;
+    recordCats.forEach(c=>c.records.forEach(r=>{
+      let d=DIST[c.key]||0;
+      if(c.key==='trail'){const m=(r.event||'').match(/(\d+)\s*km/);d=m?+m[1]:/marathon/i.test(r.event||'')?42.195:0;}
+      if(c.key==='semi'){const m=(r.event||'').match(/(\d+)\s*km/);if(m)d=+m[1];}
+      km+=d;sec+=chronoToSec(r.time)||0;
+    }));
+    // distances à vol d'oiseau depuis Paris
+    const VILLES=[['Rome',1105],['Lisbonne',1450],['Marrakech',2060],['Dakar',4200],['New York',5840],['Rio de Janeiro',9160],['Tokyo',9710],['Sydney',16960]];
+    const k=Math.round(km),apres=VILLES.find(v=>v[1]>k),avant=[...VILLES].reverse().find(v=>v[1]<=k);
+    const comp=apres&&k>=apres[1]*0.9?'presque un Paris–'+apres[0]:avant?'plus qu\'un Paris–'+avant[0]:'';
+    const h=Math.round(sec/3600);
+    if(k>0)cartes.push({n:k,l:'km à nous tous',t:'Tous nos chronos officiels mis bout à bout : '+comp+' en courant, et '+h+' heures d\'effort.'});
+  }
+  box.innerHTML=cartes.map(c=>'<div class="fun-card"><div class="fun-num"'+(typeof c.n==='number'?' data-n="'+c.n+'"':'')+'>'+(typeof c.n==='number'?c.n.toLocaleString('fr-FR'):c.n)+'</div><div class="fun-lab">'+c.l+'</div><p class="fun-txt">'+c.t+'</p></div>').join('');
   // les nombres défilent une fois à l'écran
   const nums=box.querySelectorAll('.fun-num[data-n]');
   if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion:reduce)').matches)return;
@@ -1415,7 +1432,7 @@ renderRecords();
   const o=new IntersectionObserver(es=>es.forEach(e=>{
     if(!e.isIntersecting)return;o.unobserve(e.target);
     const el=e.target,to=+el.dataset.n,t0=performance.now();
-    (function step(now){const p=Math.min((now-t0)/1100,1);el.textContent=Math.round(to*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(step);})(t0);
+    (function step(now){const p=Math.min((now-t0)/1100,1);el.textContent=Math.round(to*(1-Math.pow(1-p,3))).toLocaleString('fr-FR');if(p<1)requestAnimationFrame(step);})(t0);
   }),{threshold:0.4});
   nums.forEach(n=>o.observe(n));
 })();
