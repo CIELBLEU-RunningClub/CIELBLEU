@@ -1341,8 +1341,10 @@ function renderRecords(){
   const groupes=[['f','Femmes','femmes'],['h','Hommes','hommes']];
   recBoard.innerHTML=groupes.map(([g,label,cls])=>{
     // Seuls les 20 meilleurs par distance et par sexe : les autres chronos sont au dos des cartes
+    // Trail : distances différentes, donc classés par effort le plus long
+    const sens=cat.key==='trail'?-1:1;
     const liste=cat.records.filter(r=>(r.sex||'H').toLowerCase()===g)
-                           .sort((a,b)=>chronoToSec(a.time)-chronoToSec(b.time)).slice(0,TOP_MUR);
+                           .sort((a,b)=>sens*(chronoToSec(a.time)-chronoToSec(b.time))).slice(0,TOP_MUR);
     if(!liste.length)return `<div class="rec-group ${cls}">
       <div class="rec-group-title">${label} <span class="rec-group-n">0</span></div>
       <div class="rec-empty">Chronos à venir.</div>
