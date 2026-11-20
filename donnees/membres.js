@@ -1,5 +1,5 @@
 // Le trombinoscope des adhérents : une ligne par membre.
-// Saison 2026-2027 · 138 adhérents (liste de référence « Liste des adhérents - 26/27 »).
+// Saison 2026-2027 · 139 adhérents (liste de référence « Liste des adhérents - 26/27 »).
 // Un prénom porté par plusieurs adhérents est suivi de l'initiale du nom de famille (Manon Z).
 // Photo de la carte : photo:'images/membres/prenom.jpg', recadrée en 480 x 640 (visage à la même taille et à la même hauteur pour tous). Les initiales s'affichent sinon.
 // Pour la photo de l'orga en fond fondu sur la carte : fond:'images/equipe/cartes/prenom.png?v=1'.
@@ -7,9 +7,9 @@
 // orga:true marque l'équipe d'organisation (carte dorée avec la pastille ORGA).
 // Pour ajouter une citation : citation:'…' (le verso reste neutre si vide). \n force un retour à la ligne.
 // Le nombre affiché sur le site compte tous les adhérents, y compris ceux qui ne souhaitent pas apparaître.
-const NB_ADHERENTS=138;
+const NB_ADHERENTS=139;
 // D'après la colonne NB SAISONS de la liste de référence : 1 = arrivé cette saison, 2 = deuxième saison, 3 = présent depuis trois saisons (63 + 32 + 43 = 138).
-const NB_NOUVEAUX=63;
+const NB_NOUVEAUX=64;
 const NB_DEUXIEME=32;
 const NB_FIDELES=43;
 const MEMBRES=[
@@ -145,5 +145,6 @@ const MEMBRES=[
   {nom:'Morgane C', citation:'', photo:''},
   {nom:'Théo K', citation:'Tombe toujours', photo:'images/membres/theo-k.jpg?v=1'},
   {nom:'Thomas C', citation:'', photo:'images/membres/thomas-c.jpg?v=1'},
-  {nom:'Thomas Nor', citation:'', photo:''}
+  {nom:'Thomas Nor', citation:'', photo:''},
+  {nom:'Thomas D', citation:'', photo:'images/membres/thomas-d.jpg?v=1'}
 ];
