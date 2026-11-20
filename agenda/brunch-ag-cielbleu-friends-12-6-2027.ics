@@ -1,0 +1,17 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CIELBLEU Running//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:e183@cielbleu.run
+DTSTAMP:20261120T093844Z
+DTSTART:20270612T110000
+DTEND:20270612T210000
+SUMMARY:Brunch AG + CIELBLEU & Friends · CIELBLEU Running
+DESCRIPTION:L'Assemblée Générale annuelle du club autour d'un brunch\, p
+ uis CIELBLEU & Friends\, la fête de fin de saison : on célèbre ensemble
+  tout ce qu'on a vécu cette année.
+LOCATION:Paris
+END:VEVENT
+END:VCALENDAR
